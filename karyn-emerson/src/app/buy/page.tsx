@@ -286,7 +286,7 @@ export default function BuyPage() {
               className="font-mono text-xs uppercase tracking-[0.22em]"
               style={{ color: "var(--accent)" }}
             >
-              [IDX placeholder - live search post-launch]
+              While the live feed goes up
             </p>
           </FadeUp>
           <FadeUp delay={0.1}>

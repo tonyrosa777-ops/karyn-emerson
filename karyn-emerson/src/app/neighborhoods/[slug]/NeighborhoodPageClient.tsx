@@ -295,7 +295,7 @@ export default function NeighborhoodPageClient({ neighborhood: n }: Props) {
                 background: "rgba(181,83,44,0.08)",
               }}
             >
-              [IDX placeholder]
+              Sample · live feed soon
             </span>
           </div>
 
@@ -342,7 +342,7 @@ export default function NeighborhoodPageClient({ neighborhood: n }: Props) {
                       className="font-mono mt-3 text-[0.65rem] font-medium uppercase tracking-[0.22em]"
                       style={{ color: "var(--text-on-dark-muted)" }}
                     >
-                      [IDX placeholder] {/* [DEMO COPY — IDX integration post-launch] */}
+                      Sample · live feed soon {/* [DEMO COPY — IDX integration post-launch] */}
                     </span>
                   </div>
                 </div>
