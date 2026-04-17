@@ -4,23 +4,70 @@ import { siteConfig } from "@/data/site";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  absoluteUrl,
+  breadcrumbSchema,
+  serviceSchema,
+} from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "How I Work With You | Karyn Emerson Real Estate",
   description:
     "Selling, buying, or relocating in Southern New Hampshire. Three services, one person, zero handoff. Jill & Co. Realty Group, Salem NH.",
+  alternates: { canonical: "/services" },
   openGraph: {
     title: "How I Work With You | Karyn Emerson Real Estate",
     description:
       "Selling, buying, or relocating in Southern NH. Three services, one person.",
     type: "website",
-    url: "https://karynemerson.com/services",
+    url: "/services",
+    siteName: "Karyn Emerson Real Estate",
+    images: [
+      {
+        url: "/og/default-og.svg",
+        width: 1200,
+        height: 630,
+        alt: "Karyn Emerson Real Estate — Services",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "How I Work With You | Karyn Emerson Real Estate",
+    description: "Selling, buying, or relocating in Southern NH.",
+    images: ["/og/default-og.svg"],
   },
 };
 
 export default function ServicesIndexPage() {
+  const breadcrumb = breadcrumbSchema([
+    { name: "Home", href: "/" },
+    { name: "Services", href: "/services" },
+  ]);
+
+  const itemList = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Karyn Emerson Real Estate Services",
+    url: absoluteUrl("/services"),
+    numberOfItems: siteConfig.services.length,
+    itemListElement: siteConfig.services.map((s, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: s.title,
+      url: absoluteUrl(s.href),
+      item: serviceSchema({
+        name: s.title,
+        description: s.shortDescription,
+        slug: s.slug,
+      }),
+    })),
+  };
+
   return (
     <>
+      <JsonLd data={[breadcrumb, itemList]} />
       {/* SECTION 1 — HERO HEADER (LIGHT, shimmer + ambient particles) */}
       <section
         className="relative overflow-hidden"

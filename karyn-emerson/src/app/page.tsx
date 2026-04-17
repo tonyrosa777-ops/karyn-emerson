@@ -46,10 +46,21 @@ import { HomeTestimonialsPreview } from "@/components/sections/HomeTestimonialsP
 import { HomeQuizCTA } from "@/components/sections/HomeQuizCTA";
 import { HomeBlogPreview } from "@/components/sections/HomeBlogPreview";
 import { HomeBookingPreview } from "@/components/sections/HomeBookingPreview";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  realEstateAgentSchema,
+  localBusinessSchema,
+} from "@/lib/schema";
 
 export default function Home() {
   return (
     <main className="flex flex-1 flex-col">
+      <JsonLd
+        data={[
+          realEstateAgentSchema({ path: "/" }),
+          localBusinessSchema("/"),
+        ]}
+      />
       <Hero />
       <HomePainPoints />
       <HomeAboutTeaser />

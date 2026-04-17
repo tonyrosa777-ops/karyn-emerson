@@ -17,15 +17,32 @@ import { BreathingOrb } from "@/components/sections/BreathingOrb";
 
 export const metadata: Metadata = {
   title:
-    "What Is Moving in Southern NH | Featured Listings | Karyn Emerson Real Estate",
+    "Featured Southern NH Listings | Karyn Emerson Real Estate",
   description:
     "Live IDX search is coming. In the meantime, here is what is moving across Salem, Windham, Derry, and Londonderry.",
+  alternates: { canonical: "/listings" },
   openGraph: {
     title: "Featured Southern NH Listings | Karyn Emerson Real Estate",
     description:
       "IDX platform pending. Sample of what is moving in Southern NH.",
     type: "website",
-    url: "https://karynemerson.com/listings",
+    url: "/listings",
+    siteName: "Karyn Emerson Real Estate",
+    images: [
+      {
+        url: "/og/default-og.svg",
+        width: 1200,
+        height: 630,
+        alt: "Featured Southern NH Listings — Karyn Emerson Real Estate",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Featured Southern NH Listings | Karyn Emerson Real Estate",
+    description:
+      "IDX platform pending. Sample of what is moving in Southern NH.",
+    images: ["/og/default-og.svg"],
   },
 };
 

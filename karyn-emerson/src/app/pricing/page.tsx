@@ -14,17 +14,43 @@ import type { Metadata } from "next";
 import { PRICING_TIERS, FEATURE_MATRIX } from "@/data/pricingTiers";
 import { BookingCalendar } from "@/components/booking/BookingCalendar";
 import { PricingROI } from "@/components/sections/PricingROI";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { absoluteUrl } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Optimus Packages | Internal Sales Tool",
   description:
     "Optimus Starter, Pro, and Premium packages. Internal sales tool. Deleted before launch.",
-  robots: { index: false, follow: false },
+  alternates: { canonical: "/pricing" },
+  robots: { index: false, follow: false, noarchive: true, nosnippet: true },
 };
 
 export default function PricingPage() {
+  // OfferCatalog schema — internal sales tool, noindexed, but structured data
+  // still helps the demo when the page is read by LLMs during evaluation.
+  const offerCatalog = {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    name: "Optimus Business Solutions Packages",
+    url: absoluteUrl("/pricing"),
+    itemListElement: PRICING_TIERS.map((tier) => ({
+      "@type": "Offer",
+      name: tier.name,
+      description: tier.description,
+      price: tier.price,
+      priceCurrency: "USD",
+      category: "Website build package",
+      itemOffered: {
+        "@type": "Service",
+        name: `${tier.name} website package`,
+        description: tier.tagline,
+      },
+    })),
+  };
+
   return (
     <>
+      <JsonLd data={offerCatalog} />
       {/* ── Hero ────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden py-24 md:py-32"

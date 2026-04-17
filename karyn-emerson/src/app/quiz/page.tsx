@@ -10,13 +10,30 @@ import QuizClient from "./QuizClient";
 export const metadata: Metadata = {
   title: "Which Southern NH Move Is Yours? | Karyn Emerson Real Estate",
   description:
-    "Six quick questions to figure out which Southern NH move fits you. Downsizing, relocating from MA, first home in NH, or moving up locally. Your result comes with a 15 minute call on the calendar below, no email gate.",
+    "Six quick questions, one result, a 15 minute call on the calendar. Downsizing, relocating from MA, first home in NH, or moving up locally.",
   alternates: { canonical: "/quiz" },
   openGraph: {
     title: "Which Southern NH Move Is Yours?",
     description:
       "Six questions. Your archetype. A real next step with Karyn.",
     type: "website",
+    url: "/quiz",
+    siteName: "Karyn Emerson Real Estate",
+    images: [
+      {
+        url: "/og/default-og.svg",
+        width: 1200,
+        height: 630,
+        alt: "Which Southern NH Move Is Yours? — Karyn Emerson Real Estate",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Which Southern NH Move Is Yours?",
+    description:
+      "Six questions. Your archetype. A real next step with Karyn.",
+    images: ["/og/default-og.svg"],
   },
 };
 

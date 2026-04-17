@@ -4,6 +4,8 @@ import { siteConfig } from "@/data/site";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbSchema, realEstateAgentSchema } from "@/lib/schema";
 
 // =============================================================================
 // /buy — buyer-focused page.
@@ -17,13 +19,30 @@ export const metadata: Metadata = {
   title:
     "Buying a Home in Southern New Hampshire | Karyn Emerson Real Estate",
   description:
-    "What buying in Southern NH actually looks like. P&S, inspection, well, septic, appraisal, in plain English. Buyer representation with Karyn Emerson, Jill & Co. Realty Group.",
+    "What buying in Southern NH actually looks like. P&S, inspection, well, septic, appraisal, in plain English. Buyer representation with Karyn Emerson.",
+  alternates: { canonical: "/buy" },
   openGraph: {
-    title: "Buying a Home in Southern New Hampshire | Karyn Emerson Real Estate",
+    title: "Buying a Home in Southern New Hampshire | Karyn Emerson",
     description:
-      "Plain-English buyer guide for Southern NH. Jill & Co. Realty Group, Salem NH.",
+      "Plain English buyer guide for Southern NH. Jill & Co. Realty Group, Salem NH.",
     type: "website",
-    url: "https://karynemerson.com/buy",
+    url: "/buy",
+    siteName: "Karyn Emerson Real Estate",
+    images: [
+      {
+        url: "/og/default-og.svg",
+        width: 1200,
+        height: 630,
+        alt: "Buying a Home in Southern NH — Karyn Emerson Real Estate",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Buying a Home in Southern New Hampshire | Karyn Emerson",
+    description:
+      "P&S, inspection, well, septic, appraisal. In plain English.",
+    images: ["/og/default-og.svg"],
   },
 };
 
@@ -102,40 +121,19 @@ const filteredTestimonials = siteConfig.testimonials
   .slice(0, 6);
 
 export default function BuyPage() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
-    name: siteConfig.businessName,
-    url: `https://${siteConfig.domain}/buy`,
+  const schema = realEstateAgentSchema({
+    path: "/buy",
     description:
       "Buyer representation in Southern New Hampshire. P&S, inspection, well, septic, and appraisal in plain English.",
-    worksFor: {
-      "@type": "RealEstateOrganization",
-      name: siteConfig.brokerage,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: siteConfig.location.city,
-        addressRegion: siteConfig.location.state,
-      },
-    },
-    areaServed: siteConfig.location.serviceArea.map((town) => ({
-      "@type": "City",
-      name: `${town}, NH`,
-    })),
-    knowsAbout: [
-      "First-time home buying in New Hampshire",
-      "Purchase and Sale Agreement",
-      "NH well and septic inspections",
-      "Appraisal contingency",
-    ],
-  };
+  });
+  const breadcrumb = breadcrumbSchema([
+    { name: "Home", href: "/" },
+    { name: "Buy in Southern NH", href: "/buy" },
+  ]);
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <JsonLd data={[breadcrumb, schema]} />
 
       {/* SECTION 1 — HERO (LIGHT, shimmer H1) */}
       <section

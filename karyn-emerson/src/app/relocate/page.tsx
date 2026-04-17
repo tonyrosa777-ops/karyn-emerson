@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { siteConfig } from "@/data/site";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
 import RelocateTaxCalcClient from "@/components/sections/RelocateTaxCalcClient";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbSchema, realEstateAgentSchema } from "@/lib/schema";
 
 // =============================================================================
 // /relocate — MA to NH Relocation Hub (flagship SEO pillar).
@@ -16,16 +17,34 @@ import RelocateTaxCalcClient from "@/components/sections/RelocateTaxCalcClient";
 
 export const metadata: Metadata = {
   title:
-    "Moving from Massachusetts to Southern New Hampshire | MA to NH Relocation Guide",
+    "Moving from Massachusetts to Southern NH | MA to NH Relocation Guide",
   description:
-    "Tax math, commute times by town, DMV and inspection checklist, and which Southern NH town fits. Karyn Emerson Real Estate, Jill & Co. Realty Group, Salem NH.",
+    "Tax math, commute times by town, DMV checklist, and which Southern NH town fits. Karyn Emerson Real Estate, Jill & Co., Salem NH.",
+  alternates: { canonical: "/relocate" },
   openGraph: {
     title:
-      "Moving from Massachusetts to Southern New Hampshire | Karyn Emerson Real Estate",
+      "Moving from Massachusetts to Southern NH | Karyn Emerson Real Estate",
     description:
-      "The working MA-to-NH relocation guide, with the real numbers and a 15-minute call at the end.",
+      "The working MA to NH relocation guide, with the real numbers and a 15 minute call at the end.",
     type: "website",
-    url: "https://karynemerson.com/relocate",
+    url: "/relocate",
+    siteName: "Karyn Emerson Real Estate",
+    images: [
+      {
+        url: "/og/default-og.svg",
+        width: 1200,
+        height: 630,
+        alt: "MA to NH Relocation — Karyn Emerson Real Estate",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Moving from Massachusetts to Southern NH | Karyn Emerson Real Estate",
+    description:
+      "The working MA to NH relocation guide, with the real numbers and a 15 minute call at the end.",
+    images: ["/og/default-og.svg"],
   },
 };
 
@@ -165,34 +184,19 @@ const townCheatsheet: Array<{
 ];
 
 export default function RelocatePage() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
-    name: siteConfig.businessName,
-    url: `https://${siteConfig.domain}/relocate`,
-    worksFor: {
-      "@type": "RealEstateOrganization",
-      name: siteConfig.brokerage,
-    },
-    areaServed: siteConfig.location.serviceArea.map((town) => ({
-      "@type": "City",
-      name: `${town}, NH`,
-    })),
-    knowsAbout: [
-      "Massachusetts to New Hampshire relocation",
-      "MA NH tax arbitrage",
-      "Boston commute from Southern NH",
-      "NH DMV and vehicle registration",
-      "NH vehicle inspection",
-    ],
-  };
+  const schema = realEstateAgentSchema({
+    path: "/relocate",
+    description:
+      "Karyn Emerson walks Massachusetts buyers through the tax math, commute math, DMV checklist, and town choice for a Southern NH move.",
+  });
+  const breadcrumb = breadcrumbSchema([
+    { name: "Home", href: "/" },
+    { name: "MA to NH Relocation", href: "/relocate" },
+  ]);
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <JsonLd data={[breadcrumb, schema]} />
 
       {/* SECTION 1 — HERO HEADER (LIGHT, shimmer H1) */}
       <section
@@ -219,6 +223,54 @@ export default function RelocatePage() {
               honest answer to which Southern NH town actually fits the life
               you are trying to build.
             </p>
+          </FadeUp>
+
+          {/* AEO — LLM citation block. Concrete math, answer-first. */}
+          <FadeUp delay={0.3}>
+            <div
+              itemScope
+              itemType="https://schema.org/Question"
+              className="mt-10 max-w-3xl rounded-lg border p-6 md:p-7"
+              style={{
+                background: "var(--bg-elevated)",
+                borderColor: "rgba(181,83,44,0.22)",
+                borderLeftWidth: "4px",
+                borderLeftColor: "var(--accent)",
+              }}
+            >
+              <p
+                className="font-mono text-[11px] uppercase tracking-[0.22em]"
+                style={{ color: "var(--accent)" }}
+              >
+                TL;DR — THE 30-SECOND ANSWER
+              </p>
+              <h2
+                itemProp="name"
+                className="font-display mt-2 text-xl font-semibold leading-snug text-[var(--text-primary)] md:text-2xl"
+              >
+                Is it worth moving from Massachusetts to New Hampshire for the taxes?
+              </h2>
+              <div
+                itemProp="acceptedAnswer"
+                itemScope
+                itemType="https://schema.org/Answer"
+                className="mt-3"
+              >
+                <p
+                  itemProp="text"
+                  className="text-base leading-relaxed text-[var(--text-secondary)]"
+                >
+                  Moving from Massachusetts to New Hampshire typically saves a
+                  $200,000 household around $10,000 per year on state income tax
+                  (MA charges a flat 5 percent, NH charges zero on wages), minus
+                  roughly $3,000 to $5,000 per year in higher NH property tax on
+                  a comparable Southern NH home, netting about $5,000 to $7,000
+                  in year one. Salem, Windham, and Derry are the three most
+                  popular MA to NH destinations. The honest math, plus the commuter
+                  tax trap that catches Boston commuters, is below.
+                </p>
+              </div>
+            </div>
           </FadeUp>
         </div>
       </section>

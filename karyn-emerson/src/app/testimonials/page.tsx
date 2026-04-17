@@ -11,13 +11,30 @@ import { TestimonialsFilterChips } from "@/components/sections/TestimonialsFilte
 export const metadata: Metadata = {
   title: "Client Testimonials | Karyn Emerson Real Estate",
   description:
-    "Thirty-six unfiltered testimonials from Southern NH sellers, buyers, downsizers, and Massachusetts relocators. Salem, Windham, Derry, Londonderry and more.",
+    "Thirty six unfiltered testimonials from Southern NH sellers, buyers, downsizers, and Massachusetts relocators. Salem, Windham, Derry, Londonderry and more.",
+  alternates: { canonical: "/testimonials" },
   openGraph: {
     title: "Client Testimonials | Karyn Emerson Real Estate",
     description:
-      "Thirty-six unfiltered testimonials from Southern NH sellers and buyers.",
+      "Thirty six unfiltered testimonials from Southern NH sellers and buyers.",
     type: "website",
-    url: "https://karynemerson.com/testimonials",
+    url: "/testimonials",
+    siteName: "Karyn Emerson Real Estate",
+    images: [
+      {
+        url: "/og/default-og.svg",
+        width: 1200,
+        height: 630,
+        alt: "Client Testimonials — Karyn Emerson Real Estate",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Client Testimonials | Karyn Emerson Real Estate",
+    description:
+      "Thirty six unfiltered testimonials from Southern NH sellers and buyers.",
+    images: ["/og/default-og.svg"],
   },
 };
 

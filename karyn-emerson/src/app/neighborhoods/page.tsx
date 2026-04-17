@@ -11,11 +11,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { neighborhoods, getTowns, getSubNeighborhoods } from "@/data/neighborhoods";
 import AmbientParticles from "@/components/sections/AmbientParticles";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  absoluteUrl,
+  breadcrumbSchema,
+  placeSchema,
+} from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Southern NH Neighborhood Guides | Karyn Emerson",
   description:
-    "Town-by-town guides to Salem, Windham, Derry, Londonderry, Pelham, Atkinson, and Hampstead, plus sub-neighborhoods like Tuscan Village, Cobbett's Pond, and Canobie Lake. Written for sellers and for MA-to-NH buyers deciding which town fits.",
+    "Town by town guides to Salem, Windham, Derry, Londonderry, Pelham, Atkinson, Hampstead, plus Tuscan Village, Cobbett's Pond, and Canobie Lake.",
   alternates: { canonical: "/neighborhoods" },
   openGraph: {
     title: "Southern NH Neighborhood Guides | Karyn Emerson",
@@ -23,6 +29,22 @@ export const metadata: Metadata = {
       "Seven Southern New Hampshire towns and the sub-neighborhoods inside them. Mill rates, school districts, commute math, and the honest character of each place.",
     type: "website",
     url: "/neighborhoods",
+    siteName: "Karyn Emerson Real Estate",
+    images: [
+      {
+        url: "/og/default-og.svg",
+        width: 1200,
+        height: 630,
+        alt: "Southern NH Neighborhood Guides — Karyn Emerson",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Southern NH Neighborhood Guides | Karyn Emerson",
+    description:
+      "Seven Southern NH towns and the sub-neighborhoods inside them.",
+    images: ["/og/default-og.svg"],
   },
 };
 
@@ -118,8 +140,29 @@ export default function NeighborhoodsIndexPage() {
   const towns = getTowns();
   const subs = getSubNeighborhoods();
 
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Southern NH neighborhood guides",
+    url: absoluteUrl("/neighborhoods"),
+    numberOfItems: neighborhoods.length,
+    itemListElement: neighborhoods.map((n, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: `${n.displayName}, ${n.state}`,
+      url: absoluteUrl(`/neighborhoods/${n.slug}`),
+      item: placeSchema(n),
+    })),
+  };
+
+  const breadcrumb = breadcrumbSchema([
+    { name: "Home", href: "/" },
+    { name: "Neighborhoods", href: "/neighborhoods" },
+  ]);
+
   return (
     <div className="relative">
+      <JsonLd data={[breadcrumb, itemListSchema]} />
       {/* Section 1 — Hero header (LIGHT) with ambient particles */}
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0">

@@ -3,17 +3,40 @@ import { siteConfig } from "@/data/site";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
 import { ContactForm } from "@/components/sections/ContactForm";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  absoluteUrl,
+  breadcrumbSchema,
+  localBusinessSchema,
+} from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Contact Karyn | Southern NH Real Estate",
   description:
-    "Send a note or book a 15-minute call. Karyn Emerson, Jill & Co. Realty Group, Salem NH. Serving Salem, Windham, Derry, and all of Southern New Hampshire.",
+    "Send a note or book a 15 minute call. Karyn Emerson, Jill & Co. Realty Group, Salem NH. Serving Salem, Windham, Derry, and all of Southern New Hampshire.",
+  alternates: { canonical: "/contact" },
   openGraph: {
     title: "Contact Karyn | Southern NH Real Estate",
     description:
-      "Send a note or book a 15-minute call. Jill & Co. Realty Group, Salem NH.",
+      "Send a note or book a 15 minute call. Jill & Co. Realty Group, Salem NH.",
     type: "website",
-    url: "https://karynemerson.com/contact",
+    url: "/contact",
+    siteName: "Karyn Emerson Real Estate",
+    images: [
+      {
+        url: "/og/default-og.svg",
+        width: 1200,
+        height: 630,
+        alt: "Contact Karyn Emerson Real Estate",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Karyn | Southern NH Real Estate",
+    description:
+      "Send a note or book a 15 minute call. Jill & Co. Realty Group, Salem NH.",
+    images: ["/og/default-og.svg"],
   },
 };
 
@@ -28,8 +51,29 @@ const MAP_SRC = `https://www.google.com/maps?q=${MAP_QUERY}&output=embed`;
 export default function ContactPage() {
   const { phone, email, officeAddress } = siteConfig.contact;
 
+  const breadcrumb = breadcrumbSchema([
+    { name: "Home", href: "/" },
+    { name: "Contact", href: "/contact" },
+  ]);
+  const local = localBusinessSchema("/contact");
+  const contactPage = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Contact Karyn Emerson",
+    url: absoluteUrl("/contact"),
+    mainEntity: {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      availableLanguage: ["English"],
+      areaServed: siteConfig.location.serviceArea.map((t) => `${t}, NH`),
+      telephone: phone || undefined,
+      email: email || undefined,
+    },
+  };
+
   return (
     <>
+      <JsonLd data={[breadcrumb, local, contactPage]} />
       {/* SECTION 1 — HERO HEADER (LIGHT, breathing orb) */}
       <section
         className="relative overflow-hidden"

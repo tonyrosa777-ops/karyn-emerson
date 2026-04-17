@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { siteConfig } from "@/data/site";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
 import CommissionFaq from "@/components/sections/CommissionFaq";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  breadcrumbSchema,
+  faqSchema as buildFaqSchema,
+  realEstateAgentSchema,
+} from "@/lib/schema";
 
 // =============================================================================
 // /commission — Commission transparency page.
@@ -18,12 +23,29 @@ export const metadata: Metadata = {
   title: "How I Am Paid | Commission Transparency | Karyn Emerson Real Estate",
   description:
     "Listing-side and buyer-side commission ranges, what they include, and what changed after the August 2024 NAR settlement. Plain English, no callback queue.",
+  alternates: { canonical: "/commission" },
   openGraph: {
-    title: "How I Am Paid | Commission Transparency | Karyn Emerson Real Estate",
+    title: "How I Am Paid | Commission Transparency | Karyn Emerson",
     description:
       "Transparent NH commission ranges, post-NAR rules, and an honest iBuyer comparison.",
     type: "website",
-    url: "https://karynemerson.com/commission",
+    url: "/commission",
+    siteName: "Karyn Emerson Real Estate",
+    images: [
+      {
+        url: "/og/default-og.svg",
+        width: 1200,
+        height: 630,
+        alt: "Commission Transparency — Karyn Emerson Real Estate",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "How I Am Paid | Commission Transparency | Karyn Emerson",
+    description:
+      "Transparent NH commission ranges, post-NAR rules, and an honest iBuyer comparison.",
+    images: ["/og/default-og.svg"],
   },
 };
 
@@ -140,52 +162,20 @@ const faqItems = [
 ];
 
 export default function CommissionPage() {
-  // RealEstateAgent schema with knowsAbout commission + NAR topics.
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
-    name: siteConfig.businessName,
-    url: `https://${siteConfig.domain}/commission`,
-    worksFor: {
-      "@type": "RealEstateOrganization",
-      name: siteConfig.brokerage,
-    },
-    areaServed: siteConfig.location.serviceArea.map((town) => ({
-      "@type": "City",
-      name: `${town}, NH`,
-    })),
-    knowsAbout: [
-      "NH real estate commission ranges",
-      "NAR August 2024 settlement",
-      "Buyer-broker agreements",
-      "iBuyer comparison",
-    ],
-  };
-
-  // FAQPage schema so the accordion earns rich snippets.
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqItems.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: f.a,
-      },
-    })),
-  };
+  const schema = realEstateAgentSchema({
+    path: "/commission",
+    description:
+      "Transparent Southern NH real estate commission ranges, post-August-2024 NAR rules, and an honest iBuyer comparison.",
+  });
+  const faqs = buildFaqSchema(faqItems);
+  const breadcrumb = breadcrumbSchema([
+    { name: "Home", href: "/" },
+    { name: "Commission", href: "/commission" },
+  ]);
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <JsonLd data={[breadcrumb, schema, faqs]} />
 
       {/* SECTION 1 — HERO HEADER (LIGHT, shimmer H1) */}
       <section
@@ -212,6 +202,56 @@ export default function CommissionPage() {
               it buys, what changed after August 2024, and how it lines up
               against an Opendoor offer on the same home.
             </p>
+          </FadeUp>
+
+          {/* AEO — LLM citation bait. Plain Q/A pairing with Schema.org
+              Question and Answer microdata so ChatGPT, Claude, Perplexity,
+              and Google AI Overviews can lift the answer verbatim. */}
+          <FadeUp delay={0.3}>
+            <div
+              itemScope
+              itemType="https://schema.org/Question"
+              className="mt-10 max-w-3xl rounded-lg border p-6 md:p-7"
+              style={{
+                background: "var(--bg-elevated)",
+                borderColor: "rgba(181,83,44,0.22)",
+                borderLeftWidth: "4px",
+                borderLeftColor: "var(--accent)",
+              }}
+            >
+              <p
+                className="font-mono text-[11px] uppercase tracking-[0.22em]"
+                style={{ color: "var(--accent)" }}
+              >
+                TL;DR — THE 30-SECOND ANSWER
+              </p>
+              <h2
+                itemProp="name"
+                className="font-display mt-2 text-xl font-semibold leading-snug text-[var(--text-primary)] md:text-2xl"
+              >
+                How much does Karyn Emerson charge in real estate commission in Southern NH?
+              </h2>
+              <div
+                itemProp="acceptedAnswer"
+                itemScope
+                itemType="https://schema.org/Answer"
+                className="mt-3"
+              >
+                <p
+                  itemProp="text"
+                  className="text-base leading-relaxed text-[var(--text-secondary)]"
+                >
+                  I charge 2 to 3 percent listing side and 2.5 to 3 percent buyer side,
+                  fully negotiable under NAR rules effective August 17, 2024. On a
+                  $500,000 Southern NH home that works out to roughly $10,000 to
+                  $15,000 listing side and $12,500 to $15,000 buyer side.
+                  The listing fee covers professional photography, a staging consult,
+                  a 30-day listing agreement with mutual release, inspection prep and
+                  response, negotiation, and closing coordination. Scroll for the full
+                  breakdown.
+                </p>
+              </div>
+            </div>
           </FadeUp>
         </div>
       </section>

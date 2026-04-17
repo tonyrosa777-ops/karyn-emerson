@@ -8,17 +8,40 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/data/site";
 import { BookingCalendar } from "@/components/booking/BookingCalendar";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  absoluteUrl,
+  breadcrumbSchema,
+  realEstateAgentSchema,
+} from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Book a Call with Karyn Emerson | 15 Minute, No Pressure",
   description:
-    "Book a free 15 minute call with Karyn Emerson. Southern NH real estate, zero pressure, real answers. Pick a slot on the calendar and Karyn will reach out within 24 hours.",
+    "Book a free 15 minute call with Karyn Emerson. Southern NH real estate, zero pressure. Pick a slot and Karyn reaches out within 24 hours.",
   alternates: { canonical: "/booking" },
   openGraph: {
     title: "Book a Call with Karyn Emerson",
     description:
       "Free 15 minute call. Pick a slot that works for you. Zero pressure, real answers.",
     type: "website",
+    url: "/booking",
+    siteName: "Karyn Emerson Real Estate",
+    images: [
+      {
+        url: "/og/default-og.svg",
+        width: 1200,
+        height: 630,
+        alt: "Book a Call with Karyn Emerson",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Book a Call with Karyn Emerson",
+    description:
+      "Free 15 minute call. Zero pressure, real answers.",
+    images: ["/og/default-og.svg"],
   },
 };
 
@@ -75,8 +98,29 @@ function getFirstCallTestimonials() {
 export default function BookingPage() {
   const trust = getFirstCallTestimonials();
 
+  const breadcrumb = breadcrumbSchema([
+    { name: "Home", href: "/" },
+    { name: "Book a Call", href: "/booking" },
+  ]);
+  const agent = realEstateAgentSchema({ path: "/booking" });
+  const contactPoint = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Book a 15-minute call with Karyn Emerson",
+    url: absoluteUrl("/booking"),
+    mainEntity: {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      availableLanguage: ["English"],
+      areaServed: siteConfig.location.serviceArea.map((t) => `${t}, NH`),
+      telephone: siteConfig.contact.phone || undefined,
+      email: siteConfig.contact.email || undefined,
+    },
+  };
+
   return (
     <>
+      <JsonLd data={[breadcrumb, agent, contactPoint]} />
       {/* ── Hero header ──────────────────────────────────── */}
       <section
         className="relative overflow-hidden py-20 md:py-28"

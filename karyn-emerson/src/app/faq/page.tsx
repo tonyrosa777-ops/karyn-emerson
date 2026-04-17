@@ -4,17 +4,36 @@ import { faqs, faqCategoryEmoji, type FaqCategory } from "@/data/faqs";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbSchema, faqSchema as buildFaqSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions | Karyn Emerson Real Estate",
   description:
     "Answers on working with Karyn, buying and selling in Southern NH, Massachusetts to New Hampshire relocation, and the August 2024 NAR commission rules.",
+  alternates: { canonical: "/faq" },
   openGraph: {
     title: "Frequently Asked Questions | Karyn Emerson Real Estate",
     description:
       "Plain English answers on buying, selling, and relocating in Southern NH.",
     type: "website",
-    url: "https://karynemerson.com/faq",
+    url: "/faq",
+    siteName: "Karyn Emerson Real Estate",
+    images: [
+      {
+        url: "/og/default-og.svg",
+        width: 1200,
+        height: 630,
+        alt: "Frequently Asked Questions — Karyn Emerson Real Estate",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Frequently Asked Questions | Karyn Emerson Real Estate",
+    description:
+      "Plain English answers on buying, selling, and relocating in Southern NH.",
+    images: ["/og/default-og.svg"],
   },
 };
 
@@ -38,25 +57,17 @@ export default function FaqPage() {
   for (const f of faqs) grouped[f.category].push(f);
 
   // Schema.org FAQPage markup — aids SEO + AEO per design-system.md §11.
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: f.answer,
-      },
-    })),
-  };
+  const schema = buildFaqSchema(
+    faqs.map((f) => ({ q: f.question, a: f.answer })),
+  );
+  const breadcrumb = breadcrumbSchema([
+    { name: "Home", href: "/" },
+    { name: "FAQ", href: "/faq" },
+  ]);
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <JsonLd data={[breadcrumb, schema]} />
 
       {/* SECTION 1 — HERO HEADER (LIGHT, shimmer + ambient) */}
       <section

@@ -26,11 +26,39 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://karynemerson.com";
+
 export const metadata: Metadata = {
-  title: "Karyn Emerson Real Estate — Salem, NH | Southern New Hampshire",
+  title: "Karyn Emerson Real Estate | Salem, NH Southern New Hampshire",
   description:
-    "Karyn Emerson, licensed real estate agent with Jill & Co. Realty Group. Buyer and seller representation across Salem, Windham, Derry, and Southern New Hampshire.",
-  metadataBase: new URL("https://karynemerson.com"),
+    "Karyn Emerson, licensed real estate agent, Jill & Co. Realty Group. Buyer and seller representation in Salem, Windham, Derry, and Southern NH.",
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Karyn Emerson Real Estate | Southern New Hampshire",
+    description:
+      "Licensed Southern NH real estate agent. Buyer and seller representation in Salem, Windham, Derry, Londonderry, Pelham, Atkinson, and Hampstead.",
+    url: SITE_URL,
+    siteName: "Karyn Emerson Real Estate",
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "/og/default-og.svg",
+        width: 1200,
+        height: 630,
+        alt: "Karyn Emerson Real Estate — Southern New Hampshire",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Karyn Emerson Real Estate | Southern New Hampshire",
+    description:
+      "Licensed Southern NH real estate agent. Buyer and seller representation in Salem, Windham, Derry, and six more towns.",
+    images: ["/og/default-og.svg"],
+  },
 };
 
 export default function RootLayout({

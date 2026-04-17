@@ -11,7 +11,8 @@ import { FadeUp } from "@/components/animations/FadeUp";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
 import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { BookingCalendar } from "@/components/booking/BookingCalendar";
-import { siteConfig } from "@/data/site";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 
 // =============================================================================
 // /blog/[slug] — Blog article page (server component)
@@ -34,14 +35,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!post) {
     return { title: "Article not found | Karyn Emerson Real Estate" };
   }
-  const url = `https://karynemerson.com/blog/${post.slug}`;
   return {
     title: `${post.title} | Karyn Emerson Real Estate`,
     description: post.excerpt,
+    alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url,
+      url: `/blog/${post.slug}`,
+      siteName: "Karyn Emerson Real Estate",
       type: "article",
       images: [
         {
@@ -58,6 +60,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: "summary_large_image",
       title: post.title,
       description: post.excerpt,
+      images: [post.heroImage],
     },
   };
 }
@@ -77,42 +80,17 @@ export default async function BlogArticlePage({ params }: PageProps) {
   if (!post) notFound();
 
   const related = getRelatedPosts(post.slug, post.category, 3);
-  const url = `https://karynemerson.com/blog/${post.slug}`;
 
-  // Article / BlogPosting schema.org JSON-LD
-  const articleJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.excerpt,
-    image: [post.heroImage],
-    datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
-    author: {
-      "@type": "Person",
-      name: post.author,
-      url: "https://karynemerson.com/about",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.businessName,
-      url: "https://karynemerson.com",
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": url,
-    },
-    articleSection: post.category,
-  };
+  const article = articleSchema(post);
+  const breadcrumb = breadcrumbSchema([
+    { name: "Home", href: "/" },
+    { name: "Blog", href: "/blog" },
+    { name: post.title, href: `/blog/${post.slug}` },
+  ]);
 
   return (
     <main className="flex flex-1 flex-col">
-      {/* JSON-LD for Article schema */}
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
+      <JsonLd data={[breadcrumb, article]} />
 
       {/* Article header — ambient only, shimmer H1 */}
       <section

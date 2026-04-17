@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Karyn Emerson Real Estate — Southern New Hampshire">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F6F1E7"/>
+      <stop offset="100%" stop-color="#EFE7D5"/>
+    </linearGradient>
+    <radialGradient id="warmth" cx="50%" cy="0%" r="60%">
+      <stop offset="0%" stop-color="#B5532C" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#B5532C" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#warmth)"/>
+  <!-- Iron-oxide eyebrow rule -->
+  <line x1="120" y1="190" x2="220" y2="190" stroke="#B5532C" stroke-width="3" stroke-linecap="round"/>
+  <!-- Iron-oxide eyebrow text -->
+  <text x="240" y="198" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="22" letter-spacing="4" fill="#B5532C" font-weight="500">SOUTHERN NEW HAMPSHIRE</text>
+  <!-- Display headline: brand name -->
+  <text x="120" y="310" font-family="'Cormorant Garamond', 'Georgia', serif" font-size="92" fill="#2F4A3A" font-weight="600">Karyn Emerson</text>
+  <text x="120" y="400" font-family="'Cormorant Garamond', 'Georgia', serif" font-size="62" fill="#2F4A3A" font-weight="500" font-style="italic">Real Estate</text>
+  <!-- Forest green tagline -->
+  <text x="120" y="490" font-family="'Inter', 'Helvetica Neue', sans-serif" font-size="28" fill="#2F4A3A" opacity="0.82">The neighborhood, and the person who knows every street.</text>
+  <!-- Bottom-right brand mark -->
+  <text x="1080" y="560" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="14" letter-spacing="3" fill="#2F4A3A" opacity="0.55" text-anchor="end">JILL &amp; CO. REALTY GROUP / SALEM, NH</text>
+</svg>

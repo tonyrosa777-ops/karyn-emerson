@@ -11,6 +11,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { neighborhoods, getNeighborhoodBySlug } from "@/data/neighborhoods";
 import NeighborhoodPageClient from "./NeighborhoodPageClient";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  breadcrumbSchema,
+  placeSchema,
+  realEstateAgentSchema,
+  realEstateListingSchema,
+} from "@/lib/schema";
 
 interface NeighborhoodRouteParams {
   slug: string;
@@ -55,7 +62,14 @@ export async function generateMetadata({
       description,
       type: "article",
       url: `/neighborhoods/${n.slug}`,
+      siteName: "Karyn Emerson Real Estate",
       images: [{ url: n.heroImage, width: 1600, height: 900, alt: `${n.displayName}, ${n.state}` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [n.heroImage],
     },
   };
 }
@@ -71,5 +85,39 @@ export default async function NeighborhoodDetailPage({
     notFound();
   }
 
-  return <NeighborhoodPageClient neighborhood={neighborhood} />;
+  const breadcrumb = breadcrumbSchema([
+    { name: "Home", href: "/" },
+    { name: "Neighborhoods", href: "/neighborhoods" },
+    {
+      name: neighborhood.displayName,
+      href: `/neighborhoods/${neighborhood.slug}`,
+    },
+  ]);
+
+  const schemas: Record<string, unknown>[] = [
+    breadcrumb,
+    placeSchema(neighborhood),
+    realEstateAgentSchema({
+      path: `/neighborhoods/${neighborhood.slug}`,
+      description: `Karyn Emerson sells homes in ${neighborhood.displayName}, ${neighborhood.state} and across Southern NH. Jill & Co. Realty Group, Salem.`,
+    }),
+  ];
+
+  for (const listing of neighborhood.sampleListings ?? []) {
+    schemas.push(
+      realEstateListingSchema({
+        listing,
+        town: neighborhood.city,
+        state: neighborhood.state,
+        slug: neighborhood.slug,
+      }),
+    );
+  }
+
+  return (
+    <>
+      <JsonLd data={schemas} />
+      <NeighborhoodPageClient neighborhood={neighborhood} />
+    </>
+  );
 }

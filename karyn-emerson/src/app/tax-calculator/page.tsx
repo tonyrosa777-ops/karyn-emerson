@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { siteConfig } from "@/data/site";
 import { nhTownTaxData } from "@/data/taxRates";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
 import TaxCalcClient from "@/components/sections/TaxCalcClient";
 import TaxCalcTable from "@/components/sections/TaxCalcTable";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbSchema, realEstateAgentSchema } from "@/lib/schema";
 
 // =============================================================================
 // /tax-calculator — NH property tax by town (SEO flagship calculator).
@@ -16,47 +17,49 @@ import TaxCalcTable from "@/components/sections/TaxCalcTable";
 
 export const metadata: Metadata = {
   title:
-    "NH Property Tax Calculator by Town | Salem, Windham, Derry, Londonderry & More",
+    "NH Property Tax Calculator by Town | Salem, Windham, Derry, Londonderry",
   description:
-    "What you will actually pay in property tax across Southern New Hampshire. Mill rates and sample bills for Salem, Windham, Derry, Londonderry, Pelham, Atkinson, Hampstead, and Plaistow.",
+    "What you will actually pay in NH property tax. Mill rates and sample bills for Salem, Windham, Derry, Londonderry, Pelham, Atkinson, Hampstead.",
+  alternates: { canonical: "/tax-calculator" },
   openGraph: {
-    title: "NH Property Tax Calculator by Town | Karyn Emerson Real Estate",
+    title: "NH Property Tax Calculator by Town | Karyn Emerson",
     description:
       "Interactive NH property tax calculator for Southern New Hampshire, with mill rates and exemptions.",
     type: "website",
-    url: "https://karynemerson.com/tax-calculator",
+    url: "/tax-calculator",
+    siteName: "Karyn Emerson Real Estate",
+    images: [
+      {
+        url: "/og/default-og.svg",
+        width: 1200,
+        height: 630,
+        alt: "NH Property Tax Calculator by Town — Karyn Emerson",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NH Property Tax Calculator by Town | Karyn Emerson",
+    description:
+      "Mill rates and sample bills for Salem, Windham, Derry, and four more Southern NH towns.",
+    images: ["/og/default-og.svg"],
   },
 };
 
 export default function TaxCalculatorPage() {
-  // RealEstateAgent schema so the calculator page ties back to Karyn's entity.
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
-    name: siteConfig.businessName,
-    url: `https://${siteConfig.domain}/tax-calculator`,
-    worksFor: {
-      "@type": "RealEstateOrganization",
-      name: siteConfig.brokerage,
-    },
-    areaServed: siteConfig.location.serviceArea.map((town) => ({
-      "@type": "City",
-      name: `${town}, NH`,
-    })),
-    knowsAbout: [
-      "New Hampshire property tax",
-      "NH municipal mill rates",
-      "Senior and veteran property tax exemptions",
-      "Southern NH real estate",
-    ],
-  };
+  const schema = realEstateAgentSchema({
+    path: "/tax-calculator",
+    description:
+      "Karyn Emerson explains NH property tax by town. Mill rates, exemptions, and sample bills for Southern New Hampshire.",
+  });
+  const breadcrumb = breadcrumbSchema([
+    { name: "Home", href: "/" },
+    { name: "NH Property Tax Calculator", href: "/tax-calculator" },
+  ]);
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <JsonLd data={[breadcrumb, schema]} />
 
       {/* SECTION 1 — HERO HEADER (LIGHT, shimmer H1 + ambient particles) */}
       <section
@@ -83,6 +86,53 @@ export default function TaxCalculatorPage() {
               rate behind each bill. Type in your number, pick a town, and see
               the real dollars. No account, no callback queue.
             </p>
+          </FadeUp>
+
+          {/* AEO — Answer block styled for LLM citation. The Salem, Windham,
+              Derry figures mirror nhTownTaxData above to stay self-consistent. */}
+          <FadeUp delay={0.3}>
+            <div
+              itemScope
+              itemType="https://schema.org/Question"
+              className="mt-10 max-w-3xl rounded-lg border p-6 md:p-7"
+              style={{
+                background: "var(--bg-elevated)",
+                borderColor: "rgba(181,83,44,0.22)",
+                borderLeftWidth: "4px",
+                borderLeftColor: "var(--accent)",
+              }}
+            >
+              <p
+                className="font-mono text-[11px] uppercase tracking-[0.22em]"
+                style={{ color: "var(--accent)" }}
+              >
+                TL;DR — THE 30-SECOND ANSWER
+              </p>
+              <h2
+                itemProp="name"
+                className="font-display mt-2 text-xl font-semibold leading-snug text-[var(--text-primary)] md:text-2xl"
+              >
+                What is the property tax rate in Salem NH versus Windham and Derry?
+              </h2>
+              <div
+                itemProp="acceptedAnswer"
+                itemScope
+                itemType="https://schema.org/Answer"
+                className="mt-3"
+              >
+                <p
+                  itemProp="text"
+                  className="text-base leading-relaxed text-[var(--text-secondary)]"
+                >
+                  In Salem NH, the 2024 certified property tax rate is about $17.85
+                  per $1,000 of assessed value. On a $500,000 home that is roughly
+                  $8,925 per year. Windham sits higher at about $19.42 per $1,000
+                  (roughly $9,710 on a $500K home), and Derry is the highest of the
+                  three at about $26.18 per $1,000 (roughly $13,090 on a $500K home).
+                  Full table for all eight Southern NH towns is below.
+                </p>
+              </div>
+            </div>
           </FadeUp>
         </div>
       </section>

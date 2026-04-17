@@ -6,6 +6,8 @@ import { FadeUp } from "@/components/animations/FadeUp";
 import { SlideIn } from "@/components/animations/SlideIn";
 import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbSchema, realEstateAgentSchema } from "@/lib/schema";
 
 // [DEMO COPY — pending client review] for story paragraphs + beliefs
 // Voice: Karyn, first-person, warm, no em dashes.
@@ -13,13 +15,30 @@ import { BreathingOrb } from "@/components/sections/BreathingOrb";
 export const metadata: Metadata = {
   title: "About Karyn Emerson | Lifelong Southern NH Real Estate Agent",
   description:
-    "Karyn Emerson is a lifelong Southern NH real estate agent at Jill & Co. Realty Group, Salem. Boutique brokerage, place-first approach, 2025 her best year yet.",
+    "Karyn Emerson, lifelong Southern NH real estate agent at Jill & Co. Realty Group, Salem. Boutique brokerage, place-first approach, 2025 her best year.",
+  alternates: { canonical: "/about" },
   openGraph: {
     title: "About Karyn Emerson | Lifelong Southern NH Real Estate Agent",
     description:
       "A real conversation about timing, with zero pressure. Learn how Karyn works.",
     type: "profile",
-    url: "https://karynemerson.com/about",
+    url: "/about",
+    siteName: "Karyn Emerson Real Estate",
+    images: [
+      {
+        url: "/og/default-og.svg",
+        width: 1200,
+        height: 630,
+        alt: "About Karyn Emerson — Lifelong Southern NH Real Estate Agent",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Karyn Emerson | Lifelong Southern NH Real Estate Agent",
+    description:
+      "A real conversation about timing, with zero pressure.",
+    images: ["/og/default-og.svg"],
   },
 };
 
@@ -61,40 +80,15 @@ const beliefs = [
 ];
 
 export default function AboutPage() {
-  // Schema.org RealEstateAgent — minimum markup per CLAUDE.md SEO Rule
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
-    name: siteConfig.businessName,
-    url: `https://${siteConfig.domain}/about`,
-    image: `https://${siteConfig.domain}/images/karyn-portrait.jpg`,
-    worksFor: {
-      "@type": "RealEstateOrganization",
-      name: siteConfig.brokerage,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: siteConfig.location.city,
-        addressRegion: siteConfig.location.state,
-      },
-    },
-    areaServed: siteConfig.location.serviceArea.map((town) => ({
-      "@type": "City",
-      name: `${town}, NH`,
-    })),
-    knowsAbout: [
-      "Southern New Hampshire real estate",
-      "Massachusetts to New Hampshire relocation",
-      "Home selling and buyer representation",
-      "Salem NH, Windham NH, Derry NH neighborhoods",
-    ],
-  };
+  const schema = realEstateAgentSchema({ path: "/about" });
+  const breadcrumb = breadcrumbSchema([
+    { name: "Home", href: "/" },
+    { name: "About Karyn", href: "/about" },
+  ]);
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <JsonLd data={[breadcrumb, schema]} />
 
       {/* SECTION 1 — HERO HEADER (LIGHT, shimmer H1) */}
       <section

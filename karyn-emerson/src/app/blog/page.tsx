@@ -6,6 +6,9 @@ import type { BlogCategory, BlogPost } from "@/data/blogPosts";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { absoluteUrl, breadcrumbSchema } from "@/lib/schema";
+import { siteConfig } from "@/data/site";
 
 // =============================================================================
 // /blog — Blog index
@@ -17,13 +20,30 @@ import { BreathingOrb } from "@/components/sections/BreathingOrb";
 export const metadata: Metadata = {
   title: "Notes from Southern NH | Karyn Emerson Real Estate",
   description:
-    "Real writing on Southern NH real estate. MA-to-NH relocation math, NH property tax by town, post-August-2024 commission rules, and honest neighborhood guides.",
+    "Real writing on Southern NH real estate. MA to NH relocation math, NH property tax by town, post-August-2024 commission rules, and honest neighborhood guides.",
+  alternates: { canonical: "/blog" },
   openGraph: {
     title: "Notes from Southern NH | Karyn Emerson Real Estate",
     description:
-      "MA-to-NH relocation, NH property tax by town, commission transparency, and Southern NH neighborhood guides.",
+      "MA to NH relocation, NH property tax by town, commission transparency, and Southern NH neighborhood guides.",
     type: "website",
-    url: "https://karynemerson.com/blog",
+    url: "/blog",
+    siteName: "Karyn Emerson Real Estate",
+    images: [
+      {
+        url: "/og/default-og.svg",
+        width: 1200,
+        height: 630,
+        alt: "Notes from Southern NH — Karyn Emerson",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Notes from Southern NH | Karyn Emerson Real Estate",
+    description:
+      "MA to NH relocation, NH property tax by town, and honest neighborhood guides.",
+    images: ["/og/default-og.svg"],
   },
 };
 
@@ -130,8 +150,35 @@ export default async function BlogIndexPage({ searchParams }: PageProps) {
   const buildHref = (cat: BlogCategory | "all") =>
     cat === "all" ? "/blog" : `/blog?category=${encodeURIComponent(cat)}`;
 
+  const breadcrumb = breadcrumbSchema([
+    { name: "Home", href: "/" },
+    { name: "Blog", href: "/blog" },
+  ]);
+
+  const blogSchema = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "Notes from Southern NH",
+    description:
+      "Real writing on Southern NH real estate by Karyn Emerson.",
+    url: absoluteUrl("/blog"),
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.businessName,
+      url: absoluteUrl("/"),
+    },
+    blogPost: blogPosts.map((p) => ({
+      "@type": "BlogPosting",
+      headline: p.title,
+      url: absoluteUrl(`/blog/${p.slug}`),
+      datePublished: p.publishedAt,
+      author: { "@type": "Person", name: p.author },
+    })),
+  };
+
   return (
     <main className="flex flex-1 flex-col">
+      <JsonLd data={[breadcrumb, blogSchema]} />
       {/* Header — ambient effects only per Page Animation Rule */}
       <section
         className="relative overflow-hidden pb-12 pt-16 md:pb-16 md:pt-24"

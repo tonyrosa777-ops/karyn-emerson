@@ -6,6 +6,11 @@ import { serviceDetails } from "@/data/serviceDetails";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  breadcrumbSchema,
+  serviceSchema,
+} from "@/lib/schema";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -26,11 +31,27 @@ export async function generateMetadata({
   return {
     title: detail.metaTitle,
     description: detail.metaDescription,
+    alternates: { canonical: `/services/${slug}` },
     openGraph: {
       title: detail.metaTitle,
       description: detail.metaDescription,
       type: "website",
-      url: `https://karynemerson.com/services/${slug}`,
+      url: `/services/${slug}`,
+      siteName: "Karyn Emerson Real Estate",
+      images: [
+        {
+          url: "/og/default-og.svg",
+          width: 1200,
+          height: 630,
+          alt: detail.metaTitle,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: detail.metaTitle,
+      description: detail.metaDescription,
+      images: ["/og/default-og.svg"],
     },
   };
 }
@@ -55,8 +76,20 @@ export default async function ServiceDetailPage({ params }: PageProps) {
     .filter((t) => matchingServiceTypes.includes(t.serviceType))
     .slice(0, 4);
 
+  const breadcrumb = breadcrumbSchema([
+    { name: "Home", href: "/" },
+    { name: "Services", href: "/services" },
+    { name: service!.title, href: `/services/${slug}` },
+  ]);
+  const svcSchema = serviceSchema({
+    name: service!.title,
+    description: detail!.metaDescription,
+    slug,
+  });
+
   return (
     <>
+      <JsonLd data={[breadcrumb, svcSchema]} />
       {/* SECTION 1 — HERO HEADER (LIGHT, shimmer) */}
       <section
         className="relative overflow-hidden"
