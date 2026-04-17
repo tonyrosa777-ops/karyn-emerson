@@ -8,6 +8,7 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/data/site";
 import { neighborhoods } from "@/data/neighborhoods";
+import { blogPosts } from "@/data/blogPosts";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://karynemerson.com";
@@ -84,10 +85,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     }));
 
+  // Per-post blog article pages (9 seed articles in Wave C).
+  // Full long-form content ships in Stage 1F.
+  const blogEntries: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${BASE_URL}/blog/${post.slug}`,
+    lastModified: new Date(post.publishedAt),
+    changeFrequency: "monthly",
+    priority: 0.65,
+  }));
+
   return [
     ...coreEntries,
     ...townEntries,
     ...subNeighborhoodEntries,
     ...serviceEntries,
+    ...blogEntries,
   ];
 }

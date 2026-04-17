@@ -183,3 +183,34 @@ From market research:
 **Next Session Starts At:** Task 3 — spawn design-synthesizer agent to produce `design-system.md`
 
 **Blockers:** None blocking Task 3. IDX platform decision (iHomeFinder vs. Showcase IDX) must be resolved before `/listings` is built in Stage 1E.
+
+---
+
+### Session — Stage 1E Wave C (Homepage Composition + Blog Scaffold + Shop Decision Gate)
+
+**Completed:**
+- Homepage composition: 8 new Home* section components (HomePainPoints, HomeAboutTeaser, HomeStatsRow, HomeServicesPreview, HomeTestimonialsPreview, HomeQuizCTA, HomeBlogPreview, HomeBookingPreview)
+- app/page.tsx now composes Hero + 8 sections with rhythm-map comment block at top
+- Blog scaffold: /data/blogPosts.ts (9 seed articles), /app/blog/page.tsx (index + category chips + pagination), /app/blog/[slug]/page.tsx (SSG + generateMetadata + BlogPosting JSON-LD + related posts + booking CTA)
+- 9 SVG hero placeholders in /public/images/blog/ (1600x900, cream base, category label, forest border)
+- sitemap.ts updated to include 9 /blog/[slug] routes (/blog index was already present)
+
+**Shop decision: DELETED (Pro tier, no merchandise).**
+- /src/app/shop/ and /src/components/shop/ directories removed (were empty scaffold placeholders)
+- Verified: no CartProvider in layout, no cart/printful/stripe imports in src/, no shop nav entry in siteConfig.nav, no /shop entry in sitemap
+- /data/pricingTiers.ts retains "Branded Merch Shop" as a Premium-tier Optimus sales feature description (intentional per CLAUDE.md — /pricing is the internal Optimus sales tool, deleted pre-launch)
+
+**Validation:**
+- npx tsc --noEmit: clean (zero errors)
+- npm run build: PASS, 47 static routes generated (was ~30 before Wave C — +9 blog slugs + /blog index + blog scaffold metadata routes)
+- Em-dash grep on new user-visible strings: zero (all em dashes in new files are in code comments only)
+- Shop grep: only acceptable content matches remain (coffee shops, cross-shopping, Bass Pro Shops — English copy; Branded Merch Shop in /data/pricingTiers.ts — intentional Optimus sales language)
+
+**[DEMO COPY] flags added:**
+- 9x [DEMO COPY — pending full Stage 1F article build] markers on each blog post body in /data/blogPosts.ts
+- 1x [DEMO COPY — Stage 1G] on HomeAboutTeaser portrait placeholder image
+- [DEMO COPY · Full article pending Stage 1F] rendered in footer of every blog slug page
+
+**Next Session:** Stage 1F (full blog article content) + Stage 1G (fal.ai photography generation — including Karyn portrait and blog hero images).
+
+**Blockers:** None.
