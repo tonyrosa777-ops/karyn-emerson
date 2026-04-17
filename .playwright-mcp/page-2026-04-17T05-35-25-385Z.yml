@@ -1,0 +1,219 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation "Primary" [ref=e3]:
+      - link "Karyn Emerson" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - button "Open menu" [ref=e6]:
+        - img [ref=e7]
+  - main [ref=e8]:
+    - article [ref=e9]:
+      - generic [ref=e11]:
+        - generic [ref=e12]:
+          - text: SALEM, NH
+          - heading "Salem" [level=1] [ref=e13]
+          - paragraph [ref=e14]: The anchor town of Southern NH, right off Exit 2.
+          - generic [ref=e15]:
+            - generic [ref=e16]:
+              - term [ref=e17]: Median home price
+              - definition [ref=e18]: $565,000
+            - generic [ref=e19]:
+              - term [ref=e20]: Mill rate (NH property tax)
+              - definition [ref=e21]: "19.85"
+            - generic [ref=e22]:
+              - term [ref=e23]: Commute to Boston
+              - definition [ref=e24]: 45 min · I-93 via Exit 2
+            - generic [ref=e25]:
+              - term [ref=e26]: School district
+              - definition [ref=e27]: Salem School District / Salem High School
+          - generic [ref=e28]:
+            - link "Book a conversation about Salem" [ref=e29] [cursor=pointer]:
+              - /url: /booking
+            - link "All neighborhoods" [ref=e30] [cursor=pointer]:
+              - /url: /neighborhoods
+        - generic [ref=e31]:
+          - img "Salem, NH neighborhood" [ref=e32]
+          - generic: 🍂
+      - generic [ref=e34]:
+        - generic [ref=e35]: Living in Salem
+        - heading "A neighbor's read on Salem." [level=2] [ref=e36]
+        - generic [ref=e37]:
+          - paragraph [ref=e38]: Salem is where Southern NH meets the Massachusetts line. Tuscan Village has changed the shape of the town in five short years, and the original North Salem and South Salem pockets still trade like the small-town New England they always were.
+          - paragraph [ref=e39]: If you are weighing Salem against Windham or Methuen, the tax math and the commute almost always tell you which way to go.
+          - paragraph [ref=e40]: The best way to really feel out a town is a fifteen-minute call. Tell me what you are trying to do. I will tell you honestly whether Salem is the right fit or whether one of the other six towns in the service area gets you closer to the life you are trying to build.
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - text: What makes it itself
+          - heading "What makes Salem itself." [level=2] [ref=e44]
+        - list [ref=e45]:
+          - listitem [ref=e46]:
+            - generic [ref=e47]: •
+            - paragraph [ref=e48]: 🛍️ Tuscan Village
+            - paragraph [ref=e49]: new-build townhomes, shops, and a Market Basket that changed the center of town
+          - listitem [ref=e50]:
+            - generic [ref=e51]: 🎢
+            - paragraph [ref=e52]: Canobie Lake Park
+            - paragraph [ref=e53]: a working piece of Salem history since 1902
+          - listitem [ref=e54]:
+            - generic [ref=e55]: 🛒
+            - paragraph [ref=e56]: Rockingham Park legacy
+            - paragraph [ref=e57]: the old racetrack footprint now hosts the LaBelle Winery concert grounds and big-box retail
+          - listitem [ref=e58]:
+            - generic [ref=e59]: 🏫
+            - paragraph [ref=e60]: Salem High feeder lines matter on resale
+            - paragraph [ref=e61]: North vs South Salem reads differently to buyers
+          - listitem [ref=e62]:
+            - generic [ref=e63]: 🚗
+            - paragraph [ref=e64]: Three I-93 exits (1, 2, 3) split the town into three distinct commuter markets
+      - generic [ref=e66]:
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - text: Recent homes
+            - heading "Recent homes in Salem." [level=2] [ref=e69]
+          - generic [ref=e70]: "[IDX placeholder]"
+        - generic [ref=e71]:
+          - generic [ref=e72]:
+            - generic [ref=e74]: 🍂
+            - generic [ref=e75]:
+              - paragraph [ref=e76]: 12 Hemlock Drive
+              - paragraph [ref=e77]: 4 bd · 2.5 ba · 2,480 sqft
+              - paragraph [ref=e78]: $629,000
+              - generic [ref=e79]: "[IDX placeholder]"
+          - generic [ref=e80]:
+            - generic [ref=e82]: 🍂
+            - generic [ref=e83]:
+              - paragraph [ref=e84]: 88 Policy Street
+              - paragraph [ref=e85]: 3 bd · 2 ba · 1,840 sqft
+              - paragraph [ref=e86]: $489,000
+              - generic [ref=e87]: "[IDX placeholder]"
+          - generic [ref=e88]:
+            - generic [ref=e90]: 🍂
+            - generic [ref=e91]:
+              - paragraph [ref=e92]: 4 Tuscan Village Way, Unit 204
+              - paragraph [ref=e93]: 2 bd · 2 ba · 1,520 sqft
+              - paragraph [ref=e94]: $575,000
+              - generic [ref=e95]: "[IDX placeholder]"
+        - paragraph [ref=e96]: Live listings via IDX post-launch. In the meantime, ask me what is coming up off-market. A lot of Salem's best homes never hit Zillow.
+      - generic [ref=e99]:
+        - generic [ref=e100]:
+          - text: Schools
+          - heading "Salem School District / Salem High School" [level=2] [ref=e101]
+          - paragraph [ref=e102]: Feeder lines and boundary-line questions matter more than the district name. If you are thinking about Salem for the schools, the first call is about which side of town you land on inside the district. I will walk you through it.
+          - paragraph [ref=e103]: "District website and official boundary maps: link pending client confirmation."
+        - generic [ref=e104]:
+          - text: Commute
+          - heading "45 minutes to Boston (I-93 via Exit 2)" [level=2] [ref=e105]:
+            - text: 45 minutes to Boston
+            - generic [ref=e106]: (I-93 via Exit 2)
+          - list [ref=e107]:
+            - listitem [ref=e108]:
+              - strong [ref=e109]: Boston
+              - text: 45 min via I-93 via Exit 2.
+            - listitem [ref=e110]:
+              - strong [ref=e111]: Manchester
+              - text: Roughly 25 to 35 minutes via I-93 north. Manchester-Boston Regional Airport is typically 20 to 30 minutes.
+            - listitem [ref=e112]:
+              - strong [ref=e113]: Portsmouth / Seacoast
+              - text: Typically 45 to 55 minutes via Route 101 east from I-93.
+            - listitem [ref=e114]:
+              - strong [ref=e115]: Transit
+              - text: Park-and-ride commuter bus options out of Salem and Londonderry to South Station. Schedule details confirmed on request.
+      - generic [ref=e117]:
+        - text: Zero pressure. Fifteen minutes.
+        - heading "Want to know if Salem fits your life?" [level=2] [ref=e118]
+        - paragraph [ref=e119]: Pick a fifteen-minute slot. Tell me what you are trying to do. I will tell you whether Salem is the right answer, or point you toward the town that is.
+        - generic [ref=e120]:
+          - link "Book a 15-minute call" [ref=e121] [cursor=pointer]:
+            - /url: /booking
+          - link "Take the market-timing quiz" [ref=e122] [cursor=pointer]:
+            - /url: /quiz
+  - contentinfo [ref=e123]:
+    - generic [ref=e125]:
+      - generic [ref=e126]:
+        - generic [ref=e127]:
+          - link [ref=e128] [cursor=pointer]:
+            - /url: /
+            - text: Karyn Emerson
+          - paragraph [ref=e129]: The neighborhood, and the person who knows every street.
+          - paragraph [ref=e130]: Jill & Co. Realty Group, Salem NH
+        - generic [ref=e131]:
+          - heading [level=4] [ref=e132]: Explore
+          - list [ref=e133]:
+            - listitem [ref=e134]:
+              - link [ref=e135] [cursor=pointer]:
+                - /url: /about
+                - text: About
+            - listitem [ref=e136]:
+              - link [ref=e137] [cursor=pointer]:
+                - /url: /neighborhoods
+                - text: Neighborhoods
+            - listitem [ref=e138]:
+              - link [ref=e139] [cursor=pointer]:
+                - /url: /relocate
+                - text: Relocate
+            - listitem [ref=e140]:
+              - link [ref=e141] [cursor=pointer]:
+                - /url: /listings
+                - text: Listings
+            - listitem [ref=e142]:
+              - link [ref=e143] [cursor=pointer]:
+                - /url: /blog
+                - text: Blog
+            - listitem [ref=e144]:
+              - link [ref=e145] [cursor=pointer]:
+                - /url: /testimonials
+                - text: Testimonials
+            - listitem [ref=e146]:
+              - link [ref=e147] [cursor=pointer]:
+                - /url: /quiz
+                - text: Take the Quiz
+        - generic [ref=e148]:
+          - heading [level=4] [ref=e149]: Service Area
+          - list [ref=e150]:
+            - listitem [ref=e151]:
+              - link [ref=e152] [cursor=pointer]:
+                - /url: /neighborhoods/salem
+                - text: Salem, NH
+            - listitem [ref=e153]:
+              - link [ref=e154] [cursor=pointer]:
+                - /url: /neighborhoods/windham
+                - text: Windham, NH
+            - listitem [ref=e155]:
+              - link [ref=e156] [cursor=pointer]:
+                - /url: /neighborhoods/derry
+                - text: Derry, NH
+            - listitem [ref=e157]:
+              - link [ref=e158] [cursor=pointer]:
+                - /url: /neighborhoods/londonderry
+                - text: Londonderry, NH
+            - listitem [ref=e159]:
+              - link [ref=e160] [cursor=pointer]:
+                - /url: /neighborhoods/pelham
+                - text: Pelham, NH
+            - listitem [ref=e161]:
+              - link [ref=e162] [cursor=pointer]:
+                - /url: /neighborhoods/atkinson
+                - text: Atkinson, NH
+            - listitem [ref=e163]:
+              - link [ref=e164] [cursor=pointer]:
+                - /url: /neighborhoods/hampstead
+                - text: Hampstead, NH
+        - generic [ref=e165]:
+          - heading [level=4] [ref=e166]: Contact
+          - list [ref=e167]:
+            - listitem [ref=e168]: Jill & Co. Realty Group, Salem, NH
+          - link [ref=e170] [cursor=pointer]:
+            - /url: https://www.facebook.com/karynemersonrealestate
+            - img [ref=e171]
+      - generic [ref=e173]:
+        - paragraph [ref=e174]: © 2026 Karyn Emerson Real Estate. Licensed in NH.
+        - list [ref=e175]:
+          - listitem [ref=e176]:
+            - link [ref=e177] [cursor=pointer]:
+              - /url: /privacy
+              - text: Privacy
+          - listitem [ref=e178]:
+            - link [ref=e179] [cursor=pointer]:
+              - /url: /terms
+              - text: Terms
+  - button "Open Next.js Dev Tools" [ref=e185] [cursor=pointer]:
+    - img [ref=e186]

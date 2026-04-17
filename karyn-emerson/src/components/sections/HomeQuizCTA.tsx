@@ -57,7 +57,7 @@ export function HomeQuizCTA() {
               className="mt-5 max-w-xl font-body text-lg leading-relaxed"
               style={{ color: "var(--text-on-dark-secondary)" }}
             >
-              Take the quick quiz. Eight questions, takes about five minutes, and you will come
+              Take the quick quiz. Six questions, takes about ninety seconds, and you will come
               away with a clear read on your situation, your timing, and the single next step
               worth taking. No email gate. No follow-up spam. Just a useful answer.
             </p>

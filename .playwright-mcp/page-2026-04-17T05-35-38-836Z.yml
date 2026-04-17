@@ -1,0 +1,114 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation "Primary" [ref=e3]:
+      - link "Karyn Emerson" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - button "Open menu" [ref=e6]:
+        - img [ref=e7]
+  - main [ref=e8]:
+    - generic [ref=e11]:
+      - paragraph [ref=e12]: Find your fit
+      - heading "Which Southern NH move is yours?" [level=1] [ref=e13]:
+        - text: Which Southern NH
+        - text: move is yours?
+      - paragraph [ref=e14]: Six quick questions. Honest answers. You will get a result that maps to your actual situation, and a real next step for what to do about it.
+      - list [ref=e15]:
+        - listitem [ref=e16]: Takes about 90 seconds
+        - listitem [ref=e18]: No email gate, no signup
+        - listitem [ref=e20]: Your result is on screen immediately
+        - listitem [ref=e22]: Book a 15 minute call right after, if you want to
+      - generic [ref=e24]:
+        - button "Start the quiz" [ref=e25]
+        - paragraph [ref=e26]: 6 questions · Result shown immediately
+  - contentinfo [ref=e27]:
+    - generic [ref=e29]:
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - link [ref=e32] [cursor=pointer]:
+            - /url: /
+            - text: Karyn Emerson
+          - paragraph [ref=e33]: The neighborhood, and the person who knows every street.
+          - paragraph [ref=e34]: Jill & Co. Realty Group, Salem NH
+        - generic [ref=e35]:
+          - heading [level=4] [ref=e36]: Explore
+          - list [ref=e37]:
+            - listitem [ref=e38]:
+              - link [ref=e39] [cursor=pointer]:
+                - /url: /about
+                - text: About
+            - listitem [ref=e40]:
+              - link [ref=e41] [cursor=pointer]:
+                - /url: /neighborhoods
+                - text: Neighborhoods
+            - listitem [ref=e42]:
+              - link [ref=e43] [cursor=pointer]:
+                - /url: /relocate
+                - text: Relocate
+            - listitem [ref=e44]:
+              - link [ref=e45] [cursor=pointer]:
+                - /url: /listings
+                - text: Listings
+            - listitem [ref=e46]:
+              - link [ref=e47] [cursor=pointer]:
+                - /url: /blog
+                - text: Blog
+            - listitem [ref=e48]:
+              - link [ref=e49] [cursor=pointer]:
+                - /url: /testimonials
+                - text: Testimonials
+            - listitem [ref=e50]:
+              - link [ref=e51] [cursor=pointer]:
+                - /url: /quiz
+                - text: Take the Quiz
+        - generic [ref=e52]:
+          - heading [level=4] [ref=e53]: Service Area
+          - list [ref=e54]:
+            - listitem [ref=e55]:
+              - link [ref=e56] [cursor=pointer]:
+                - /url: /neighborhoods/salem
+                - text: Salem, NH
+            - listitem [ref=e57]:
+              - link [ref=e58] [cursor=pointer]:
+                - /url: /neighborhoods/windham
+                - text: Windham, NH
+            - listitem [ref=e59]:
+              - link [ref=e60] [cursor=pointer]:
+                - /url: /neighborhoods/derry
+                - text: Derry, NH
+            - listitem [ref=e61]:
+              - link [ref=e62] [cursor=pointer]:
+                - /url: /neighborhoods/londonderry
+                - text: Londonderry, NH
+            - listitem [ref=e63]:
+              - link [ref=e64] [cursor=pointer]:
+                - /url: /neighborhoods/pelham
+                - text: Pelham, NH
+            - listitem [ref=e65]:
+              - link [ref=e66] [cursor=pointer]:
+                - /url: /neighborhoods/atkinson
+                - text: Atkinson, NH
+            - listitem [ref=e67]:
+              - link [ref=e68] [cursor=pointer]:
+                - /url: /neighborhoods/hampstead
+                - text: Hampstead, NH
+        - generic [ref=e69]:
+          - heading [level=4] [ref=e70]: Contact
+          - list [ref=e71]:
+            - listitem [ref=e72]: Jill & Co. Realty Group, Salem, NH
+          - link [ref=e74] [cursor=pointer]:
+            - /url: https://www.facebook.com/karynemersonrealestate
+            - img [ref=e75]
+      - generic [ref=e77]:
+        - paragraph [ref=e78]: © 2026 Karyn Emerson Real Estate. Licensed in NH.
+        - list [ref=e79]:
+          - listitem [ref=e80]:
+            - link [ref=e81] [cursor=pointer]:
+              - /url: /privacy
+              - text: Privacy
+          - listitem [ref=e82]:
+            - link [ref=e83] [cursor=pointer]:
+              - /url: /terms
+              - text: Terms
+  - button "Open Next.js Dev Tools" [ref=e89] [cursor=pointer]:
+    - img [ref=e90]
+  - alert [ref=e93]
