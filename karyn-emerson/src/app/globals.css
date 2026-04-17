@@ -37,6 +37,23 @@
   --space-xl: 2rem;
   --space-2xl: 3rem;
   --space-3xl: 4rem;
+
+  /* Hero image overlay — gradient for text legibility over photography.
+     Darker on the left where the H1 sits; fades to near-transparent on the right. */
+  --gradient-hero-overlay: linear-gradient(
+    100deg,
+    rgba(18, 24, 20, 0.78) 0%,
+    rgba(18, 24, 20, 0.58) 35%,
+    rgba(18, 24, 20, 0.28) 68%,
+    rgba(18, 24, 20, 0.08) 100%
+  );
+  /* Mobile: image is wider than text, so darken the bottom half uniformly. */
+  --gradient-hero-overlay-mobile: linear-gradient(
+    180deg,
+    rgba(18, 24, 20, 0.20) 0%,
+    rgba(18, 24, 20, 0.55) 55%,
+    rgba(18, 24, 20, 0.82) 100%
+  );
 }
 
 @theme inline {
@@ -70,6 +87,21 @@ body {
   font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   font-feature-settings: "kern" 1, "liga" 1;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+/* Paper-grain texture over the cream background — editorial depth without
+   competing with photography. ~4% opacity, tileable 160x160 SVG noise. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10  0 0 0 0 0.12  0 0 0 0 0.11  0 0 0 1 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+  background-size: 160px 160px;
 }
 
 .font-display { font-family: var(--font-cormorant), Georgia, "Times New Roman", serif; }
@@ -82,43 +114,54 @@ body {
 .text-h3      { font-size: clamp(1.35rem, 2.5vw, 1.85rem); line-height: 1.2;  }
 .text-h4      { font-size: clamp(1.15rem, 2vw, 1.4rem);    line-height: 1.25; }
 
-@keyframes hero-shimmer-sweep {
-  0%   { background-position: -200% 50%; }
-  100% { background-position:  200% 50%; }
+/* Hero accent word — replaces the animated .hero-shimmer sweep.
+   Use: wrap 1-2 words of the H1 in <span class="hero-accent">…</span>.
+   Single-axis color distinction reads cleaner on serif display than
+   an animated gradient (which fights legibility at 62-y-o reading age). */
+.hero-accent {
+  color: var(--accent);
+  font-style: italic;
 }
 
-.hero-shimmer {
-  background: linear-gradient(
-    110deg,
-    var(--primary) 0%,
-    var(--primary) 40%,
-    var(--accent) 50%,
-    var(--primary) 60%,
-    var(--primary) 100%
-  );
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  animation: hero-shimmer-sweep 6s ease-in-out infinite;
-}
-
+/* Legacy compatibility — interior pages that still apply .hero-shimmer
+   resolve to a solid forest-green serif H1 (no animation, no gradient). */
+.hero-shimmer,
 .hero-shimmer-sage {
-  background: linear-gradient(
-    110deg,
-    var(--primary) 0%,
-    var(--primary) 40%,
-    var(--bg-base) 50%,
-    var(--primary) 60%,
-    var(--primary) 100%
-  );
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  animation: hero-shimmer-sweep 6s ease-in-out infinite;
+  color: var(--primary);
+  font-style: normal;
+  -webkit-text-fill-color: var(--primary);
+  background: none;
+  animation: none;
+}
+
+/* Hero CTA size variant — pills sized to match display typography.
+   Used on the homepage hero only; interior-page CTAs use base size. */
+.hero-cta {
+  padding: 1rem 2.5rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+}
+
+/* Ken Burns hero photograph — slow 1.0 → 1.06 scale over 22s, pauses on
+   prefers-reduced-motion. Applied to <img> inside .hero-photo-frame. */
+@keyframes hero-kenburns {
+  0%   { transform: scale(1.0) translate3d(0, 0, 0); }
+  100% { transform: scale(1.06) translate3d(-1%, -1%, 0); }
+}
+.hero-photo img,
+.hero-photo > span > img {
+  animation: hero-kenburns 22s ease-in-out both;
+  will-change: transform;
+}
+
+/* Scroll indicator — thin line with gentle pulse. */
+@keyframes scroll-hint-pulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(0.6); }
+  50%      { opacity: 1;   transform: scaleY(1); }
+}
+.scroll-hint-line {
+  transform-origin: top center;
+  animation: scroll-hint-pulse 2.4s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -128,11 +171,13 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .hero-shimmer, .hero-shimmer-sage {
+  .hero-photo img,
+  .hero-photo > span > img {
     animation: none;
-    background: var(--primary);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    transform: scale(1.02);
+  }
+  .scroll-hint-line {
+    animation: none;
+    opacity: 0.5;
   }
 }

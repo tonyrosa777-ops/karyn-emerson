@@ -1,0 +1,379 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation "Primary" [ref=e3]:
+      - link "Karyn Emerson" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - button "Open menu" [ref=e6]:
+        - img [ref=e7]
+  - main [ref=e8]:
+    - main [ref=e9]:
+      - region "Welcome" [ref=e10]:
+        - img "Crumbling fieldstone wall lined with sugar maples in peak autumn along a Southern New Hampshire road" [ref=e12]
+        - generic [ref=e15]:
+          - paragraph [ref=e16]: SOUTHERN NEW HAMPSHIRE
+          - heading "The neighborhood, and the person who knows every street." [level=1] [ref=e17]:
+            - generic [ref=e18]: The
+            - generic [ref=e19]: neighborhood,
+            - generic [ref=e20]: and
+            - generic [ref=e21]: the
+            - generic [ref=e22]: person
+            - generic [ref=e23]: who
+            - generic [ref=e24]: knows
+            - generic [ref=e25]: every
+            - generic [ref=e26]: street.
+          - paragraph [ref=e27]: If you have lived on your cul-de-sac for thirty years, or you are moving up I-93 from Methuen next spring, you already know why the street matters as much as the house. Let's have a real conversation about your timing, on a call with zero pressure.
+          - paragraph [ref=e28]: 5.0 on Zillow · Lifelong Southern NH · Jill & Co. Realty Group, Salem
+          - generic [ref=e29]:
+            - link "Book a Free Consultation" [ref=e30] [cursor=pointer]:
+              - /url: /booking
+            - link "Take the Quiz" [ref=e31] [cursor=pointer]:
+              - /url: /quiz
+      - region "Four reasons people call me before they call anyone else." [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]:
+            - paragraph [ref=e35]: Where most visitors start
+            - heading "Four reasons people call me before they call anyone else." [level=2] [ref=e36]
+            - paragraph [ref=e37]: If any of these sound like the last twelve months of your life, you are already in the right place. Read them, pick the one that fits, and we will go from there.
+          - generic [ref=e38]:
+            - article [ref=e39]:
+              - generic [ref=e40]: 🏡
+              - heading "You want an agent who actually knows your street." [level=3] [ref=e41]
+              - paragraph [ref=e42]: You have lived in Salem or Windham or Pelham for thirty years. You know which side of Cobbett's Pond holds its value, and you do not want to explain the Salem High feeder lines to a realtor who had to Google them. Your neighborhood deserves someone who has watched it change.
+            - article [ref=e43]:
+              - generic [ref=e44]: 🤝
+              - heading "You are worried about being pushed into a lowball price." [level=3] [ref=e45]
+              - paragraph [ref=e46]: You have heard the stories. An agent walks in, quotes a number twenty grand below what the house is worth, and pressures you to sign by the end of the week. That is not how this goes with me. We price it right together, on your timing, and I show you the comps.
+            - article [ref=e47]:
+              - generic [ref=e48]: 📍
+              - heading "You are coming up from MA and do not know which town is right." [level=3] [ref=e49]
+              - paragraph [ref=e50]: Is Derry the good one or the other one? Is Windham worth the premium over Londonderry? What does Salem actually feel like after you leave the mall? I grew up here. I will tell you honestly which town fits your family, your commute, and your budget, before you ever open Zillow.
+            - article [ref=e51]:
+              - generic [ref=e52]: 📱
+              - heading "You are afraid of being ghosted after the listing goes up." [level=3] [ref=e53]
+              - paragraph [ref=e54]: You sign the paperwork, the sign goes in the yard, and suddenly your calls stop getting returned. I have heard that story too many times to let it be yours. I text back. Evenings, weekends, the stretch between the inspection and the close. That is the whole job.
+      - region "A lifetime in Southern NH, and a practice built around the conversation, not the transaction." [ref=e55]:
+        - generic [ref=e57]:
+          - generic [ref=e58]:
+            - paragraph [ref=e59]: About Karyn
+            - heading "A lifetime in Southern NH, and a practice built around the conversation, not the transaction." [level=2] [ref=e60]
+            - generic [ref=e61]:
+              - paragraph [ref=e62]: I grew up in this area. I know which side of Cobbett’s Pond holds its value through a down cycle, which Salem High feeder streets are quietly rezoning this year, and what it feels like to sit at a Windham kitchen table with a family that has lived there for forty years and is finally ready to talk about what comes next.
+              - paragraph [ref=e63]: My practice is built on that kind of conversation. No scripts, no form letters, no pressure. You call, we meet, we walk the house or the neighborhood, and we go from there. If the timing is next month, great. If the timing is next year, that is fine too. Either way, you deserve an agent who starts with your situation, not a listing appointment.
+            - link "Read Karyn’s Story" [ref=e65] [cursor=pointer]:
+              - /url: /about
+          - img "Karyn Emerson editorial portrait" [ref=e68]
+      - region "Thirty years on these streets. Real outcomes, not round-number boasts." [ref=e70]:
+        - generic [ref=e71]:
+          - generic [ref=e72]:
+            - paragraph [ref=e73]: By the numbers
+            - heading "Thirty years on these streets. Real outcomes, not round-number boasts." [level=2] [ref=e74]
+          - generic [ref=e75]:
+            - generic [ref=e76]:
+              - generic [ref=e77]: 📍
+              - generic [ref=e79]: 0+
+              - paragraph [ref=e80]: Years in Southern NH
+            - generic [ref=e81]:
+              - generic [ref=e82]: ⭐
+              - generic [ref=e83]: "0.0"
+              - paragraph [ref=e84]: Average Zillow Rating
+            - generic [ref=e85]:
+              - generic [ref=e86]: 🏆
+              - generic [ref=e87]: "0"
+              - paragraph [ref=e88]: Best Year Yet
+            - generic [ref=e89]:
+              - generic [ref=e90]: 🏡
+              - generic [ref=e92]: 0%
+              - paragraph [ref=e93]: Sold At or Above Asking
+      - region "Three situations, three very different conversations." [ref=e94]:
+        - generic [ref=e95]:
+          - generic [ref=e96]:
+            - paragraph [ref=e97]: How I help
+            - heading "Three situations, three very different conversations." [level=2] [ref=e98]
+            - paragraph [ref=e99]: Selling a home you have lived in for forty years is a different kind of call than a first-time buyer tour, which is a different call again from a Massachusetts family crossing the border. Here is what each one looks like with me.
+          - generic [ref=e100]:
+            - article [ref=e101]:
+              - generic [ref=e102]: 🪴
+              - heading "Selling Your Home" [level=3] [ref=e103]
+              - paragraph [ref=e104]: Downsizing after thirty years in the colonial, or ready to move closer to the grandkids? We start with a real walkthrough of your house, an honest price conversation, and a 30-day listing agreement with a mutual release. No pressure, no lowball, no surprises on closing day.
+              - link "Read more about selling your home" [ref=e105] [cursor=pointer]:
+                - /url: /services/selling
+                - text: Read more about selling your home
+                - generic [ref=e106]: →
+            - article [ref=e107]:
+              - generic [ref=e108]: 🔑
+              - heading "Buying Your Home" [level=3] [ref=e109]
+              - paragraph [ref=e110]: First house in NH, trading up for the yard, or finally getting out of the rental market? I answer texts at 11pm. I walk you through the P&S, the septic, the well, the inspection. You will understand every number on the closing disclosure before you sign it.
+              - link "Read more about buying your home" [ref=e111] [cursor=pointer]:
+                - /url: /services/buying
+                - text: Read more about buying your home
+                - generic [ref=e112]: →
+            - article [ref=e113]:
+              - generic [ref=e114]: 🧭
+              - heading "Relocating from Massachusetts" [level=3] [ref=e115]
+              - paragraph [ref=e116]: Coming up from Methuen, Lawrence, Andover, or Woburn? I will walk you through the tax math, the commute times by town, the DMV and inspection checklist, and which Southern NH towns actually fit the life you are trying to build. Starts with a 15-minute call.
+              - link "Read more about relocating from massachusetts" [ref=e117] [cursor=pointer]:
+                - /url: /services/relocating
+                - text: Read more about relocating from massachusetts
+                - generic [ref=e118]: →
+      - region "Real notes from sellers, buyers, and families crossing the border." [ref=e119]:
+        - generic [ref=e120]:
+          - generic [ref=e121]:
+            - paragraph [ref=e122]: In their own words
+            - heading "Real notes from sellers, buyers, and families crossing the border." [level=2] [ref=e123]
+          - generic [ref=e124]:
+            - figure "Patricia M. Salem, NH · selling" [ref=e126]:
+              - generic "5 out of 5 stars" [ref=e127]: ★★★★★
+              - blockquote [ref=e128]:
+                - generic [ref=e129]: K
+                - text: aryn walked us through selling our home of 38 years with such patience. My husband and I were overwhelmed at first. She sat at our kitchen table, explained every step, and never once pressured us. We closed above asking and we are in our condo at Tuscan Village now.
+              - generic [ref=e130]:
+                - paragraph [ref=e131]: Patricia M.
+                - paragraph [ref=e132]: Salem, NH · selling
+            - generic [ref=e133]:
+              - figure "Jess R. Salem, NH (from Methuen, MA) · relocating" [ref=e134]:
+                - generic "5 out of 5 stars" [ref=e135]: ★★★★★
+                - blockquote [ref=e136]: “We were done with Massachusetts taxes. Karyn did the actual math for us. Showed us what we would pay in Salem versus Methuen on a $550K home, what the commute looked like from Exit 2, which school district fit our daughter. She did not oversell Windham just because it was more expensive.”
+                - generic [ref=e137]:
+                  - paragraph [ref=e138]: Jess R.
+                  - paragraph [ref=e139]: Salem, NH (from Methuen, MA) · relocating
+              - figure "Mike D. Windham, NH · buying" [ref=e140]:
+                - generic "5 out of 5 stars" [ref=e141]: ★★★★★
+                - blockquote [ref=e142]: “Texted Karyn at 10:30pm about a listing. She had showing times back to me before I woke up. That is the level she operates at. Closed on the 3BR in April, under contract in eight days.”
+                - generic [ref=e143]:
+                  - paragraph [ref=e144]: Mike D.
+                  - paragraph [ref=e145]: Windham, NH · buying
+          - link "See all 36 testimonials" [ref=e147] [cursor=pointer]:
+            - /url: /testimonials
+            - text: See all 36 testimonials
+            - generic [ref=e148]: →
+      - region "Not sure if now is the right time?" [ref=e149]:
+        - generic [ref=e151]:
+          - generic [ref=e152]:
+            - paragraph [ref=e153]: Five minutes, zero pressure
+            - heading "Not sure if now is the right time?" [level=2] [ref=e154]
+            - paragraph [ref=e155]: Take the quick quiz. Six questions, takes about ninety seconds, and you will come away with a clear read on your situation, your timing, and the single next step worth taking. No email gate. No follow-up spam. Just a useful answer.
+            - link "Take the Quiz" [ref=e157] [cursor=pointer]:
+              - /url: /quiz
+              - text: Take the Quiz
+              - generic [ref=e158]: →
+          - generic [ref=e160]:
+            - paragraph [ref=e161]: Sample result
+            - generic [ref=e162]:
+              - generic [ref=e163]: 🧭
+              - heading "The MA Relocator" [level=3] [ref=e164]
+            - paragraph [ref=e165]: You are crossing the border from Methuen, Lawrence, Andover, or Woburn. The tax math matters, the commute matters, and you need an agent who can compare Salem, Windham, and Derry honestly before you pick a town.
+            - generic [ref=e167]: Recommended next step
+            - paragraph [ref=e168]: Book a 15-minute relocation call so we can run the tax math on your exact situation.
+      - region "Real writing on the stuff buyers and sellers actually wonder about." [ref=e169]:
+        - generic [ref=e170]:
+          - generic [ref=e171]:
+            - paragraph [ref=e172]: Notes from Southern NH
+            - heading "Real writing on the stuff buyers and sellers actually wonder about." [level=2] [ref=e173]
+            - paragraph [ref=e174]: Relocation math, post-August-2024 commission rules, neighborhood deep dives. Written for the person staring at the Zillow search bar at 11pm, not for the Google crawler.
+          - generic [ref=e175]:
+            - article [ref=e176]:
+              - 'link "Moving from Massachusetts to Southern New Hampshire: The Honest Guide Relocation 9 min read Moving from Massachusetts to Southern New Hampshire: The Honest Guide The tax math, the commute reality, the DMV checklist, and which Southern NH town actually fits the life you are trying to build. No sales pitch, just the real numbers. March 17, 2026" [ref=e177] [cursor=pointer]':
+                - /url: /blog/moving-from-massachusetts-to-southern-nh-honest-guide
+                - 'img "Moving from Massachusetts to Southern New Hampshire: The Honest Guide" [ref=e179]'
+                - generic [ref=e180]:
+                  - generic [ref=e181]:
+                    - generic [ref=e182]: Relocation
+                    - generic [ref=e183]: 9 min read
+                  - 'heading "Moving from Massachusetts to Southern New Hampshire: The Honest Guide" [level=3] [ref=e184]'
+                  - paragraph [ref=e185]: The tax math, the commute reality, the DMV checklist, and which Southern NH town actually fits the life you are trying to build. No sales pitch, just the real numbers.
+                  - paragraph [ref=e186]: March 17, 2026
+            - article [ref=e187]:
+              - 'link "NH Property Tax by Town: What You''ll Actually Pay in Salem, Windham, and Derry Taxes 7 min read NH Property Tax by Town: What You''ll Actually Pay in Salem, Windham, and Derry A side-by-side look at mill rates, exemptions, and the annual bill you should expect on a $500K, $750K, or $1M home in the three towns that buyers compare most often. March 4, 2026" [ref=e188] [cursor=pointer]':
+                - /url: /blog/nh-property-tax-by-town-salem-windham-derry
+                - 'img "NH Property Tax by Town: What You''ll Actually Pay in Salem, Windham, and Derry" [ref=e190]'
+                - generic [ref=e191]:
+                  - generic [ref=e192]:
+                    - generic [ref=e193]: Taxes
+                    - generic [ref=e194]: 7 min read
+                  - 'heading "NH Property Tax by Town: What You''ll Actually Pay in Salem, Windham, and Derry" [level=3] [ref=e195]'
+                  - paragraph [ref=e196]: A side-by-side look at mill rates, exemptions, and the annual bill you should expect on a $500K, $750K, or $1M home in the three towns that buyers compare most often.
+                  - paragraph [ref=e197]: March 4, 2026
+            - article [ref=e198]:
+              - 'link "The 2-to-3% Commission Explained: How I''m Paid Post-August-2024 Commission 8 min read The 2-to-3% Commission Explained: How I''m Paid Post-August-2024 After the NAR settlement, commission rules changed for every buyer and seller in the country. Here is what actually shifted, what the range looks like on a Salem or Windham sale, and what the fee covers on my listings. February 21, 2026" [ref=e199] [cursor=pointer]':
+                - /url: /blog/two-to-three-percent-commission-explained-post-august-2024
+                - 'img "The 2-to-3% Commission Explained: How I''m Paid Post-August-2024" [ref=e201]'
+                - generic [ref=e202]:
+                  - generic [ref=e203]:
+                    - generic [ref=e204]: Commission
+                    - generic [ref=e205]: 8 min read
+                  - 'heading "The 2-to-3% Commission Explained: How I''m Paid Post-August-2024" [level=3] [ref=e206]'
+                  - paragraph [ref=e207]: After the NAR settlement, commission rules changed for every buyer and seller in the country. Here is what actually shifted, what the range looks like on a Salem or Windham sale, and what the fee covers on my listings.
+                  - paragraph [ref=e208]: February 21, 2026
+          - link "Read the full blog" [ref=e210] [cursor=pointer]:
+            - /url: /blog
+            - text: Read the full blog
+            - generic [ref=e211]: →
+      - region "Let’s have a conversation." [ref=e212]:
+        - generic [ref=e214]:
+          - generic [ref=e215]:
+            - paragraph [ref=e216]: Pick a real time
+            - heading "Let’s have a conversation." [level=2] [ref=e217]
+            - paragraph [ref=e218]: Pick a 15-minute slot on the calendar, tell me a little about your situation, and we will talk. No form maze, no deferred callback, no “we will be in touch within 24 hours.” A real time on a real calendar, with a real person on the other end.
+            - list [ref=e219]:
+              - listitem [ref=e220]:
+                - generic [ref=e221]: 🗺️
+                - generic [ref=e222]:
+                  - paragraph [ref=e223]: Your town, your street
+                  - paragraph [ref=e224]: Tell me where you are, where you are thinking of going, and I will come prepared with real comps and real neighborhood detail.
+              - listitem [ref=e225]:
+                - generic [ref=e226]: 🗓️
+                - generic [ref=e227]:
+                  - paragraph [ref=e228]: Your timeline
+                  - paragraph [ref=e229]: Next month, next year, or somewhere in between. Your timing drives the strategy. We work back from there.
+              - listitem [ref=e230]:
+                - generic [ref=e231]: 💬
+                - generic [ref=e232]:
+                  - paragraph [ref=e233]: Your actual questions
+                  - paragraph [ref=e234]: Property tax, commission math, the Opendoor thing your brother-in-law told you about. Bring the question, get a straight answer.
+          - generic [ref=e237]:
+            - generic [ref=e238]:
+              - paragraph [ref=e239]: 15 minute call · free · zero pressure
+              - heading "Book a time with Karyn" [level=3] [ref=e240]
+              - paragraph [ref=e241]: Free 15 minute call. Pick a slot that works for you. No pressure, no obligation.
+            - generic [ref=e242]:
+              - generic [ref=e243]:
+                - generic [ref=e244]:
+                  - button "Previous month" [disabled] [ref=e245]:
+                    - img [ref=e246]
+                  - generic [ref=e248]: April 2026
+                  - button "Next month" [ref=e249]:
+                    - img [ref=e250]
+                - generic [ref=e252]:
+                  - generic [ref=e253]: Su
+                  - generic [ref=e254]: Mo
+                  - generic [ref=e255]: Tu
+                  - generic [ref=e256]: We
+                  - generic [ref=e257]: Th
+                  - generic [ref=e258]: Fr
+                  - generic [ref=e259]: Sa
+                - generic [ref=e260]:
+                  - button "1" [disabled] [ref=e264]
+                  - button "2" [disabled] [ref=e265]
+                  - button "3" [disabled] [ref=e266]
+                  - button "4" [disabled] [ref=e267]
+                  - button "5" [disabled] [ref=e268]
+                  - button "6" [disabled] [ref=e269]
+                  - button "7" [disabled] [ref=e270]
+                  - button "8" [disabled] [ref=e271]
+                  - button "9" [disabled] [ref=e272]
+                  - button "10" [disabled] [ref=e273]
+                  - button "11" [disabled] [ref=e274]
+                  - button "12" [disabled] [ref=e275]
+                  - button "13" [disabled] [ref=e276]
+                  - button "14" [disabled] [ref=e277]
+                  - button "15" [disabled] [ref=e278]
+                  - button "16" [disabled] [ref=e279]
+                  - button "17" [ref=e280] [cursor=pointer]
+                  - button "18" [ref=e281] [cursor=pointer]
+                  - button "19" [ref=e282] [cursor=pointer]
+                  - button "20" [ref=e283] [cursor=pointer]
+                  - button "21" [ref=e284] [cursor=pointer]
+                  - button "22" [ref=e285] [cursor=pointer]
+                  - button "23" [ref=e286] [cursor=pointer]
+                  - button "24" [ref=e287] [cursor=pointer]
+                  - button "25" [ref=e288] [cursor=pointer]
+                  - button "26" [ref=e289] [cursor=pointer]
+                  - button "27" [ref=e290] [cursor=pointer]
+                  - button "28" [ref=e291] [cursor=pointer]
+                  - button "29" [ref=e292] [cursor=pointer]
+                  - button "30" [ref=e293] [cursor=pointer]
+              - generic [ref=e295]:
+                - generic [ref=e296]: 🗓️
+                - paragraph [ref=e297]: Pick a date
+                - paragraph [ref=e298]: Choose a day on the calendar and we will show you open times that same morning.
+  - contentinfo [ref=e299]:
+    - generic [ref=e301]:
+      - generic [ref=e302]:
+        - generic [ref=e303]:
+          - link [ref=e304] [cursor=pointer]:
+            - /url: /
+            - text: Karyn Emerson
+          - paragraph [ref=e305]: The neighborhood, and the person who knows every street.
+          - paragraph [ref=e306]: Jill & Co. Realty Group, Salem NH
+        - generic [ref=e307]:
+          - heading [level=4] [ref=e308]: Explore
+          - list [ref=e309]:
+            - listitem [ref=e310]:
+              - link [ref=e311] [cursor=pointer]:
+                - /url: /about
+                - text: About
+            - listitem [ref=e312]:
+              - link [ref=e313] [cursor=pointer]:
+                - /url: /neighborhoods
+                - text: Neighborhoods
+            - listitem [ref=e314]:
+              - link [ref=e315] [cursor=pointer]:
+                - /url: /relocate
+                - text: Relocate
+            - listitem [ref=e316]:
+              - link [ref=e317] [cursor=pointer]:
+                - /url: /listings
+                - text: Listings
+            - listitem [ref=e318]:
+              - link [ref=e319] [cursor=pointer]:
+                - /url: /blog
+                - text: Blog
+            - listitem [ref=e320]:
+              - link [ref=e321] [cursor=pointer]:
+                - /url: /testimonials
+                - text: Testimonials
+            - listitem [ref=e322]:
+              - link [ref=e323] [cursor=pointer]:
+                - /url: /quiz
+                - text: Take the Quiz
+        - generic [ref=e324]:
+          - heading [level=4] [ref=e325]: Service Area
+          - list [ref=e326]:
+            - listitem [ref=e327]:
+              - link [ref=e328] [cursor=pointer]:
+                - /url: /neighborhoods/salem
+                - text: Salem, NH
+            - listitem [ref=e329]:
+              - link [ref=e330] [cursor=pointer]:
+                - /url: /neighborhoods/windham
+                - text: Windham, NH
+            - listitem [ref=e331]:
+              - link [ref=e332] [cursor=pointer]:
+                - /url: /neighborhoods/derry
+                - text: Derry, NH
+            - listitem [ref=e333]:
+              - link [ref=e334] [cursor=pointer]:
+                - /url: /neighborhoods/londonderry
+                - text: Londonderry, NH
+            - listitem [ref=e335]:
+              - link [ref=e336] [cursor=pointer]:
+                - /url: /neighborhoods/pelham
+                - text: Pelham, NH
+            - listitem [ref=e337]:
+              - link [ref=e338] [cursor=pointer]:
+                - /url: /neighborhoods/atkinson
+                - text: Atkinson, NH
+            - listitem [ref=e339]:
+              - link [ref=e340] [cursor=pointer]:
+                - /url: /neighborhoods/hampstead
+                - text: Hampstead, NH
+        - generic [ref=e341]:
+          - heading [level=4] [ref=e342]: Contact
+          - list [ref=e343]:
+            - listitem [ref=e344]: Jill & Co. Realty Group, Salem, NH
+          - link [ref=e346] [cursor=pointer]:
+            - /url: https://www.facebook.com/karynemersonrealestate
+            - img [ref=e347]
+      - generic [ref=e349]:
+        - paragraph [ref=e350]: © 2026 Karyn Emerson Real Estate. Licensed in NH.
+        - list [ref=e351]:
+          - listitem [ref=e352]:
+            - link [ref=e353] [cursor=pointer]:
+              - /url: /privacy
+              - text: Privacy
+          - listitem [ref=e354]:
+            - link [ref=e355] [cursor=pointer]:
+              - /url: /terms
+              - text: Terms
+  - button "Open Next.js Dev Tools" [ref=e361] [cursor=pointer]:
+    - img [ref=e362]
