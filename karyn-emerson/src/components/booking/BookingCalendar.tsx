@@ -214,7 +214,7 @@ export function BookingCalendar({
 
   return (
     <div
-      className="overflow-hidden rounded-2xl border bg-[var(--bg-card)] shadow-[0_20px_48px_-24px_rgba(26,31,28,0.18)]"
+      className="@container overflow-hidden rounded-2xl border bg-[var(--bg-card)] shadow-[0_20px_48px_-24px_rgba(26,31,28,0.18)]"
       style={{ borderColor: "rgba(47,74,58,0.14)" }}
     >
       {/* Header */}
@@ -246,9 +246,9 @@ export function BookingCalendar({
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_1px_minmax(280px,320px)]">
+      <div className="grid grid-cols-1 @3xl:grid-cols-[1fr_1px_minmax(280px,320px)]">
         {/* ── Calendar column ── */}
-        <div className="p-6 md:p-7">
+        <div className="p-6 @3xl:p-7">
           <div className="mb-4 flex items-center justify-between">
             <button
               type="button"
@@ -351,13 +351,13 @@ export function BookingCalendar({
         </div>
 
         <div
-          className="hidden md:block"
+          className="hidden @3xl:block"
           style={{ background: "rgba(47,74,58,0.08)" }}
         />
 
         {/* ── Detail column ── */}
         <div
-          className="flex flex-col border-t p-6 md:border-t-0 md:p-7"
+          className="flex flex-col border-t p-6 @3xl:border-t-0 @3xl:p-7"
           style={{ borderColor: "rgba(47,74,58,0.08)" }}
         >
           <AnimatePresence mode="wait">
