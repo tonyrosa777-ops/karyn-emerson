@@ -45,8 +45,26 @@
 | Task 0C — Save `.claude/commands/prime.md` | ✅ Complete | Variable sweep completed via Python; 31 total replacements, zero unfilled placeholders |
 | Task 0D — Create design-system.md | ✅ Complete | 11/11 sections filled; all 9 color tokens have specific hex values; Cormorant Garamond + Inter + JetBrains Mono fonts; Sections Matrix fully resolved |
 | Task 0E — Scaffold Next.js project | ✅ Complete | Next.js 16.2.4 App Router + TS + Tailwind 4 in `karyn-emerson/` subfolder; production build passes; design tokens in globals.css; 8 animation wrappers; next/font Google fonts wired; .env.local + vercel.json created |
-| Task 0F — Phase 0 Debrief | 🔄 In Progress | |
-| Task 0G — Scaffold commit | ⬜ Pending user approval | Message ready: `chore(init): scaffold per website-build-template.md with design tokens` |
+| Task 0F — Phase 0 Debrief | ✅ Complete | Delivered in chat |
+| Task 0G — Scaffold commit + push | ✅ Complete | Commit `3339899` on `origin/main` at github.com/tonyrosa777-ops/karyn-emerson |
+
+**Phase 0 — COMPLETE. Advancing to Phase 1.**
+
+---
+
+## Phase 1 — Full Build Sweep (in progress)
+
+| Stage | Name | Status |
+|-------|------|--------|
+| 1A | Repo Scan (reference Optimus projects for animation + niche patterns) | 🔄 In Progress |
+| 1B | Research + Design System | ✅ Complete (design-system.md done in Phase 0) |
+| 1C | Scaffold | ✅ Complete (done in Phase 0) |
+| 1D | Content + Animation (parallel agents) | ⬜ Not Started |
+| 1E | All Pages (core + niche + blog + shop + booking) | ⬜ Not Started |
+| 1F | SEO + AEO | ⬜ Not Started |
+| 1G | fal.ai image generation batch | ⬜ Not Started |
+| 1H | Pre-launch auditor (file-level) | ⬜ Not Started |
+| 1I | Multi-breakpoint browser audit (Playwright) | ⬜ Not Started |
 
 ---
 
