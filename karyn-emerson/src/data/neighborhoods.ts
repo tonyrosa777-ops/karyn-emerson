@@ -135,7 +135,7 @@ const towns: Neighborhood[] = [
       "🏛️ Hood Park and downtown Derry — walkable main street, Derry Opera House, farmers market",
       "🌳 Beaver Lake and Ballard Pond — two small lake neighborhoods inside town limits",
       "📐 Best price-per-square-foot in the service area outside of Pelham",
-      "🚗 Exit 4 commute adds 5–10 minutes over Salem but the savings on the house cover it",
+      "🚗 Exit 4 commute adds 5 to 10 minutes over Salem but the savings on the house cover it",
     ],
     sampleListings: [
       { address: "14 Hampstead Road", beds: 3, baths: 2, price: 429000, sqft: 1780 },

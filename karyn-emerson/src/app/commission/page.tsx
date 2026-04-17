@@ -36,7 +36,7 @@ export const metadata: Metadata = {
         url: "/og/default-og.jpg",
         width: 1200,
         height: 630,
-        alt: "Commission Transparency — Karyn Emerson Real Estate",
+        alt: "Commission Transparency · Karyn Emerson Real Estate",
       },
     ],
   },
@@ -223,7 +223,7 @@ export default function CommissionPage() {
                 className="font-mono text-[11px] uppercase tracking-[0.22em]"
                 style={{ color: "var(--accent)" }}
               >
-                TL;DR — THE 30-SECOND ANSWER
+                TL;DR · THE 30-SECOND ANSWER
               </p>
               <h2
                 itemProp="name"

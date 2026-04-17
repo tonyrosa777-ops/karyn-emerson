@@ -25,7 +25,7 @@ export const metadata: Metadata = {
         url: "/og/default-og.jpg",
         width: 1200,
         height: 630,
-        alt: "Client Testimonials — Karyn Emerson Real Estate",
+        alt: "Client Testimonials · Karyn Emerson Real Estate",
       },
     ],
   },

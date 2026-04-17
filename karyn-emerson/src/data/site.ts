@@ -499,14 +499,6 @@ export const siteConfig: SiteConfig = {
         "She is incredibly knowledgeable about the Southern New Hampshire real estate market. I talked to two other agents and they just sounded like they were reading off Zillow. Karyn talked about streets I had never heard of and knew the story behind each one.",
       rating: 5,
     },
-    {
-      name: "Fran and George H.",
-      location: "Windham, NH",
-      serviceType: "downsizing",
-      quote:
-        "Forty one years on the same street. Our neighbors threw us a goodbye party. Karyn came. That is the kind of relationship we had with our agent by the end. We will be sending every friend who needs to sell right to her.",
-      rating: 5,
-    },
   ],
 
   social: [

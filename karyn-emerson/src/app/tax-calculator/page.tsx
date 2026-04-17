@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         url: "/og/default-og.jpg",
         width: 1200,
         height: 630,
-        alt: "NH Property Tax Calculator by Town — Karyn Emerson",
+        alt: "NH Property Tax Calculator by Town · Karyn Emerson",
       },
     ],
   },
@@ -106,7 +106,7 @@ export default function TaxCalculatorPage() {
                 className="font-mono text-[11px] uppercase tracking-[0.22em]"
                 style={{ color: "var(--accent)" }}
               >
-                TL;DR — THE 30-SECOND ANSWER
+                TL;DR · THE 30-SECOND ANSWER
               </p>
               <h2
                 itemProp="name"

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
         url: "/og/default-og.jpg",
         width: 1200,
         height: 630,
-        alt: "Which Southern NH Move Is Yours? — Karyn Emerson Real Estate",
+        alt: "Which Southern NH Move Is Yours? · Karyn Emerson Real Estate",
       },
     ],
   },

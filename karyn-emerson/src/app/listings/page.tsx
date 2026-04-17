@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         url: "/og/default-og.jpg",
         width: 1200,
         height: 630,
-        alt: "Featured Southern NH Listings — Karyn Emerson Real Estate",
+        alt: "Featured Southern NH Listings · Karyn Emerson Real Estate",
       },
     ],
   },

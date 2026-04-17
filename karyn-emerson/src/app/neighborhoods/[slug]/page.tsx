@@ -48,7 +48,7 @@ export async function generateMetadata({
     };
   }
 
-  const title = `${n.displayName}, ${n.state} — Neighborhood Guide | Karyn Emerson`;
+  const title = `${n.displayName}, ${n.state} · Neighborhood Guide | Karyn Emerson`;
   const description = `${n.displayName}, ${n.state}: median home price around ${currencyFormatter.format(
     n.medianHomePrice
   )}, roughly ${n.commuteToBoston.minutes} minutes to Boston ${n.commuteToBoston.via}. Schools, mill rate, highlights, and recent homes, written by Karyn Emerson.`;
