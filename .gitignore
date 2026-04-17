@@ -1,0 +1,52 @@
+# =============================================================================
+# Repo root .gitignore — Karyn Emerson Real Estate
+# Covers both the planning root AND the karyn-emerson/ Next.js subfolder
+# =============================================================================
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+build/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Environment files — never commit secrets
+.env
+.env.*
+!.env.example
+
+# Build artifacts
+*.tsbuildinfo
+next-env.d.ts
+
+# Testing
+coverage/
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+*.pem
+
+# Vercel
+.vercel/
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude / project tooling
+.claude/settings.local.json
