@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     siteName: "Karyn Emerson Real Estate",
     images: [
       {
-        url: "/og/default-og.svg",
+        url: "/og/default-og.jpg",
         width: 1200,
         height: 630,
         alt: "Frequently Asked Questions — Karyn Emerson Real Estate",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: "Frequently Asked Questions | Karyn Emerson Real Estate",
     description:
       "Plain English answers on buying, selling, and relocating in Southern NH.",
-    images: ["/og/default-og.svg"],
+    images: ["/og/default-og.jpg"],
   },
 };
 

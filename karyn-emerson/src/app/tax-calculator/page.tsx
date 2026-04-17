@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     siteName: "Karyn Emerson Real Estate",
     images: [
       {
-        url: "/og/default-og.svg",
+        url: "/og/default-og.jpg",
         width: 1200,
         height: 630,
         alt: "NH Property Tax Calculator by Town — Karyn Emerson",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: "NH Property Tax Calculator by Town | Karyn Emerson",
     description:
       "Mill rates and sample bills for Salem, Windham, Derry, and four more Southern NH towns.",
-    images: ["/og/default-og.svg"],
+    images: ["/og/default-og.jpg"],
   },
 };
 

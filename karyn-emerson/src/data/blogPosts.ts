@@ -31,7 +31,8 @@ export interface BlogPost {
   author: string;
   publishedAt: string; // ISO 8601
   readingTime: string;
-  heroImage: string; // absolute path under /public
+  heroImage: string; // absolute path under /public (3:2 — 1600x1067)
+  cardImage: string; // absolute path under /public (3:2 crop — 600x400)
   body: string[]; // array of paragraphs
 }
 
@@ -55,7 +56,8 @@ export const blogPosts: BlogPost[] = [
     author: "Karyn Emerson",
     publishedAt: "2026-03-18",
     readingTime: "9 min read",
-    heroImage: "/images/blog/moving-from-massachusetts-to-southern-nh-honest-guide-hero.svg",
+    heroImage: "/images/blog/moving-from-massachusetts-to-southern-nh-honest-guide-hero.jpg",
+    cardImage: "/images/blog/moving-from-massachusetts-to-southern-nh-honest-guide-card.jpg",
     body: [
       // [DEMO COPY — pending full Stage 1F article build]
       "Every week I get a call that starts the same way. A couple in Methuen, Lawrence, Woburn, or Andover is tired of Massachusetts taxes, the commute is already an hour, and they have heard that crossing the border into Salem or Windham is the move. They want to know if it is actually true.",
@@ -74,7 +76,8 @@ export const blogPosts: BlogPost[] = [
     author: "Karyn Emerson",
     publishedAt: "2026-03-05",
     readingTime: "7 min read",
-    heroImage: "/images/blog/nh-property-tax-by-town-salem-windham-derry-hero.svg",
+    heroImage: "/images/blog/nh-property-tax-by-town-salem-windham-derry-hero.jpg",
+    cardImage: "/images/blog/nh-property-tax-by-town-salem-windham-derry-card.jpg",
     body: [
       // [DEMO COPY — pending full Stage 1F article build]
       "New Hampshire has no income tax, but the property tax is the trade. Every town sets its own mill rate, and the spread between Salem, Windham, and Derry is bigger than most buyers realize when they are cross-shopping.",
@@ -93,7 +96,8 @@ export const blogPosts: BlogPost[] = [
     author: "Karyn Emerson",
     publishedAt: "2026-02-22",
     readingTime: "8 min read",
-    heroImage: "/images/blog/two-to-three-percent-commission-explained-post-august-2024-hero.svg",
+    heroImage: "/images/blog/two-to-three-percent-commission-explained-post-august-2024-hero.jpg",
+    cardImage: "/images/blog/two-to-three-percent-commission-explained-post-august-2024-card.jpg",
     body: [
       // [DEMO COPY — pending full Stage 1F article build]
       "August 17, 2024 was the day real-estate commissions changed for every buyer and seller in the country. The NAR settlement ended the practice of a seller automatically offering a buyer-agent commission through the MLS. Since then, every side of every deal is its own conversation.",
@@ -112,7 +116,8 @@ export const blogPosts: BlogPost[] = [
     author: "Karyn Emerson",
     publishedAt: "2026-02-10",
     readingTime: "10 min read",
-    heroImage: "/images/blog/downsizing-in-southern-nh-selling-family-home-after-40-years-hero.svg",
+    heroImage: "/images/blog/downsizing-in-southern-nh-selling-family-home-after-40-years-hero.jpg",
+    cardImage: "/images/blog/downsizing-in-southern-nh-selling-family-home-after-40-years-card.jpg",
     body: [
       // [DEMO COPY — pending full Stage 1F article build]
       "The house is too big. The stairs are harder than they used to be. The grandkids live twenty minutes up I-93 and you are tired of driving to them instead of the other way around. Downsizing is not a transaction. It is a transition, and the agent you pick should know the difference.",
@@ -131,7 +136,8 @@ export const blogPosts: BlogPost[] = [
     author: "Karyn Emerson",
     publishedAt: "2026-01-28",
     readingTime: "8 min read",
-    heroImage: "/images/blog/first-time-homebuyer-checklist-southern-nh-septic-well-pns-hero.svg",
+    heroImage: "/images/blog/first-time-homebuyer-checklist-southern-nh-septic-well-pns-hero.jpg",
+    cardImage: "/images/blog/first-time-homebuyer-checklist-southern-nh-septic-well-pns-card.jpg",
     body: [
       // [DEMO COPY — pending full Stage 1F article build]
       "First house, first offer, first P&S. I answer texts at 11pm for a reason. Buying a house in Southern NH has a few wrinkles that first-time buyers coming from MA or RI have never dealt with, and the five most important ones are all on this list.",
@@ -150,7 +156,8 @@ export const blogPosts: BlogPost[] = [
     author: "Karyn Emerson",
     publishedAt: "2026-01-15",
     readingTime: "11 min read",
-    heroImage: "/images/blog/living-in-salem-nh-tuscan-village-canobie-lake-streets-you-dont-know-hero.svg",
+    heroImage: "/images/blog/living-in-salem-nh-tuscan-village-canobie-lake-streets-you-dont-know-hero.jpg",
+    cardImage: "/images/blog/living-in-salem-nh-tuscan-village-canobie-lake-streets-you-dont-know-card.jpg",
     body: [
       // [DEMO COPY — pending full Stage 1F article build]
       "If you are moving to Salem from outside of Southern NH, you have probably pictured one Salem. The mall exit, Canobie Lake, the Market Basket, the commuter plazas along Route 28. That is the visitor's Salem. The local Salem is at least four different places, each with its own price band, its own streets, and its own feel.",
@@ -169,7 +176,8 @@ export const blogPosts: BlogPost[] = [
     author: "Karyn Emerson",
     publishedAt: "2026-01-02",
     readingTime: "6 min read",
-    heroImage: "/images/blog/commuter-tax-trap-why-moving-to-nh-doesnt-erase-ma-income-tax-hero.svg",
+    heroImage: "/images/blog/commuter-tax-trap-why-moving-to-nh-doesnt-erase-ma-income-tax-hero.jpg",
+    cardImage: "/images/blog/commuter-tax-trap-why-moving-to-nh-doesnt-erase-ma-income-tax-card.jpg",
     body: [
       // [DEMO COPY — pending full Stage 1F article build]
       "The pitch for moving to New Hampshire usually starts with no income tax. That line is technically true and practically misleading if you are still commuting to Boston or working for a Massachusetts employer. MA taxes the income earned inside its borders regardless of where you live. If your W-2 says Cambridge and your address says Salem, you are still a MA taxpayer for that income.",
@@ -188,7 +196,8 @@ export const blogPosts: BlogPost[] = [
     author: "Karyn Emerson",
     publishedAt: "2025-12-18",
     readingTime: "7 min read",
-    heroImage: "/images/blog/opendoor-vs-listing-with-agent-45000-math-on-500k-home-hero.svg",
+    heroImage: "/images/blog/opendoor-vs-listing-with-agent-45000-math-on-500k-home-hero.jpg",
+    cardImage: "/images/blog/opendoor-vs-listing-with-agent-45000-math-on-500k-home-card.jpg",
     body: [
       // [DEMO COPY — pending full Stage 1F article build]
       "Opendoor is not evil. It is a real service, it closes fast, and for a specific seller in a specific situation it is the right call. For most Southern NH sellers on a typical $500K home, it costs roughly $45,000 in equity versus a traditional listing, and the sellers I talk to usually have no idea the number is that big.",
@@ -207,7 +216,8 @@ export const blogPosts: BlogPost[] = [
     author: "Karyn Emerson",
     publishedAt: "2025-12-04",
     readingTime: "10 min read",
-    heroImage: "/images/blog/windham-derry-or-londonderry-buyers-guide-picking-right-southern-nh-town-hero.svg",
+    heroImage: "/images/blog/windham-derry-or-londonderry-buyers-guide-picking-right-southern-nh-town-hero.jpg",
+    cardImage: "/images/blog/windham-derry-or-londonderry-buyers-guide-picking-right-southern-nh-town-card.jpg",
     body: [
       // [DEMO COPY — pending full Stage 1F article build]
       "Three towns, ten miles apart, and the wrong one picked at the closing table is a mistake you feel every day for a decade. Windham, Derry, and Londonderry are the three Southern NH towns buyers cross-shop most often, and each one tells a very different story once you live there.",

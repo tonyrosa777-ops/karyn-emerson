@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     siteName: "Karyn Emerson Real Estate",
     images: [
       {
-        url: "/og/default-og.svg",
+        url: "/og/default-og.jpg",
         width: 1200,
         height: 630,
         alt: "Buying a Home in Southern NH — Karyn Emerson Real Estate",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: "Buying a Home in Southern New Hampshire | Karyn Emerson",
     description:
       "P&S, inspection, well, septic, appraisal. In plain English.",
-    images: ["/og/default-og.svg"],
+    images: ["/og/default-og.jpg"],
   },
 };
 

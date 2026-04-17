@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "Karyn Emerson Real Estate",
     images: [
       {
-        url: "/og/default-og.svg",
+        url: "/og/default-og.jpg",
         width: 1200,
         height: 630,
         alt: "MA to NH Relocation — Karyn Emerson Real Estate",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
       "Moving from Massachusetts to Southern NH | Karyn Emerson Real Estate",
     description:
       "The working MA to NH relocation guide, with the real numbers and a 15 minute call at the end.",
-    images: ["/og/default-og.svg"],
+    images: ["/og/default-og.jpg"],
   },
 };
 

@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/og/default-og.svg",
+        url: "/og/default-og.jpg",
         width: 1200,
         height: 630,
         alt: "Karyn Emerson Real Estate — Southern New Hampshire",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     title: "Karyn Emerson Real Estate | Southern New Hampshire",
     description:
       "Licensed Southern NH real estate agent. Buyer and seller representation in Salem, Windham, Derry, and six more towns.",
-    images: ["/og/default-og.svg"],
+    images: ["/og/default-og.jpg"],
   },
 };
 

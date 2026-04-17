@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: "Karyn Emerson Real Estate",
     images: [
       {
-        url: "/og/default-og.svg",
+        url: "/og/default-og.jpg",
         width: 1200,
         height: 630,
         alt: "About Karyn Emerson — Lifelong Southern NH Real Estate Agent",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: "About Karyn Emerson | Lifelong Southern NH Real Estate Agent",
     description:
       "A real conversation about timing, with zero pressure.",
-    images: ["/og/default-og.svg"],
+    images: ["/og/default-og.jpg"],
   },
 };
 

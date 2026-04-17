@@ -148,7 +148,7 @@ export function localBusinessSchema(path = "/") {
     url: absoluteUrl(path),
     telephone: siteConfig.contact.phone || undefined,
     email: siteConfig.contact.email || undefined,
-    image: absoluteUrl("/og/default-og.svg"),
+    image: absoluteUrl("/og/default-og.jpg"),
     priceRange: "$$$",
     address: {
       "@type": "PostalAddress",
@@ -241,7 +241,7 @@ export function articleSchema(post: BlogPost) {
       url: SITE_URL,
       logo: {
         "@type": "ImageObject",
-        url: absoluteUrl("/og/default-og.svg"),
+        url: absoluteUrl("/og/default-og.jpg"),
       },
     },
     mainEntityOfPage: {

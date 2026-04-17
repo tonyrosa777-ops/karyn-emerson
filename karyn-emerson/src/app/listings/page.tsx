@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     siteName: "Karyn Emerson Real Estate",
     images: [
       {
-        url: "/og/default-og.svg",
+        url: "/og/default-og.jpg",
         width: 1200,
         height: 630,
         alt: "Featured Southern NH Listings — Karyn Emerson Real Estate",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: "Featured Southern NH Listings | Karyn Emerson Real Estate",
     description:
       "IDX platform pending. Sample of what is moving in Southern NH.",
-    images: ["/og/default-og.svg"],
+    images: ["/og/default-og.jpg"],
   },
 };
 

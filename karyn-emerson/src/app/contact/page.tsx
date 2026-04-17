@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     siteName: "Karyn Emerson Real Estate",
     images: [
       {
-        url: "/og/default-og.svg",
+        url: "/og/default-og.jpg",
         width: 1200,
         height: 630,
         alt: "Contact Karyn Emerson Real Estate",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Contact Karyn | Southern NH Real Estate",
     description:
       "Send a note or book a 15 minute call. Jill & Co. Realty Group, Salem NH.",
-    images: ["/og/default-og.svg"],
+    images: ["/og/default-og.jpg"],
   },
 };
 

@@ -1,0 +1,18 @@
+{
+  "ranAt": "2026-04-17T05:10:12.905Z",
+  "model": "fal-ai/flux/dev",
+  "fallbackModel": "fal-ai/flux/schnell",
+  "heroes": {
+    "requested": 27,
+    "succeeded": 27,
+    "failed": 0,
+    "totalBytes": 14653747
+  },
+  "cards": {
+    "derived": 9,
+    "failed": 0,
+    "totalBytes": 430941
+  },
+  "failedItems": [],
+  "durationSeconds": 152
+}

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     siteName: "Karyn Emerson Real Estate",
     images: [
       {
-        url: "/og/default-og.svg",
+        url: "/og/default-og.jpg",
         width: 1200,
         height: 630,
         alt: "Which Southern NH Move Is Yours? — Karyn Emerson Real Estate",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: "Which Southern NH Move Is Yours?",
     description:
       "Six questions. Your archetype. A real next step with Karyn.",
-    images: ["/og/default-og.svg"],
+    images: ["/og/default-og.jpg"],
   },
 };
 

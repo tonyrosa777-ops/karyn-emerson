@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "Karyn Emerson Real Estate",
     images: [
       {
-        url: "/og/default-og.svg",
+        url: "/og/default-og.jpg",
         width: 1200,
         height: 630,
         alt: "Commission Transparency — Karyn Emerson Real Estate",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: "How I Am Paid | Commission Transparency | Karyn Emerson",
     description:
       "Transparent NH commission ranges, post-NAR rules, and an honest iBuyer comparison.",
-    images: ["/og/default-og.svg"],
+    images: ["/og/default-og.jpg"],
   },
 };
 

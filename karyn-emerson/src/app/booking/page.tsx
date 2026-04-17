@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: "Karyn Emerson Real Estate",
     images: [
       {
-        url: "/og/default-og.svg",
+        url: "/og/default-og.jpg",
         width: 1200,
         height: 630,
         alt: "Book a Call with Karyn Emerson",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     title: "Book a Call with Karyn Emerson",
     description:
       "Free 15 minute call. Zero pressure, real answers.",
-    images: ["/og/default-og.svg"],
+    images: ["/og/default-og.jpg"],
   },
 };
 

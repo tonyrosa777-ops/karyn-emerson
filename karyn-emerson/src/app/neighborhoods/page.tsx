@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     siteName: "Karyn Emerson Real Estate",
     images: [
       {
-        url: "/og/default-og.svg",
+        url: "/og/default-og.jpg",
         width: 1200,
         height: 630,
         alt: "Southern NH Neighborhood Guides — Karyn Emerson",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "Southern NH Neighborhood Guides | Karyn Emerson",
     description:
       "Seven Southern NH towns and the sub-neighborhoods inside them.",
-    images: ["/og/default-og.svg"],
+    images: ["/og/default-og.jpg"],
   },
 };
 

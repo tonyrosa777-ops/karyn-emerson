@@ -82,7 +82,7 @@ const towns: Neighborhood[] = [
       { address: "88 Policy Street", beds: 3, baths: 2, price: 489000, sqft: 1840 },
       { address: "4 Tuscan Village Way, Unit 204", beds: 2, baths: 2, price: 575000, sqft: 1520 },
     ],
-    heroImage: "/images/neighborhoods/salem-hero.svg",
+    heroImage: "/images/neighborhoods/salem-hero.jpg",
     fallbackEmoji: "🍂",
   },
   {
@@ -112,7 +112,7 @@ const towns: Neighborhood[] = [
       { address: "7 Cobbetts Pond Road", beds: 3, baths: 2, price: 695000, sqft: 2200 },
       { address: "41 Morrison Road", beds: 5, baths: 3.5, price: 925000, sqft: 3680 },
     ],
-    heroImage: "/images/neighborhoods/windham-hero.svg",
+    heroImage: "/images/neighborhoods/windham-hero.jpg",
     fallbackEmoji: "🌊",
   },
   {
@@ -142,7 +142,7 @@ const towns: Neighborhood[] = [
       { address: "9 Beaver Lake Avenue", beds: 4, baths: 2.5, price: 539000, sqft: 2240 },
       { address: "31 Fordway Street", beds: 3, baths: 1.5, price: 389000, sqft: 1560 },
     ],
-    heroImage: "/images/neighborhoods/derry-hero.svg",
+    heroImage: "/images/neighborhoods/derry-hero.jpg",
     fallbackEmoji: "🏛️",
   },
   {
@@ -172,7 +172,7 @@ const towns: Neighborhood[] = [
       { address: "3 Orchard View Drive", beds: 3, baths: 2.5, price: 549000, sqft: 2080 },
       { address: "42 Woodmont Commons Boulevard, Unit 6", beds: 2, baths: 2, price: 485000, sqft: 1440 },
     ],
-    heroImage: "/images/neighborhoods/londonderry-hero.svg",
+    heroImage: "/images/neighborhoods/londonderry-hero.jpg",
     fallbackEmoji: "🍎",
   },
   {
@@ -202,7 +202,7 @@ const towns: Neighborhood[] = [
       { address: "15 Gage Hill Road", beds: 3, baths: 2, price: 499000, sqft: 2020 },
       { address: "28 Bridge Street", beds: 4, baths: 2.5, price: 579000, sqft: 2440 },
     ],
-    heroImage: "/images/neighborhoods/pelham-hero.svg",
+    heroImage: "/images/neighborhoods/pelham-hero.jpg",
     fallbackEmoji: "🌲",
   },
   {
@@ -232,7 +232,7 @@ const towns: Neighborhood[] = [
       { address: "19 Providence Hill Road", beds: 3, baths: 2.5, price: 589000, sqft: 2160 },
       { address: "44 Main Street", beds: 3, baths: 2, price: 525000, sqft: 1940 },
     ],
-    heroImage: "/images/neighborhoods/atkinson-hero.svg",
+    heroImage: "/images/neighborhoods/atkinson-hero.jpg",
     fallbackEmoji: "⛳",
   },
   {
@@ -262,7 +262,7 @@ const towns: Neighborhood[] = [
       { address: "8 Sunset Lake Drive", beds: 4, baths: 2.5, price: 649000, sqft: 2420 },
       { address: "52 Stage Road", beds: 3, baths: 1.5, price: 425000, sqft: 1640 },
     ],
-    heroImage: "/images/neighborhoods/hampstead-hero.svg",
+    heroImage: "/images/neighborhoods/hampstead-hero.jpg",
     fallbackEmoji: "🌅",
   },
 ];
@@ -299,7 +299,7 @@ const subNeighborhoods: Neighborhood[] = [
       { address: "12 Tuscan Village Boulevard, Unit 112", beds: 3, baths: 2.5, price: 689000, sqft: 1920 },
       { address: "8 Tuscan Village Way, Unit 208", beds: 1, baths: 1, price: 439000, sqft: 980 },
     ],
-    heroImage: "/images/neighborhoods/tuscan-village-hero.svg",
+    heroImage: "/images/neighborhoods/tuscan-village-hero.jpg",
     fallbackEmoji: "🛍️",
   },
   {
@@ -330,7 +330,7 @@ const subNeighborhoods: Neighborhood[] = [
       { address: "14 Shore Drive", beds: 4, baths: 2.5, price: 899000, sqft: 2440 },
       { address: "8 Lakeview Road", beds: 2, baths: 1, price: 519000, sqft: 1280 },
     ],
-    heroImage: "/images/neighborhoods/canobie-lake-hero.svg",
+    heroImage: "/images/neighborhoods/canobie-lake-hero.jpg",
     fallbackEmoji: "🎡",
   },
   {
@@ -361,7 +361,7 @@ const subNeighborhoods: Neighborhood[] = [
       { address: "18 Shore Drive", beds: 4, baths: 3, price: 1195000, sqft: 2880 },
       { address: "42 Lakeview Avenue", beds: 2, baths: 2, price: 699000, sqft: 1520 },
     ],
-    heroImage: "/images/neighborhoods/cobbetts-pond-hero.svg",
+    heroImage: "/images/neighborhoods/cobbetts-pond-hero.jpg",
     fallbackEmoji: "🌊",
   },
   {
@@ -392,7 +392,7 @@ const subNeighborhoods: Neighborhood[] = [
       { address: "4 Orchard Street, Unit 4B", beds: 3, baths: 2.5, price: 565000, sqft: 1880 },
       { address: "20 Commons Drive", beds: 2, baths: 2, price: 445000, sqft: 1420 },
     ],
-    heroImage: "/images/neighborhoods/woodmont-commons-hero.svg",
+    heroImage: "/images/neighborhoods/woodmont-commons-hero.jpg",
     fallbackEmoji: "🏗️",
   },
   {
@@ -423,7 +423,7 @@ const subNeighborhoods: Neighborhood[] = [
       { address: "44 East Broadway, Unit 3", beds: 2, baths: 1.5, price: 349000, sqft: 1240 },
       { address: "12 Crystal Avenue", beds: 3, baths: 1.5, price: 415000, sqft: 1560 },
     ],
-    heroImage: "/images/neighborhoods/hood-park-downtown-derry-hero.svg",
+    heroImage: "/images/neighborhoods/hood-park-downtown-derry-hero.jpg",
     fallbackEmoji: "🏛️",
   },
   {
@@ -454,7 +454,7 @@ const subNeighborhoods: Neighborhood[] = [
       { address: "14 North Policy Street", beds: 4, baths: 2.5, price: 699000, sqft: 2320 },
       { address: "22 Lakeshore Drive", beds: 3, baths: 2, price: 559000, sqft: 1760 },
     ],
-    heroImage: "/images/neighborhoods/shadow-lake-hero.svg",
+    heroImage: "/images/neighborhoods/shadow-lake-hero.jpg",
     fallbackEmoji: "🌲",
   },
 ];

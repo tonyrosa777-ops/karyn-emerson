@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: "Karyn Emerson Real Estate",
     images: [
       {
-        url: "/og/default-og.svg",
+        url: "/og/default-og.jpg",
         width: 1200,
         height: 630,
         alt: "Client Testimonials — Karyn Emerson Real Estate",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: "Client Testimonials | Karyn Emerson Real Estate",
     description:
       "Thirty six unfiltered testimonials from Southern NH sellers and buyers.",
-    images: ["/og/default-og.svg"],
+    images: ["/og/default-og.jpg"],
   },
 };
 

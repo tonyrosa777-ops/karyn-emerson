@@ -40,7 +40,7 @@ export async function generateMetadata({
       siteName: "Karyn Emerson Real Estate",
       images: [
         {
-          url: "/og/default-og.svg",
+          url: "/og/default-og.jpg",
           width: 1200,
           height: 630,
           alt: detail.metaTitle,
@@ -51,7 +51,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: detail.metaTitle,
       description: detail.metaDescription,
-      images: ["/og/default-og.svg"],
+      images: ["/og/default-og.jpg"],
     },
   };
 }
