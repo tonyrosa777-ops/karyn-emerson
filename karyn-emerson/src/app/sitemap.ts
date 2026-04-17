@@ -7,6 +7,7 @@
 
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/data/site";
+import { neighborhoods } from "@/data/neighborhoods";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://karynemerson.com";
@@ -28,6 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/neighborhoods", priority: 0.9 },
     { path: "/relocate", priority: 0.9 },
     { path: "/listings", priority: 0.5 }, // IDX pending — de-prioritized
+    { path: "/services", priority: 0.8 },
     { path: "/blog", priority: 0.7 },
     { path: "/testimonials", priority: 0.7 },
     { path: "/quiz", priority: 0.8 },
@@ -52,7 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
 
   // Per-town neighborhood pages — one per service-area town.
-  const neighborhoodEntries: MetadataRoute.Sitemap =
+  const townEntries: MetadataRoute.Sitemap =
     siteConfig.location.serviceArea.map((town) => ({
       url: `${BASE_URL}/neighborhoods/${slugifyTown(town)}`,
       lastModified,
@@ -60,5 +62,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     }));
 
-  return [...coreEntries, ...neighborhoodEntries];
+  // Per-service detail pages — selling / buying / relocating.
+  const serviceEntries: MetadataRoute.Sitemap = siteConfig.services.map(
+    (s) => ({
+      url: `${BASE_URL}/services/${s.slug}`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    }),
+  );
+
+  // Sub-neighborhood guides (Tuscan Village, Cobbett's Pond, Canobie Lake, etc.) —
+  // flagship custom content pillar per design-system.md §11 + market-intelligence.md §5 gap #2.
+  // Filters to sub-neighborhoods only; town slugs are already emitted above.
+  const subNeighborhoodEntries: MetadataRoute.Sitemap = neighborhoods
+    .filter((n) => n.category === "sub-neighborhood")
+    .map((n) => ({
+      url: `${BASE_URL}/neighborhoods/${n.slug}`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    }));
+
+  return [
+    ...coreEntries,
+    ...townEntries,
+    ...subNeighborhoodEntries,
+    ...serviceEntries,
+  ];
 }
