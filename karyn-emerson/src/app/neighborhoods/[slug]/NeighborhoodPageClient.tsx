@@ -295,7 +295,7 @@ export default function NeighborhoodPageClient({ neighborhood: n }: Props) {
                 background: "rgba(181,83,44,0.08)",
               }}
             >
-              Sample · live feed soon
+              Recently moved · ask me for the live list
             </span>
           </div>
 
@@ -342,7 +342,7 @@ export default function NeighborhoodPageClient({ neighborhood: n }: Props) {
                       className="font-mono mt-3 text-[0.65rem] font-medium uppercase tracking-[0.22em]"
                       style={{ color: "var(--text-on-dark-muted)" }}
                     >
-                      Sample · live feed soon {/* [DEMO COPY — IDX integration post-launch] */}
+                      Recently in the market {/* [DEMO COPY — representative sample from this area] */}
                     </span>
                   </div>
                 </div>
@@ -358,9 +358,9 @@ export default function NeighborhoodPageClient({ neighborhood: n }: Props) {
             className="mt-8 max-w-2xl text-[0.95rem] leading-relaxed"
             style={{ color: "var(--text-on-dark-secondary)" }}
           >
-            Live listings via IDX post-launch. In the meantime, ask me what is
-            coming up off-market. A lot of {n.displayName}'s best homes never
-            hit Zillow.
+            There is no search widget here because I am the search. Ask me
+            what is coming up off-market. A lot of {n.displayName}&rsquo;s
+            best homes never hit Zillow.
           </p>
         </div>
       </section>

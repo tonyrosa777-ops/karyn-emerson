@@ -6,25 +6,25 @@ import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
 
 // =============================================================================
-// /listings — IDX integration placeholder.
-// The real platform selection (iHomeFinder vs. Showcase IDX) is pending
-// confirmation with Jill & Co. Until then, this page ships as a clear
-// placeholder with 3-4 sample listing cards and a top banner.
-// Sample listings are [DEMO COPY - pending IDX feed]. If Wave B2 lands a
-// neighborhoods.ts with sampleListings later, import from there and remove
-// the inline fallback below.
+// /listings — "The shortlist method" page.
+// Strategic decision (see .planning/idx-decision.md): karynemerson.com does
+// NOT offer consumer IDX. Rationale: every self-serve search widget would
+// either route leads to the Jill & Co. Chime pool or cost $50-100/mo for an
+// independent vendor. Frame 1 play: position hand-curated shortlists as
+// superior to searching yourself. Premium positioning, 100% lead ownership,
+// every inquiry goes to Karyn's Calendly. Zero IDX infrastructure.
 // =============================================================================
 
 export const metadata: Metadata = {
   title:
-    "Featured Southern NH Listings | Karyn Emerson Real Estate",
+    "Southern NH Home Search, Done Differently | Karyn Emerson Real Estate",
   description:
-    "Live IDX search is coming. In the meantime, here is what is moving across Salem, Windham, Derry, and Londonderry.",
+    "No search widget. I hand-pull shortlists from the MLS for your exact criteria, including off-market and coming-soon homes Zillow does not publish. Send me the town, the budget, the must-haves.",
   alternates: { canonical: "/listings" },
   openGraph: {
-    title: "Featured Southern NH Listings | Karyn Emerson Real Estate",
+    title: "Southern NH Home Search, Done Differently | Karyn Emerson Real Estate",
     description:
-      "IDX platform pending. Sample of what is moving in Southern NH.",
+      "Hand-pulled shortlists beat 1,500-result scroll. Off-market and coming-soon homes Zillow does not publish.",
     type: "website",
     url: "/listings",
     siteName: "Karyn Emerson Real Estate",
@@ -33,15 +33,15 @@ export const metadata: Metadata = {
         url: "/og/default-og.jpg",
         width: 1200,
         height: 630,
-        alt: "Featured Southern NH Listings · Karyn Emerson Real Estate",
+        alt: "Southern NH Home Search, Done Differently · Karyn Emerson Real Estate",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Featured Southern NH Listings | Karyn Emerson Real Estate",
+    title: "Southern NH Home Search, Done Differently | Karyn Emerson Real Estate",
     description:
-      "IDX platform pending. Sample of what is moving in Southern NH.",
+      "Hand-pulled shortlists beat 1,500-result scroll. Off-market and coming-soon included.",
     images: ["/og/default-og.jpg"],
   },
 };
@@ -129,20 +129,6 @@ function statusLabel(s: "active" | "under-contract" | "coming-soon"): string {
 export default function ListingsPage() {
   return (
     <>
-      {/* IDX platform banner - always visible at the top of the page. */}
-      <div
-        className="w-full px-6 py-3 text-center"
-        style={{
-          background: "var(--accent)",
-          color: "var(--bg-base)",
-        }}
-      >
-        <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em]">
-          IDX platform TBD pending Jill &amp; Co. confirmation. iHomeFinder vs.
-          Showcase IDX.
-        </p>
-      </div>
-
       {/* SECTION 1 — HERO HEADER (LIGHT, shimmer H1) */}
       <section
         className="relative overflow-hidden"
@@ -154,25 +140,43 @@ export default function ListingsPage() {
         <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20 pt-20 md:pb-28 md:pt-28 lg:px-8">
           <FadeUp>
             <p className="font-mono text-xs uppercase tracking-[0.22em] text-[var(--accent)]">
-              FEATURED LISTINGS · SOUTHERN NH
+              The shortlist method
             </p>
           </FadeUp>
           <FadeUp delay={0.1}>
             <h1 className="hero-shimmer font-display text-display mt-5 font-semibold">
-              What is moving in Southern NH right now.
+              There is no search widget here.
             </h1>
           </FadeUp>
           <FadeUp delay={0.2}>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--text-secondary)]">
-              Live IDX search is coming once the platform selection finalizes.
-              In the meantime, here is a read on what is active, what just went
-              under contract, and what is coming soon across the service area.
+              Because I am the search. You tell me the town, the budget, and
+              the must-haves. I hand-pull a shortlist from the MLS, including
+              off-market homes and coming-soons Zillow does not publish. You
+              see relevant listings in 24 hours. Not 1,500 results that do not
+              fit your life.
             </p>
+          </FadeUp>
+          <FadeUp delay={0.3}>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Link
+                href="/booking"
+                className="inline-flex items-center rounded-full bg-[var(--accent)] px-8 py-3.5 font-body text-sm font-semibold uppercase tracking-wide text-[var(--bg-base)] shadow-[0_10px_30px_-10px_rgba(181,83,44,0.5)] transition hover:-translate-y-[1px] hover:bg-[var(--primary)]"
+              >
+                Tell me what you are looking for
+              </Link>
+              <Link
+                href="/quiz"
+                className="inline-flex items-center rounded-full border-[1.5px] border-[var(--primary)] px-8 py-3.5 font-body text-sm font-semibold uppercase tracking-wide text-[var(--primary)] transition hover:-translate-y-[1px] hover:bg-[var(--primary)] hover:text-[var(--bg-base)]"
+              >
+                Take the quiz first
+              </Link>
+            </div>
           </FadeUp>
         </div>
       </section>
 
-      {/* SECTION 2 — PLACEHOLDER TILE (DARK, forest green) */}
+      {/* SECTION 2 — HOW IT WORKS (DARK, forest green) */}
       <section
         className="relative overflow-hidden"
         style={{ background: "var(--primary)" }}
@@ -185,33 +189,88 @@ export default function ListingsPage() {
               "radial-gradient(ellipse at 50% 0%, rgba(181,83,44,0.10), transparent 70%)",
           }}
         />
-        <div className="relative z-10 mx-auto w-full max-w-3xl px-6 py-16 text-center md:py-20 lg:px-8">
+        <div className="relative z-10 mx-auto w-full max-w-4xl px-6 py-20 md:py-24 lg:px-8">
           <FadeUp>
             <p
-              className="font-mono text-xs uppercase tracking-[0.22em]"
+              className="text-center font-mono text-xs uppercase tracking-[0.22em]"
               style={{ color: "var(--accent)" }}
             >
-              While the live feed goes up
+              How it actually works
             </p>
           </FadeUp>
           <FadeUp delay={0.1}>
             <h2
-              className="font-display text-h2 mt-3 font-semibold"
+              className="mt-3 text-center font-display text-h2 font-semibold"
               style={{ color: "var(--text-on-dark-primary)" }}
             >
-              Live search via IDX is coming post-launch.
+              Faster than searching yourself. And it is free.
             </h2>
           </FadeUp>
-          <FadeUp delay={0.15}>
-            <p
-              className="mx-auto mt-5 max-w-xl text-base leading-relaxed"
-              style={{ color: "var(--text-on-dark-secondary)" }}
-            >
-              Until the IDX feed is wired in, I run private searches by hand
-              against the MLS the day a property hits. Send me the town, the
-              budget, and the must-haves, and you will see relevant listings
-              before Zillow publishes them.
-            </p>
+
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+            {[
+              {
+                step: "01",
+                emoji: "✍️",
+                title: "You send the criteria",
+                body:
+                  "Town or towns, budget range, bedrooms, must-haves, absolute no-gos. A text, an email, or a 15-minute call. Whatever is easier.",
+              },
+              {
+                step: "02",
+                emoji: "🔍",
+                title: "I pull the shortlist",
+                body:
+                  "MLS the day a property hits, coming-soons, pocket listings, and the off-market homes agents are quietly shopping around. You get 5 to 10 homes that actually fit. Not 1,500.",
+              },
+              {
+                step: "03",
+                emoji: "🗝️",
+                title: "We tour the real ones",
+                body:
+                  "You pick two or three you want to see in person. I schedule the showings, I drive, I read the room. No pressure. No lowball push. Just the honest read on each house.",
+              },
+            ].map((s) => (
+              <div
+                key={s.step}
+                className="rounded-lg border p-6"
+                style={{
+                  background: "var(--card-on-dark-bg)",
+                  borderColor: "var(--card-on-dark-border)",
+                }}
+              >
+                <p
+                  className="font-mono text-[11px] uppercase tracking-[0.22em]"
+                  style={{ color: "var(--accent)" }}
+                >
+                  Step {s.step}
+                </p>
+                <div className="mt-3 text-3xl">{s.emoji}</div>
+                <h3
+                  className="mt-3 font-display text-h4 font-semibold"
+                  style={{ color: "var(--text-on-dark-primary)" }}
+                >
+                  {s.title}
+                </h3>
+                <p
+                  className="mt-3 text-sm leading-relaxed"
+                  style={{ color: "var(--text-on-dark-secondary)" }}
+                >
+                  {s.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <FadeUp delay={0.2}>
+            <div className="mt-12 text-center">
+              <Link
+                href="/booking"
+                className="inline-flex items-center rounded-full bg-[var(--accent)] px-8 py-3.5 font-body text-sm font-semibold uppercase tracking-wide text-[var(--bg-base)] shadow-[0_10px_30px_-10px_rgba(181,83,44,0.5)] transition hover:-translate-y-[1px] hover:bg-[var(--bg-base)] hover:text-[var(--primary)]"
+              >
+                Book a 15-minute call
+              </Link>
+            </div>
           </FadeUp>
         </div>
       </section>
@@ -234,9 +293,11 @@ export default function ListingsPage() {
           </FadeUp>
           <FadeUp delay={0.15}>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-[var(--text-secondary)]">
-              These four properties are representative of what is moving right
-              now across the service area. [DEMO COPY - pending IDX feed].
-              Ask me for the live list.
+              A small sample of what is moving in the service area right now.
+              Nothing you will find on Zillow the same way. Ask me for the
+              current shortlist for your town and budget, and we will build one
+              together that actually fits.
+              {/* [DEMO COPY — pending client review on the exact four homes to feature] */}
             </p>
           </FadeUp>
 

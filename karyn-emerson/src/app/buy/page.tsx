@@ -10,7 +10,7 @@ import { breadcrumbSchema, realEstateAgentSchema } from "@/lib/schema";
 // =============================================================================
 // /buy — buyer-focused page.
 // Hero / "What buying in Southern NH actually looks like" (P&S, inspection,
-// well, septic, appraisal) / common worries / IDX placeholder tile /
+// well, septic, appraisal) / common worries / shortlist-method CTA /
 // filtered buying/relocating testimonials / CTA.
 // RealEstateAgent schema included on this page per pageplan.
 // =============================================================================
@@ -267,7 +267,7 @@ export default function BuyPage() {
         </div>
       </section>
 
-      {/* SECTION 4 — IDX SEARCH PLACEHOLDER (DARK, forest green) */}
+      {/* SECTION 4 — SHORTLIST METHOD (DARK, forest green) */}
       <section
         className="relative overflow-hidden"
         style={{ background: "var(--primary)" }}
@@ -286,7 +286,7 @@ export default function BuyPage() {
               className="font-mono text-xs uppercase tracking-[0.22em]"
               style={{ color: "var(--accent)" }}
             >
-              While the live feed goes up
+              The shortlist method
             </p>
           </FadeUp>
           <FadeUp delay={0.1}>
@@ -294,7 +294,7 @@ export default function BuyPage() {
               className="font-display text-h2 mt-3 font-semibold"
               style={{ color: "var(--text-on-dark-primary)" }}
             >
-              Live Southern NH search is coming.
+              Skip the portal. Get the shortlist.
             </h2>
           </FadeUp>
           <FadeUp delay={0.15}>
@@ -302,10 +302,10 @@ export default function BuyPage() {
               className="mx-auto mt-5 max-w-xl text-base leading-relaxed"
               style={{ color: "var(--text-on-dark-secondary)" }}
             >
-              The IDX platform for this site is pending final selection with
-              Jill &amp; Co. (iHomeFinder vs. Showcase IDX). Until then, send
-              me what you are looking for and I will set up a private search
-              that beats any public portal.
+              No search widget here on purpose. Send me your town, budget, and
+              must-haves. I will pull the MLS by hand, including off-market
+              homes and coming-soons Zillow does not publish. You see 5 to 10
+              homes that fit, in 24 hours, not 1,500 that do not.
             </p>
           </FadeUp>
           <FadeUp delay={0.25}>
