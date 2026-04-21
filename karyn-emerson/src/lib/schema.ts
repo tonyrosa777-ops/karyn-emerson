@@ -220,8 +220,17 @@ export function breadcrumbSchema(items: BreadcrumbItem[]) {
 // -----------------------------------------------------------------------------
 // articleSchema — Article / BlogPosting for /blog/[slug]
 // -----------------------------------------------------------------------------
+// Emits BlogPosting with articleBody (concatenated section paragraphs) and
+// wordCount for crawler indexing. Uses updatedAt when present, falls back to
+// publishedAt. Publisher is the RealEstateOrganization brokerage.
+// -----------------------------------------------------------------------------
 export function articleSchema(post: BlogPost) {
   const url = absoluteUrl(`/blog/${post.slug}`);
+  const articleBody = post.sections.flatMap((s) => s.paras).join("\n\n");
+  const wordCount = articleBody.trim().length
+    ? articleBody.trim().split(/\s+/).length
+    : 0;
+
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -229,27 +238,47 @@ export function articleSchema(post: BlogPost) {
     description: post.excerpt,
     image: [absoluteUrl(post.heroImage)],
     datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
+    dateModified: post.updatedAt ?? post.publishedAt,
     author: {
       "@type": "Person",
       name: post.author,
-      url: absoluteUrl("/about"),
+      url: `${SITE_URL}/about`,
     },
     publisher: {
-      "@type": "Organization",
-      name: siteConfig.businessName,
+      "@type": "RealEstateOrganization",
+      name: siteConfig.brokerage,
       url: SITE_URL,
-      logo: {
-        "@type": "ImageObject",
-        url: absoluteUrl("/og/default-og.jpg"),
-      },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": url,
+      "@id": absoluteUrl(`/blog/${post.slug}`),
     },
+    articleBody,
+    wordCount,
     articleSection: post.category,
     inLanguage: "en-US",
+    url,
+  } as const;
+}
+
+// -----------------------------------------------------------------------------
+// faqPageSchema — FAQPage derived from a BlogPost's faqs[] array
+// -----------------------------------------------------------------------------
+// Separate from faqSchema() so the blog article renderer can emit the FAQPage
+// JSON-LD alongside the BlogPosting without any intermediate mapping.
+// -----------------------------------------------------------------------------
+export function faqPageSchema(post: BlogPost) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: post.faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.a,
+      },
+    })),
   } as const;
 }
 
