@@ -51,7 +51,6 @@ export function HomeBookingPreview() {
           src="/images/about/about-landscape-1.jpg"
           alt="Southern NH autumn landscape at golden hour"
           fill
-          priority
           sizes="100vw"
           className="object-cover"
         />
