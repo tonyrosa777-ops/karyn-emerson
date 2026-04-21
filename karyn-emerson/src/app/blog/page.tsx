@@ -4,6 +4,7 @@ import Image from "next/image";
 import { blogPosts, BLOG_CATEGORIES } from "@/data/blogPosts";
 import type { BlogCategory, BlogPost } from "@/data/blogPosts";
 import { PageBanner } from "@/components/sections/PageBanner";
+import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { absoluteUrl, breadcrumbSchema } from "@/lib/schema";
 import { siteConfig } from "@/data/site";
@@ -212,10 +213,13 @@ export default async function BlogIndexPage({ searchParams }: PageProps) {
       {/* Featured article hero — magazine spread (only on default listing, page 1) */}
       {category === "all" && page === 1 && blogPosts.length > 0 && (
         <section
-          className="relative py-16 md:py-20"
+          className="relative overflow-hidden py-16 md:py-20"
           style={{ background: "var(--bg-base)" }}
         >
-          <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
+            <AmbientParticles density="low" />
+          </div>
+          <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
             <Link
               href={`/blog/${blogPosts[0].slug}`}
               className="group grid grid-cols-1 gap-10 md:grid-cols-2 items-center"

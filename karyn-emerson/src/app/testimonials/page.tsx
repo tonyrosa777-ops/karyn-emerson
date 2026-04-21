@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { siteConfig } from "@/data/site";
 import type { Testimonial } from "@/data/site";
 import { PageBanner } from "@/components/sections/PageBanner";
+import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { TestimonialsFilterChips } from "@/components/sections/TestimonialsFilterChips";
 
 export const metadata: Metadata = {
@@ -243,10 +244,13 @@ export default async function TestimonialsPage({ searchParams }: PageProps) {
 
       {/* SECTION 3 — FILTER + MASONRY GRID */}
       <section
-        className="relative py-20 md:py-24"
+        className="relative overflow-hidden py-20 md:py-24"
         style={{ background: "var(--bg-elevated)" }}
       >
-        <div className="mx-auto w-full max-w-6xl px-6 lg:px-8">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
+          <AmbientParticles density="low" />
+        </div>
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 lg:px-8">
           <div className="text-center">
             <p
               className="font-mono text-xs uppercase tracking-[0.22em]"

@@ -16,6 +16,7 @@ import { PRICING_TIERS, FEATURE_MATRIX } from "@/data/pricingTiers";
 import { BookingCalendar } from "@/components/booking/BookingCalendar";
 import { PricingROI } from "@/components/sections/PricingROI";
 import { PageBanner } from "@/components/sections/PageBanner";
+import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { absoluteUrl } from "@/lib/schema";
 
@@ -172,10 +173,13 @@ export default function PricingPage() {
 
       {/* ── ROI Calculator ──────────────────────────────── */}
       <section
-        className="py-20 md:py-24"
+        className="relative overflow-hidden py-20 md:py-24"
         style={{ background: "var(--bg-base)" }}
       >
-        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
+          <AmbientParticles density="low" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
           <div className="mx-auto mb-10 max-w-3xl text-center">
             <p
               className="font-mono text-[11px] uppercase tracking-[0.22em]"
@@ -203,10 +207,13 @@ export default function PricingPage() {
 
       {/* ── Comparison chart ────────────────────────────── */}
       <section
-        className="py-20 md:py-24"
+        className="relative overflow-hidden py-20 md:py-24"
         style={{ background: "var(--bg-elevated)" }}
       >
-        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
+          <AmbientParticles density="low" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
           <div className="mx-auto mb-12 max-w-3xl text-center">
             <p
               className="font-mono text-[11px] uppercase tracking-[0.22em]"
