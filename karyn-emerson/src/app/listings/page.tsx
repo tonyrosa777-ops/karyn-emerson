@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { siteConfig } from "@/data/site";
 import { FadeUp } from "@/components/animations/FadeUp";
-import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
+import { PageBanner } from "@/components/sections/PageBanner";
+import { AuroraGradient } from "@/components/sections/motion/AuroraGradient";
 
 // =============================================================================
 // /listings — "The shortlist method" page.
@@ -57,6 +59,8 @@ const sampleListings: Array<{
   sqft: number;
   description: string;
   status: "active" | "under-contract" | "coming-soon";
+  image: string;
+  imageAlt: string;
 }> = [
   {
     slug: "windham-cape-48-birch",
@@ -69,6 +73,8 @@ const sampleListings: Array<{
     description:
       "Cape on a quiet cul-de-sac near the Windham HS feeder. Wide-plank floors, renovated kitchen, stone patio and fire pit, full walk-out basement.",
     status: "active",
+    image: "/images/neighborhoods/windham-hero.jpg",
+    imageAlt: "Windham, NH residential street in autumn light",
   },
   {
     slug: "salem-ranch-12-cobbetts",
@@ -81,6 +87,8 @@ const sampleListings: Array<{
     description:
       "Single-level ranch steps from Cobbett's Pond. Updated mechanicals, detached two-car garage, four-season sunroom overlooking the lake path.",
     status: "active",
+    image: "/images/neighborhoods/cobbetts-pond-hero.jpg",
+    imageAlt: "Cobbett's Pond, Salem NH — lake and shoreline path",
   },
   {
     slug: "derry-colonial-212-hampstead",
@@ -93,6 +101,8 @@ const sampleListings: Array<{
     description:
       "Classic Derry colonial with Pinkerton Academy frontage. Original built-ins, formal dining, three-car driveway, mature perennial gardens.",
     status: "under-contract",
+    image: "/images/neighborhoods/derry-hero.jpg",
+    imageAlt: "Derry, NH classic New England colonial neighborhood",
   },
   {
     slug: "londonderry-newer-33-woodmont",
@@ -105,6 +115,8 @@ const sampleListings: Array<{
     description:
       "Newer construction in the Woodmont Commons district. Open plan, primary on first floor, smart-home prewired, walk to the trail network.",
     status: "coming-soon",
+    image: "/images/neighborhoods/woodmont-commons-hero.jpg",
+    imageAlt: "Woodmont Commons, Londonderry NH — newer construction district",
   },
 ];
 
@@ -129,52 +141,32 @@ function statusLabel(s: "active" | "under-contract" | "coming-soon"): string {
 export default function ListingsPage() {
   return (
     <>
-      {/* SECTION 1 — HERO HEADER (LIGHT, shimmer H1) */}
-      <section
-        className="relative overflow-hidden"
-        style={{ background: "var(--bg-base)" }}
-      >
-        <div className="absolute inset-0 z-0">
-          <AmbientParticles density="low" />
-        </div>
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20 pt-20 md:pb-28 md:pt-28 lg:px-8">
-          <FadeUp>
-            <p className="font-mono text-xs uppercase tracking-[0.22em] text-[var(--accent)]">
-              The shortlist method
-            </p>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <h1 className="hero-shimmer font-display text-display mt-5 font-semibold">
-              There is no search widget here.
-            </h1>
-          </FadeUp>
-          <FadeUp delay={0.2}>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--text-secondary)]">
-              Because I am the search. You tell me the town, the budget, and
-              the must-haves. I hand-pull a shortlist from the MLS, including
-              off-market homes and coming-soons Zillow does not publish. You
-              see relevant listings in 24 hours. Not 1,500 results that do not
-              fit your life.
-            </p>
-          </FadeUp>
-          <FadeUp delay={0.3}>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link
-                href="/booking"
-                className="inline-flex items-center rounded-full bg-[var(--accent)] px-8 py-3.5 font-body text-sm font-semibold uppercase tracking-wide text-[var(--bg-base)] shadow-[0_10px_30px_-10px_rgba(181,83,44,0.5)] transition hover:-translate-y-[1px] hover:bg-[var(--primary)]"
-              >
-                Tell me what you are looking for
-              </Link>
-              <Link
-                href="/quiz"
-                className="inline-flex items-center rounded-full border-[1.5px] border-[var(--primary)] px-8 py-3.5 font-body text-sm font-semibold uppercase tracking-wide text-[var(--primary)] transition hover:-translate-y-[1px] hover:bg-[var(--primary)] hover:text-[var(--bg-base)]"
-              >
-                Take the quiz first
-              </Link>
-            </div>
-          </FadeUp>
-        </div>
-      </section>
+      {/* SECTION 1 — HERO BANNER (mosaic3 + ink-bloom H1) */}
+      <PageBanner
+        mode="mosaic3"
+        images={[
+          {
+            src: "/images/neighborhoods/canobie-lake-hero.jpg",
+            alt: "Canobie Lake, Salem NH — autumn reflection",
+          },
+          {
+            src: "/images/neighborhoods/shadow-lake-hero.jpg",
+            alt: "Shadow Lake, Hampstead NH — morning light",
+          },
+          {
+            src: "/images/neighborhoods/tuscan-village-hero.jpg",
+            alt: "Tuscan Village, Salem NH — modern colonial",
+          },
+        ]}
+        eyebrow="THE SHORTLIST METHOD"
+        title={`A handful of right fits.`}
+        titleMotion="ink-bloom"
+        titleAccentWord="right"
+        subhead="Not a scraped MLS portal. A curated shortlist of Southern NH homes chosen for buyers Karyn is already working with, plus a few open-door showings each month."
+        height="md"
+        parallax
+        textSide="left"
+      />
 
       {/* SECTION 2 — HOW IT WORKS (DARK, forest green) */}
       <section
@@ -275,93 +267,119 @@ export default function ListingsPage() {
         </div>
       </section>
 
-      {/* SECTION 3 — SAMPLE LISTINGS (LIGHT) */}
+      {/* SECTION 3 — MAGAZINE-SPREAD LISTINGS (LIGHT, sage aurora) */}
       <section
-        className="relative"
+        className="relative overflow-hidden py-20 md:py-28"
         style={{ background: "var(--bg-base)" }}
       >
-        <div className="mx-auto w-full max-w-6xl px-6 py-20 md:py-24 lg:px-8">
-          <FadeUp>
-            <p className="font-mono text-xs uppercase tracking-[0.22em] text-[var(--accent)]">
-              A READ ON THE MARKET
-            </p>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <h2 className="font-display text-h2 mt-3 max-w-2xl font-semibold text-[var(--text-primary)]">
-              Four homes, four Southern NH towns.
-            </h2>
-          </FadeUp>
-          <FadeUp delay={0.15}>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-[var(--text-secondary)]">
-              A small sample of what is moving in the service area right now.
-              Nothing you will find on Zillow the same way. Ask me for the
-              current shortlist for your town and budget, and we will build one
-              together that actually fits.
-              {/* [DEMO COPY — pending client review on the exact four homes to feature] */}
-            </p>
-          </FadeUp>
+        <AuroraGradient tone="sage" intensity="subtle" />
+        <div className="relative mx-auto w-full max-w-6xl px-6 lg:px-8">
+          <div className="mb-16 max-w-2xl md:mb-20">
+            <FadeUp>
+              <p
+                className="font-mono text-xs uppercase tracking-[0.22em]"
+                style={{ color: "var(--accent)" }}
+              >
+                A READ ON THE MARKET
+              </p>
+            </FadeUp>
+            <FadeUp delay={0.1}>
+              <h2 className="mt-3 font-display text-h2 font-semibold text-[var(--text-primary)]">
+                Four homes, four Southern NH towns.
+              </h2>
+            </FadeUp>
+            <FadeUp delay={0.15}>
+              <p className="mt-4 text-base leading-relaxed text-[var(--text-secondary)]">
+                A small sample of what is moving in the service area right now.
+                Nothing you will find on Zillow the same way. Ask me for the
+                current shortlist for your town and budget, and we will build
+                one together that actually fits.
+                {/* [DEMO COPY — pending client review on the exact four homes to feature] */}
+              </p>
+            </FadeUp>
+          </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-2">
-            {sampleListings.map((listing, i) => (
-              <FadeUp key={listing.slug} delay={0.05 + i * 0.05}>
-                <article
-                  className="flex h-full flex-col rounded-lg border p-6"
-                  style={{
-                    background: "var(--bg-card)",
-                    borderColor: "rgba(47, 74, 58, 0.1)",
-                  }}
-                >
-                  <div className="flex items-center justify-between">
-                    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--accent)]">
-                      {listing.town}, NH
-                    </p>
-                    <span
-                      className="font-mono rounded-full border px-3 py-1 text-[10px] uppercase tracking-[0.18em]"
-                      style={{
-                        borderColor:
-                          listing.status === "active"
-                            ? "rgba(47, 74, 58, 0.25)"
-                            : "rgba(181, 83, 44, 0.35)",
-                        color:
-                          listing.status === "active"
-                            ? "var(--primary)"
-                            : "var(--accent)",
-                      }}
+          <div className="space-y-20 md:space-y-28">
+            {sampleListings.map((listing, i) => {
+              const isImageLeft = i % 2 === 0;
+              return (
+                <FadeUp key={listing.slug} delay={0.05}>
+                  <article className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12">
+                    <div
+                      className={`relative aspect-[3/2] overflow-hidden rounded-lg ${
+                        isImageLeft ? "md:order-1" : "md:order-2"
+                      }`}
                     >
-                      {statusLabel(listing.status)}
-                    </span>
-                  </div>
-                  <h3 className="mt-3 font-display text-h3 font-semibold text-[var(--text-primary)]">
-                    {listing.address}
-                  </h3>
-                  <p className="font-mono mt-2 text-xl font-semibold text-[var(--primary)]">
-                    {formatUSD(listing.price)}
-                  </p>
-                  <p className="font-mono mt-2 text-xs uppercase tracking-[0.14em] text-[var(--text-muted)]">
-                    <span>{listing.beds} bed</span>
-                    <span className="px-2">·</span>
-                    <span>{listing.baths} bath</span>
-                    <span className="px-2">·</span>
-                    <span>{formatSqft(listing.sqft)} sqft</span>
-                  </p>
-                  <p className="mt-4 text-sm leading-relaxed text-[var(--text-secondary)]">
-                    {listing.description}
-                  </p>
-                  <div className="mt-6 flex gap-3">
-                    <Link
-                      href="/booking"
-                      className="inline-flex items-center justify-center rounded-full px-5 py-2 font-body text-xs font-semibold uppercase tracking-wide transition"
-                      style={{
-                        background: "var(--primary)",
-                        color: "var(--bg-base)",
-                      }}
+                      <Image
+                        src={listing.image}
+                        alt={listing.imageAlt}
+                        fill
+                        sizes="(min-width: 768px) 50vw, 100vw"
+                        className="object-cover"
+                      />
+                    </div>
+                    <div
+                      className={`${
+                        isImageLeft ? "md:order-2" : "md:order-1"
+                      }`}
                     >
-                      Ask About This Home
-                    </Link>
-                  </div>
-                </article>
-              </FadeUp>
-            ))}
+                      <p
+                        className="font-mono text-[11px] uppercase tracking-[0.22em]"
+                        style={{ color: "var(--accent)" }}
+                      >
+                        {statusLabel(listing.status)} · {listing.town}, NH
+                      </p>
+                      <h3
+                        className="mt-3 font-display font-semibold"
+                        style={{
+                          fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
+                          lineHeight: 1.15,
+                          color: "var(--text-primary)",
+                        }}
+                      >
+                        {listing.address}
+                      </h3>
+                      <p
+                        className="mt-3 font-mono font-semibold"
+                        style={{
+                          fontSize: "1.15rem",
+                          color: "var(--primary)",
+                        }}
+                      >
+                        {formatUSD(listing.price)}
+                      </p>
+                      <p
+                        className="mt-2 font-mono text-xs uppercase tracking-[0.14em]"
+                        style={{ color: "var(--text-muted)" }}
+                      >
+                        <span>{listing.beds} bed</span>
+                        <span className="px-2">·</span>
+                        <span>{listing.baths} bath</span>
+                        <span className="px-2">·</span>
+                        <span>{formatSqft(listing.sqft)} sqft</span>
+                      </p>
+                      <p
+                        className="mt-4 font-display italic"
+                        style={{
+                          fontSize: "1.05rem",
+                          lineHeight: 1.55,
+                          color: "var(--text-secondary)",
+                        }}
+                      >
+                        {listing.description}
+                      </p>
+                      <Link
+                        href="/booking"
+                        className="mt-6 inline-flex items-center font-mono text-[12px] uppercase tracking-[0.14em]"
+                        style={{ color: "var(--primary)" }}
+                      >
+                        Ask about this home →
+                      </Link>
+                    </div>
+                  </article>
+                </FadeUp>
+              );
+            })}
           </div>
         </div>
       </section>

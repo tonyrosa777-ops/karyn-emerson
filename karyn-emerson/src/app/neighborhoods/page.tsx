@@ -4,13 +4,16 @@
 // Spec: design-system.md §5 (guide cards), §11 (service-area row), §6 (photography),
 //       market-intelligence.md §5 gap #2, §9 "do" #3. CLAUDE.md Page Animation Rule
 //       (ambient only, never full hero stack on interior pages).
+// Treatment: PageBanner mosaic-7 (showpiece) + letter-mask H1 + magazine-spread
+//            asymmetric town grid + TownMarquee ticker.
 // =============================================================================
 
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { neighborhoods, getTowns, getSubNeighborhoods } from "@/data/neighborhoods";
-import AmbientParticles from "@/components/sections/AmbientParticles";
+import { PageBanner } from "@/components/sections/PageBanner";
+import { TownMarquee } from "@/components/sections/motion/TownMarquee";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
   absoluteUrl,
@@ -54,6 +57,9 @@ const currencyFormatter = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 0,
 });
 
+// -----------------------------------------------------------------------------
+// Sub-neighborhood card (preserved — uniform treatment for secondary grid)
+// -----------------------------------------------------------------------------
 function NeighborhoodCard({
   n,
 }: {
@@ -136,6 +142,108 @@ function NeighborhoodCard({
   );
 }
 
+// -----------------------------------------------------------------------------
+// Magazine-spread town card — asymmetric feature/standard treatment
+// -----------------------------------------------------------------------------
+function TownSpreadCard({
+  n,
+  isFeature,
+  isFirst,
+}: {
+  n: (typeof neighborhoods)[number];
+  isFeature: boolean;
+  isFirst: boolean;
+}) {
+  const colSpan = isFeature ? "lg:col-span-3" : "lg:col-span-2";
+  const aspect = isFeature ? "aspect-[3/2]" : "aspect-[4/3]";
+  const titleSize = isFeature ? "1.75rem" : "1.35rem";
+
+  return (
+    <Link
+      href={`/neighborhoods/${n.slug}`}
+      className={`group relative flex flex-col overflow-hidden rounded-lg ${colSpan} ${
+        isFirst ? "shimmer-border" : ""
+      }`}
+      style={{
+        background: "var(--bg-elevated)",
+        border: "1px solid rgba(47,74,58,0.08)",
+      }}
+    >
+      <div className={`relative ${aspect} overflow-hidden`}>
+        <Image
+          src={n.heroImage}
+          alt={`${n.displayName}, ${n.state}`}
+          fill
+          sizes="(min-width: 1024px) 50vw, (min-width: 768px) 50vw, 100vw"
+          className="object-cover transition duration-700 group-hover:scale-[1.05]"
+        />
+        {/* Fallback emoji layered beneath image in case of missing asset */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center text-6xl opacity-30"
+        >
+          {n.fallbackEmoji}
+        </div>
+
+        {/* Slide-up overlay on hover — mill rate + median price */}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-full p-4 transition duration-500 group-hover:translate-y-0"
+          style={{
+            background:
+              "linear-gradient(to top, rgba(26,31,28,0.92), rgba(26,31,28,0.72) 60%, transparent)",
+          }}
+        >
+          <p
+            className="font-mono text-[10px] uppercase tracking-[0.2em]"
+            style={{ color: "var(--text-on-dark-muted)" }}
+          >
+            Mill rate · Median price
+          </p>
+          <p
+            className="font-body mt-1 text-sm"
+            style={{ color: "var(--text-on-dark-primary)" }}
+          >
+            {n.milRate.toFixed(2)} · {currencyFormatter.format(n.medianHomePrice)}
+          </p>
+        </div>
+      </div>
+
+      <div className="flex flex-1 flex-col p-5">
+        <p
+          className="font-mono text-[11px] uppercase tracking-[0.18em]"
+          style={{ color: "var(--accent)" }}
+        >
+          {n.eyebrow}
+        </p>
+        <h3
+          className="font-display mt-2 font-semibold leading-tight"
+          style={{ fontSize: titleSize, color: "var(--text-primary)" }}
+        >
+          {n.displayName}
+        </h3>
+        <p
+          className="mt-2 text-sm leading-relaxed"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          {n.tagline}
+        </p>
+        <span
+          className="font-mono mt-4 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em]"
+          style={{ color: "var(--primary)" }}
+        >
+          Read the guide
+          <span
+            aria-hidden="true"
+            className="transition-transform group-hover:translate-x-0.5"
+          >
+            →
+          </span>
+        </span>
+      </div>
+    </Link>
+  );
+}
+
 export default function NeighborhoodsIndexPage() {
   const towns = getTowns();
   const subs = getSubNeighborhoods();
@@ -163,43 +271,50 @@ export default function NeighborhoodsIndexPage() {
   return (
     <div className="relative">
       <JsonLd data={[breadcrumb, itemListSchema]} />
-      {/* Section 1 — Hero header (LIGHT) with ambient particles */}
-      <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0">
-          <AmbientParticles density="low" />
-        </div>
-        <div className="relative mx-auto max-w-6xl px-6 pt-20 pb-16 sm:pt-24 sm:pb-20">
-          <span
-            className="font-mono text-xs font-medium uppercase tracking-[0.3em]"
-            style={{ color: "var(--accent)" }}
-          >
-            Southern New Hampshire · Town by town
-          </span>
-          <h1 className="font-display hero-shimmer mt-4 text-[clamp(2.5rem,5vw,4rem)] font-semibold leading-[1.05] tracking-tight">
-            Southern New Hampshire, town by town.
-          </h1>
-          <p className="mt-6 max-w-2xl text-[1.05rem] leading-relaxed text-[var(--text-secondary)]">
-            Seven towns, and the neighborhoods inside them. I grew up here, I sell
-            here, and I have watched every one of these streets change over the
-            last twenty years. Pick a town and read it like a letter from a
-            neighbor, not a brochure.
-          </p>
-          <p className="mt-4 max-w-2xl text-[1.05rem] leading-relaxed text-[var(--text-secondary)]">
-            If you are coming up from Methuen, Andover, or Lawrence and still
-            deciding which town fits, start with the{" "}
-            <Link
-              href="/relocate"
-              className="underline decoration-[var(--accent)] underline-offset-[6px] hover:text-[var(--primary)]"
-            >
-              MA to NH relocation hub
-            </Link>
-            {" "}
-            and then come back here.
-          </p>
-        </div>
-      </section>
 
-      {/* Section 2 — Towns grid (LIGHT, cream base) */}
+      {/* Section 1 — Mosaic-7 photo banner (THE showpiece) */}
+      <PageBanner
+        mode="mosaic7"
+        images={[
+          {
+            src: "/images/neighborhoods/salem-hero.jpg",
+            alt: "Salem, NH — autumn foliage over historic town center",
+          },
+          {
+            src: "/images/neighborhoods/windham-hero.jpg",
+            alt: "Windham, NH — lake country",
+          },
+          {
+            src: "/images/neighborhoods/derry-hero.jpg",
+            alt: "Derry, NH — classic New England main street",
+          },
+          {
+            src: "/images/neighborhoods/londonderry-hero.jpg",
+            alt: "Londonderry, NH — rolling farmland",
+          },
+          {
+            src: "/images/neighborhoods/pelham-hero.jpg",
+            alt: "Pelham, NH — quiet country lane",
+          },
+          {
+            src: "/images/neighborhoods/atkinson-hero.jpg",
+            alt: "Atkinson, NH — autumn treeline",
+          },
+          {
+            src: "/images/neighborhoods/hampstead-hero.jpg",
+            alt: "Hampstead, NH — waterfront",
+          },
+        ]}
+        eyebrow="SOUTHERN NH · 7 TOWNS"
+        title={<>Pick your neighborhood.</>}
+        titleMotion="letter-mask"
+        subhead="Seven towns, each with its own character, mill rate, and price band. Plus sub-neighborhood deep-dives for the places buyers compare most often."
+        height="lg"
+        parallax
+        textSide="left"
+      />
+
+      {/* Section 2 — Magazine-spread town grid (LIGHT, cream base) */}
       <section className="relative" style={{ background: "var(--bg-base)" }}>
         <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
           <div className="mb-10 flex items-end justify-between gap-4">
@@ -211,14 +326,37 @@ export default function NeighborhoodsIndexPage() {
                 The Seven Towns
               </span>
               <h2 className="font-display mt-2 text-[clamp(1.75rem,3.25vw,2.5rem)] font-semibold leading-tight text-[var(--text-primary)]">
-                Karyn's full service area.
+                Karyn&apos;s full service area.
               </h2>
+              <p className="mt-4 max-w-2xl text-[1.05rem] leading-relaxed text-[var(--text-secondary)]">
+                I grew up here, I sell here, and I have watched every one of
+                these streets change over the last twenty years. Pick a town and
+                read it like a letter from a neighbor, not a brochure.
+              </p>
+              <p className="mt-3 max-w-2xl text-[0.95rem] leading-relaxed text-[var(--text-secondary)]">
+                Coming up from Methuen, Andover, or Lawrence and still deciding?
+                Start with the{" "}
+                <Link
+                  href="/relocate"
+                  className="underline decoration-[var(--accent)] underline-offset-[6px] hover:text-[var(--primary)]"
+                >
+                  MA to NH relocation hub
+                </Link>
+                {" "}
+                and come back here.
+              </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {towns.map((n) => (
-              <NeighborhoodCard key={n.slug} n={n} />
+          {/* Asymmetric magazine-spread grid: every 3rd card is a feature (col-span-3), rest are standard (col-span-2). 6-column track on lg. */}
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-6">
+            {towns.map((n, i) => (
+              <TownSpreadCard
+                key={n.slug}
+                n={n}
+                isFeature={i % 3 === 0}
+                isFirst={i === 0}
+              />
             ))}
           </div>
         </div>
@@ -244,10 +382,10 @@ export default function NeighborhoodsIndexPage() {
               The pockets inside the towns.
             </h2>
             <p className="mt-4 max-w-2xl text-[1rem] leading-relaxed text-[var(--text-secondary)]">
-              Tuscan Village, Cobbett's Pond, Canobie Lake, Woodmont Commons, and
-              a few more. These guides go one layer deeper than the town pages
-              because the town-level story is not specific enough when you are
-              buying waterfront or downsizing into new construction.
+              Tuscan Village, Cobbett&apos;s Pond, Canobie Lake, Woodmont
+              Commons, and a few more. These guides go one layer deeper than the
+              town pages because the town-level story is not specific enough
+              when you are buying waterfront or downsizing into new construction.
             </p>
           </div>
 
@@ -257,6 +395,18 @@ export default function NeighborhoodsIndexPage() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* Section 4 — TownMarquee ticker (LIGHT elevated — divider band before footer) */}
+      <section
+        className="relative py-8"
+        style={{
+          background: "var(--bg-elevated)",
+          borderTop: "1px solid rgba(47,74,58,0.08)",
+          borderBottom: "1px solid rgba(47,74,58,0.08)",
+        }}
+      >
+        <TownMarquee duration={60} tone="muted" />
       </section>
     </div>
   );

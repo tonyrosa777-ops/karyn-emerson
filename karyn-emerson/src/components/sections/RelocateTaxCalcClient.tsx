@@ -19,6 +19,7 @@ import {
   computeAnnualTax,
   nhTownTaxData,
 } from "@/data/taxRates";
+import { CountUp } from "@/components/sections/motion/CountUp";
 
 const DEFAULT_INCOME = 180_000;
 const DEFAULT_HOME_VALUE = 550_000;
@@ -212,7 +213,12 @@ export default function RelocateTaxCalcClient() {
               Net annual delta (rough)
             </p>
             <p className="font-mono mt-2 text-4xl font-semibold text-[var(--primary)] md:text-5xl">
-              {formatUSD(netAnnualDelta)}
+              <CountUp
+                key={`net-${netAnnualDelta}`}
+                value={netAnnualDelta}
+                prefix="$"
+                duration={900}
+              />
             </p>
             <p className="mt-2 text-sm text-[var(--text-secondary)]">
               Combined MA income tax, sales tax savings, and property tax delta

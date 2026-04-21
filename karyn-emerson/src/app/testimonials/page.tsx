@@ -3,9 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { siteConfig } from "@/data/site";
 import type { Testimonial } from "@/data/site";
-import { FadeUp } from "@/components/animations/FadeUp";
-import { AmbientParticles } from "@/components/sections/AmbientParticles";
-import { BreathingOrb } from "@/components/sections/BreathingOrb";
+import { PageBanner } from "@/components/sections/PageBanner";
 import { TestimonialsFilterChips } from "@/components/sections/TestimonialsFilterChips";
 
 export const metadata: Metadata = {
@@ -38,7 +36,7 @@ export const metadata: Metadata = {
   },
 };
 
-// 9 per page is mandated by CLAUDE.md Testimonials Page rule (3-col x 3-row grid).
+// 9 per page is mandated by CLAUDE.md Testimonials Page rule.
 const PER_PAGE = 9;
 
 type FilterValue = "all" | "selling" | "buying" | "relocating" | "downsizing";
@@ -65,40 +63,56 @@ function parseFilter(raw: string | undefined): FilterValue {
   return "all";
 }
 
-function StarRow({ rating }: { rating: number }) {
+// Masonry card — three padding/type-size variants cycled by index.
+// Pure CSS hover lift (no client-side JS) keeps this a server component.
+function MasonryCard({
+  t,
+  variant,
+}: {
+  t: Testimonial;
+  variant: 0 | 1 | 2;
+}) {
+  const paddingClass =
+    variant === 1 ? "p-8" : variant === 2 ? "p-5" : "p-6";
+  const quoteSize =
+    variant === 1
+      ? "clamp(1.125rem, 1.6vw, 1.35rem)"
+      : variant === 2
+        ? "clamp(0.9375rem, 1.2vw, 1rem)"
+        : "clamp(1rem, 1.4vw, 1.125rem)";
+
   return (
     <div
-      aria-label={`${rating} out of 5 stars`}
-      className="font-mono text-xs uppercase tracking-[0.22em]"
-      style={{ color: "var(--accent)" }}
-    >
-      {"★".repeat(rating)}
-    </div>
-  );
-}
-
-function TestimonialCard({ t }: { t: Testimonial }) {
-  return (
-    <figure
-      className="flex h-full flex-col rounded-lg border p-6 transition hover:translate-y-[-2px] md:p-8"
+      className={`break-inside-avoid mb-6 rounded-lg border ${paddingClass} transition duration-300 hover:-translate-y-0.5 hover:shadow-lg`}
       style={{
         background: "var(--bg-card)",
         borderColor: "rgba(47, 74, 58, 0.1)",
       }}
     >
-      <StarRow rating={t.rating} />
-      <blockquote className="mt-4 flex-1 font-body text-base leading-relaxed text-[var(--text-primary)]">
+      <div
+        aria-label={`${t.rating} out of 5 stars`}
+        className="font-mono text-xs uppercase tracking-[0.22em]"
+        style={{ color: "var(--accent)" }}
+      >
+        {"★".repeat(t.rating)}
+      </div>
+      <blockquote
+        className="mt-4 font-display italic font-medium"
+        style={{
+          fontSize: quoteSize,
+          lineHeight: 1.5,
+          color: "var(--text-primary)",
+        }}
+      >
         &ldquo;{t.quote}&rdquo;
       </blockquote>
-      <figcaption className="mt-5">
-        <p className="font-display text-h4 font-semibold text-[var(--text-primary)]">
-          {t.name}
-        </p>
-        <p className="font-mono text-xs uppercase tracking-wider text-[var(--text-muted)]">
-          {t.location} · {t.serviceType}
-        </p>
-      </figcaption>
-    </figure>
+      <p
+        className="mt-4 font-mono text-[11px] uppercase tracking-[0.14em]"
+        style={{ color: "var(--text-muted)" }}
+      >
+        {t.name} · {t.location} · {t.serviceType}
+      </p>
+    </div>
   );
 }
 
@@ -160,83 +174,95 @@ export default async function TestimonialsPage({ searchParams }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      {/* SECTION 1 — HERO: FEATURED QUOTE (LIGHT, shimmer + ambient) */}
+      {/* SECTION 1 — BANNER: cross-dissolve photo carousel + shimmer H1 */}
+      <PageBanner
+        mode="crossDissolve"
+        images={[
+          {
+            src: "/images/about/about-landscape-1.jpg",
+            alt: "Autumn Southern NH landscape",
+          },
+          {
+            src: "/images/about/about-clapboard-detail.jpg",
+            alt: "Clapboard colonial in autumn light",
+          },
+          {
+            src: "/images/about/about-stone-wall.jpg",
+            alt: "Dry stone wall at field edge",
+          },
+        ]}
+        eyebrow="CLIENT STORIES"
+        title={<>In their own words.</>}
+        titleMotion="shimmer"
+        subhead="Thirty-six real calls, thirty-six stories. Every one paged nine at a time so nothing gets lost in a wall of quotes."
+        height="md"
+        parallax
+        textSide="left"
+      />
+
+      {/* SECTION 2 — FEATURED PULL-QUOTE: massive editorial spread */}
       <section
-        className="relative overflow-hidden"
+        className="relative py-20 md:py-28"
         style={{ background: "var(--bg-base)" }}
       >
-        <div className="absolute inset-0 z-0">
-          <AmbientParticles density="low" />
-        </div>
-        <div className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-20 pt-20 md:pb-28 md:pt-28 lg:px-8">
-          <FadeUp>
-            <p className="font-mono text-xs uppercase tracking-[0.22em] text-[var(--accent)]">
-              THIRTY-SIX UNFILTERED STORIES
-            </p>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <h1 className="hero-shimmer font-display text-display mt-5 font-semibold">
-              In their own words.
-            </h1>
-          </FadeUp>
-
-          <FadeUp delay={0.2}>
-            <figure className="mt-10">
-              <StarRow rating={featured.rating} />
-              {/* Drop-cap on first letter — design-system.md §5 */}
-              <blockquote className="mt-4 font-display text-h2 font-medium leading-relaxed text-[var(--text-primary)]">
-                <span
-                  className="float-left mr-3 mt-1 font-display font-semibold leading-none"
-                  style={{
-                    fontSize: "3.5rem",
-                    color: "var(--accent)",
-                  }}
-                  aria-hidden="true"
-                >
-                  {featured.quote.charAt(0)}
-                </span>
-                {featured.quote.slice(1)}
-              </blockquote>
-              <figcaption className="mt-6 font-mono text-xs uppercase tracking-wider text-[var(--text-muted)]">
+        <div className="mx-auto max-w-5xl px-6 lg:px-8">
+          <div className="relative">
+            {/* Giant open-quote mark in the margin */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -left-4 -top-8 select-none font-display italic leading-none md:-left-12"
+              style={{
+                fontSize: "clamp(6rem, 14vw, 10rem)",
+                color: "var(--accent)",
+                opacity: 0.2,
+              }}
+            >
+              &ldquo;
+            </span>
+            <blockquote className="relative">
+              <p
+                className="font-display italic font-medium"
+                style={{
+                  fontSize: "clamp(1.8rem, 3.5vw, 3rem)",
+                  lineHeight: 1.2,
+                  color: "var(--text-primary)",
+                }}
+              >
+                {featured.quote}
+              </p>
+              <footer
+                className="mt-8 font-mono text-xs uppercase tracking-[0.22em]"
+                style={{ color: "var(--text-muted)" }}
+              >
                 {featured.name} · {featured.location}
-              </figcaption>
-            </figure>
-          </FadeUp>
+              </footer>
+            </blockquote>
+          </div>
         </div>
       </section>
 
-      {/* SECTION 2 — FILTER + GRID (DARK) */}
+      {/* SECTION 3 — FILTER + MASONRY GRID */}
       <section
-        className="relative overflow-hidden"
-        style={{ background: "var(--primary)" }}
+        className="relative py-20 md:py-24"
+        style={{ background: "var(--bg-elevated)" }}
       >
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse at 50% 0%, rgba(181,83,44,0.10), transparent 70%)",
-          }}
-        />
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 py-16 md:py-20 lg:px-8">
-          <FadeUp>
-            <div className="text-center">
-              <p
-                className="font-mono text-xs uppercase tracking-[0.22em]"
-                style={{ color: "var(--text-on-dark-muted)" }}
-              >
-                FILTER BY SERVICE
-              </p>
-              <h2
-                className="font-display text-h3 mt-3 font-semibold"
-                style={{ color: "var(--text-on-dark-primary)" }}
-              >
-                {filter === "all"
-                  ? `${filtered.length} stories across four categories`
-                  : `${filtered.length} ${filter} stories`}
-              </h2>
-            </div>
-          </FadeUp>
+        <div className="mx-auto w-full max-w-6xl px-6 lg:px-8">
+          <div className="text-center">
+            <p
+              className="font-mono text-xs uppercase tracking-[0.22em]"
+              style={{ color: "var(--accent)" }}
+            >
+              FILTER BY SERVICE
+            </p>
+            <h2
+              className="font-display text-h3 mt-3 font-semibold"
+              style={{ color: "var(--text-primary)" }}
+            >
+              {filter === "all"
+                ? `${filtered.length} stories across four categories`
+                : `${filtered.length} ${filter} stories`}
+            </h2>
+          </div>
 
           <div className="mt-8">
             <Suspense fallback={null}>
@@ -245,23 +271,20 @@ export default async function TestimonialsPage({ searchParams }: PageProps) {
           </div>
 
           {pageItems.length === 0 ? (
-            <FadeUp>
-              <p
-                className="mt-16 text-center text-base"
-                style={{ color: "var(--text-on-dark-secondary)" }}
-              >
-                No testimonials match that filter yet.
-              </p>
-            </FadeUp>
+            <p
+              className="mt-16 text-center text-base"
+              style={{ color: "var(--text-secondary)" }}
+            >
+              No testimonials match that filter yet.
+            </p>
           ) : (
-            <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-12 columns-1 gap-6 md:columns-2 lg:columns-3">
               {pageItems.map((t, i) => (
-                <FadeUp
+                <MasonryCard
                   key={`${t.name}-${start + i}`}
-                  delay={0.05 + (i % 3) * 0.05}
-                >
-                  <TestimonialCard t={t} />
-                </FadeUp>
+                  t={t}
+                  variant={(i % 3) as 0 | 1 | 2}
+                />
               ))}
             </div>
           )}
@@ -278,8 +301,8 @@ export default async function TestimonialsPage({ searchParams }: PageProps) {
                   scroll={false}
                   className="rounded-full border px-4 py-2 font-body text-sm font-medium transition"
                   style={{
-                    borderColor: "var(--card-on-dark-border)",
-                    color: "var(--text-on-dark-primary)",
+                    borderColor: "rgba(47,74,58,0.2)",
+                    color: "var(--text-primary)",
                   }}
                 >
                   ← Previous
@@ -297,14 +320,14 @@ export default async function TestimonialsPage({ searchParams }: PageProps) {
                     className="inline-flex h-10 min-w-[2.5rem] items-center justify-center rounded-full border px-3 font-body text-sm font-semibold transition"
                     style={{
                       background: active
-                        ? "var(--bg-base)"
-                        : "var(--card-on-dark-bg)",
-                      color: active
                         ? "var(--primary)"
-                        : "var(--text-on-dark-primary)",
-                      borderColor: active
+                        : "var(--bg-card)",
+                      color: active
                         ? "var(--bg-base)"
-                        : "var(--card-on-dark-border)",
+                        : "var(--text-primary)",
+                      borderColor: active
+                        ? "var(--primary)"
+                        : "rgba(47,74,58,0.2)",
                     }}
                   >
                     {p}
@@ -317,8 +340,8 @@ export default async function TestimonialsPage({ searchParams }: PageProps) {
                   scroll={false}
                   className="rounded-full border px-4 py-2 font-body text-sm font-medium transition"
                   style={{
-                    borderColor: "var(--card-on-dark-border)",
-                    color: "var(--text-on-dark-primary)",
+                    borderColor: "rgba(47,74,58,0.2)",
+                    color: "var(--text-primary)",
                   }}
                 >
                   Next →
@@ -327,65 +350,71 @@ export default async function TestimonialsPage({ searchParams }: PageProps) {
             </nav>
           )}
 
-          <FadeUp>
-            <p
-              className="mt-6 text-center font-mono text-xs uppercase tracking-[0.22em]"
-              style={{ color: "var(--text-on-dark-muted)" }}
-            >
-              Page {page} of {totalPages} · {filtered.length} stories
-            </p>
-          </FadeUp>
+          <p
+            className="mt-6 text-center font-mono text-xs uppercase tracking-[0.22em]"
+            style={{ color: "var(--text-muted)" }}
+          >
+            Page {page} of {totalPages} · {filtered.length} stories
+          </p>
         </div>
       </section>
 
-      {/* SECTION 3 — FINAL BOOKING CTA (LIGHT, breathing orb) */}
+      {/* SECTION 4 — FINAL BOOKING CTA (DARK) */}
       <section
         className="relative overflow-hidden"
-        style={{ background: "var(--bg-base)" }}
+        style={{ background: "var(--primary)" }}
       >
-        <BreathingOrb tone="warm" />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 0%, rgba(181,83,44,0.10), transparent 70%)",
+          }}
+        />
         <div className="relative z-10 mx-auto w-full max-w-3xl px-6 py-20 text-center md:py-24 lg:px-8">
-          <FadeUp>
-            <p className="font-mono text-xs uppercase tracking-[0.22em] text-[var(--accent)]">
-              YOUR STORY COULD BE NEXT
-            </p>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <h2 className="font-display text-h2 mt-3 font-semibold text-[var(--text-primary)]">
-              A 15-minute call, no pressure.
-            </h2>
-          </FadeUp>
-          <FadeUp delay={0.2}>
-            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-[var(--text-secondary)]">
-              Every name on this page started with one conversation. Pick a
-              time below, and we will find out whether now is actually the
-              right moment for you.
-            </p>
-          </FadeUp>
-          <FadeUp delay={0.3}>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link
-                href="/booking"
-                className="inline-flex items-center justify-center rounded-full px-8 py-3.5 font-body text-sm font-semibold uppercase tracking-wide transition hover:translate-y-[-1px]"
-                style={{
-                  background: "var(--primary)",
-                  color: "var(--bg-base)",
-                }}
-              >
-                Book a Free Consultation
-              </Link>
-              <Link
-                href="/quiz"
-                className="inline-flex items-center justify-center rounded-full border-2 px-8 py-3.5 font-body text-sm font-semibold uppercase tracking-wide transition"
-                style={{
-                  borderColor: "var(--primary)",
-                  color: "var(--primary)",
-                }}
-              >
-                Take the Quiz
-              </Link>
-            </div>
-          </FadeUp>
+          <p
+            className="font-mono text-xs uppercase tracking-[0.22em]"
+            style={{ color: "var(--accent)" }}
+          >
+            YOUR STORY COULD BE NEXT
+          </p>
+          <h2
+            className="font-display text-h2 mt-3 font-semibold"
+            style={{ color: "var(--text-on-dark-primary)" }}
+          >
+            A 15-minute call, no pressure.
+          </h2>
+          <p
+            className="mx-auto mt-5 max-w-xl text-base leading-relaxed"
+            style={{ color: "var(--text-on-dark-secondary)" }}
+          >
+            Every name on this page started with one conversation. Pick a
+            time below, and we will find out whether now is actually the
+            right moment for you.
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link
+              href="/booking"
+              className="inline-flex items-center justify-center rounded-full px-8 py-3.5 font-body text-sm font-semibold uppercase tracking-wide transition hover:translate-y-[-1px]"
+              style={{
+                background: "var(--bg-base)",
+                color: "var(--primary)",
+              }}
+            >
+              Book a Free Consultation
+            </Link>
+            <Link
+              href="/quiz"
+              className="inline-flex items-center justify-center rounded-full border-2 px-8 py-3.5 font-body text-sm font-semibold uppercase tracking-wide transition"
+              style={{
+                borderColor: "var(--bg-base)",
+                color: "var(--bg-base)",
+              }}
+            >
+              Take the Quiz
+            </Link>
+          </div>
         </div>
       </section>
     </>

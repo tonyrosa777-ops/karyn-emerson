@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FadeUp } from "@/components/animations/FadeUp";
-import { AmbientParticles } from "@/components/sections/AmbientParticles";
-import { BreathingOrb } from "@/components/sections/BreathingOrb";
+import { PageBanner } from "@/components/sections/PageBanner";
 import RelocateTaxCalcClient from "@/components/sections/RelocateTaxCalcClient";
+import { AuroraGradient } from "@/components/sections/motion/AuroraGradient";
+import { TownMarquee } from "@/components/sections/motion/TownMarquee";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbSchema, realEstateAgentSchema } from "@/lib/schema";
 
 // =============================================================================
 // /relocate — MA to NH Relocation Hub (flagship SEO pillar).
 // Closes market-intelligence.md §5 gap #1, §6 long-tail #1, §9 "do" #2.
-// Sections: hero / 30-second answer / tax-arbitrage calculator / commute grid /
-// schools / DMV checklist / recommended towns cheatsheet / CTA.
+// Sections: PageBanner / 30-second answer / MA vs NH comparison /
+// tax-arbitrage calculator / commute grid / schools / DMV checklist /
+// recommended towns cheatsheet / town marquee / CTA.
 // Alternating light and dark tones; no two adjacent sections share tone.
 // =============================================================================
 
@@ -47,6 +49,15 @@ export const metadata: Metadata = {
     images: ["/og/default-og.jpg"],
   },
 };
+
+// MA vs NH side-by-side comparison rows.
+// [DEMO COPY - figures rounded for editorial clarity].
+const TAX_COMPARISON: Array<{ label: string; ma: string; nh: string }> = [
+  { label: "State Income Tax", ma: "5%", nh: "0%" },
+  { label: "State Sales Tax", ma: "6.25%", nh: "0%" },
+  { label: "Capital Gains (State)", ma: "9%*", nh: "0%" },
+  { label: "Estate Tax Floor", ma: "$2M", nh: "None" },
+];
 
 // Commute grid — 6 Southern NH towns x 3 destinations (Boston, Manchester, Portsmouth).
 // [DEMO COPY - estimates]. Drive times are off-peak, single-car; transit notes
@@ -198,39 +209,36 @@ export default function RelocatePage() {
     <>
       <JsonLd data={[breadcrumb, schema]} />
 
-      {/* SECTION 1 — HERO HEADER (LIGHT, shimmer H1) */}
+      {/* SECTION 1 — PAGE BANNER (single photo + shimmer H1 + MA → NH eyebrow) */}
+      <PageBanner
+        mode="single"
+        images={[
+          {
+            src: "/images/about/about-landscape-1.jpg",
+            alt: "Southern NH landscape — the destination side of the border",
+          },
+        ]}
+        eyebrow="MA → NH · RELOCATION HUB"
+        title={<>Moving to Southern NH.</>}
+        titleMotion="shimmer"
+        subhead="Tax arbitrage math, DMV checklist, commute by town, and school comparison. The honest version of what relocating actually involves."
+        height="md"
+        parallax
+        textSide="left"
+      />
+
+      {/* SECTION 1.5 — 30-SECOND TL;DR ANSWER (LIGHT) */}
       <section
         className="relative overflow-hidden"
         style={{ background: "var(--bg-base)" }}
       >
-        <div className="absolute inset-0 z-0">
-          <AmbientParticles density="low" />
-        </div>
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20 pt-20 md:pb-28 md:pt-28 lg:px-8">
-          <FadeUp>
-            <p className="font-mono text-xs uppercase tracking-[0.22em] text-[var(--accent)]">
-              RELOCATION HUB · MA TO NH
-            </p>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <h1 className="hero-shimmer font-display text-display mt-5 font-semibold">
-              Moving from Massachusetts to Southern New Hampshire.
-            </h1>
-          </FadeUp>
-          <FadeUp delay={0.2}>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--text-secondary)]">
-              The real numbers. The real commutes. The DMV checklist. And the
-              honest answer to which Southern NH town actually fits the life
-              you are trying to build.
-            </p>
-          </FadeUp>
-
+        <div className="relative z-10 mx-auto w-full max-w-3xl px-6 pb-16 pt-20 md:pb-20 md:pt-24 lg:px-8">
           {/* AEO — LLM citation block. Concrete math, answer-first. */}
-          <FadeUp delay={0.3}>
+          <FadeUp>
             <div
               itemScope
               itemType="https://schema.org/Question"
-              className="mt-10 max-w-3xl rounded-lg border p-6 md:p-7"
+              className="rounded-lg border p-6 md:p-7"
               style={{
                 background: "var(--bg-elevated)",
                 borderColor: "rgba(181,83,44,0.22)",
@@ -275,11 +283,107 @@ export default function RelocatePage() {
         </div>
       </section>
 
-      {/* SECTION 2 — 30-SECOND ANSWER (DARK, forest green) */}
+      {/* SECTION 2 — MA vs NH SIDE-BY-SIDE COMPARISON (LIGHT) */}
+      <section
+        className="relative py-20 md:py-28"
+        style={{ background: "var(--bg-base)" }}
+      >
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <p
+            className="font-mono text-xs uppercase tracking-[0.22em] text-center"
+            style={{ color: "var(--accent)" }}
+          >
+            The math, laid out
+          </p>
+          <h2
+            className="mt-3 font-display text-h2 font-semibold text-center"
+            style={{ color: "var(--text-primary)" }}
+          >
+            Massachusetts versus New Hampshire.
+          </h2>
+
+          <div className="mt-14 grid grid-cols-2 gap-6 md:gap-12">
+            {/* MA column */}
+            <div className="text-center md:text-left">
+              <p
+                className="font-mono text-xs uppercase tracking-[0.22em]"
+                style={{ color: "var(--text-muted)" }}
+              >
+                Massachusetts
+              </p>
+              {TAX_COMPARISON.map((row) => (
+                <div key={`ma-${row.label}`} className="mt-10">
+                  <p
+                    className="font-body text-sm uppercase tracking-[0.12em]"
+                    style={{ color: "var(--text-muted)" }}
+                  >
+                    {row.label}
+                  </p>
+                  <p
+                    className="mt-2 font-display font-semibold"
+                    style={{
+                      fontSize: "clamp(2rem, 5vw, 3.5rem)",
+                      lineHeight: 1,
+                      color: "var(--text-primary)",
+                    }}
+                  >
+                    {row.ma}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* NH column — highlighted */}
+            <div
+              className="text-center md:text-right relative p-6 rounded-lg"
+              style={{ background: "rgba(181,83,44,0.04)" }}
+            >
+              <p
+                className="font-mono text-xs uppercase tracking-[0.22em]"
+                style={{ color: "var(--accent)" }}
+              >
+                New Hampshire
+              </p>
+              {TAX_COMPARISON.map((row) => (
+                <div key={`nh-${row.label}`} className="mt-10">
+                  <p
+                    className="font-body text-sm uppercase tracking-[0.12em]"
+                    style={{ color: "var(--text-muted)" }}
+                  >
+                    {row.label}
+                  </p>
+                  <p
+                    className="mt-2 font-display font-semibold"
+                    style={{
+                      fontSize: "clamp(2rem, 5vw, 3.5rem)",
+                      lineHeight: 1,
+                      color: "var(--primary)",
+                    }}
+                  >
+                    {row.nh}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p
+            className="mt-10 text-center text-xs"
+            style={{ color: "var(--text-muted)" }}
+          >
+            * MA charges an additional 4% surtax on taxable income above $1M
+            (the "millionaire tax"), bringing the effective top rate to 9% on
+            long-term capital gains. [DEMO COPY - figures rounded for editorial clarity].
+          </p>
+        </div>
+      </section>
+
+      {/* SECTION 3 — 30-SECOND ANSWER NARRATIVE (DARK, forest green) */}
       <section
         className="relative overflow-hidden"
         style={{ background: "var(--primary)" }}
       >
+        <AuroraGradient tone="sage" intensity="subtle" />
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
@@ -331,7 +435,7 @@ export default function RelocatePage() {
         </div>
       </section>
 
-      {/* SECTION 3 — TAX-ARBITRAGE CALCULATOR (LIGHT) */}
+      {/* SECTION 4 — TAX-ARBITRAGE CALCULATOR (LIGHT) */}
       <section
         className="relative"
         style={{ background: "var(--bg-base)" }}
@@ -359,11 +463,12 @@ export default function RelocatePage() {
         </div>
       </section>
 
-      {/* SECTION 4 — COMMUTE TIME GRID (DARK, forest green) */}
+      {/* SECTION 5 — COMMUTE TIME GRID (DARK, forest green) */}
       <section
         className="relative overflow-hidden"
         style={{ background: "var(--primary)" }}
       >
+        <AuroraGradient tone="sage" intensity="subtle" />
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
@@ -514,7 +619,7 @@ export default function RelocatePage() {
         </div>
       </section>
 
-      {/* SECTION 5 — SCHOOL COMPARISON (LIGHT) */}
+      {/* SECTION 6 — SCHOOL COMPARISON (LIGHT) */}
       <section
         className="relative"
         style={{ background: "var(--bg-elevated)" }}
@@ -571,11 +676,12 @@ export default function RelocatePage() {
         </div>
       </section>
 
-      {/* SECTION 6 — DMV / REGISTRATION / INSPECTION CHECKLIST (DARK, forest green) */}
+      {/* SECTION 7 — DMV / REGISTRATION / INSPECTION CHECKLIST (DARK, forest green) */}
       <section
         className="relative overflow-hidden"
         style={{ background: "var(--primary)" }}
       >
+        <AuroraGradient tone="sage" intensity="subtle" />
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
@@ -669,7 +775,7 @@ export default function RelocatePage() {
         </div>
       </section>
 
-      {/* SECTION 7 — RECOMMENDED TOWNS CHEATSHEET (LIGHT) */}
+      {/* SECTION 8 — RECOMMENDED TOWNS CHEATSHEET (LIGHT) */}
       <section
         className="relative"
         style={{ background: "var(--bg-base)" }}
@@ -720,12 +826,24 @@ export default function RelocatePage() {
         </div>
       </section>
 
-      {/* SECTION 8 — CTA (DARK, forest green, breathing orb) */}
+      {/* SECTION 9 — TOWN MARQUEE (LIGHT, thin band) */}
+      <section
+        className="relative py-8"
+        style={{
+          background: "var(--bg-elevated)",
+          borderTop: "1px solid rgba(47,74,58,0.08)",
+          borderBottom: "1px solid rgba(47,74,58,0.08)",
+        }}
+      >
+        <TownMarquee duration={60} tone="muted" />
+      </section>
+
+      {/* SECTION 10 — CTA (DARK, forest green, aurora depth) */}
       <section
         className="relative overflow-hidden"
         style={{ background: "var(--primary)" }}
       >
-        <BreathingOrb tone="forest" />
+        <AuroraGradient tone="sage" intensity="subtle" />
         <div className="relative z-10 mx-auto w-full max-w-3xl px-6 py-20 text-center md:py-24 lg:px-8">
           <FadeUp>
             <p className="font-mono text-xs uppercase tracking-[0.22em] text-[var(--text-on-dark-muted)]">

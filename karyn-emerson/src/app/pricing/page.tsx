@@ -11,9 +11,11 @@
 // =============================================================================
 
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PRICING_TIERS, FEATURE_MATRIX } from "@/data/pricingTiers";
 import { BookingCalendar } from "@/components/booking/BookingCalendar";
 import { PricingROI } from "@/components/sections/PricingROI";
+import { PageBanner } from "@/components/sections/PageBanner";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { absoluteUrl } from "@/lib/schema";
 
@@ -51,141 +53,118 @@ export default function PricingPage() {
   return (
     <>
       <JsonLd data={offerCatalog} />
-      {/* ── Hero ────────────────────────────────────────── */}
-      <section
-        className="relative overflow-hidden py-24 md:py-32"
-        style={{ background: "var(--bg-base)" }}
-      >
-        <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-[300px]"
-          aria-hidden="true"
-          style={{
-            background:
-              "radial-gradient(ellipse 60% 60% at 50% 0%, rgba(181,83,44,0.12), transparent 70%)",
-          }}
-        />
-        <div className="relative z-10 mx-auto max-w-5xl px-6 text-center lg:px-8">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.22em]"
-            style={{ color: "var(--accent)" }}
-          >
-            {"\u2B25"} Internal sales tool · Deleted before launch
-          </p>
-          <h1
-            className="mt-5 font-display text-display font-semibold"
-            style={{ color: "var(--text-primary)" }}
-          >
-            Optimus Packages.
-          </h1>
-          <p
-            className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed"
-            style={{ color: "var(--text-secondary)" }}
-          >
-            Three tiers. Same on every build. Pick the one that fits what you
-            want to ship. The price is the price, no splits, no add-ons that
-            appear at the signing table.
-          </p>
-        </div>
-      </section>
+      {/* ── Aurora banner ─────────────────────────────── */}
+      <PageBanner
+        mode="aurora"
+        auroraTone="warm"
+        eyebrow="OPTIMUS · 3 TIERS · TRANSPARENT"
+        title={<>One site. One month. Sold.</>}
+        titleMotion="shimmer"
+        subhead="Three fixed tiers, one clear scope each. No retainers, no per-page surprises. The price is the price, and the site ships in a month."
+        height="md"
+        textSide="center"
+      />
 
-      {/* ── Tier cards ─────────────────────────────────── */}
+      {/* ── Tier cards — editorial spread ────────────── */}
       <section
-        className="py-20 md:py-24"
+        className="relative py-20 md:py-28"
         style={{ background: "var(--bg-elevated)" }}
       >
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-5 lg:gap-8">
+          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-3 lg:gap-8">
             {PRICING_TIERS.map((tier) => (
-              <article
+              <div
                 key={tier.id}
-                className="relative flex flex-col overflow-hidden rounded-2xl p-8 md:p-9"
+                className={`relative flex h-full flex-col rounded-2xl p-8 md:p-10 ${
+                  tier.popular ? "shimmer-border" : ""
+                }`}
                 style={{
-                  background: "var(--bg-card)",
+                  background: tier.popular ? "var(--bg-card)" : "transparent",
                   border: tier.popular
-                    ? "2px solid var(--accent)"
-                    : "1px solid rgba(47,74,58,0.12)",
+                    ? "1.5px solid rgba(47,74,58,0.08)"
+                    : "none",
                   boxShadow: tier.popular
-                    ? "0 24px 56px -24px rgba(181,83,44,0.3)"
-                    : "0 8px 24px -12px rgba(26,31,28,0.1)",
-                  transform: tier.popular ? "translateY(-8px)" : "none",
+                    ? "0 24px 56px -28px rgba(26,31,28,0.18)"
+                    : "none",
+                  transform: tier.popular ? "scale(1.02)" : "none",
                 }}
               >
-                {tier.popular && (
-                  <span
-                    className="absolute right-6 top-6 rounded-full px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.16em]"
+                {/* Inner content wrapper — keeps text/CTA above the rotating
+                    shimmer-border conic pseudo-element (z-index:1). */}
+                <div className="relative z-[2] flex h-full flex-col">
+                  {tier.popular && (
+                    <p
+                      className="mb-4 font-mono text-[11px] uppercase tracking-[0.22em]"
+                      style={{ color: "var(--accent)" }}
+                    >
+                      MOST POPULAR
+                    </p>
+                  )}
+                  <p
+                    className="font-mono text-xs uppercase tracking-[0.22em]"
+                    style={{ color: "var(--text-muted)" }}
+                  >
+                    {tier.tagline}
+                  </p>
+                  <h2
+                    className="mt-3 font-display font-semibold"
                     style={{
-                      background: "var(--accent)",
-                      color: "var(--bg-base)",
+                      fontSize: "clamp(2rem, 4vw, 3rem)",
+                      lineHeight: 1.1,
+                      color: "var(--text-primary)",
                     }}
                   >
-                    Most Popular
-                  </span>
-                )}
-                <p
-                  className="font-mono text-[10px] uppercase tracking-[0.2em]"
-                  style={{ color: "var(--accent)" }}
-                >
-                  {tier.name}
-                </p>
-                <div className="mt-3 flex items-baseline gap-2">
-                  <span
-                    className="font-display font-semibold"
+                    {tier.name}
+                  </h2>
+                  <p
+                    className="mt-6 font-display font-semibold"
                     style={{
-                      color: "var(--text-primary)",
-                      fontSize: "clamp(2.5rem, 5vw, 3.25rem)",
+                      fontSize: "clamp(2.5rem, 5vw, 4rem)",
                       lineHeight: 1,
+                      color: "var(--primary)",
                     }}
                   >
                     {tier.priceLabel}
-                  </span>
-                  <span
-                    className="font-mono text-xs"
-                    style={{ color: "var(--text-muted)" }}
+                  </p>
+                  <p
+                    className="mt-5 text-sm leading-relaxed"
+                    style={{ color: "var(--text-secondary)" }}
                   >
-                    one-time
-                  </span>
+                    {tier.description}
+                  </p>
+                  <ul className="mt-8 flex-1 space-y-3">
+                    {tier.featureHighlights.map((feature) => (
+                      <li
+                        key={feature}
+                        className="flex items-start gap-3 text-sm"
+                        style={{ color: "var(--text-primary)" }}
+                      >
+                        <span aria-hidden="true" className="mt-0.5">
+                          {"✅"}
+                        </span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href="#book-a-call"
+                    className="mt-8 inline-flex items-center justify-center rounded-full px-6 py-3 font-body text-sm font-semibold uppercase tracking-wide transition hover:-translate-y-[1px]"
+                    style={{
+                      background: tier.popular
+                        ? "var(--primary)"
+                        : "transparent",
+                      color: tier.popular
+                        ? "var(--bg-base)"
+                        : "var(--primary)",
+                      border: tier.popular
+                        ? "none"
+                        : "2px solid var(--primary)",
+                    }}
+                  >
+                    {tier.ctaLabel}
+                  </Link>
                 </div>
-                <p
-                  className="mt-3 font-display text-lg italic"
-                  style={{ color: "var(--primary)" }}
-                >
-                  {tier.tagline}
-                </p>
-                <p
-                  className="mt-4 text-sm leading-relaxed"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  {tier.description}
-                </p>
-                <ul className="mt-6 space-y-2.5">
-                  {tier.featureHighlights.map((f) => (
-                    <li
-                      key={f}
-                      className="flex items-start gap-2.5 text-sm"
-                      style={{ color: "var(--text-primary)" }}
-                    >
-                      <span aria-hidden="true">{"\u2705"}</span>
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8 flex-1" />
-                <a
-                  href="#book-a-call"
-                  className="inline-flex w-full items-center justify-center rounded-full px-6 py-3 font-body text-sm font-semibold uppercase tracking-wide transition hover:-translate-y-[1px]"
-                  style={{
-                    background: tier.popular
-                      ? "var(--accent)"
-                      : "var(--primary)",
-                    color: "var(--bg-base)",
-                    boxShadow: tier.popular
-                      ? "0 10px 30px -10px rgba(181,83,44,0.4)"
-                      : "0 10px 30px -10px rgba(47,74,58,0.4)",
-                  }}
-                >
-                  {tier.ctaLabel}
-                </a>
-              </article>
+              </div>
             ))}
           </div>
         </div>
@@ -317,23 +296,23 @@ export default function PricingPage() {
                   >
                     <span className="font-body">{row.label}</span>
                     <span className="text-center text-lg">
-                      {row.starter ? "\u2705" : (
+                      {row.starter ? "✅" : (
                         <span style={{ color: "var(--text-muted)" }}>
-                          {"\u2717"}
+                          {"✗"}
                         </span>
                       )}
                     </span>
                     <span className="text-center text-lg">
-                      {row.pro ? "\u2705" : (
+                      {row.pro ? "✅" : (
                         <span style={{ color: "var(--text-muted)" }}>
-                          {"\u2717"}
+                          {"✗"}
                         </span>
                       )}
                     </span>
                     <span className="text-center text-lg">
-                      {row.premium ? "\u2705" : (
+                      {row.premium ? "✅" : (
                         <span style={{ color: "var(--text-muted)" }}>
-                          {"\u2717"}
+                          {"✗"}
                         </span>
                       )}
                     </span>

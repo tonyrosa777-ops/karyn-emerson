@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { siteConfig } from "@/data/site";
 import { FadeUp } from "@/components/animations/FadeUp";
-import { BreathingOrb } from "@/components/sections/BreathingOrb";
+import { PageBanner } from "@/components/sections/PageBanner";
+import { AuroraGradient } from "@/components/sections/motion/AuroraGradient";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
@@ -74,34 +76,74 @@ export default function ContactPage() {
   return (
     <>
       <JsonLd data={[breadcrumb, local, contactPage]} />
-      {/* SECTION 1 — HERO HEADER (LIGHT, breathing orb) */}
+
+      {/* SECTION 1 — PHOTO BANNER (single, ink-bloom H1) */}
+      <PageBanner
+        mode="single"
+        images={[
+          {
+            src: "/images/about/about-stone-wall.jpg",
+            alt: "Dry stone wall along a Southern NH field",
+          },
+        ]}
+        eyebrow="GET IN TOUCH"
+        title={`The best way to start is to talk.`}
+        titleMotion="ink-bloom"
+        titleAccentWord="talk"
+        subhead="A quick call usually saves thirty emails. Pick the channel that works, and I will meet you there."
+        height="sm"
+        parallax
+        textSide="left"
+      />
+
+      {/* SECTION 2 — SPLIT-SCREEN FORM (aurora backdrop, glass-morphism card) */}
       <section
-        className="relative overflow-hidden"
-        style={{ background: "var(--bg-base)" }}
+        className="relative overflow-hidden py-20 md:py-24"
+        style={{ background: "var(--bg-elevated)" }}
       >
-        <BreathingOrb tone="warm" />
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20 pt-20 md:pb-28 md:pt-28 lg:px-8">
-          <FadeUp>
-            <p className="font-mono text-xs uppercase tracking-[0.22em] text-[var(--accent)]">
-              GET IN TOUCH · SALEM, NH
-            </p>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <h1 className="hero-shimmer font-display text-display mt-5 font-semibold">
-              Start the conversation.
-            </h1>
-          </FadeUp>
-          <FadeUp delay={0.2}>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--text-secondary)]">
-              Write a few sentences about where you are, and I will write back.
-              If you would rather pick a 15-minute slot directly, the calendar
-              is just a click away.
-            </p>
-          </FadeUp>
+        <AuroraGradient tone="editorial" intensity="subtle" />
+        <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
+          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
+            {/* Form column — glass-morphism card */}
+            <FadeUp>
+              <div
+                className="relative rounded-2xl p-8 md:p-10"
+                style={{
+                  background: "rgba(255,255,255,0.72)",
+                  backdropFilter: "blur(8px)",
+                  WebkitBackdropFilter: "blur(8px)",
+                  border: "1px solid rgba(47,74,58,0.12)",
+                }}
+              >
+                <p className="font-mono text-xs uppercase tracking-[0.22em] text-[var(--accent)]">
+                  SEND A NOTE
+                </p>
+                <h2 className="font-display text-h2 mt-3 font-semibold text-[var(--text-primary)]">
+                  A few sentences is plenty.
+                </h2>
+                <div className="mt-6">
+                  <ContactForm />
+                </div>
+              </div>
+            </FadeUp>
+
+            {/* Image column — atmospheric, bleeds to section edge on desktop */}
+            <FadeUp delay={0.15}>
+              <div className="relative hidden aspect-[3/4] overflow-hidden rounded-lg lg:block">
+                <Image
+                  src="/images/about/about-clapboard-detail.jpg"
+                  alt="Clapboard colonial detail in autumn light"
+                  fill
+                  sizes="40vw"
+                  className="object-cover"
+                />
+              </div>
+            </FadeUp>
+          </div>
         </div>
       </section>
 
-      {/* SECTION 2 — FORM + INFO (DARK, forest green) */}
+      {/* SECTION 3 — CONTACT DETAILS + MAP (DARK, forest green) */}
       <section
         className="relative overflow-hidden"
         style={{ background: "var(--primary)" }}
@@ -114,150 +156,129 @@ export default function ContactPage() {
               "radial-gradient(ellipse at 50% 0%, rgba(181,83,44,0.10), transparent 70%)",
           }}
         />
-        <div className="relative z-10 mx-auto grid w-full max-w-6xl gap-10 px-6 py-20 md:py-28 lg:grid-cols-[1.2fr_1fr] lg:gap-12 lg:px-8">
-          {/* Left column — form card (on cream, lifted off dark section) */}
+        <div className="relative z-10 mx-auto grid w-full max-w-6xl gap-10 px-6 py-20 md:py-24 lg:grid-cols-[1fr_1fr] lg:gap-12 lg:px-8">
+          {/* Reach directly */}
           <FadeUp>
-            <div>
+            <div
+              className="rounded-lg border p-6 md:p-8"
+              style={{
+                background: "var(--card-on-dark-bg)",
+                borderColor: "var(--card-on-dark-border)",
+              }}
+            >
               <p
                 className="font-mono text-xs uppercase tracking-[0.22em]"
                 style={{ color: "var(--text-on-dark-muted)" }}
               >
-                SEND A NOTE
+                REACH ME DIRECTLY
               </p>
-              <h2
-                className="font-display text-h2 mt-3 font-semibold"
-                style={{ color: "var(--text-on-dark-primary)" }}
-              >
-                A few sentences is plenty.
-              </h2>
-              <div className="mt-6">
-                <ContactForm />
-              </div>
+              <ul className="mt-4 space-y-4">
+                {phone && (
+                  <li className="flex items-start gap-3">
+                    <span className="text-xl" aria-hidden="true">
+                      📱
+                    </span>
+                    <div>
+                      <p
+                        className="font-mono text-xs uppercase tracking-wider"
+                        style={{ color: "var(--text-on-dark-muted)" }}
+                      >
+                        Phone / Text
+                      </p>
+                      <a
+                        href={`tel:${phone.replace(/[^\d+]/g, "")}`}
+                        className="font-display text-h4 font-semibold hover:underline"
+                        style={{ color: "var(--text-on-dark-primary)" }}
+                      >
+                        {phone}
+                      </a>
+                    </div>
+                  </li>
+                )}
+                {email && (
+                  <li className="flex items-start gap-3">
+                    <span className="text-xl" aria-hidden="true">
+                      ✉️
+                    </span>
+                    <div>
+                      <p
+                        className="font-mono text-xs uppercase tracking-wider"
+                        style={{ color: "var(--text-on-dark-muted)" }}
+                      >
+                        Email
+                      </p>
+                      <a
+                        href={`mailto:${email}`}
+                        className="font-display text-h4 font-semibold hover:underline"
+                        style={{ color: "var(--text-on-dark-primary)" }}
+                      >
+                        {email}
+                      </a>
+                    </div>
+                  </li>
+                )}
+                <li className="flex items-start gap-3">
+                  <span className="text-xl" aria-hidden="true">
+                    📍
+                  </span>
+                  <div>
+                    <p
+                      className="font-mono text-xs uppercase tracking-wider"
+                      style={{ color: "var(--text-on-dark-muted)" }}
+                    >
+                      Office
+                    </p>
+                    <p
+                      className="font-display text-h4 font-semibold"
+                      style={{ color: "var(--text-on-dark-primary)" }}
+                    >
+                      {officeAddress}
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-xl" aria-hidden="true">
+                    🕰️
+                  </span>
+                  <div>
+                    <p
+                      className="font-mono text-xs uppercase tracking-wider"
+                      style={{ color: "var(--text-on-dark-muted)" }}
+                    >
+                      Hours
+                    </p>
+                    {/* [DEMO COPY — pending client review] */}
+                    <p
+                      className="text-sm leading-relaxed"
+                      style={{ color: "var(--text-on-dark-secondary)" }}
+                    >
+                      Monday through Saturday, 8am to 8pm. Sunday by
+                      appointment. Texts answered evenings and weekends.
+                    </p>
+                  </div>
+                </li>
+              </ul>
             </div>
           </FadeUp>
 
-          {/* Right column — contact info + map */}
+          {/* Map embed */}
           <FadeUp delay={0.15}>
-            <div className="flex h-full flex-col gap-6">
-              <div
-                className="rounded-lg border p-6"
-                style={{
-                  background: "var(--card-on-dark-bg)",
-                  borderColor: "var(--card-on-dark-border)",
-                }}
-              >
-                <p
-                  className="font-mono text-xs uppercase tracking-[0.22em]"
-                  style={{ color: "var(--text-on-dark-muted)" }}
-                >
-                  REACH ME DIRECTLY
-                </p>
-                <ul className="mt-4 space-y-4">
-                  {phone && (
-                    <li className="flex items-start gap-3">
-                      <span className="text-xl" aria-hidden="true">
-                        📱
-                      </span>
-                      <div>
-                        <p
-                          className="font-mono text-xs uppercase tracking-wider"
-                          style={{ color: "var(--text-on-dark-muted)" }}
-                        >
-                          Phone / Text
-                        </p>
-                        <a
-                          href={`tel:${phone.replace(/[^\d+]/g, "")}`}
-                          className="font-display text-h4 font-semibold hover:underline"
-                          style={{ color: "var(--text-on-dark-primary)" }}
-                        >
-                          {phone}
-                        </a>
-                      </div>
-                    </li>
-                  )}
-                  {email && (
-                    <li className="flex items-start gap-3">
-                      <span className="text-xl" aria-hidden="true">
-                        ✉️
-                      </span>
-                      <div>
-                        <p
-                          className="font-mono text-xs uppercase tracking-wider"
-                          style={{ color: "var(--text-on-dark-muted)" }}
-                        >
-                          Email
-                        </p>
-                        <a
-                          href={`mailto:${email}`}
-                          className="font-display text-h4 font-semibold hover:underline"
-                          style={{ color: "var(--text-on-dark-primary)" }}
-                        >
-                          {email}
-                        </a>
-                      </div>
-                    </li>
-                  )}
-                  <li className="flex items-start gap-3">
-                    <span className="text-xl" aria-hidden="true">
-                      📍
-                    </span>
-                    <div>
-                      <p
-                        className="font-mono text-xs uppercase tracking-wider"
-                        style={{ color: "var(--text-on-dark-muted)" }}
-                      >
-                        Office
-                      </p>
-                      <p
-                        className="font-display text-h4 font-semibold"
-                        style={{ color: "var(--text-on-dark-primary)" }}
-                      >
-                        {officeAddress}
-                      </p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-xl" aria-hidden="true">
-                      🕰️
-                    </span>
-                    <div>
-                      <p
-                        className="font-mono text-xs uppercase tracking-wider"
-                        style={{ color: "var(--text-on-dark-muted)" }}
-                      >
-                        Hours
-                      </p>
-                      {/* [DEMO COPY — pending client review] */}
-                      <p
-                        className="text-sm leading-relaxed"
-                        style={{ color: "var(--text-on-dark-secondary)" }}
-                      >
-                        Monday through Saturday, 8am to 8pm. Sunday by
-                        appointment. Texts answered evenings and weekends.
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Map embed */}
-              <div
-                className="overflow-hidden rounded-lg border"
-                style={{
-                  background: "var(--bg-card)",
-                  borderColor: "var(--card-on-dark-border)",
-                }}
-              >
-                <iframe
-                  title="Jill & Co. Realty Group office location in Salem, NH"
-                  src={MAP_SRC}
-                  width="100%"
-                  height="280"
-                  style={{ border: 0 }}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
+            <div
+              className="h-full overflow-hidden rounded-lg border"
+              style={{
+                background: "var(--bg-card)",
+                borderColor: "var(--card-on-dark-border)",
+              }}
+            >
+              <iframe
+                title="Jill & Co. Realty Group office location in Salem, NH"
+                src={MAP_SRC}
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: 320 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </FadeUp>
         </div>

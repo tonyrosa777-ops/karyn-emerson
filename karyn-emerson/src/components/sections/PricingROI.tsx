@@ -9,8 +9,9 @@
 //   - Real-estate default: avg commission per side ~$15,000
 // =============================================================================
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { PRICING_TIERS, type TierId } from "@/data/pricingTiers";
+import { CountUp } from "@/components/sections/motion/CountUp";
 
 const DEFAULT_JOB_VALUE = 15000;
 const DEFAULT_CLIENTS_PER_MONTH = 2;
@@ -169,7 +170,15 @@ export function PricingROI() {
         >
           <OutputRow
             label="Monthly revenue"
-            value={formatCurrency(monthlyRevenue)}
+            value={
+              <CountUp
+                key={`rev-${monthlyRevenue}`}
+                value={monthlyRevenue}
+                prefix="$"
+                duration={900}
+                triggerOnce={false}
+              />
+            }
             hint="Commission per side × clients per month"
           />
           <OutputRow
@@ -179,8 +188,27 @@ export function PricingROI() {
           />
           <OutputRow
             label="12 month ROI"
-            value={`${Math.round(twelveMonthRoi).toLocaleString()}%`}
-            hint={`Projected annual revenue: ${formatCurrency(annualRevenue)}`}
+            value={
+              <CountUp
+                key={`roi-${Math.round(twelveMonthRoi)}`}
+                value={Math.round(twelveMonthRoi)}
+                suffix="%"
+                duration={900}
+                triggerOnce={false}
+              />
+            }
+            hint={
+              <>
+                Projected annual revenue:{" "}
+                <CountUp
+                  key={`ann-${annualRevenue}`}
+                  value={annualRevenue}
+                  prefix="$"
+                  duration={900}
+                  triggerOnce={false}
+                />
+              </>
+            }
             emphasis
           />
           <p
@@ -286,8 +314,8 @@ function SliderRow({
 
 interface OutputRowProps {
   label: string;
-  value: string;
-  hint?: string;
+  value: ReactNode;
+  hint?: ReactNode;
   emphasis?: boolean;
 }
 

@@ -3,18 +3,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { blogPosts, BLOG_CATEGORIES } from "@/data/blogPosts";
 import type { BlogCategory, BlogPost } from "@/data/blogPosts";
-import { FadeUp } from "@/components/animations/FadeUp";
-import { AmbientParticles } from "@/components/sections/AmbientParticles";
-import { BreathingOrb } from "@/components/sections/BreathingOrb";
+import { PageBanner } from "@/components/sections/PageBanner";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { absoluteUrl, breadcrumbSchema } from "@/lib/schema";
 import { siteConfig } from "@/data/site";
 
 // =============================================================================
 // /blog — Blog index
-// Per CLAUDE.md Page Animation Rule: ambient effects only (no full hero stack).
-// Shimmer H1, iron-oxide category pills, 3-col desktop grid.
-// Pagination placeholder (?page=X) — kept simple since 9 posts fits a single page.
+// Mosaic-4 banner + letter-mask H1 + featured-article hero (magazine spread)
+// + elevated filter strip + image-zoom cards on hover.
 // =============================================================================
 
 export const metadata: Metadata = {
@@ -84,14 +81,14 @@ function BlogCard({ post }: { post: BlogPost }) {
         boxShadow: "0 2px 8px -4px rgba(26,31,28,0.06)",
       }}
     >
-      <Link href={`/blog/${post.slug}`} className="flex h-full flex-col">
+      <Link href={`/blog/${post.slug}`} className="group flex h-full flex-col">
         <div className="relative aspect-[4/3] w-full overflow-hidden">
           <Image
             src={post.heroImage}
             alt={post.title}
             fill
             sizes="(min-width: 768px) 33vw, 100vw"
-            className="object-cover"
+            className="object-cover transition duration-700 group-hover:scale-[1.05]"
           />
         </div>
         <div className="flex flex-1 flex-col p-6">
@@ -146,6 +143,8 @@ export default async function BlogIndexPage({ searchParams }: PageProps) {
   const page = parsePage(pageRaw, totalPages);
   const start = (page - 1) * PER_PAGE;
   const pageItems = filtered.slice(start, start + PER_PAGE);
+  const gridItems =
+    category === "all" && page === 1 ? pageItems.slice(1) : pageItems;
 
   const buildHref = (cat: BlogCategory | "all") =>
     cat === "all" ? "/blog" : `/blog?category=${encodeURIComponent(cat)}`;
@@ -179,46 +178,98 @@ export default async function BlogIndexPage({ searchParams }: PageProps) {
   return (
     <main className="flex flex-1 flex-col">
       <JsonLd data={[breadcrumb, blogSchema]} />
-      {/* Header — ambient effects only per Page Animation Rule */}
-      <section
-        className="relative overflow-hidden pb-12 pt-16 md:pb-16 md:pt-24"
-        style={{ background: "var(--bg-base)" }}
-        aria-label="Blog header"
-      >
-        <BreathingOrb />
-        <AmbientParticles density="low" />
 
-        <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
-          <FadeUp>
-            <p
-              className="font-mono text-xs uppercase"
-              style={{ color: "var(--accent)", letterSpacing: "0.22em" }}
-            >
-              Blog &middot; Karyn Emerson
-            </p>
-            <h1
-              className="hero-shimmer font-display text-h1 mt-3 font-semibold"
-            >
-              Notes from Southern NH
-            </h1>
-            <p
-              className="mt-5 max-w-2xl font-body text-lg leading-relaxed"
-              style={{ color: "var(--text-secondary)" }}
-            >
-              Nine honest articles on Southern NH real estate. MA-to-NH relocation math,
-              NH property tax by town, post-August-2024 commission rules, neighborhood deep
-              dives, and a straight answer on Opendoor&rsquo;s $45,000 equity gap.
-            </p>
-          </FadeUp>
-        </div>
-      </section>
+      {/* Mosaic-4 photo banner + letter-mask H1 */}
+      <PageBanner
+        mode="mosaic4"
+        images={[
+          {
+            src: "/images/blog/moving-from-massachusetts-to-southern-nh-honest-guide-hero.jpg",
+            alt: "MA to NH relocation, autumn Southern NH landscape",
+          },
+          {
+            src: "/images/blog/nh-property-tax-by-town-salem-windham-derry-hero.jpg",
+            alt: "Southern NH neighborhood aerial in autumn",
+          },
+          {
+            src: "/images/blog/two-to-three-percent-commission-explained-post-august-2024-hero.jpg",
+            alt: "Editorial commission transparency desk scene",
+          },
+          {
+            src: "/images/blog/living-in-salem-nh-tuscan-village-canobie-lake-streets-you-dont-know-hero.jpg",
+            alt: "Canobie Lake area in autumn",
+          },
+        ]}
+        eyebrow="NOTES · KARYN EMERSON"
+        title={<>Notes from Southern NH.</>}
+        titleMotion="letter-mask"
+        subhead="Nine honest articles on Southern NH real estate. MA-to-NH relocation math, NH property tax by town, post-August-2024 commission rules, neighborhood deep dives, and a straight answer on Opendoor's $45,000 equity gap."
+        height="md"
+        parallax
+        textSide="left"
+      />
 
-      {/* Category filter chips */}
+      {/* Featured article hero — magazine spread (only on default listing, page 1) */}
+      {category === "all" && page === 1 && blogPosts.length > 0 && (
+        <section
+          className="relative py-16 md:py-20"
+          style={{ background: "var(--bg-base)" }}
+        >
+          <div className="mx-auto max-w-6xl px-6 lg:px-8">
+            <Link
+              href={`/blog/${blogPosts[0].slug}`}
+              className="group grid grid-cols-1 gap-10 md:grid-cols-2 items-center"
+            >
+              <div className="relative aspect-[3/2] overflow-hidden rounded-lg">
+                <Image
+                  src={blogPosts[0].heroImage}
+                  alt={blogPosts[0].title}
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover transition duration-700 group-hover:scale-[1.04]"
+                />
+              </div>
+              <div>
+                <p
+                  className="font-mono text-xs uppercase tracking-[0.22em]"
+                  style={{ color: "var(--accent)" }}
+                >
+                  Featured · {blogPosts[0].category}
+                </p>
+                <h2
+                  className="mt-4 font-display font-semibold"
+                  style={{
+                    fontSize: "clamp(1.8rem, 3.5vw, 3rem)",
+                    lineHeight: 1.1,
+                    color: "var(--text-primary)",
+                  }}
+                >
+                  {blogPosts[0].title}
+                </h2>
+                <p
+                  className="mt-5 font-body text-lg leading-relaxed"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  {blogPosts[0].excerpt}
+                </p>
+                <span
+                  className="mt-6 inline-flex items-center font-mono text-[12px] uppercase tracking-[0.14em] transition group-hover:translate-x-1"
+                  style={{ color: "var(--primary)" }}
+                >
+                  Read the full article →
+                </span>
+              </div>
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {/* Category filter chips — elevated strip */}
       <section
         className="relative py-6"
         style={{
-          background: "var(--bg-base)",
-          borderTop: "1px solid rgba(47,74,58,0.08)",
+          background: "var(--bg-elevated)",
+          borderTop: "1px solid rgba(181,83,44,0.15)",
           borderBottom: "1px solid rgba(47,74,58,0.08)",
         }}
       >
@@ -255,19 +306,19 @@ export default async function BlogIndexPage({ searchParams }: PageProps) {
         style={{ background: "var(--bg-base)" }}
       >
         <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
-          {pageItems.length === 0 ? (
+          {gridItems.length === 0 ? (
             <p className="font-body text-base" style={{ color: "var(--text-secondary)" }}>
               No posts in this category yet.
             </p>
           ) : (
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {pageItems.map((post) => (
+              {gridItems.map((post) => (
                 <BlogCard key={post.slug} post={post} />
               ))}
             </div>
           )}
 
-          {/* Pagination placeholder — current total (9) fits on a single page */}
+          {/* Pagination */}
           {totalPages > 1 ? (
             <nav
               aria-label="Blog pagination"

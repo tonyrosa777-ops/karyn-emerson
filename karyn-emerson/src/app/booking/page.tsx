@@ -1,13 +1,17 @@
 // =============================================================================
 // /booking — dedicated booking page with inline BookingCalendar
 // Per CLAUDE.md Always-Built Features Rule (Inline Booking Calendar) +
-// Page Animation Rule (/booking gets a breathing orb, never flat).
+// Page Animation Rule (/booking gets ambient motion, never flat).
+// Hero uses cross-dissolve editorial PageBanner + shimmer H1; intro is a
+// split-screen editorial; calendar sits over an AuroraGradient.
 // =============================================================================
 
 import type { Metadata } from "next";
+import Image from "next/image";
 import { siteConfig } from "@/data/site";
 import { BookingCalendar } from "@/components/booking/BookingCalendar";
-import { BreathingOrb } from "@/components/sections/BreathingOrb";
+import { PageBanner } from "@/components/sections/PageBanner";
+import { AuroraGradient } from "@/components/sections/motion/AuroraGradient";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
   absoluteUrl,
@@ -121,43 +125,36 @@ export default function BookingPage() {
   return (
     <>
       <JsonLd data={[breadcrumb, agent, contactPoint]} />
-      {/* ── Hero header ──────────────────────────────────── */}
-      <section
-        className="relative overflow-hidden py-20 md:py-28"
-        style={{ background: "var(--bg-base)" }}
-      >
-        <BreathingOrb tone="warm" />
-        <div className="relative z-10 mx-auto max-w-4xl px-6 text-center lg:px-8">
-          <p
-            className="font-mono text-xs uppercase tracking-[0.22em]"
-            style={{ color: "var(--accent)" }}
-          >
-            15 minutes · free · no pressure
-          </p>
-          <h1
-            className="hero-shimmer mt-5 font-display text-display font-semibold"
-            style={{ color: "var(--text-primary)" }}
-          >
-            Let&apos;s have a conversation.
-          </h1>
-          <p
-            className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed"
-            style={{ color: "var(--text-secondary)" }}
-          >
-            Not a pitch, not a pressure sit. Fifteen minutes about your
-            timing, your town, and your actual situation. If you are a year
-            out, we have the conversation a year out. That is the whole job.
-          </p>
-        </div>
-      </section>
 
-      {/* ── Intro + full-width calendar ──────────────────── */}
+      {/* ── Hero header — cross-dissolve editorial PageBanner ─────── */}
+      <PageBanner
+        mode="crossDissolve"
+        images={[
+          {
+            src: "/images/about/about-clapboard-detail.jpg",
+            alt: "Southern NH clapboard colonial in autumn light",
+          },
+          {
+            src: "/images/about/about-landscape-1.jpg",
+            alt: "Autumn foliage over a rolling Southern NH landscape",
+          },
+        ]}
+        eyebrow="15 MINUTES · FREE · NO PRESSURE"
+        title={<>Let&apos;s have a conversation.</>}
+        titleMotion="shimmer"
+        subhead="Not a pitch, not a pressure sit. Fifteen minutes about your timing, your town, and your actual situation. If you are a year out, we have the conversation a year out."
+        ambient="leaves"
+        height="md"
+        parallax
+        textSide="left"
+      />
+
+      {/* ── Intro: split-screen editorial ──────────────────── */}
       <section
         className="relative py-20 md:py-24"
         style={{ background: "var(--bg-elevated)" }}
       >
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
-          {/* Intro block — centered heading, left-aligned body */}
           <div className="mx-auto max-w-2xl text-center">
             <p
               className="font-mono text-[11px] uppercase tracking-[0.2em]"
@@ -172,23 +169,66 @@ export default function BookingPage() {
               A real call, not a funnel.
             </h2>
           </div>
-          <div className="mx-auto mt-6 max-w-2xl space-y-5 text-left">
-            {WHY_BOOK_COPY.map((p, i) => (
-              <p
-                key={i}
-                className="text-base leading-relaxed"
-                style={{ color: "var(--text-secondary)" }}
-              >
-                {p}
-              </p>
-            ))}
+
+          {/* Split-screen blocks */}
+          <div className="mt-12 space-y-16">
+            {WHY_BOOK_COPY.map((paragraph, i) => {
+              const isImageLeft = i % 2 === 0;
+              return (
+                <div
+                  key={i}
+                  className="grid grid-cols-1 gap-8 items-center md:grid-cols-2 md:gap-12"
+                >
+                  {/* Image side */}
+                  <div
+                    className={`relative aspect-[4/3] overflow-hidden rounded-lg ${
+                      isImageLeft ? "md:order-1" : "md:order-2"
+                    }`}
+                  >
+                    <Image
+                      src={
+                        i === 0
+                          ? "/images/about/about-stone-wall.jpg"
+                          : i === 1
+                          ? "/images/about/about-clapboard-detail.jpg"
+                          : "/images/about/about-landscape-1.jpg"
+                      }
+                      alt={
+                        i === 0
+                          ? "Dry stone wall at the edge of a Southern NH field"
+                          : i === 1
+                          ? "Clapboard colonial detail in morning light"
+                          : "Open Southern NH landscape in autumn"
+                      }
+                      fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  {/* Copy side */}
+                  <div
+                    className={`${
+                      isImageLeft ? "md:order-2" : "md:order-1"
+                    }`}
+                  >
+                    <p
+                      className="text-base leading-relaxed"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      {paragraph}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
-          {/* Full-width calendar — clears the @3xl (768px) container-query
-              breakpoint so the widget renders side-by-side (calendar left,
-              time slots right) instead of stacked. */}
-          <div className="mx-auto mt-14 max-w-5xl md:mt-16">
-            <BookingCalendar />
+          {/* Calendar — aurora behind */}
+          <div className="relative mt-20 md:mt-24">
+            <AuroraGradient tone="warm" intensity="subtle" />
+            <div className="relative mx-auto max-w-5xl">
+              <BookingCalendar />
+            </div>
           </div>
         </div>
       </section>
@@ -245,6 +285,7 @@ export default function BookingPage() {
           className="relative py-20 md:py-24"
           style={{ background: "var(--primary)" }}
         >
+          <AuroraGradient tone="sage" intensity="subtle" />
           <div
             className="pointer-events-none absolute inset-x-0 top-0 h-[280px]"
             aria-hidden="true"

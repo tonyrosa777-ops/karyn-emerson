@@ -12,6 +12,7 @@
 // =============================================================================
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -21,7 +22,9 @@ import {
   type QuizType,
 } from "@/data/quiz";
 import { BookingCalendar } from "@/components/booking/BookingCalendar";
-import { BreathingOrb } from "@/components/sections/BreathingOrb";
+import { InkBloom } from "@/components/sections/motion/InkBloom";
+import { FallingLeaves } from "@/components/sections/motion/FallingLeaves";
+import { AuroraGradient } from "@/components/sections/motion/AuroraGradient";
 
 type Phase = "intro" | "question" | "results";
 
@@ -114,8 +117,8 @@ export default function QuizClient() {
       className="relative min-h-[calc(100vh-96px)] overflow-hidden"
       style={{ background: "var(--bg-base)" }}
     >
-      {/* Ambient background orb per Page Animation Rule (/quiz gets ambient only) */}
-      <BreathingOrb tone="warm" />
+      {/* Ambient aurora backdrop per Page Animation Rule (/quiz gets ambient only) */}
+      <AuroraGradient tone="editorial" intensity="subtle" />
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100vh-96px)] w-full max-w-3xl flex-col px-6 py-16 md:py-24">
         <AnimatePresence mode="wait" initial={false}>
@@ -129,18 +132,60 @@ export default function QuizClient() {
               transition={{ duration: 0.5, ease }}
               className="flex flex-1 flex-col justify-center"
             >
-              <p
-                className="font-mono text-xs uppercase tracking-[0.22em]"
-                style={{ color: "var(--accent)" }}
+              {/* Photo ambient band — compact banner with falling leaves */}
+              <div
+                className="relative mb-12 overflow-hidden rounded-lg"
+                style={{ height: "clamp(200px, 26vw, 280px)" }}
               >
-                Find your fit
-              </p>
-              <h1
-                className="hero-shimmer mt-5 font-display text-display font-semibold"
-                style={{ color: "var(--text-primary)" }}
-              >
-                Which Southern NH<br />move is yours?
-              </h1>
+                <Image
+                  src="/images/about/about-stone-wall.jpg"
+                  alt="Dry stone wall in Southern NH"
+                  fill
+                  priority
+                  sizes="100vw"
+                  className="object-cover"
+                />
+                <div
+                  aria-hidden
+                  className="absolute inset-0"
+                  style={{ background: "var(--gradient-hero-overlay)" }}
+                />
+                <div aria-hidden className="absolute inset-0">
+                  <FallingLeaves density="low" tone="autumn" />
+                </div>
+                <div className="relative z-10 flex h-full items-end px-6 pb-8">
+                  <p
+                    className="font-mono text-xs uppercase tracking-[0.22em]"
+                    style={{ color: "var(--accent)" }}
+                  >
+                    Find your fit
+                  </p>
+                </div>
+              </div>
+
+              {/* H1 with oversized editorial "6" numeral backdrop */}
+              <div className="relative">
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -top-8 right-0 select-none font-display font-semibold"
+                  style={{
+                    fontSize: "clamp(6rem, 14vw, 12rem)",
+                    color: "var(--accent)",
+                    opacity: 0.12,
+                    lineHeight: 1,
+                  }}
+                >
+                  6
+                </span>
+                <InkBloom
+                  as="h1"
+                  className="relative font-display text-display font-semibold"
+                  accentWord="yours"
+                >
+                  {`Which Southern NH move is yours?`}
+                </InkBloom>
+              </div>
+
               <p
                 className="mt-6 max-w-xl text-lg leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
@@ -388,7 +433,7 @@ export default function QuizClient() {
 
               {/* Recommended program card */}
               <div
-                className="mt-10 overflow-hidden rounded-2xl p-6 md:p-8"
+                className="shimmer-border mt-10 overflow-hidden rounded-2xl p-6 md:p-8"
                 style={{
                   background: "var(--bg-card)",
                   border: "1.5px solid rgba(47,74,58,0.12)",

@@ -4,8 +4,10 @@ import Image from "next/image";
 import { siteConfig } from "@/data/site";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { SlideIn } from "@/components/animations/SlideIn";
-import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
+import { PageBanner } from "@/components/sections/PageBanner";
+import { AuroraGradient } from "@/components/sections/motion/AuroraGradient";
+import { CountUp } from "@/components/sections/motion/CountUp";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbSchema, realEstateAgentSchema } from "@/lib/schema";
 
@@ -42,11 +44,20 @@ export const metadata: Metadata = {
   },
 };
 
-// Voice-of-Karyn story paragraphs — [DEMO COPY — pending client review]
-const storyParagraphs = [
-  "I grew up in Southern New Hampshire. I went to school here, raised my family here, and I have watched these towns change over three decades. Before real estate I spent years in the classroom, and a lot of what made me a good teacher, the listening, the patience, the habit of explaining things until they actually make sense, is what makes this work feel natural.",
-  "I sell homes because every house has a story, and because the people selling or buying them are almost always in the middle of something bigger. A downsizing. A first grandchild. A job change. A commute they finally cannot do anymore. My job is to meet you where you are, get the numbers right, and not push.",
-  "I work at Jill & Co. Realty Group in Salem, a genuine boutique brokerage. No franchise template. No call center handing you off. For years I held an exclusive Zillow Premier Agent partnership in this region. 2025 has been my best year yet, and I am building this site so the next person who needs me can find me without going through a platform.",
+// Editorial timeline entries — [DEMO COPY — pending client review]
+const STORY_TIMELINE = [
+  {
+    year: "1995",
+    body: "Grew up in Southern New Hampshire, went to school here, raised a family here, and watched these towns change over three decades. Before real estate, years in the classroom — listening, explaining, making things make sense.",
+  },
+  {
+    year: "2010",
+    body: "Started selling homes because every house has a story, and the people selling or buying them are almost always in the middle of something bigger. A downsizing, a first grandchild, a commute they finally cannot do anymore.",
+  },
+  {
+    year: "2025",
+    body: "Jill & Co. Realty Group in Salem, a genuine boutique brokerage. No franchise template, no call center. 2025 has been my best year yet, and this site exists so the next person who needs me can find me without going through a platform.",
+  },
 ];
 
 // Beliefs — 5 bullets with emoji, each a concrete promise.
@@ -90,35 +101,33 @@ export default function AboutPage() {
     <>
       <JsonLd data={[breadcrumb, schema]} />
 
-      {/* SECTION 1 — HERO HEADER (LIGHT, shimmer H1) */}
-      <section
-        className="relative overflow-hidden"
-        style={{ background: "var(--bg-base)" }}
-      >
-        <div className="absolute inset-0 z-0">
-          <AmbientParticles density="low" />
-        </div>
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20 pt-20 md:pb-28 md:pt-28 lg:px-8">
-          <FadeUp>
-            <p className="font-mono text-xs uppercase tracking-[0.22em] text-[var(--accent)]">
-              ABOUT · SALEM, NH
-            </p>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <h1 className="hero-shimmer font-display text-display mt-5 font-semibold">
-              The neighbor who happens to be the expert.
-            </h1>
-          </FadeUp>
-          <FadeUp delay={0.2}>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--text-secondary)]">
-              A lifelong Southern NH agent at a genuine boutique brokerage.
-              Place first, not face first. Honest numbers, on your timing.
-            </p>
-          </FadeUp>
-        </div>
-      </section>
+      {/* SECTION 1 — HERO HEADER (MOSAIC-3 BANNER, letter-mask H1) */}
+      <PageBanner
+        mode="mosaic3"
+        images={[
+          {
+            src: "/images/about/about-landscape-1.jpg",
+            alt: "Southern NH autumn landscape with maple foliage",
+          },
+          {
+            src: "/images/about/about-clapboard-detail.jpg",
+            alt: "New England clapboard detail with autumn light",
+          },
+          {
+            src: "/images/about/about-stone-wall.jpg",
+            alt: "Dry-stone wall at the edge of a New Hampshire field",
+          },
+        ]}
+        eyebrow="ABOUT · SALEM, NH"
+        title={<>The neighbor who happens to be the expert.</>}
+        titleMotion="letter-mask"
+        subhead="A lifelong Southern NH agent at a genuine boutique brokerage. Place first, not face first. Honest numbers, on your timing."
+        height="md"
+        parallax
+        textSide="left"
+      />
 
-      {/* SECTION 2 — STORY (DARK, forest green) */}
+      {/* SECTION 2 — STORY (DARK, forest green) — editorial timeline */}
       <section
         className="relative overflow-hidden"
         style={{ background: "var(--primary)" }}
@@ -147,9 +156,13 @@ export default function AboutPage() {
             </div>
           </SlideIn>
 
+          {/* Right column — vertical editorial timeline */}
           <div className="flex flex-col justify-center">
             <FadeUp>
-              <p className="font-mono text-xs uppercase tracking-[0.22em] text-[var(--text-on-dark-muted)]">
+              <p
+                className="font-mono text-xs uppercase tracking-[0.22em]"
+                style={{ color: "var(--text-on-dark-muted)" }}
+              >
                 HER STORY
               </p>
             </FadeUp>
@@ -161,18 +174,50 @@ export default function AboutPage() {
                 Teaching, then listening, then selling homes.
               </h2>
             </FadeUp>
-            <div className="mt-6 space-y-5">
-              {storyParagraphs.map((p, i) => (
-                <FadeUp key={i} delay={0.15 + i * 0.08}>
-                  <p
-                    className="text-base leading-relaxed"
-                    style={{ color: "var(--text-on-dark-secondary)" }}
-                  >
-                    {p}
-                  </p>
+
+            <div className="mt-8 space-y-10">
+              {STORY_TIMELINE.map((entry, i) => (
+                <FadeUp key={entry.year} delay={0.15 + i * 0.08}>
+                  <div className="grid grid-cols-[auto_1fr] items-start gap-6">
+                    <p
+                      className="font-display font-semibold italic"
+                      style={{
+                        fontSize: "3rem",
+                        lineHeight: 1,
+                        color: "var(--accent)",
+                      }}
+                    >
+                      {entry.year}
+                    </p>
+                    <p
+                      className="pt-3 text-base leading-relaxed"
+                      style={{ color: "var(--text-on-dark-secondary)" }}
+                    >
+                      {entry.body}
+                    </p>
+                  </div>
                 </FadeUp>
               ))}
             </div>
+
+            {/* Pull quote below timeline */}
+            <FadeUp delay={0.5}>
+              <blockquote
+                className="mt-12 border-l-2 pl-6"
+                style={{ borderColor: "var(--accent)" }}
+              >
+                <p
+                  className="font-display italic"
+                  style={{
+                    fontSize: "clamp(1.5rem, 3vw, 2rem)",
+                    lineHeight: 1.25,
+                    color: "var(--text-on-dark-primary)",
+                  }}
+                >
+                  I sell homes because every house has a story.
+                </p>
+              </blockquote>
+            </FadeUp>
           </div>
         </div>
       </section>
@@ -245,6 +290,7 @@ export default function AboutPage() {
         className="relative overflow-hidden"
         style={{ background: "var(--primary)" }}
       >
+        <AuroraGradient tone="sage" intensity="subtle" />
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
@@ -325,12 +371,20 @@ export default function AboutPage() {
                   <div className="text-2xl" aria-hidden="true">
                     {s.emoji}
                   </div>
-                  <p className="mt-3 font-display text-h2 font-semibold text-[var(--primary)]">
-                    {s.prefix ?? ""}
-                    {typeof s.decimals === "number"
-                      ? s.value.toFixed(s.decimals)
-                      : s.value}
-                    {s.suffix ?? ""}
+                  <p
+                    className="mt-3 font-display font-semibold"
+                    style={{
+                      fontSize: "clamp(2.5rem, 5vw, 4rem)",
+                      lineHeight: 1.05,
+                      color: "var(--primary)",
+                    }}
+                  >
+                    <CountUp
+                      value={s.value}
+                      prefix={s.prefix}
+                      suffix={s.suffix}
+                      decimals={s.decimals ?? 0}
+                    />
                   </p>
                   <p className="mt-1 text-sm font-medium text-[var(--text-secondary)]">
                     {s.label}
@@ -342,11 +396,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* SECTION 6 — BOOKING CTA (DARK, breathing orb) */}
+      {/* SECTION 6 — BOOKING CTA (DARK, breathing orb + aurora) */}
       <section
         className="relative overflow-hidden"
         style={{ background: "var(--primary)" }}
       >
+        <AuroraGradient tone="warm" intensity="subtle" />
         <BreathingOrb tone="forest" />
         <div className="relative z-10 mx-auto w-full max-w-3xl px-6 py-20 text-center md:py-24 lg:px-8">
           <FadeUp>
