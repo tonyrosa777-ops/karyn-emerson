@@ -1,0 +1,194 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation "Primary" [ref=e3]:
+      - link "Karyn Emerson" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - list [ref=e5]:
+        - listitem [ref=e6]:
+          - link "About" [ref=e7] [cursor=pointer]:
+            - /url: /about
+        - listitem [ref=e8]:
+          - link "Neighborhoods" [ref=e9] [cursor=pointer]:
+            - /url: /neighborhoods
+        - listitem [ref=e10]:
+          - link "Relocate" [ref=e11] [cursor=pointer]:
+            - /url: /relocate
+        - listitem [ref=e12]:
+          - link "Listings" [ref=e13] [cursor=pointer]:
+            - /url: /listings
+        - listitem [ref=e14]:
+          - link "Blog" [ref=e15] [cursor=pointer]:
+            - /url: /blog
+        - listitem [ref=e16]:
+          - link "Testimonials" [ref=e17] [cursor=pointer]:
+            - /url: /testimonials
+        - listitem [ref=e18]:
+          - link "Take the Quiz" [ref=e19] [cursor=pointer]:
+            - /url: /quiz
+        - listitem [ref=e20]:
+          - link "⬥ Pricing" [ref=e21] [cursor=pointer]:
+            - /url: /pricing
+      - link "Book a consultation" [ref=e23] [cursor=pointer]:
+        - /url: /booking
+  - main [ref=e24]:
+    - generic [ref=e25]:
+      - img "Dry stone wall along a Southern NH field" [ref=e28]
+      - generic [ref=e31]:
+        - paragraph [ref=e32]: GET IN TOUCH
+        - heading "T h e b e s t w a y t o s t a r t i s t o t a l k ." [level=1] [ref=e33]:
+          - generic [ref=e34]: T
+          - generic [ref=e35]: h
+          - generic [ref=e36]: e
+          - generic [ref=e37]: b
+          - generic [ref=e38]: e
+          - generic [ref=e39]: s
+          - generic [ref=e40]: t
+          - generic [ref=e41]: w
+          - generic [ref=e42]: a
+          - generic [ref=e43]: "y"
+          - generic [ref=e44]: t
+          - generic [ref=e45]: o
+          - generic [ref=e46]: s
+          - generic [ref=e47]: t
+          - generic [ref=e48]: a
+          - generic [ref=e49]: r
+          - generic [ref=e50]: t
+          - generic [ref=e51]: i
+          - generic [ref=e52]: s
+          - generic [ref=e53]: t
+          - generic [ref=e54]: o
+          - generic [ref=e55]: t
+          - generic [ref=e56]: a
+          - generic [ref=e57]: l
+          - generic [ref=e58]: k
+          - generic [ref=e59]: .
+        - paragraph [ref=e60]: A quick call usually saves thirty emails. Pick the channel that works, and I will meet you there.
+    - generic [ref=e63]:
+      - generic [ref=e65]:
+        - paragraph [ref=e66]: SEND A NOTE
+        - heading "A few sentences is plenty." [level=2] [ref=e67]
+        - generic [ref=e69]:
+          - generic [ref=e70]:
+            - generic [ref=e71]:
+              - text: Your name
+              - textbox "Your name" [ref=e72]
+            - generic [ref=e73]:
+              - text: Email
+              - textbox "Email" [ref=e74]
+            - generic [ref=e75]:
+              - text: Phone (optional)
+              - textbox "Phone (optional)" [ref=e76]
+            - generic [ref=e77]:
+              - text: What brings you here
+              - radiogroup "What brings you here" [ref=e78]:
+                - radio "Selling" [checked] [ref=e79]:
+                  - generic [ref=e80]: 🪴
+                  - generic [ref=e81]: Selling
+                - radio "Buying" [ref=e82]:
+                  - generic [ref=e83]: 🔑
+                  - generic [ref=e84]: Buying
+                - radio "Relocating" [ref=e85]:
+                  - generic [ref=e86]: 🧭
+                  - generic [ref=e87]: Relocating
+                - radio "Just exploring" [ref=e88]:
+                  - generic [ref=e89]: ☕
+                  - generic [ref=e90]: Just exploring
+            - generic [ref=e91]:
+              - text: Your message
+              - textbox "Your message" [ref=e92]
+          - button "Send the message" [ref=e93]
+          - paragraph [ref=e94]: I read every message myself. No auto-responders, no call center.
+      - img "Clapboard colonial detail in autumn light" [ref=e97]
+    - generic [ref=e99]:
+      - generic [ref=e101]:
+        - paragraph [ref=e102]: REACH ME DIRECTLY
+        - list [ref=e103]:
+          - listitem [ref=e104]:
+            - generic [ref=e105]: 📍
+            - generic [ref=e106]:
+              - paragraph [ref=e107]: Office
+              - paragraph [ref=e108]: Jill & Co. Realty Group, Salem, NH
+          - listitem [ref=e109]:
+            - generic [ref=e110]: 🕰️
+            - generic [ref=e111]:
+              - paragraph [ref=e112]: Hours
+              - paragraph [ref=e113]: Monday through Saturday, 8am to 8pm. Sunday by appointment. Texts answered evenings and weekends.
+      - iframe [ref=e116]:
+        - link "Open in Maps (opens in new tab)" [ref=f1e4] [cursor=pointer]:
+          - /url: about:invalid#zClosurez
+          - text: Open in Maps
+          - img [ref=f1e6]
+  - contentinfo [ref=e117]:
+    - generic [ref=e120]:
+      - generic [ref=e121]:
+        - link "Karyn Emerson" [ref=e122] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=e123]: The neighborhood, and the person who knows every street.
+        - paragraph [ref=e124]: Jill & Co. Realty Group, Salem NH
+      - generic [ref=e125]:
+        - heading "Explore" [level=4] [ref=e126]
+        - list [ref=e127]:
+          - listitem [ref=e128]:
+            - link "About" [ref=e129] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e130]:
+            - link "Neighborhoods" [ref=e131] [cursor=pointer]:
+              - /url: /neighborhoods
+          - listitem [ref=e132]:
+            - link "Relocate" [ref=e133] [cursor=pointer]:
+              - /url: /relocate
+          - listitem [ref=e134]:
+            - link "Listings" [ref=e135] [cursor=pointer]:
+              - /url: /listings
+          - listitem [ref=e136]:
+            - link "Blog" [ref=e137] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e138]:
+            - link "Testimonials" [ref=e139] [cursor=pointer]:
+              - /url: /testimonials
+          - listitem [ref=e140]:
+            - link "Take the Quiz" [ref=e141] [cursor=pointer]:
+              - /url: /quiz
+      - generic [ref=e142]:
+        - heading "Service Area" [level=4] [ref=e143]
+        - list [ref=e144]:
+          - listitem [ref=e145]:
+            - link "Salem, NH" [ref=e146] [cursor=pointer]:
+              - /url: /neighborhoods/salem
+          - listitem [ref=e147]:
+            - link "Windham, NH" [ref=e148] [cursor=pointer]:
+              - /url: /neighborhoods/windham
+          - listitem [ref=e149]:
+            - link "Derry, NH" [ref=e150] [cursor=pointer]:
+              - /url: /neighborhoods/derry
+          - listitem [ref=e151]:
+            - link "Londonderry, NH" [ref=e152] [cursor=pointer]:
+              - /url: /neighborhoods/londonderry
+          - listitem [ref=e153]:
+            - link "Pelham, NH" [ref=e154] [cursor=pointer]:
+              - /url: /neighborhoods/pelham
+          - listitem [ref=e155]:
+            - link "Atkinson, NH" [ref=e156] [cursor=pointer]:
+              - /url: /neighborhoods/atkinson
+          - listitem [ref=e157]:
+            - link "Hampstead, NH" [ref=e158] [cursor=pointer]:
+              - /url: /neighborhoods/hampstead
+      - generic [ref=e159]:
+        - heading "Contact" [level=4] [ref=e160]
+        - list [ref=e161]:
+          - listitem [ref=e162]: Jill & Co. Realty Group, Salem, NH
+        - link "Facebook" [ref=e164] [cursor=pointer]:
+          - /url: https://www.facebook.com/karynemersonrealestate
+          - img [ref=e165]
+    - generic [ref=e169]:
+      - paragraph [ref=e170]: © 2026 Karyn Emerson Real Estate. Licensed in NH.
+      - list [ref=e171]:
+        - listitem [ref=e172]:
+          - link "Privacy" [ref=e173] [cursor=pointer]:
+            - /url: /privacy
+        - listitem [ref=e174]:
+          - link "Terms" [ref=e175] [cursor=pointer]:
+            - /url: /terms
+  - button "Open Next.js Dev Tools" [ref=e181] [cursor=pointer]:
+    - img [ref=e182]
+  - alert [ref=e185]

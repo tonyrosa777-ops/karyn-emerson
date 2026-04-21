@@ -1,0 +1,149 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation "Primary" [ref=e3]:
+      - link "Karyn Emerson" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - list [ref=e5]:
+        - listitem [ref=e6]:
+          - link "About" [ref=e7] [cursor=pointer]:
+            - /url: /about
+        - listitem [ref=e8]:
+          - link "Neighborhoods" [ref=e9] [cursor=pointer]:
+            - /url: /neighborhoods
+        - listitem [ref=e10]:
+          - link "Relocate" [ref=e11] [cursor=pointer]:
+            - /url: /relocate
+        - listitem [ref=e12]:
+          - link "Listings" [ref=e13] [cursor=pointer]:
+            - /url: /listings
+        - listitem [ref=e14]:
+          - link "Blog" [ref=e15] [cursor=pointer]:
+            - /url: /blog
+        - listitem [ref=e16]:
+          - link "Testimonials" [ref=e17] [cursor=pointer]:
+            - /url: /testimonials
+        - listitem [ref=e18]:
+          - link "Take the Quiz" [ref=e19] [cursor=pointer]:
+            - /url: /quiz
+        - listitem [ref=e20]:
+          - link "⬥ Pricing" [ref=e21] [cursor=pointer]:
+            - /url: /pricing
+      - link "Book a consultation" [ref=e23] [cursor=pointer]:
+        - /url: /booking
+  - main [ref=e24]:
+    - generic [ref=e27]:
+      - generic [ref=e28]:
+        - img "Dry stone wall in Southern NH" [ref=e29]
+        - paragraph [ref=e33]: Find your fit
+      - generic [ref=e34]:
+        - generic: "6"
+        - heading "W h i c h S o u t h e r n N H m o v e i s y o u r s ?" [level=1] [ref=e35]:
+          - generic [ref=e36]: W
+          - generic [ref=e37]: h
+          - generic [ref=e38]: i
+          - generic [ref=e39]: c
+          - generic [ref=e40]: h
+          - generic [ref=e41]: S
+          - generic [ref=e42]: o
+          - generic [ref=e43]: u
+          - generic [ref=e44]: t
+          - generic [ref=e45]: h
+          - generic [ref=e46]: e
+          - generic [ref=e47]: r
+          - generic [ref=e48]: "n"
+          - generic [ref=e49]: "N"
+          - generic [ref=e50]: H
+          - generic [ref=e51]: m
+          - generic [ref=e52]: o
+          - generic [ref=e53]: v
+          - generic [ref=e54]: e
+          - generic [ref=e55]: i
+          - generic [ref=e56]: s
+          - generic [ref=e57]: "y"
+          - generic [ref=e58]: o
+          - generic [ref=e59]: u
+          - generic [ref=e60]: r
+          - generic [ref=e61]: s
+          - generic [ref=e62]: "?"
+      - paragraph [ref=e63]: Six quick questions. Honest answers. You will get a result that maps to your actual situation, and a real next step for what to do about it.
+      - list [ref=e64]:
+        - listitem [ref=e65]: Takes about 90 seconds
+        - listitem [ref=e67]: No email gate, no signup
+        - listitem [ref=e69]: Your result is on screen immediately
+        - listitem [ref=e71]: Book a 15 minute call right after, if you want to
+      - generic [ref=e73]:
+        - button "Start the quiz" [ref=e74]
+        - paragraph [ref=e75]: 6 questions · Result shown immediately
+  - contentinfo [ref=e76]:
+    - generic [ref=e79]:
+      - generic [ref=e80]:
+        - link "Karyn Emerson" [ref=e81] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=e82]: The neighborhood, and the person who knows every street.
+        - paragraph [ref=e83]: Jill & Co. Realty Group, Salem NH
+      - generic [ref=e84]:
+        - heading "Explore" [level=4] [ref=e85]
+        - list [ref=e86]:
+          - listitem [ref=e87]:
+            - link "About" [ref=e88] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e89]:
+            - link "Neighborhoods" [ref=e90] [cursor=pointer]:
+              - /url: /neighborhoods
+          - listitem [ref=e91]:
+            - link "Relocate" [ref=e92] [cursor=pointer]:
+              - /url: /relocate
+          - listitem [ref=e93]:
+            - link "Listings" [ref=e94] [cursor=pointer]:
+              - /url: /listings
+          - listitem [ref=e95]:
+            - link "Blog" [ref=e96] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e97]:
+            - link "Testimonials" [ref=e98] [cursor=pointer]:
+              - /url: /testimonials
+          - listitem [ref=e99]:
+            - link "Take the Quiz" [ref=e100] [cursor=pointer]:
+              - /url: /quiz
+      - generic [ref=e101]:
+        - heading "Service Area" [level=4] [ref=e102]
+        - list [ref=e103]:
+          - listitem [ref=e104]:
+            - link "Salem, NH" [ref=e105] [cursor=pointer]:
+              - /url: /neighborhoods/salem
+          - listitem [ref=e106]:
+            - link "Windham, NH" [ref=e107] [cursor=pointer]:
+              - /url: /neighborhoods/windham
+          - listitem [ref=e108]:
+            - link "Derry, NH" [ref=e109] [cursor=pointer]:
+              - /url: /neighborhoods/derry
+          - listitem [ref=e110]:
+            - link "Londonderry, NH" [ref=e111] [cursor=pointer]:
+              - /url: /neighborhoods/londonderry
+          - listitem [ref=e112]:
+            - link "Pelham, NH" [ref=e113] [cursor=pointer]:
+              - /url: /neighborhoods/pelham
+          - listitem [ref=e114]:
+            - link "Atkinson, NH" [ref=e115] [cursor=pointer]:
+              - /url: /neighborhoods/atkinson
+          - listitem [ref=e116]:
+            - link "Hampstead, NH" [ref=e117] [cursor=pointer]:
+              - /url: /neighborhoods/hampstead
+      - generic [ref=e118]:
+        - heading "Contact" [level=4] [ref=e119]
+        - list [ref=e120]:
+          - listitem [ref=e121]: Jill & Co. Realty Group, Salem, NH
+        - link "Facebook" [ref=e123] [cursor=pointer]:
+          - /url: https://www.facebook.com/karynemersonrealestate
+          - img [ref=e124]
+    - generic [ref=e128]:
+      - paragraph [ref=e129]: © 2026 Karyn Emerson Real Estate. Licensed in NH.
+      - list [ref=e130]:
+        - listitem [ref=e131]:
+          - link "Privacy" [ref=e132] [cursor=pointer]:
+            - /url: /privacy
+        - listitem [ref=e133]:
+          - link "Terms" [ref=e134] [cursor=pointer]:
+            - /url: /terms
+  - button "Open Next.js Dev Tools" [ref=e140] [cursor=pointer]:
+    - img [ref=e141]

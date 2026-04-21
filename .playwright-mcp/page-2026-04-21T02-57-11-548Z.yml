@@ -1,0 +1,455 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation "Primary" [ref=e3]:
+      - link "Karyn Emerson" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - list [ref=e5]:
+        - listitem [ref=e6]:
+          - link "About" [ref=e7] [cursor=pointer]:
+            - /url: /about
+        - listitem [ref=e8]:
+          - link "Neighborhoods" [ref=e9] [cursor=pointer]:
+            - /url: /neighborhoods
+        - listitem [ref=e10]:
+          - link "Relocate" [ref=e11] [cursor=pointer]:
+            - /url: /relocate
+        - listitem [ref=e12]:
+          - link "Listings" [ref=e13] [cursor=pointer]:
+            - /url: /listings
+        - listitem [ref=e14]:
+          - link "Blog" [ref=e15] [cursor=pointer]:
+            - /url: /blog
+        - listitem [ref=e16]:
+          - link "Testimonials" [ref=e17] [cursor=pointer]:
+            - /url: /testimonials
+        - listitem [ref=e18]:
+          - link "Take the Quiz" [ref=e19] [cursor=pointer]:
+            - /url: /quiz
+        - listitem [ref=e20]:
+          - link "⬥ Pricing" [ref=e21] [cursor=pointer]:
+            - /url: /pricing
+      - link "Book a consultation" [ref=e23] [cursor=pointer]:
+        - /url: /booking
+  - main [ref=e24]:
+    - generic [ref=e25]:
+      - img "Southern NH landscape — the destination side of the border" [ref=e28]
+      - generic [ref=e31]:
+        - paragraph [ref=e32]: MA → NH · RELOCATION HUB
+        - heading "Moving to Southern NH." [level=1] [ref=e33]
+        - paragraph [ref=e34]: Tax arbitrage math, DMV checklist, commute by town, and school comparison. The honest version of what relocating actually involves.
+    - generic [ref=e38]:
+      - paragraph [ref=e39]: TL;DR · THE 30-SECOND ANSWER
+      - heading "Is it worth moving from Massachusetts to New Hampshire for the taxes?" [level=2] [ref=e40]
+      - paragraph [ref=e42]: Moving from Massachusetts to New Hampshire typically saves a $200,000 household around $10,000 per year on state income tax (MA charges a flat 5 percent, NH charges zero on wages), minus roughly $3,000 to $5,000 per year in higher NH property tax on a comparable Southern NH home, netting about $5,000 to $7,000 in year one. Salem, Windham, and Derry are the three most popular MA to NH destinations. The honest math, plus the commuter tax trap that catches Boston commuters, is below.
+    - generic [ref=e44]:
+      - paragraph [ref=e45]: The math, laid out
+      - heading "Massachusetts versus New Hampshire." [level=2] [ref=e46]
+      - generic [ref=e47]:
+        - generic [ref=e48]:
+          - paragraph [ref=e49]: Massachusetts
+          - generic [ref=e50]:
+            - paragraph [ref=e51]: State Income Tax
+            - paragraph [ref=e52]: 5%
+          - generic [ref=e53]:
+            - paragraph [ref=e54]: State Sales Tax
+            - paragraph [ref=e55]: 6.25%
+          - generic [ref=e56]:
+            - paragraph [ref=e57]: Capital Gains (State)
+            - paragraph [ref=e58]: 9%*
+          - generic [ref=e59]:
+            - paragraph [ref=e60]: Estate Tax Floor
+            - paragraph [ref=e61]: $2M
+        - generic [ref=e62]:
+          - paragraph [ref=e63]: New Hampshire
+          - generic [ref=e64]:
+            - paragraph [ref=e65]: State Income Tax
+            - paragraph [ref=e66]: 0%
+          - generic [ref=e67]:
+            - paragraph [ref=e68]: State Sales Tax
+            - paragraph [ref=e69]: 0%
+          - generic [ref=e70]:
+            - paragraph [ref=e71]: Capital Gains (State)
+            - paragraph [ref=e72]: 0%
+          - generic [ref=e73]:
+            - paragraph [ref=e74]: Estate Tax Floor
+            - paragraph [ref=e75]: None
+      - paragraph [ref=e76]: "* MA charges an additional 4% surtax on taxable income above $1M (the \"millionaire tax\"), bringing the effective top rate to 9% on long-term capital gains. [DEMO COPY - figures rounded for editorial clarity]."
+    - generic [ref=e78]:
+      - paragraph [ref=e80]: THE 30-SECOND ANSWER
+      - heading "Why families move up I-93 every spring." [level=2] [ref=e82]
+      - generic [ref=e83]:
+        - paragraph [ref=e84]: Massachusetts charges a flat 5% state income tax on wages and a 6.25% sales tax on most goods. New Hampshire charges neither. A typical dual-income household making $180,000 to $220,000 keeps roughly $9,000 to $11,000 more per year just by crossing the state line, before property tax even enters the conversation. [DEMO COPY - estimates].
+        - paragraph [ref=e85]: "The catch: if you still work in MA, MA income tax still applies to the wages you earn there. That is the commuter-tax trap. And NH property taxes run higher per dollar of home value than MA averages in many towns, so the net savings depend on town selection. The calculator below runs the math for you. Play with it."
+    - generic [ref=e87]:
+      - paragraph [ref=e89]: TAX ARBITRAGE CALCULATOR
+      - heading "Run your own MA to NH numbers." [level=2] [ref=e91]
+      - paragraph [ref=e93]: Two inputs, immediate math. Pick a target NH town to see how the property tax delta plays against the income and sales tax savings.
+      - generic [ref=e96]:
+        - generic [ref=e97]:
+          - generic [ref=e98]:
+            - text: Household income
+            - spinbutton "Household income" [ref=e99]: "180000"
+            - slider "Household income slider" [ref=e100]: "180000"
+          - generic [ref=e101]:
+            - text: Home value
+            - spinbutton "Home value" [ref=e102]: "550000"
+            - slider "Home value slider" [ref=e103]: "550000"
+          - generic [ref=e104]:
+            - text: Target NH town
+            - combobox "Target NH town" [ref=e105]:
+              - option "Salem, NH" [selected]
+              - option "Windham, NH"
+              - option "Derry, NH"
+              - option "Londonderry, NH"
+              - option "Pelham, NH"
+              - option "Atkinson, NH"
+              - option "Hampstead, NH"
+              - option "Plaistow, NH"
+          - paragraph [ref=e106]:
+            - text: "[DEMO COPY - estimates]. Assumes MA income tax at"
+            - generic [ref=e107]: 5%
+            - text: flat and taxable spending of
+            - generic [ref=e108]: 15%
+            - text: of household income at MA sales tax
+            - generic [ref=e109]: 6.25%
+            - text: . If you commute to a MA job, the MA income tax still applies.
+        - generic [ref=e110]:
+          - generic [ref=e111]:
+            - paragraph [ref=e112]: Net annual delta (rough)
+            - paragraph [ref=e113]: $0
+            - paragraph [ref=e114]: Combined MA income tax, sales tax savings, and property tax delta versus Salem, NH.
+          - generic [ref=e115]:
+            - generic [ref=e116]:
+              - paragraph [ref=e117]: MA income tax
+              - paragraph [ref=e118]: $9,000
+            - generic [ref=e119]:
+              - paragraph [ref=e120]: Sales tax saved
+              - paragraph [ref=e121]: $1,688
+            - generic [ref=e122]:
+              - paragraph [ref=e123]: MA property tax
+              - paragraph [ref=e124]: $7,810
+            - generic [ref=e125]:
+              - paragraph [ref=e126]: NH property tax (Salem)
+              - paragraph [ref=e127]: $9,818
+          - generic [ref=e128]:
+            - paragraph [ref=e129]: Property tax delta
+            - paragraph [ref=e130]: Your NH property tax is $2,008 more per year than a comparable MA home. Offset by no income and no sales tax.
+    - generic [ref=e132]:
+      - paragraph [ref=e134]: COMMUTE, BY TOWN
+      - heading "Six towns, three destinations, honest minutes." [level=2] [ref=e136]
+      - paragraph [ref=e138]: Off-peak driving times. Transit column notes the I-93 exit, the Park and Ride, and the MBTA Haverhill and Lawrence lines where they are realistic options. [DEMO COPY - estimates].
+      - table "Commute times from Southern NH towns to Boston, Manchester, and Portsmouth." [ref=e140]:
+        - caption [ref=e141]: Commute times from Southern NH towns to Boston, Manchester, and Portsmouth.
+        - rowgroup [ref=e142]:
+          - row "Town Exit Boston Manchester Portsmouth Transit option" [ref=e143]:
+            - columnheader "Town" [ref=e144]
+            - columnheader "Exit" [ref=e145]
+            - columnheader "Boston" [ref=e146]
+            - columnheader "Manchester" [ref=e147]
+            - columnheader "Portsmouth" [ref=e148]
+            - columnheader "Transit option" [ref=e149]
+        - rowgroup [ref=e150]:
+          - row "Salem Exit 2 45 min 25 min 35 min Exit 2 Park & Ride, Boston Express Bus" [ref=e151]:
+            - rowheader "Salem" [ref=e152]
+            - cell "Exit 2" [ref=e153]
+            - cell "45 min" [ref=e154]
+            - cell "25 min" [ref=e155]
+            - cell "35 min" [ref=e156]
+            - cell "Exit 2 Park & Ride, Boston Express Bus" [ref=e157]
+          - row "Windham Exit 3 50 min 22 min 40 min Exit 3 Park & Ride, Boston Express Bus" [ref=e158]:
+            - rowheader "Windham" [ref=e159]
+            - cell "Exit 3" [ref=e160]
+            - cell "50 min" [ref=e161]
+            - cell "22 min" [ref=e162]
+            - cell "40 min" [ref=e163]
+            - cell "Exit 3 Park & Ride, Boston Express Bus" [ref=e164]
+          - row "Derry Exit 4 55 min 18 min 40 min I-93 to I-495, MBTA Lawrence station ~20 min" [ref=e165]:
+            - rowheader "Derry" [ref=e166]
+            - cell "Exit 4" [ref=e167]
+            - cell "55 min" [ref=e168]
+            - cell "18 min" [ref=e169]
+            - cell "40 min" [ref=e170]
+            - cell "I-93 to I-495, MBTA Lawrence station ~20 min" [ref=e171]
+          - row "Londonderry Exit 4 / 5 50 min 12 min 45 min Exit 4 Park & Ride, Boston Express Bus" [ref=e172]:
+            - rowheader "Londonderry" [ref=e173]
+            - cell "Exit 4 / 5" [ref=e174]
+            - cell "50 min" [ref=e175]
+            - cell "12 min" [ref=e176]
+            - cell "45 min" [ref=e177]
+            - cell "Exit 4 Park & Ride, Boston Express Bus" [ref=e178]
+          - row "Pelham I-93 via Exit 2 50 min 28 min 45 min Drive to Salem Exit 2 Park & Ride" [ref=e179]:
+            - rowheader "Pelham" [ref=e180]
+            - cell "I-93 via Exit 2" [ref=e181]
+            - cell "50 min" [ref=e182]
+            - cell "28 min" [ref=e183]
+            - cell "45 min" [ref=e184]
+            - cell "Drive to Salem Exit 2 Park & Ride" [ref=e185]
+          - row "Atkinson I-495 or Exit 3 50 min 30 min 35 min MBTA Haverhill line ~15 min drive" [ref=e186]:
+            - rowheader "Atkinson" [ref=e187]
+            - cell "I-495 or Exit 3" [ref=e188]
+            - cell "50 min" [ref=e189]
+            - cell "30 min" [ref=e190]
+            - cell "35 min" [ref=e191]
+            - cell "MBTA Haverhill line ~15 min drive" [ref=e192]
+    - generic [ref=e194]:
+      - paragraph [ref=e196]: SCHOOLS
+      - heading "Windham, Londonderry, Salem at a glance." [level=2] [ref=e198]
+      - paragraph [ref=e200]: High-level comparison of the three school districts MA relocators ask about most. Niche ratings are a starting point, not a conclusion. Ask me which feeder pattern fits your street. [DEMO COPY - pending data pull].
+      - generic [ref=e201]:
+        - generic [ref=e203]:
+          - paragraph [ref=e204]: Windham SAU 95
+          - heading "Windham HS" [level=3] [ref=e205]
+          - paragraph [ref=e206]: Niche grade A
+          - paragraph [ref=e207]: Consistently in the top 10 NH public high schools by Niche rating. Small cohort, strong AP participation.
+        - generic [ref=e209]:
+          - paragraph [ref=e210]: Londonderry SAU 12
+          - heading "Londonderry HS" [level=3] [ref=e211]
+          - paragraph [ref=e212]: Niche grade A
+          - paragraph [ref=e213]: Large campus, strong STEM and athletics. Woodmont Commons families feed here.
+        - generic [ref=e215]:
+          - paragraph [ref=e216]: Salem SAU 57
+          - heading "Salem HS" [level=3] [ref=e217]
+          - paragraph [ref=e218]: Niche grade B+
+          - paragraph [ref=e219]: Comprehensive public high, growing vocational and performing arts programs.
+    - generic [ref=e221]:
+      - paragraph [ref=e223]: AFTER YOU CLOSE
+      - heading "DMV, registration, inspection, taxes." [level=2] [ref=e225]
+      - list [ref=e226]:
+        - listitem [ref=e228]:
+          - generic [ref=e229]: "01"
+          - generic [ref=e230]:
+            - paragraph [ref=e231]: Establish NH residency.
+            - paragraph [ref=e232]: Your new deed and utility bills do most of the work here. The date you close is usually the date residency begins.
+        - listitem [ref=e234]:
+          - generic [ref=e235]: "02"
+          - generic [ref=e236]:
+            - paragraph [ref=e237]: Get your NH driver's license within 60 days.
+            - paragraph [ref=e238]: Visit a NH DMV office with proof of residency, your MA license, and a second form of ID. Walk-in and appointment options at Concord, Manchester, Derry, and Salem locations.
+        - listitem [ref=e240]:
+          - generic [ref=e241]: "03"
+          - generic [ref=e242]:
+            - paragraph [ref=e243]: Register vehicles within 60 days of establishing residency.
+            - paragraph [ref=e244]: "Two-step in NH: town clerk first for the municipal portion, then DMV for plates and title. Bring your title or lienholder information, proof of residency, and odometer reading."
+        - listitem [ref=e246]:
+          - generic [ref=e247]: "04"
+          - generic [ref=e248]:
+            - paragraph [ref=e249]: Pass the NH annual state inspection.
+            - paragraph [ref=e250]: Every NH-registered vehicle needs an annual safety inspection. Most local shops do it in 30 minutes. Inspection sticker shows the expiration month.
+        - listitem [ref=e252]:
+          - generic [ref=e253]: "05"
+          - generic [ref=e254]:
+            - paragraph [ref=e255]: Surrender your MA plates and cancel MA registration.
+            - paragraph [ref=e256]: File the cancellation with the MA RMV so you are not billed for the next MA excise tax cycle. Keep the receipt.
+        - listitem [ref=e258]:
+          - generic [ref=e259]: "06"
+          - generic [ref=e260]:
+            - paragraph [ref=e261]: Update voter registration.
+            - paragraph [ref=e262]: NH registers voters through the town clerk. Bring proof of residency. Same-day voter registration is available in NH.
+        - listitem [ref=e264]:
+          - generic [ref=e265]: "07"
+          - generic [ref=e266]:
+            - paragraph [ref=e267]: Watch the commuter-tax trap.
+            - paragraph [ref=e268]: "If you still work in MA, MA income tax still applies to those wages. NH does not credit it back. Plan your withholdings accordingly. (Source: milestonefinancialplanning.com, referenced in market-intelligence.md §6.)"
+        - listitem [ref=e270]:
+          - generic [ref=e271]: "08"
+          - generic [ref=e272]:
+            - paragraph [ref=e273]: Set up property tax escrow.
+            - paragraph [ref=e274]: NH property tax is billed twice a year, typically July and December. Your lender's escrow should smooth this into monthly. Always confirm the first year is estimated, and watch for a balloon bill in the second year.
+        - listitem [ref=e276]:
+          - generic [ref=e277]: "09"
+          - generic [ref=e278]:
+            - paragraph [ref=e279]: Update your homeowners insurance.
+            - paragraph [ref=e280]: NH underwriting differs from MA on flood, wind, and well coverage. Send the new policy to your lender before closing.
+        - listitem [ref=e282]:
+          - generic [ref=e283]: "10"
+          - generic [ref=e284]:
+            - paragraph [ref=e285]: File your final MA resident return next April.
+            - paragraph [ref=e286]: The year you move, MA treats you as a part-year resident. NH has no state return to file. Your tax preparer handles the switch; bring both addresses and the move date.
+    - generic [ref=e288]:
+      - paragraph [ref=e290]: WHERE TO LOOK
+      - heading "Start with the profile, not the ZIP code." [level=2] [ref=e292]
+      - generic [ref=e293]:
+        - link "Top schools, premium budget If you want this, look at Windham. The highest median price in the service area, but also the strongest school ratings and a lake-country feel. If budget and schools are the top two, start here. See the neighborhood guide" [ref=e295] [cursor=pointer]:
+          - /url: /neighborhoods/windham
+          - paragraph [ref=e296]: Top schools, premium budget
+          - heading "If you want this, look at Windham." [level=3] [ref=e297]
+          - paragraph [ref=e298]: The highest median price in the service area, but also the strongest school ratings and a lake-country feel. If budget and schools are the top two, start here.
+          - generic [ref=e299]:
+            - text: See the neighborhood guide
+            - generic [ref=e300]: →
+        - link "Shortest Boston commute If you want this, look at Salem. Exit 2, Park and Ride, and the Boston Express Bus. 45 minutes off-peak to downtown. Tuscan Village adds a single-level and townhouse inventory for downsizers. See the neighborhood guide" [ref=e302] [cursor=pointer]:
+          - /url: /neighborhoods/salem
+          - paragraph [ref=e303]: Shortest Boston commute
+          - heading "If you want this, look at Salem." [level=3] [ref=e304]
+          - paragraph [ref=e305]: Exit 2, Park and Ride, and the Boston Express Bus. 45 minutes off-peak to downtown. Tuscan Village adds a single-level and townhouse inventory for downsizers.
+          - generic [ref=e306]:
+            - text: See the neighborhood guide
+            - generic [ref=e307]: →
+        - link "Most house for the money If you want this, look at Derry. Higher mill rate, lower price per square foot. Pinkerton Academy is the public high. Hood Park and downtown Derry have new lifestyle inventory worth watching. See the neighborhood guide" [ref=e309] [cursor=pointer]:
+          - /url: /neighborhoods/derry
+          - paragraph [ref=e310]: Most house for the money
+          - heading "If you want this, look at Derry." [level=3] [ref=e311]
+          - paragraph [ref=e312]: Higher mill rate, lower price per square foot. Pinkerton Academy is the public high. Hood Park and downtown Derry have new lifestyle inventory worth watching.
+          - generic [ref=e313]:
+            - text: See the neighborhood guide
+            - generic [ref=e314]: →
+        - link "Best Manchester commute If you want this, look at Londonderry. Twelve minutes to Manchester, under an hour to Boston, and strong public schools. Woodmont Commons is the new-construction story. See the neighborhood guide" [ref=e316] [cursor=pointer]:
+          - /url: /neighborhoods/londonderry
+          - paragraph [ref=e317]: Best Manchester commute
+          - heading "If you want this, look at Londonderry." [level=3] [ref=e318]
+          - paragraph [ref=e319]: Twelve minutes to Manchester, under an hour to Boston, and strong public schools. Woodmont Commons is the new-construction story.
+          - generic [ref=e320]:
+            - text: See the neighborhood guide
+            - generic [ref=e321]: →
+        - link "Quiet, border town, strong resale If you want this, look at Pelham. Route 38 corridor, a quieter feel than Salem, and consistent resale on ranches and single-level homes. See the neighborhood guide" [ref=e323] [cursor=pointer]:
+          - /url: /neighborhoods/pelham
+          - paragraph [ref=e324]: Quiet, border town, strong resale
+          - heading "If you want this, look at Pelham." [level=3] [ref=e325]
+          - paragraph [ref=e326]: Route 38 corridor, a quieter feel than Salem, and consistent resale on ranches and single-level homes.
+          - generic [ref=e327]:
+            - text: See the neighborhood guide
+            - generic [ref=e328]: →
+        - link "Lake life within an hour of Boston If you want this, look at Hampstead. Big Island Pond, Island Pond, and Wash Pond. Lake-adjacent inventory with a Timberlane Regional school feed. See the neighborhood guide" [ref=e330] [cursor=pointer]:
+          - /url: /neighborhoods/hampstead
+          - paragraph [ref=e331]: Lake life within an hour of Boston
+          - heading "If you want this, look at Hampstead." [level=3] [ref=e332]
+          - paragraph [ref=e333]: Big Island Pond, Island Pond, and Wash Pond. Lake-adjacent inventory with a Timberlane Regional school feed.
+          - generic [ref=e334]:
+            - text: See the neighborhood guide
+            - generic [ref=e335]: →
+    - generic [ref=e337]:
+      - generic [ref=e338]:
+        - generic [ref=e339]:
+          - generic [ref=e340]:
+            - generic [ref=e341]: Salem
+            - generic [ref=e342]: ·
+          - generic [ref=e343]:
+            - generic [ref=e344]: Windham
+            - generic [ref=e345]: ·
+          - generic [ref=e346]:
+            - generic [ref=e347]: Derry
+            - generic [ref=e348]: ·
+          - generic [ref=e349]:
+            - generic [ref=e350]: Londonderry
+            - generic [ref=e351]: ·
+          - generic [ref=e352]:
+            - generic [ref=e353]: Pelham
+            - generic [ref=e354]: ·
+          - generic [ref=e355]:
+            - generic [ref=e356]: Atkinson
+            - generic [ref=e357]: ·
+          - generic [ref=e358]:
+            - generic [ref=e359]: Hampstead
+            - generic [ref=e360]: ·
+        - generic [ref=e361]:
+          - generic [ref=e362]:
+            - generic [ref=e363]: Salem
+            - generic [ref=e364]: ·
+          - generic [ref=e365]:
+            - generic [ref=e366]: Windham
+            - generic [ref=e367]: ·
+          - generic [ref=e368]:
+            - generic [ref=e369]: Derry
+            - generic [ref=e370]: ·
+          - generic [ref=e371]:
+            - generic [ref=e372]: Londonderry
+            - generic [ref=e373]: ·
+          - generic [ref=e374]:
+            - generic [ref=e375]: Pelham
+            - generic [ref=e376]: ·
+          - generic [ref=e377]:
+            - generic [ref=e378]: Atkinson
+            - generic [ref=e379]: ·
+          - generic [ref=e380]:
+            - generic [ref=e381]: Hampstead
+            - generic [ref=e382]: ·
+      - list [ref=e383]:
+        - listitem [ref=e384]: Salem
+        - listitem [ref=e385]: Windham
+        - listitem [ref=e386]: Derry
+        - listitem [ref=e387]: Londonderry
+        - listitem [ref=e388]: Pelham
+        - listitem [ref=e389]: Atkinson
+        - listitem [ref=e390]: Hampstead
+    - generic [ref=e392]:
+      - paragraph [ref=e394]: START WITH A 15-MINUTE CALL
+      - heading "Tell me your MA ZIP and your ideal NH commute." [level=2] [ref=e396]
+      - paragraph [ref=e398]: I will run your actual numbers against two or three Southern NH towns and tell you which one I would move my own family to, if it were my family.
+      - generic [ref=e400]:
+        - link "Book a Free Consultation" [ref=e401] [cursor=pointer]:
+          - /url: /booking
+        - link "Take the Quiz" [ref=e402] [cursor=pointer]:
+          - /url: /quiz
+  - contentinfo [ref=e403]:
+    - generic [ref=e406]:
+      - generic [ref=e407]:
+        - link "Karyn Emerson" [ref=e408] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=e409]: The neighborhood, and the person who knows every street.
+        - paragraph [ref=e410]: Jill & Co. Realty Group, Salem NH
+      - generic [ref=e411]:
+        - heading "Explore" [level=4] [ref=e412]
+        - list [ref=e413]:
+          - listitem [ref=e414]:
+            - link "About" [ref=e415] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e416]:
+            - link "Neighborhoods" [ref=e417] [cursor=pointer]:
+              - /url: /neighborhoods
+          - listitem [ref=e418]:
+            - link "Relocate" [ref=e419] [cursor=pointer]:
+              - /url: /relocate
+          - listitem [ref=e420]:
+            - link "Listings" [ref=e421] [cursor=pointer]:
+              - /url: /listings
+          - listitem [ref=e422]:
+            - link "Blog" [ref=e423] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e424]:
+            - link "Testimonials" [ref=e425] [cursor=pointer]:
+              - /url: /testimonials
+          - listitem [ref=e426]:
+            - link "Take the Quiz" [ref=e427] [cursor=pointer]:
+              - /url: /quiz
+      - generic [ref=e428]:
+        - heading "Service Area" [level=4] [ref=e429]
+        - list [ref=e430]:
+          - listitem [ref=e431]:
+            - link "Salem, NH" [ref=e432] [cursor=pointer]:
+              - /url: /neighborhoods/salem
+          - listitem [ref=e433]:
+            - link "Windham, NH" [ref=e434] [cursor=pointer]:
+              - /url: /neighborhoods/windham
+          - listitem [ref=e435]:
+            - link "Derry, NH" [ref=e436] [cursor=pointer]:
+              - /url: /neighborhoods/derry
+          - listitem [ref=e437]:
+            - link "Londonderry, NH" [ref=e438] [cursor=pointer]:
+              - /url: /neighborhoods/londonderry
+          - listitem [ref=e439]:
+            - link "Pelham, NH" [ref=e440] [cursor=pointer]:
+              - /url: /neighborhoods/pelham
+          - listitem [ref=e441]:
+            - link "Atkinson, NH" [ref=e442] [cursor=pointer]:
+              - /url: /neighborhoods/atkinson
+          - listitem [ref=e443]:
+            - link "Hampstead, NH" [ref=e444] [cursor=pointer]:
+              - /url: /neighborhoods/hampstead
+      - generic [ref=e445]:
+        - heading "Contact" [level=4] [ref=e446]
+        - list [ref=e447]:
+          - listitem [ref=e448]: Jill & Co. Realty Group, Salem, NH
+        - link "Facebook" [ref=e450] [cursor=pointer]:
+          - /url: https://www.facebook.com/karynemersonrealestate
+          - img [ref=e451]
+    - generic [ref=e455]:
+      - paragraph [ref=e456]: © 2026 Karyn Emerson Real Estate. Licensed in NH.
+      - list [ref=e457]:
+        - listitem [ref=e458]:
+          - link "Privacy" [ref=e459] [cursor=pointer]:
+            - /url: /privacy
+        - listitem [ref=e460]:
+          - link "Terms" [ref=e461] [cursor=pointer]:
+            - /url: /terms
+  - button "Open Next.js Dev Tools" [ref=e467] [cursor=pointer]:
+    - img [ref=e468]

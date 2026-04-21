@@ -1,0 +1,246 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation "Primary" [ref=e3]:
+      - link "Karyn Emerson" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - list [ref=e5]:
+        - listitem [ref=e6]:
+          - link "About" [ref=e7] [cursor=pointer]:
+            - /url: /about
+        - listitem [ref=e8]:
+          - link "Neighborhoods" [ref=e9] [cursor=pointer]:
+            - /url: /neighborhoods
+        - listitem [ref=e10]:
+          - link "Relocate" [ref=e11] [cursor=pointer]:
+            - /url: /relocate
+        - listitem [ref=e12]:
+          - link "Listings" [ref=e13] [cursor=pointer]:
+            - /url: /listings
+        - listitem [ref=e14]:
+          - link "Blog" [ref=e15] [cursor=pointer]:
+            - /url: /blog
+        - listitem [ref=e16]:
+          - link "Testimonials" [ref=e17] [cursor=pointer]:
+            - /url: /testimonials
+        - listitem [ref=e18]:
+          - link "Take the Quiz" [ref=e19] [cursor=pointer]:
+            - /url: /quiz
+        - listitem [ref=e20]:
+          - link "⬥ Pricing" [ref=e21] [cursor=pointer]:
+            - /url: /pricing
+      - link "Book a consultation" [ref=e23] [cursor=pointer]:
+        - /url: /booking
+  - main [ref=e24]:
+    - generic [ref=e26]:
+      - paragraph [ref=e27]: 15 minutes · free · no pressure
+      - heading "Let's have a conversation." [level=1] [ref=e28]
+      - paragraph [ref=e29]: Not a pitch, not a pressure sit. Fifteen minutes about your timing, your town, and your actual situation. If you are a year out, we have the conversation a year out. That is the whole job.
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - paragraph [ref=e33]: What to expect
+        - heading "A real call, not a funnel." [level=2] [ref=e34]
+      - generic [ref=e35]:
+        - paragraph [ref=e36]: This is a real conversation, not a sales pitch. Fifteen minutes, on your schedule, about where you are and what you are trying to figure out. If we are a fit, we keep talking. If we are not, I will tell you that too.
+        - paragraph [ref=e37]: You will not be on a phone tree. The number that calls you back is my cell. The email that lands in your inbox is from me. I work with a small number of clients a year on purpose.
+        - paragraph [ref=e38]: Bring your questions. Bring your doubts. Bring the list on your phone of houses you have been watching. We will go through it together, and you will walk away with a clearer picture of the next step, not another voicemail to return.
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - paragraph [ref=e42]: 15 minute call · free · zero pressure
+          - heading "Book a time with Karyn" [level=3] [ref=e43]
+          - paragraph [ref=e44]: Free 15 minute call. Pick a slot that works for you. No pressure, no obligation.
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - generic [ref=e47]:
+              - button "Previous month" [disabled] [ref=e48]:
+                - img [ref=e49]
+              - generic [ref=e51]: April 2026
+              - button "Next month" [ref=e52]:
+                - img [ref=e53]
+            - generic [ref=e55]:
+              - generic [ref=e56]: Su
+              - generic [ref=e57]: Mo
+              - generic [ref=e58]: Tu
+              - generic [ref=e59]: We
+              - generic [ref=e60]: Th
+              - generic [ref=e61]: Fr
+              - generic [ref=e62]: Sa
+            - generic [ref=e63]:
+              - button "1" [disabled] [ref=e67]
+              - button "2" [disabled] [ref=e68]
+              - button "3" [disabled] [ref=e69]
+              - button "4" [disabled] [ref=e70]
+              - button "5" [disabled] [ref=e71]
+              - button "6" [disabled] [ref=e72]
+              - button "7" [disabled] [ref=e73]
+              - button "8" [disabled] [ref=e74]
+              - button "9" [disabled] [ref=e75]
+              - button "10" [disabled] [ref=e76]
+              - button "11" [disabled] [ref=e77]
+              - button "12" [disabled] [ref=e78]
+              - button "13" [disabled] [ref=e79]
+              - button "14" [disabled] [ref=e80]
+              - button "15" [disabled] [ref=e81]
+              - button "16" [disabled] [ref=e82]
+              - button "17" [disabled] [ref=e83]
+              - button "18" [disabled] [ref=e84]
+              - button "19" [disabled] [ref=e85]
+              - button "20" [ref=e86] [cursor=pointer]
+              - button "21" [ref=e87] [cursor=pointer]
+              - button "22" [ref=e88] [cursor=pointer]
+              - button "23" [ref=e89] [cursor=pointer]
+              - button "24" [ref=e90] [cursor=pointer]
+              - button "25" [ref=e91] [cursor=pointer]
+              - button "26" [ref=e92] [cursor=pointer]
+              - button "27" [ref=e93] [cursor=pointer]
+              - button "28" [ref=e94] [cursor=pointer]
+              - button "29" [ref=e95] [cursor=pointer]
+              - button "30" [ref=e96] [cursor=pointer]
+          - generic [ref=e99]:
+            - generic [ref=e100]: 🗓️
+            - paragraph [ref=e101]: Pick a date
+            - paragraph [ref=e102]: Choose a day on the calendar and we will show you open times that same morning.
+    - generic [ref=e104]:
+      - paragraph [ref=e105]: On the call
+      - heading "What we will talk about." [level=2] [ref=e106]
+      - list [ref=e107]:
+        - listitem [ref=e108]:
+          - generic [ref=e109]: 🎯
+          - paragraph [ref=e110]: Your goal for the next 6 to 12 months
+        - listitem [ref=e111]:
+          - generic [ref=e112]: 🗓️
+          - paragraph [ref=e113]: Your timeline and what is driving it
+        - listitem [ref=e114]:
+          - generic [ref=e115]: 📍
+          - paragraph [ref=e116]: Which Southern NH towns are on your list
+        - listitem [ref=e117]:
+          - generic [ref=e118]: 💰
+          - paragraph [ref=e119]: Your budget range, honestly
+        - listitem [ref=e120]:
+          - generic [ref=e121]: 🤔
+          - paragraph [ref=e122]: Any questions you have about the market right now
+    - generic [ref=e124]:
+      - paragraph [ref=e125]: What the first call feels like
+      - heading "From people who booked one." [level=2] [ref=e126]
+      - generic [ref=e127]:
+        - figure "Patricia M. · Salem, NH" [ref=e128]:
+          - blockquote [ref=e129]: “Karyn walked us through selling our home of 38 years with such patience. My husband and I were overwhelmed at first. She sat at our kitchen table, explained every step, and never once pressured us. We closed above asking and we are in our condo at Tuscan Village now.”
+          - generic [ref=e130]: Patricia M. · Salem, NH
+        - figure "Joanne T. · Derry, NH" [ref=e131]:
+          - blockquote [ref=e132]: “I had already signed with another agent before a neighbor told me about Karyn. I wish I had called her first. When my contract ended she came over, walked the property, and had a real market analysis for me the next day. No fluff. Just numbers and a plan.”
+          - generic [ref=e133]: Joanne T. · Derry, NH
+        - figure "Maureen F. · Windham, NH" [ref=e134]:
+          - blockquote [ref=e135]: “Selling the house where we raised three kids was harder than we thought it would be. Karyn was kind about it. She did not rush us. When we were ready, she listed it on a Thursday and we had two offers by Sunday night.”
+          - generic [ref=e136]: Maureen F. · Windham, NH
+        - figure "Tom and Sarah B. · Atkinson, NH (from Andover, MA)" [ref=e137]:
+          - blockquote [ref=e138]: “Moving the whole family up from Andover. Karyn met us at four different houses across three towns over one weekend. She was patient, honest about which ones had issues, and she never once pushed us toward the more expensive option.”
+          - generic [ref=e139]: Tom and Sarah B. · Atkinson, NH (from Andover, MA)
+    - generic [ref=e141]:
+      - paragraph [ref=e142]: Quick questions
+      - heading "Before you book." [level=2] [ref=e143]
+      - generic [ref=e144]:
+        - generic [ref=e145]:
+          - term [ref=e146]: How long is the call, really?
+          - definition [ref=e147]: Fifteen minutes, sometimes twenty. If we need longer and you want to keep going, we keep going. If fifteen is all you have, fifteen is enough to get the lay of the land.
+        - generic [ref=e148]:
+          - term [ref=e149]: Is there any cost?
+          - definition [ref=e150]: No. Not for the call, not for a follow-up, not for a conversation before you are ready to list or buy. The commission is earned at closing, not at hello.
+        - generic [ref=e151]:
+          - term [ref=e152]: What if I am not ready to sell or buy for a while?
+          - definition [ref=e153]: That is completely fine. Many of the best sellers I have worked with called me a year before they listed. Early conversations are useful. I will not push you to act before you are ready.
+        - generic [ref=e154]:
+          - term [ref=e155]: Do I need to prepare anything?
+          - definition [ref=e156]: Not really. If you are selling, know roughly what you paid and when, and any major updates you have done. If you are buying, know your rough budget and which towns are on your list. That is it.
+        - generic [ref=e157]:
+          - term [ref=e158]: What happens right after I book?
+          - definition [ref=e159]: You get a calendar invite with the call details and my direct number. You can reschedule up to an hour before if life gets in the way.
+  - contentinfo [ref=e160]:
+    - generic [ref=e162]:
+      - generic [ref=e163]:
+        - generic [ref=e164]:
+          - link [ref=e165] [cursor=pointer]:
+            - /url: /
+            - text: Karyn Emerson
+          - paragraph [ref=e166]: The neighborhood, and the person who knows every street.
+          - paragraph [ref=e167]: Jill & Co. Realty Group, Salem NH
+        - generic [ref=e168]:
+          - heading [level=4] [ref=e169]: Explore
+          - list [ref=e170]:
+            - listitem [ref=e171]:
+              - link [ref=e172] [cursor=pointer]:
+                - /url: /about
+                - text: About
+            - listitem [ref=e173]:
+              - link [ref=e174] [cursor=pointer]:
+                - /url: /neighborhoods
+                - text: Neighborhoods
+            - listitem [ref=e175]:
+              - link [ref=e176] [cursor=pointer]:
+                - /url: /relocate
+                - text: Relocate
+            - listitem [ref=e177]:
+              - link [ref=e178] [cursor=pointer]:
+                - /url: /listings
+                - text: Listings
+            - listitem [ref=e179]:
+              - link [ref=e180] [cursor=pointer]:
+                - /url: /blog
+                - text: Blog
+            - listitem [ref=e181]:
+              - link [ref=e182] [cursor=pointer]:
+                - /url: /testimonials
+                - text: Testimonials
+            - listitem [ref=e183]:
+              - link [ref=e184] [cursor=pointer]:
+                - /url: /quiz
+                - text: Take the Quiz
+        - generic [ref=e185]:
+          - heading [level=4] [ref=e186]: Service Area
+          - list [ref=e187]:
+            - listitem [ref=e188]:
+              - link [ref=e189] [cursor=pointer]:
+                - /url: /neighborhoods/salem
+                - text: Salem, NH
+            - listitem [ref=e190]:
+              - link [ref=e191] [cursor=pointer]:
+                - /url: /neighborhoods/windham
+                - text: Windham, NH
+            - listitem [ref=e192]:
+              - link [ref=e193] [cursor=pointer]:
+                - /url: /neighborhoods/derry
+                - text: Derry, NH
+            - listitem [ref=e194]:
+              - link [ref=e195] [cursor=pointer]:
+                - /url: /neighborhoods/londonderry
+                - text: Londonderry, NH
+            - listitem [ref=e196]:
+              - link [ref=e197] [cursor=pointer]:
+                - /url: /neighborhoods/pelham
+                - text: Pelham, NH
+            - listitem [ref=e198]:
+              - link [ref=e199] [cursor=pointer]:
+                - /url: /neighborhoods/atkinson
+                - text: Atkinson, NH
+            - listitem [ref=e200]:
+              - link [ref=e201] [cursor=pointer]:
+                - /url: /neighborhoods/hampstead
+                - text: Hampstead, NH
+        - generic [ref=e202]:
+          - heading [level=4] [ref=e203]: Contact
+          - list [ref=e204]:
+            - listitem [ref=e205]: Jill & Co. Realty Group, Salem, NH
+          - link [ref=e207] [cursor=pointer]:
+            - /url: https://www.facebook.com/karynemersonrealestate
+            - img [ref=e208]
+      - generic [ref=e210]:
+        - paragraph [ref=e211]: © 2026 Karyn Emerson Real Estate. Licensed in NH.
+        - list [ref=e212]:
+          - listitem [ref=e213]:
+            - link [ref=e214] [cursor=pointer]:
+              - /url: /privacy
+              - text: Privacy
+          - listitem [ref=e215]:
+            - link [ref=e216] [cursor=pointer]:
+              - /url: /terms
+              - text: Terms
+  - button "Open Next.js Dev Tools" [ref=e222] [cursor=pointer]:
+    - img [ref=e223]

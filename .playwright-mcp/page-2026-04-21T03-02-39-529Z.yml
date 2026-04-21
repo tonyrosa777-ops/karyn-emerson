@@ -1,0 +1,236 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation "Primary" [ref=e3]:
+      - link "Karyn Emerson" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - list [ref=e5]:
+        - listitem [ref=e6]:
+          - link "About" [ref=e7] [cursor=pointer]:
+            - /url: /about
+        - listitem [ref=e8]:
+          - link "Neighborhoods" [ref=e9] [cursor=pointer]:
+            - /url: /neighborhoods
+        - listitem [ref=e10]:
+          - link "Relocate" [ref=e11] [cursor=pointer]:
+            - /url: /relocate
+        - listitem [ref=e12]:
+          - link "Listings" [ref=e13] [cursor=pointer]:
+            - /url: /listings
+        - listitem [ref=e14]:
+          - link "Blog" [ref=e15] [cursor=pointer]:
+            - /url: /blog
+        - listitem [ref=e16]:
+          - link "Testimonials" [ref=e17] [cursor=pointer]:
+            - /url: /testimonials
+        - listitem [ref=e18]:
+          - link "Take the Quiz" [ref=e19] [cursor=pointer]:
+            - /url: /quiz
+        - listitem [ref=e20]:
+          - link "⬥ Pricing" [ref=e21] [cursor=pointer]:
+            - /url: /pricing
+      - link "Book a consultation" [ref=e23] [cursor=pointer]:
+        - /url: /booking
+  - main [ref=e24]:
+    - generic [ref=e25]:
+      - generic [ref=e27]:
+        - img "Canobie Lake, Salem NH — autumn reflection" [ref=e29]
+        - img "Shadow Lake, Hampstead NH — morning light" [ref=e31]
+        - img "Tuscan Village, Salem NH — modern colonial" [ref=e33]
+      - generic [ref=e36]:
+        - paragraph [ref=e37]: THE SHORTLIST METHOD
+        - heading "A h a n d f u l o f r i g h t f i t s ." [level=1] [ref=e38]:
+          - generic [ref=e40]: A
+          - generic [ref=e41]:
+            - generic [ref=e42]: h
+            - generic [ref=e43]: a
+            - generic [ref=e44]: "n"
+            - generic [ref=e45]: d
+            - generic [ref=e46]: f
+            - generic [ref=e47]: u
+            - generic [ref=e48]: l
+          - generic [ref=e49]:
+            - generic [ref=e50]: o
+            - generic [ref=e51]: f
+          - generic [ref=e52]:
+            - generic [ref=e53]: r
+            - generic [ref=e54]: i
+            - generic [ref=e55]: g
+            - generic [ref=e56]: h
+            - generic [ref=e57]: t
+          - generic [ref=e58]:
+            - generic [ref=e59]: f
+            - generic [ref=e60]: i
+            - generic [ref=e61]: t
+            - generic [ref=e62]: s
+            - generic [ref=e63]: .
+        - paragraph [ref=e64]: Not a scraped MLS portal. A curated shortlist of Southern NH homes chosen for buyers Karyn is already working with, plus a few open-door showings each month.
+    - generic [ref=e66]:
+      - paragraph [ref=e68]: How it actually works
+      - heading "Faster than searching yourself. And it is free." [level=2] [ref=e70]
+      - generic [ref=e71]:
+        - generic [ref=e72]:
+          - paragraph [ref=e73]: Step 01
+          - generic [ref=e74]: ✍️
+          - heading "You send the criteria" [level=3] [ref=e75]
+          - paragraph [ref=e76]: Town or towns, budget range, bedrooms, must-haves, absolute no-gos. A text, an email, or a 15-minute call. Whatever is easier.
+        - generic [ref=e77]:
+          - paragraph [ref=e78]: Step 02
+          - generic [ref=e79]: 🔍
+          - heading "I pull the shortlist" [level=3] [ref=e80]
+          - paragraph [ref=e81]: MLS the day a property hits, coming-soons, pocket listings, and the off-market homes agents are quietly shopping around. You get 5 to 10 homes that actually fit. Not 1,500.
+        - generic [ref=e82]:
+          - paragraph [ref=e83]: Step 03
+          - generic [ref=e84]: 🗝️
+          - heading "We tour the real ones" [level=3] [ref=e85]
+          - paragraph [ref=e86]: You pick two or three you want to see in person. I schedule the showings, I drive, I read the room. No pressure. No lowball push. Just the honest read on each house.
+      - link "Book a 15-minute call" [ref=e89] [cursor=pointer]:
+        - /url: /booking
+    - generic [ref=e91]:
+      - generic [ref=e92]:
+        - paragraph [ref=e94]: A READ ON THE MARKET
+        - heading "Four homes, four Southern NH towns." [level=2] [ref=e96]
+        - paragraph [ref=e98]: A small sample of what is moving in the service area right now. Nothing you will find on Zillow the same way. Ask me for the current shortlist for your town and budget, and we will build one together that actually fits.
+      - generic [ref=e99]:
+        - article [ref=e101]:
+          - img "Windham, NH residential street in autumn light" [ref=e103]
+          - generic [ref=e104]:
+            - paragraph [ref=e105]: Active · Windham, NH
+            - heading "48 Birch Road, Windham NH" [level=3] [ref=e106]
+            - paragraph [ref=e107]: $789,000
+            - paragraph [ref=e108]:
+              - generic [ref=e109]: 4 bed
+              - text: ·
+              - generic [ref=e110]: 3 bath
+              - text: ·
+              - generic [ref=e111]: 2,640 sqft
+            - paragraph [ref=e112]: Cape on a quiet cul-de-sac near the Windham HS feeder. Wide-plank floors, renovated kitchen, stone patio and fire pit, full walk-out basement.
+            - link "Ask about this home →" [ref=e113] [cursor=pointer]:
+              - /url: /booking
+        - article [ref=e115]:
+          - img "Cobbett's Pond, Salem NH — lake and shoreline path" [ref=e117]
+          - generic [ref=e118]:
+            - paragraph [ref=e119]: Active · Salem, NH
+            - heading "12 Cobbetts Pond Road, Salem NH" [level=3] [ref=e120]
+            - paragraph [ref=e121]: $615,000
+            - paragraph [ref=e122]:
+              - generic [ref=e123]: 3 bed
+              - text: ·
+              - generic [ref=e124]: 2 bath
+              - text: ·
+              - generic [ref=e125]: 1,780 sqft
+            - paragraph [ref=e126]: Single-level ranch steps from Cobbett's Pond. Updated mechanicals, detached two-car garage, four-season sunroom overlooking the lake path.
+            - link "Ask about this home →" [ref=e127] [cursor=pointer]:
+              - /url: /booking
+        - article [ref=e129]:
+          - img "Derry, NH classic New England colonial neighborhood" [ref=e131]
+          - generic [ref=e132]:
+            - paragraph [ref=e133]: Under Contract · Derry, NH
+            - heading "212 Hampstead Road, Derry NH" [level=3] [ref=e134]
+            - paragraph [ref=e135]: $499,000
+            - paragraph [ref=e136]:
+              - generic [ref=e137]: 4 bed
+              - text: ·
+              - generic [ref=e138]: 2.5 bath
+              - text: ·
+              - generic [ref=e139]: 2,210 sqft
+            - paragraph [ref=e140]: Classic Derry colonial with Pinkerton Academy frontage. Original built-ins, formal dining, three-car driveway, mature perennial gardens.
+            - link "Ask about this home →" [ref=e141] [cursor=pointer]:
+              - /url: /booking
+        - article [ref=e143]:
+          - img "Woodmont Commons, Londonderry NH — newer construction district" [ref=e145]
+          - generic [ref=e146]:
+            - paragraph [ref=e147]: Coming Soon · Londonderry, NH
+            - heading "33 Woodmont Way, Londonderry NH" [level=3] [ref=e148]
+            - paragraph [ref=e149]: $725,000
+            - paragraph [ref=e150]:
+              - generic [ref=e151]: 4 bed
+              - text: ·
+              - generic [ref=e152]: 3 bath
+              - text: ·
+              - generic [ref=e153]: 2,980 sqft
+            - paragraph [ref=e154]: Newer construction in the Woodmont Commons district. Open plan, primary on first floor, smart-home prewired, walk to the trail network.
+            - link "Ask about this home →" [ref=e155] [cursor=pointer]:
+              - /url: /booking
+    - generic [ref=e157]:
+      - paragraph [ref=e159]: WANT THE FULL LIST
+      - heading "I will set up a private search for you." [level=2] [ref=e161]
+      - paragraph [ref=e163]: Book a fifteen-minute call. Tell me Salem, Windham, Derry, or anywhere in the service area, the budget, and the must-haves. I will wire up a live alert the same afternoon.
+      - generic [ref=e165]:
+        - link "Book a Free Consultation" [ref=e166] [cursor=pointer]:
+          - /url: /booking
+        - link "What Buying Looks Like" [ref=e167] [cursor=pointer]:
+          - /url: /buy
+  - contentinfo [ref=e168]:
+    - generic [ref=e171]:
+      - generic [ref=e172]:
+        - link "Karyn Emerson" [ref=e173] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=e174]: The neighborhood, and the person who knows every street.
+        - paragraph [ref=e175]: Jill & Co. Realty Group, Salem NH
+      - generic [ref=e176]:
+        - heading "Explore" [level=4] [ref=e177]
+        - list [ref=e178]:
+          - listitem [ref=e179]:
+            - link "About" [ref=e180] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e181]:
+            - link "Neighborhoods" [ref=e182] [cursor=pointer]:
+              - /url: /neighborhoods
+          - listitem [ref=e183]:
+            - link "Relocate" [ref=e184] [cursor=pointer]:
+              - /url: /relocate
+          - listitem [ref=e185]:
+            - link "Listings" [ref=e186] [cursor=pointer]:
+              - /url: /listings
+          - listitem [ref=e187]:
+            - link "Blog" [ref=e188] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e189]:
+            - link "Testimonials" [ref=e190] [cursor=pointer]:
+              - /url: /testimonials
+          - listitem [ref=e191]:
+            - link "Take the Quiz" [ref=e192] [cursor=pointer]:
+              - /url: /quiz
+      - generic [ref=e193]:
+        - heading "Service Area" [level=4] [ref=e194]
+        - list [ref=e195]:
+          - listitem [ref=e196]:
+            - link "Salem, NH" [ref=e197] [cursor=pointer]:
+              - /url: /neighborhoods/salem
+          - listitem [ref=e198]:
+            - link "Windham, NH" [ref=e199] [cursor=pointer]:
+              - /url: /neighborhoods/windham
+          - listitem [ref=e200]:
+            - link "Derry, NH" [ref=e201] [cursor=pointer]:
+              - /url: /neighborhoods/derry
+          - listitem [ref=e202]:
+            - link "Londonderry, NH" [ref=e203] [cursor=pointer]:
+              - /url: /neighborhoods/londonderry
+          - listitem [ref=e204]:
+            - link "Pelham, NH" [ref=e205] [cursor=pointer]:
+              - /url: /neighborhoods/pelham
+          - listitem [ref=e206]:
+            - link "Atkinson, NH" [ref=e207] [cursor=pointer]:
+              - /url: /neighborhoods/atkinson
+          - listitem [ref=e208]:
+            - link "Hampstead, NH" [ref=e209] [cursor=pointer]:
+              - /url: /neighborhoods/hampstead
+      - generic [ref=e210]:
+        - heading "Contact" [level=4] [ref=e211]
+        - list [ref=e212]:
+          - listitem [ref=e213]: Jill & Co. Realty Group, Salem, NH
+        - link "Facebook" [ref=e215] [cursor=pointer]:
+          - /url: https://www.facebook.com/karynemersonrealestate
+          - img [ref=e216]
+    - generic [ref=e220]:
+      - paragraph [ref=e221]: © 2026 Karyn Emerson Real Estate. Licensed in NH.
+      - list [ref=e222]:
+        - listitem [ref=e223]:
+          - link "Privacy" [ref=e224] [cursor=pointer]:
+            - /url: /privacy
+        - listitem [ref=e225]:
+          - link "Terms" [ref=e226] [cursor=pointer]:
+            - /url: /terms
+  - button "Open Next.js Dev Tools" [ref=e232] [cursor=pointer]:
+    - img [ref=e233]
+  - alert [ref=e236]

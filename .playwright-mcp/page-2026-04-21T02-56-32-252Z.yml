@@ -1,0 +1,412 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation "Primary" [ref=e3]:
+      - link "Karyn Emerson" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - list [ref=e5]:
+        - listitem [ref=e6]:
+          - link "About" [ref=e7] [cursor=pointer]:
+            - /url: /about
+        - listitem [ref=e8]:
+          - link "Neighborhoods" [ref=e9] [cursor=pointer]:
+            - /url: /neighborhoods
+        - listitem [ref=e10]:
+          - link "Relocate" [ref=e11] [cursor=pointer]:
+            - /url: /relocate
+        - listitem [ref=e12]:
+          - link "Listings" [ref=e13] [cursor=pointer]:
+            - /url: /listings
+        - listitem [ref=e14]:
+          - link "Blog" [ref=e15] [cursor=pointer]:
+            - /url: /blog
+        - listitem [ref=e16]:
+          - link "Testimonials" [ref=e17] [cursor=pointer]:
+            - /url: /testimonials
+        - listitem [ref=e18]:
+          - link "Take the Quiz" [ref=e19] [cursor=pointer]:
+            - /url: /quiz
+        - listitem [ref=e20]:
+          - link "⬥ Pricing" [ref=e21] [cursor=pointer]:
+            - /url: /pricing
+      - link "Book a consultation" [ref=e23] [cursor=pointer]:
+        - /url: /booking
+  - main [ref=e24]:
+    - generic [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e28]:
+          - img "Salem, NH — autumn foliage over historic town center" [ref=e30]
+          - img "Windham, NH — lake country" [ref=e32]
+          - img "Derry, NH — classic New England main street" [ref=e34]
+          - img "Londonderry, NH — rolling farmland" [ref=e36]
+          - img "Pelham, NH — quiet country lane" [ref=e38]
+          - img "Atkinson, NH — autumn treeline" [ref=e40]
+          - img "Hampstead, NH — waterfront" [ref=e42]
+        - generic [ref=e45]:
+          - paragraph [ref=e46]: SOUTHERN NH · 7 TOWNS
+          - heading "Pick your neighborhood." [level=1] [ref=e47]:
+            - generic [ref=e49]: Pick your neighborhood.
+          - paragraph [ref=e50]: Seven towns, each with its own character, mill rate, and price band. Plus sub-neighborhood deep-dives for the places buyers compare most often.
+      - generic [ref=e52]:
+        - generic [ref=e54]:
+          - text: The Seven Towns
+          - heading "Karyn's full service area." [level=2] [ref=e55]
+          - paragraph [ref=e56]: I grew up here, I sell here, and I have watched every one of these streets change over the last twenty years. Pick a town and read it like a letter from a neighbor, not a brochure.
+          - paragraph [ref=e57]:
+            - text: Coming up from Methuen, Andover, or Lawrence and still deciding? Start with the
+            - link "MA to NH relocation hub" [ref=e58] [cursor=pointer]:
+              - /url: /relocate
+            - text: and come back here.
+        - generic [ref=e59]:
+          - link "Salem, NH Mill rate · Median price 19.85 · $565,000 SALEM, NH Salem The anchor town of Southern NH, right off Exit 2. Read the guide" [ref=e60] [cursor=pointer]:
+            - /url: /neighborhoods/salem
+            - generic [ref=e61]:
+              - img "Salem, NH" [ref=e62]
+              - generic: 🍂
+              - generic:
+                - paragraph: Mill rate · Median price
+                - paragraph: 19.85 · $565,000
+            - generic [ref=e63]:
+              - paragraph [ref=e64]: SALEM, NH
+              - heading "Salem" [level=3] [ref=e65]
+              - paragraph [ref=e66]: The anchor town of Southern NH, right off Exit 2.
+              - generic [ref=e67]:
+                - text: Read the guide
+                - generic [ref=e68]: →
+          - link "Windham, NH Mill rate · Median price 19.40 · $732,000 WINDHAM, NH Windham The premium school-district corner of the region. Read the guide" [ref=e69] [cursor=pointer]:
+            - /url: /neighborhoods/windham
+            - generic [ref=e70]:
+              - img "Windham, NH" [ref=e71]
+              - generic: 🌊
+              - generic:
+                - paragraph: Mill rate · Median price
+                - paragraph: 19.40 · $732,000
+            - generic [ref=e72]:
+              - paragraph [ref=e73]: WINDHAM, NH
+              - heading "Windham" [level=3] [ref=e74]
+              - paragraph [ref=e75]: The premium school-district corner of the region.
+              - generic [ref=e76]:
+                - text: Read the guide
+                - generic [ref=e77]: →
+          - link "Derry, NH Mill rate · Median price 26.15 · $485,000 DERRY, NH Derry The value play, with Pinkerton Academy on the label. Read the guide" [ref=e78] [cursor=pointer]:
+            - /url: /neighborhoods/derry
+            - generic [ref=e79]:
+              - img "Derry, NH" [ref=e80]
+              - generic: 🏛️
+              - generic:
+                - paragraph: Mill rate · Median price
+                - paragraph: 26.15 · $485,000
+            - generic [ref=e81]:
+              - paragraph [ref=e82]: DERRY, NH
+              - heading "Derry" [level=3] [ref=e83]
+              - paragraph [ref=e84]: The value play, with Pinkerton Academy on the label.
+              - generic [ref=e85]:
+                - text: Read the guide
+                - generic [ref=e86]: →
+          - link "Londonderry, NH Mill rate · Median price 19.35 · $595,000 LONDONDERRY, NH Londonderry Apple orchards, an airport on one side, and Woodmont Commons on the other. Read the guide" [ref=e87] [cursor=pointer]:
+            - /url: /neighborhoods/londonderry
+            - generic [ref=e88]:
+              - img "Londonderry, NH" [ref=e89]
+              - generic: 🍎
+              - generic:
+                - paragraph: Mill rate · Median price
+                - paragraph: 19.35 · $595,000
+            - generic [ref=e90]:
+              - paragraph [ref=e91]: LONDONDERRY, NH
+              - heading "Londonderry" [level=3] [ref=e92]
+              - paragraph [ref=e93]: Apple orchards, an airport on one side, and Woodmont Commons on the other.
+              - generic [ref=e94]:
+                - text: Read the guide
+                - generic [ref=e95]: →
+          - link "Pelham, NH Mill rate · Median price 17.95 · $555,000 PELHAM, NH Pelham Rural feel, MA border, and a school district on the rise. Read the guide" [ref=e96] [cursor=pointer]:
+            - /url: /neighborhoods/pelham
+            - generic [ref=e97]:
+              - img "Pelham, NH" [ref=e98]
+              - generic: 🌲
+              - generic:
+                - paragraph: Mill rate · Median price
+                - paragraph: 17.95 · $555,000
+            - generic [ref=e99]:
+              - paragraph [ref=e100]: PELHAM, NH
+              - heading "Pelham" [level=3] [ref=e101]
+              - paragraph [ref=e102]: Rural feel, MA border, and a school district on the rise.
+              - generic [ref=e103]:
+                - text: Read the guide
+                - generic [ref=e104]: →
+          - link "Atkinson, NH Mill rate · Median price 18.50 · $625,000 ATKINSON, NH Atkinson Small, quiet, and the favorite hideout of long-time Southern NH buyers. Read the guide" [ref=e105] [cursor=pointer]:
+            - /url: /neighborhoods/atkinson
+            - generic [ref=e106]:
+              - img "Atkinson, NH" [ref=e107]
+              - generic: ⛳
+              - generic:
+                - paragraph: Mill rate · Median price
+                - paragraph: 18.50 · $625,000
+            - generic [ref=e108]:
+              - paragraph [ref=e109]: ATKINSON, NH
+              - heading "Atkinson" [level=3] [ref=e110]
+              - paragraph [ref=e111]: Small, quiet, and the favorite hideout of long-time Southern NH buyers.
+              - generic [ref=e112]:
+                - text: Read the guide
+                - generic [ref=e113]: →
+          - link "Hampstead, NH Mill rate · Median price 20.25 · $555,000 HAMPSTEAD, NH Hampstead Lakes, wooded lots, and a main street that still feels like 1985. Read the guide" [ref=e114] [cursor=pointer]:
+            - /url: /neighborhoods/hampstead
+            - generic [ref=e115]:
+              - img "Hampstead, NH" [ref=e116]
+              - generic: 🌅
+              - generic:
+                - paragraph: Mill rate · Median price
+                - paragraph: 20.25 · $555,000
+            - generic [ref=e117]:
+              - paragraph [ref=e118]: HAMPSTEAD, NH
+              - heading "Hampstead" [level=3] [ref=e119]
+              - paragraph [ref=e120]: Lakes, wooded lots, and a main street that still feels like 1985.
+              - generic [ref=e121]:
+                - text: Read the guide
+                - generic [ref=e122]: →
+      - generic [ref=e124]:
+        - generic [ref=e125]:
+          - text: Sub-neighborhood guides
+          - heading "The pockets inside the towns." [level=2] [ref=e126]
+          - paragraph [ref=e127]: Tuscan Village, Cobbett's Pond, Canobie Lake, Woodmont Commons, and a few more. These guides go one layer deeper than the town pages because the town-level story is not specific enough when you are buying waterfront or downsizing into new construction.
+        - generic [ref=e128]:
+          - link "Tuscan Village neighborhood, Southern NH TUSCAN VILLAGE · SALEM Tuscan Village Median price Median $585,000 Commute Boston 45 min The new-build, walk-to-Market-Basket downsizer magnet. Read the guide" [ref=e129] [cursor=pointer]:
+            - /url: /neighborhoods/tuscan-village
+            - generic [ref=e130]:
+              - img "Tuscan Village neighborhood, Southern NH" [ref=e131]
+              - generic: 🛍️
+            - generic [ref=e132]:
+              - generic [ref=e133]: TUSCAN VILLAGE · SALEM
+              - heading "Tuscan Village" [level=3] [ref=e134]
+              - generic [ref=e135]:
+                - generic [ref=e136]:
+                  - term [ref=e137]: Median price
+                  - definition [ref=e138]: Median $585,000
+                - generic [ref=e139]:
+                  - term [ref=e140]: Commute
+                  - definition [ref=e141]: Boston 45 min
+              - paragraph [ref=e142]: The new-build, walk-to-Market-Basket downsizer magnet.
+              - generic [ref=e143]:
+                - text: Read the guide
+                - generic [ref=e144]: →
+          - link "Canobie Lake neighborhood, Southern NH CANOBIE LAKE · SALEM Canobie Lake Median price Median $685,000 Commute Boston 45 min Classic Salem lake homes, the park at one end, quiet coves at the other. Read the guide" [ref=e145] [cursor=pointer]:
+            - /url: /neighborhoods/canobie-lake
+            - generic [ref=e146]:
+              - img "Canobie Lake neighborhood, Southern NH" [ref=e147]
+              - generic: 🎡
+            - generic [ref=e148]:
+              - generic [ref=e149]: CANOBIE LAKE · SALEM
+              - heading "Canobie Lake" [level=3] [ref=e150]
+              - generic [ref=e151]:
+                - generic [ref=e152]:
+                  - term [ref=e153]: Median price
+                  - definition [ref=e154]: Median $685,000
+                - generic [ref=e155]:
+                  - term [ref=e156]: Commute
+                  - definition [ref=e157]: Boston 45 min
+              - paragraph [ref=e158]: Classic Salem lake homes, the park at one end, quiet coves at the other.
+              - generic [ref=e159]:
+                - text: Read the guide
+                - generic [ref=e160]: →
+          - link "Cobbett's Pond neighborhood, Southern NH COBBETT'S POND · WINDHAM Cobbett's Pond Median price Median $895,000 Commute Boston 55 min Windham's waterfront pocket, walking distance to the town center. Read the guide" [ref=e161] [cursor=pointer]:
+            - /url: /neighborhoods/cobbetts-pond
+            - generic [ref=e162]:
+              - img "Cobbett's Pond neighborhood, Southern NH" [ref=e163]
+              - generic: 🌊
+            - generic [ref=e164]:
+              - generic [ref=e165]: COBBETT'S POND · WINDHAM
+              - heading "Cobbett's Pond" [level=3] [ref=e166]
+              - generic [ref=e167]:
+                - generic [ref=e168]:
+                  - term [ref=e169]: Median price
+                  - definition [ref=e170]: Median $895,000
+                - generic [ref=e171]:
+                  - term [ref=e172]: Commute
+                  - definition [ref=e173]: Boston 55 min
+              - paragraph [ref=e174]: Windham's waterfront pocket, walking distance to the town center.
+              - generic [ref=e175]:
+                - text: Read the guide
+                - generic [ref=e176]: →
+          - link "Woodmont Commons neighborhood, Southern NH WOODMONT COMMONS · LONDONDERRY Woodmont Commons Median price Median $495,000 Commute Boston 60 min Southern NH's largest new-build mixed-use development. Read the guide" [ref=e177] [cursor=pointer]:
+            - /url: /neighborhoods/woodmont-commons
+            - generic [ref=e178]:
+              - img "Woodmont Commons neighborhood, Southern NH" [ref=e179]
+              - generic: 🏗️
+            - generic [ref=e180]:
+              - generic [ref=e181]: WOODMONT COMMONS · LONDONDERRY
+              - heading "Woodmont Commons" [level=3] [ref=e182]
+              - generic [ref=e183]:
+                - generic [ref=e184]:
+                  - term [ref=e185]: Median price
+                  - definition [ref=e186]: Median $495,000
+                - generic [ref=e187]:
+                  - term [ref=e188]: Commute
+                  - definition [ref=e189]: Boston 60 min
+              - paragraph [ref=e190]: Southern NH's largest new-build mixed-use development.
+              - generic [ref=e191]:
+                - text: Read the guide
+                - generic [ref=e192]: →
+          - link "Hood Park & Downtown Derry neighborhood, Southern NH HOOD PARK · DERRY Hood Park & Downtown Derry Median price Median $395,000 Commute Boston 55 min The walkable main-street revival of Greater Derry. Read the guide" [ref=e193] [cursor=pointer]:
+            - /url: /neighborhoods/hood-park-downtown-derry
+            - generic [ref=e194]:
+              - img "Hood Park & Downtown Derry neighborhood, Southern NH" [ref=e195]
+              - generic: 🏛️
+            - generic [ref=e196]:
+              - generic [ref=e197]: HOOD PARK · DERRY
+              - heading "Hood Park & Downtown Derry" [level=3] [ref=e198]
+              - generic [ref=e199]:
+                - generic [ref=e200]:
+                  - term [ref=e201]: Median price
+                  - definition [ref=e202]: Median $395,000
+                - generic [ref=e203]:
+                  - term [ref=e204]: Commute
+                  - definition [ref=e205]: Boston 55 min
+              - paragraph [ref=e206]: The walkable main-street revival of Greater Derry.
+              - generic [ref=e207]:
+                - text: Read the guide
+                - generic [ref=e208]: →
+          - link "Shadow Lake neighborhood, Southern NH SHADOW LAKE · SALEM Shadow Lake Median price Median $595,000 Commute Boston 45 min The quieter lake neighborhood on the North Salem side. Read the guide" [ref=e209] [cursor=pointer]:
+            - /url: /neighborhoods/shadow-lake
+            - generic [ref=e210]:
+              - img "Shadow Lake neighborhood, Southern NH" [ref=e211]
+              - generic: 🌲
+            - generic [ref=e212]:
+              - generic [ref=e213]: SHADOW LAKE · SALEM
+              - heading "Shadow Lake" [level=3] [ref=e214]
+              - generic [ref=e215]:
+                - generic [ref=e216]:
+                  - term [ref=e217]: Median price
+                  - definition [ref=e218]: Median $595,000
+                - generic [ref=e219]:
+                  - term [ref=e220]: Commute
+                  - definition [ref=e221]: Boston 45 min
+              - paragraph [ref=e222]: The quieter lake neighborhood on the North Salem side.
+              - generic [ref=e223]:
+                - text: Read the guide
+                - generic [ref=e224]: →
+      - generic [ref=e226]:
+        - generic [ref=e227]:
+          - generic [ref=e228]:
+            - generic [ref=e229]:
+              - generic [ref=e230]: Salem
+              - generic [ref=e231]: ·
+            - generic [ref=e232]:
+              - generic [ref=e233]: Windham
+              - generic [ref=e234]: ·
+            - generic [ref=e235]:
+              - generic [ref=e236]: Derry
+              - generic [ref=e237]: ·
+            - generic [ref=e238]:
+              - generic [ref=e239]: Londonderry
+              - generic [ref=e240]: ·
+            - generic [ref=e241]:
+              - generic [ref=e242]: Pelham
+              - generic [ref=e243]: ·
+            - generic [ref=e244]:
+              - generic [ref=e245]: Atkinson
+              - generic [ref=e246]: ·
+            - generic [ref=e247]:
+              - generic [ref=e248]: Hampstead
+              - generic [ref=e249]: ·
+          - generic [ref=e250]:
+            - generic [ref=e251]:
+              - generic [ref=e252]: Salem
+              - generic [ref=e253]: ·
+            - generic [ref=e254]:
+              - generic [ref=e255]: Windham
+              - generic [ref=e256]: ·
+            - generic [ref=e257]:
+              - generic [ref=e258]: Derry
+              - generic [ref=e259]: ·
+            - generic [ref=e260]:
+              - generic [ref=e261]: Londonderry
+              - generic [ref=e262]: ·
+            - generic [ref=e263]:
+              - generic [ref=e264]: Pelham
+              - generic [ref=e265]: ·
+            - generic [ref=e266]:
+              - generic [ref=e267]: Atkinson
+              - generic [ref=e268]: ·
+            - generic [ref=e269]:
+              - generic [ref=e270]: Hampstead
+              - generic [ref=e271]: ·
+        - list [ref=e272]:
+          - listitem [ref=e273]: Salem
+          - listitem [ref=e274]: Windham
+          - listitem [ref=e275]: Derry
+          - listitem [ref=e276]: Londonderry
+          - listitem [ref=e277]: Pelham
+          - listitem [ref=e278]: Atkinson
+          - listitem [ref=e279]: Hampstead
+  - contentinfo [ref=e280]:
+    - generic [ref=e283]:
+      - generic [ref=e284]:
+        - link "Karyn Emerson" [ref=e285] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=e286]: The neighborhood, and the person who knows every street.
+        - paragraph [ref=e287]: Jill & Co. Realty Group, Salem NH
+      - generic [ref=e288]:
+        - heading "Explore" [level=4] [ref=e289]
+        - list [ref=e290]:
+          - listitem [ref=e291]:
+            - link "About" [ref=e292] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e293]:
+            - link "Neighborhoods" [ref=e294] [cursor=pointer]:
+              - /url: /neighborhoods
+          - listitem [ref=e295]:
+            - link "Relocate" [ref=e296] [cursor=pointer]:
+              - /url: /relocate
+          - listitem [ref=e297]:
+            - link "Listings" [ref=e298] [cursor=pointer]:
+              - /url: /listings
+          - listitem [ref=e299]:
+            - link "Blog" [ref=e300] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e301]:
+            - link "Testimonials" [ref=e302] [cursor=pointer]:
+              - /url: /testimonials
+          - listitem [ref=e303]:
+            - link "Take the Quiz" [ref=e304] [cursor=pointer]:
+              - /url: /quiz
+      - generic [ref=e305]:
+        - heading "Service Area" [level=4] [ref=e306]
+        - list [ref=e307]:
+          - listitem [ref=e308]:
+            - link "Salem, NH" [ref=e309] [cursor=pointer]:
+              - /url: /neighborhoods/salem
+          - listitem [ref=e310]:
+            - link "Windham, NH" [ref=e311] [cursor=pointer]:
+              - /url: /neighborhoods/windham
+          - listitem [ref=e312]:
+            - link "Derry, NH" [ref=e313] [cursor=pointer]:
+              - /url: /neighborhoods/derry
+          - listitem [ref=e314]:
+            - link "Londonderry, NH" [ref=e315] [cursor=pointer]:
+              - /url: /neighborhoods/londonderry
+          - listitem [ref=e316]:
+            - link "Pelham, NH" [ref=e317] [cursor=pointer]:
+              - /url: /neighborhoods/pelham
+          - listitem [ref=e318]:
+            - link "Atkinson, NH" [ref=e319] [cursor=pointer]:
+              - /url: /neighborhoods/atkinson
+          - listitem [ref=e320]:
+            - link "Hampstead, NH" [ref=e321] [cursor=pointer]:
+              - /url: /neighborhoods/hampstead
+      - generic [ref=e322]:
+        - heading "Contact" [level=4] [ref=e323]
+        - list [ref=e324]:
+          - listitem [ref=e325]: Jill & Co. Realty Group, Salem, NH
+        - link "Facebook" [ref=e327] [cursor=pointer]:
+          - /url: https://www.facebook.com/karynemersonrealestate
+          - img [ref=e328]
+    - generic [ref=e332]:
+      - paragraph [ref=e333]: © 2026 Karyn Emerson Real Estate. Licensed in NH.
+      - list [ref=e334]:
+        - listitem [ref=e335]:
+          - link "Privacy" [ref=e336] [cursor=pointer]:
+            - /url: /privacy
+        - listitem [ref=e337]:
+          - link "Terms" [ref=e338] [cursor=pointer]:
+            - /url: /terms
+  - button "Open Next.js Dev Tools" [ref=e344] [cursor=pointer]:
+    - img [ref=e345]
+  - alert [ref=e348]

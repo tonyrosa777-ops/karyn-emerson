@@ -1,0 +1,231 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation "Primary" [ref=e3]:
+      - link "Karyn Emerson" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - list [ref=e5]:
+        - listitem [ref=e6]:
+          - link "About" [ref=e7] [cursor=pointer]:
+            - /url: /about
+        - listitem [ref=e8]:
+          - link "Neighborhoods" [ref=e9] [cursor=pointer]:
+            - /url: /neighborhoods
+        - listitem [ref=e10]:
+          - link "Relocate" [ref=e11] [cursor=pointer]:
+            - /url: /relocate
+        - listitem [ref=e12]:
+          - link "Listings" [ref=e13] [cursor=pointer]:
+            - /url: /listings
+        - listitem [ref=e14]:
+          - link "Blog" [ref=e15] [cursor=pointer]:
+            - /url: /blog
+        - listitem [ref=e16]:
+          - link "Testimonials" [ref=e17] [cursor=pointer]:
+            - /url: /testimonials
+        - listitem [ref=e18]:
+          - link "Take the Quiz" [ref=e19] [cursor=pointer]:
+            - /url: /quiz
+        - listitem [ref=e20]:
+          - link "⬥ Pricing" [ref=e21] [cursor=pointer]:
+            - /url: /pricing
+      - link "Book a consultation" [ref=e23] [cursor=pointer]:
+        - /url: /booking
+  - main [ref=e24]:
+    - main [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e28]:
+          - img "MA to NH relocation, autumn Southern NH landscape" [ref=e30]
+          - img "Southern NH neighborhood aerial in autumn" [ref=e32]
+          - img "Editorial commission transparency desk scene" [ref=e34]
+          - img "Canobie Lake area in autumn" [ref=e36]
+        - generic [ref=e39]:
+          - paragraph [ref=e40]: NOTES · KARYN EMERSON
+          - heading "Notes from Southern NH." [level=1] [ref=e41]:
+            - generic [ref=e43]: Notes from Southern NH.
+          - paragraph [ref=e44]: Nine honest articles on Southern NH real estate. MA-to-NH relocation math, NH property tax by town, post-August-2024 commission rules, neighborhood deep dives, and a straight answer on Opendoor's $45,000 equity gap.
+      - 'link "Moving from Massachusetts to Southern New Hampshire: The Honest Guide Featured · Relocation Moving from Massachusetts to Southern New Hampshire: The Honest Guide The tax math, the commute reality, the DMV checklist, and which Southern NH town actually fits the life you are trying to build. No sales pitch, just the real numbers. Read the full article →" [ref=e47] [cursor=pointer]':
+        - /url: /blog/moving-from-massachusetts-to-southern-nh-honest-guide
+        - 'img "Moving from Massachusetts to Southern New Hampshire: The Honest Guide" [ref=e49]'
+        - generic [ref=e50]:
+          - paragraph [ref=e51]: Featured · Relocation
+          - 'heading "Moving from Massachusetts to Southern New Hampshire: The Honest Guide" [level=2] [ref=e52]'
+          - paragraph [ref=e53]: The tax math, the commute reality, the DMV checklist, and which Southern NH town actually fits the life you are trying to build. No sales pitch, just the real numbers.
+          - generic [ref=e54]: Read the full article →
+      - generic [ref=e57]:
+        - link "All" [ref=e58] [cursor=pointer]:
+          - /url: /blog
+        - link "Relocation" [ref=e59] [cursor=pointer]:
+          - /url: /blog?category=Relocation
+        - link "Taxes" [ref=e60] [cursor=pointer]:
+          - /url: /blog?category=Taxes
+        - link "Commission" [ref=e61] [cursor=pointer]:
+          - /url: /blog?category=Commission
+        - link "Selling" [ref=e62] [cursor=pointer]:
+          - /url: /blog?category=Selling
+        - link "Buying" [ref=e63] [cursor=pointer]:
+          - /url: /blog?category=Buying
+        - link "Neighborhoods" [ref=e64] [cursor=pointer]:
+          - /url: /blog?category=Neighborhoods
+      - generic [ref=e67]:
+        - article [ref=e68]:
+          - 'link "NH Property Tax by Town: What You''ll Actually Pay in Salem, Windham, and Derry Taxes 7 min read NH Property Tax by Town: What You''ll Actually Pay in Salem, Windham, and Derry A side-by-side look at mill rates, exemptions, and the annual bill you should expect on a $500K, $750K, or $1M home in the three towns that buyers compare most often. March 4, 2026" [ref=e69] [cursor=pointer]':
+            - /url: /blog/nh-property-tax-by-town-salem-windham-derry
+            - 'img "NH Property Tax by Town: What You''ll Actually Pay in Salem, Windham, and Derry" [ref=e71]'
+            - generic [ref=e72]:
+              - generic [ref=e73]:
+                - generic [ref=e74]: Taxes
+                - generic [ref=e75]: 7 min read
+              - 'heading "NH Property Tax by Town: What You''ll Actually Pay in Salem, Windham, and Derry" [level=3] [ref=e76]'
+              - paragraph [ref=e77]: A side-by-side look at mill rates, exemptions, and the annual bill you should expect on a $500K, $750K, or $1M home in the three towns that buyers compare most often.
+              - paragraph [ref=e78]: March 4, 2026
+        - article [ref=e79]:
+          - 'link "The 2-to-3% Commission Explained: How I''m Paid Post-August-2024 Commission 8 min read The 2-to-3% Commission Explained: How I''m Paid Post-August-2024 After the NAR settlement, commission rules changed for every buyer and seller in the country. Here is what actually shifted, what the range looks like on a Salem or Windham sale, and what the fee covers on my listings. February 21, 2026" [ref=e80] [cursor=pointer]':
+            - /url: /blog/two-to-three-percent-commission-explained-post-august-2024
+            - 'img "The 2-to-3% Commission Explained: How I''m Paid Post-August-2024" [ref=e82]'
+            - generic [ref=e83]:
+              - generic [ref=e84]:
+                - generic [ref=e85]: Commission
+                - generic [ref=e86]: 8 min read
+              - 'heading "The 2-to-3% Commission Explained: How I''m Paid Post-August-2024" [level=3] [ref=e87]'
+              - paragraph [ref=e88]: After the NAR settlement, commission rules changed for every buyer and seller in the country. Here is what actually shifted, what the range looks like on a Salem or Windham sale, and what the fee covers on my listings.
+              - paragraph [ref=e89]: February 21, 2026
+        - article [ref=e90]:
+          - 'link "Downsizing in Southern NH: Selling the Family Home After 40 Years Selling 10 min read Downsizing in Southern NH: Selling the Family Home After 40 Years The emotional piece nobody talks about, the practical piece every agent skips, and the timing decisions that actually matter when you are leaving the house you raised your family in. February 9, 2026" [ref=e91] [cursor=pointer]':
+            - /url: /blog/downsizing-in-southern-nh-selling-family-home-after-40-years
+            - 'img "Downsizing in Southern NH: Selling the Family Home After 40 Years" [ref=e93]'
+            - generic [ref=e94]:
+              - generic [ref=e95]:
+                - generic [ref=e96]: Selling
+                - generic [ref=e97]: 10 min read
+              - 'heading "Downsizing in Southern NH: Selling the Family Home After 40 Years" [level=3] [ref=e98]'
+              - paragraph [ref=e99]: The emotional piece nobody talks about, the practical piece every agent skips, and the timing decisions that actually matter when you are leaving the house you raised your family in.
+              - paragraph [ref=e100]: February 9, 2026
+        - article [ref=e101]:
+          - 'link "First-Time Homebuyer Checklist for Southern NH: Septic, Well, P&S Buying 8 min read First-Time Homebuyer Checklist for Southern NH: Septic, Well, P&S If this is your first house, and it is in NH, there are five things your MA friends never had to worry about. Septic inspections, well water, the P&S, the NH inspection sticker, and the town-level zoning surprise. January 27, 2026" [ref=e102] [cursor=pointer]':
+            - /url: /blog/first-time-homebuyer-checklist-southern-nh-septic-well-pns
+            - 'img "First-Time Homebuyer Checklist for Southern NH: Septic, Well, P&S" [ref=e104]'
+            - generic [ref=e105]:
+              - generic [ref=e106]:
+                - generic [ref=e107]: Buying
+                - generic [ref=e108]: 8 min read
+              - 'heading "First-Time Homebuyer Checklist for Southern NH: Septic, Well, P&S" [level=3] [ref=e109]'
+              - paragraph [ref=e110]: If this is your first house, and it is in NH, there are five things your MA friends never had to worry about. Septic inspections, well water, the P&S, the NH inspection sticker, and the town-level zoning surprise.
+              - paragraph [ref=e111]: January 27, 2026
+        - article [ref=e112]:
+          - 'link "Living in Salem NH: Tuscan Village, Canobie Lake, and the Streets You Don''t Know Yet Neighborhoods 11 min read Living in Salem NH: Tuscan Village, Canobie Lake, and the Streets You Don''t Know Yet Salem is not one place. It is at least four neighborhoods stitched together, and the difference between them is bigger than any out-of-town buyer realizes. Here is the local''s map, drawn street by street. January 14, 2026" [ref=e113] [cursor=pointer]':
+            - /url: /blog/living-in-salem-nh-tuscan-village-canobie-lake-streets-you-dont-know
+            - 'img "Living in Salem NH: Tuscan Village, Canobie Lake, and the Streets You Don''t Know Yet" [ref=e115]'
+            - generic [ref=e116]:
+              - generic [ref=e117]:
+                - generic [ref=e118]: Neighborhoods
+                - generic [ref=e119]: 11 min read
+              - 'heading "Living in Salem NH: Tuscan Village, Canobie Lake, and the Streets You Don''t Know Yet" [level=3] [ref=e120]'
+              - paragraph [ref=e121]: Salem is not one place. It is at least four neighborhoods stitched together, and the difference between them is bigger than any out-of-town buyer realizes. Here is the local's map, drawn street by street.
+              - paragraph [ref=e122]: January 14, 2026
+        - article [ref=e123]:
+          - 'link "The Commuter-Tax Trap: Why Moving to NH Doesn''t Erase MA Income Tax Relocation 6 min read The Commuter-Tax Trap: Why Moving to NH Doesn''t Erase MA Income Tax The single biggest surprise for MA-to-NH movers who keep commuting to Boston. If you earn your income in Massachusetts, Massachusetts still wants a piece. Here is what that actually costs, and the three legal ways to change the math. January 1, 2026" [ref=e124] [cursor=pointer]':
+            - /url: /blog/commuter-tax-trap-why-moving-to-nh-doesnt-erase-ma-income-tax
+            - 'img "The Commuter-Tax Trap: Why Moving to NH Doesn''t Erase MA Income Tax" [ref=e126]'
+            - generic [ref=e127]:
+              - generic [ref=e128]:
+                - generic [ref=e129]: Relocation
+                - generic [ref=e130]: 6 min read
+              - 'heading "The Commuter-Tax Trap: Why Moving to NH Doesn''t Erase MA Income Tax" [level=3] [ref=e131]'
+              - paragraph [ref=e132]: The single biggest surprise for MA-to-NH movers who keep commuting to Boston. If you earn your income in Massachusetts, Massachusetts still wants a piece. Here is what that actually costs, and the three legal ways to change the math.
+              - paragraph [ref=e133]: January 1, 2026
+        - article [ref=e134]:
+          - 'link "Opendoor vs. Listing with an Agent: The $45,000 Math on a $500K Home Selling 7 min read Opendoor vs. Listing with an Agent: The $45,000 Math on a $500K Home The Opendoor offer is fast, clean, and final. It is also, on the Real Estate Witch national average, about $45,000 below what the same home would sell for with an agent. Here is the breakdown on a typical Salem colonial. December 17, 2025" [ref=e135] [cursor=pointer]':
+            - /url: /blog/opendoor-vs-listing-with-agent-45000-math-on-500k-home
+            - 'img "Opendoor vs. Listing with an Agent: The $45,000 Math on a $500K Home" [ref=e137]'
+            - generic [ref=e138]:
+              - generic [ref=e139]:
+                - generic [ref=e140]: Selling
+                - generic [ref=e141]: 7 min read
+              - 'heading "Opendoor vs. Listing with an Agent: The $45,000 Math on a $500K Home" [level=3] [ref=e142]'
+              - paragraph [ref=e143]: The Opendoor offer is fast, clean, and final. It is also, on the Real Estate Witch national average, about $45,000 below what the same home would sell for with an agent. Here is the breakdown on a typical Salem colonial.
+              - paragraph [ref=e144]: December 17, 2025
+        - article [ref=e145]:
+          - link "Windham, Derry, or Londonderry? A Buyer's Guide to Picking the Right Southern NH Town Neighborhoods 10 min read Windham, Derry, or Londonderry? A Buyer's Guide to Picking the Right Southern NH Town Three towns, three price bands, three school-district realities, and three very different weekend lives. The honest comparison for buyers trying to decide between them. December 3, 2025" [ref=e146] [cursor=pointer]:
+            - /url: /blog/windham-derry-or-londonderry-buyers-guide-picking-right-southern-nh-town
+            - img "Windham, Derry, or Londonderry? A Buyer's Guide to Picking the Right Southern NH Town" [ref=e148]
+            - generic [ref=e149]:
+              - generic [ref=e150]:
+                - generic [ref=e151]: Neighborhoods
+                - generic [ref=e152]: 10 min read
+              - heading "Windham, Derry, or Londonderry? A Buyer's Guide to Picking the Right Southern NH Town" [level=3] [ref=e153]
+              - paragraph [ref=e154]: Three towns, three price bands, three school-district realities, and three very different weekend lives. The honest comparison for buyers trying to decide between them.
+              - paragraph [ref=e155]: December 3, 2025
+  - contentinfo [ref=e156]:
+    - generic [ref=e159]:
+      - generic [ref=e160]:
+        - link "Karyn Emerson" [ref=e161] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=e162]: The neighborhood, and the person who knows every street.
+        - paragraph [ref=e163]: Jill & Co. Realty Group, Salem NH
+      - generic [ref=e164]:
+        - heading "Explore" [level=4] [ref=e165]
+        - list [ref=e166]:
+          - listitem [ref=e167]:
+            - link "About" [ref=e168] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e169]:
+            - link "Neighborhoods" [ref=e170] [cursor=pointer]:
+              - /url: /neighborhoods
+          - listitem [ref=e171]:
+            - link "Relocate" [ref=e172] [cursor=pointer]:
+              - /url: /relocate
+          - listitem [ref=e173]:
+            - link "Listings" [ref=e174] [cursor=pointer]:
+              - /url: /listings
+          - listitem [ref=e175]:
+            - link "Blog" [ref=e176] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e177]:
+            - link "Testimonials" [ref=e178] [cursor=pointer]:
+              - /url: /testimonials
+          - listitem [ref=e179]:
+            - link "Take the Quiz" [ref=e180] [cursor=pointer]:
+              - /url: /quiz
+      - generic [ref=e181]:
+        - heading "Service Area" [level=4] [ref=e182]
+        - list [ref=e183]:
+          - listitem [ref=e184]:
+            - link "Salem, NH" [ref=e185] [cursor=pointer]:
+              - /url: /neighborhoods/salem
+          - listitem [ref=e186]:
+            - link "Windham, NH" [ref=e187] [cursor=pointer]:
+              - /url: /neighborhoods/windham
+          - listitem [ref=e188]:
+            - link "Derry, NH" [ref=e189] [cursor=pointer]:
+              - /url: /neighborhoods/derry
+          - listitem [ref=e190]:
+            - link "Londonderry, NH" [ref=e191] [cursor=pointer]:
+              - /url: /neighborhoods/londonderry
+          - listitem [ref=e192]:
+            - link "Pelham, NH" [ref=e193] [cursor=pointer]:
+              - /url: /neighborhoods/pelham
+          - listitem [ref=e194]:
+            - link "Atkinson, NH" [ref=e195] [cursor=pointer]:
+              - /url: /neighborhoods/atkinson
+          - listitem [ref=e196]:
+            - link "Hampstead, NH" [ref=e197] [cursor=pointer]:
+              - /url: /neighborhoods/hampstead
+      - generic [ref=e198]:
+        - heading "Contact" [level=4] [ref=e199]
+        - list [ref=e200]:
+          - listitem [ref=e201]: Jill & Co. Realty Group, Salem, NH
+        - link "Facebook" [ref=e203] [cursor=pointer]:
+          - /url: https://www.facebook.com/karynemersonrealestate
+          - img [ref=e204]
+    - generic [ref=e208]:
+      - paragraph [ref=e209]: © 2026 Karyn Emerson Real Estate. Licensed in NH.
+      - list [ref=e210]:
+        - listitem [ref=e211]:
+          - link "Privacy" [ref=e212] [cursor=pointer]:
+            - /url: /privacy
+        - listitem [ref=e213]:
+          - link "Terms" [ref=e214] [cursor=pointer]:
+            - /url: /terms
+  - button "Open Next.js Dev Tools" [ref=e220] [cursor=pointer]:
+    - img [ref=e221]
+  - alert [ref=e224]
