@@ -113,7 +113,6 @@ export const siteConfig: SiteConfig = {
     { label: "About", href: "/about" },
     { label: "Neighborhoods", href: "/neighborhoods" },
     { label: "Relocate", href: "/relocate" },
-    { label: "Listings", href: "/listings" },
     { label: "Blog", href: "/blog" },
     { label: "Testimonials", href: "/testimonials" },
     { label: "Take the Quiz", href: "/quiz" },

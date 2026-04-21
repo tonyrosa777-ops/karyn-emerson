@@ -2,7 +2,7 @@
 // sitemap.ts — Next.js 15+ App Router sitemap
 // Spec: CLAUDE.md Page Wiring Rule + SEO Rule
 // Includes: current nav routes + planned routes + service area neighborhoods
-//           + legal stubs. /listings priority lowered to 0.5 (IDX pending).
+//           + legal stubs.
 // =============================================================================
 
 import type { MetadataRoute } from "next";
@@ -29,7 +29,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/about", priority: 0.8 },
     { path: "/neighborhoods", priority: 0.9 },
     { path: "/relocate", priority: 0.9 },
-    { path: "/listings", priority: 0.5 }, // IDX pending — de-prioritized
     { path: "/services", priority: 0.8 },
     { path: "/blog", priority: 0.7 },
     { path: "/testimonials", priority: 0.7 },
@@ -47,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ({ path, priority }) => ({
       url: `${BASE_URL}${path}`,
       lastModified,
-      changeFrequency: path === "/blog" || path === "/listings" ? "weekly" : "monthly",
+      changeFrequency: path === "/blog" ? "weekly" : "monthly",
       priority,
     })
   );
