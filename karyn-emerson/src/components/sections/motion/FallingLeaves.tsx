@@ -43,10 +43,17 @@ const EMBER_STOPS: ReadonlyArray<readonly [number, number, number]> = [
   [181, 83, 44],
 ];
 
+// Saturated maple reds — firebrick / deep maroon / red-orange that bridges to --accent
+const CRIMSON_STOPS: ReadonlyArray<readonly [number, number, number]> = [
+  [178, 34, 34],
+  [139, 30, 30],
+  [200, 66, 40],
+];
+
 interface FallingLeavesProps {
-  density?: "low" | "medium";
+  density?: "low" | "medium" | "high";
   className?: string;
-  tone?: "autumn" | "ember";
+  tone?: "autumn" | "ember" | "crimson";
 }
 
 export function FallingLeaves({
@@ -64,7 +71,12 @@ export function FallingLeaves({
     const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
     if (!ctx) return;
 
-    const stops = tone === "ember" ? EMBER_STOPS : AUTUMN_STOPS;
+    const stops =
+      tone === "ember"
+        ? EMBER_STOPS
+        : tone === "crimson"
+          ? CRIMSON_STOPS
+          : AUTUMN_STOPS;
 
     let animId = 0;
     let frame = 0;
@@ -73,6 +85,9 @@ export function FallingLeaves({
 
     const isDesktop = () => window.innerWidth >= DESKTOP_BREAKPOINT;
     const leafCount = () => {
+      if (density === "high") {
+        return isDesktop() ? 20 : 10;
+      }
       if (density === "medium") {
         return isDesktop() ? 14 : 7;
       }
