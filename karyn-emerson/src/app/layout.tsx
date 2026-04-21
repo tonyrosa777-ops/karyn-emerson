@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { CartProvider } from "@/lib/cart";
 import CartDrawer from "@/components/shop/CartDrawer";
+import { BodyFallingLeaves } from "@/components/sections/motion/BodyFallingLeaves";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -75,6 +76,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <CartProvider>
+          <BodyFallingLeaves />
           <Navbar />
           <main className="flex-1 pt-[96px]">{children}</main>
           <Footer />
