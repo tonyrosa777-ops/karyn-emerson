@@ -1,5 +1,5 @@
 // =============================================================================
-// Footer.tsx — site footer (dark section — forest green)
+// Footer.tsx — site footer (two-tone editorial: cream masthead + forest imprint)
 // Spec: design-system.md §2 (Dark-section inversion rule), §5 (cards on dark);
 // Copy: all strings from siteConfig in /data/site.ts — zero hardcoded text.
 // Icons: inline SVG only — no icon libraries per CLAUDE.md Code Standards.
@@ -36,21 +36,10 @@ export default function Footer() {
   const brokerageLine = `${siteConfig.brokerage}, ${siteConfig.location.city} ${siteConfig.location.state}`;
 
   return (
-    <footer
-      style={{
-        background: "var(--primary)",
-        color: "var(--text-on-dark-primary)",
-      }}
-    >
-      {/* Soft radial wash at top — never flat dark (CLAUDE.md Section Alternation Rule) */}
-      <div
-        aria-hidden="true"
-        style={{
-          backgroundImage:
-            "radial-gradient(ellipse at 50% 0%, rgba(181,83,44,0.10), transparent 70%)",
-        }}
-      >
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 pt-20 pb-12">
+    <footer>
+      {/* Masthead band — cream paper, forest-green text */}
+      <div style={{ background: "var(--bg-elevated)" }}>
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 pt-20 pb-14">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
             {/* Column 1 — brand */}
             <div>
@@ -58,7 +47,7 @@ export default function Footer() {
                 href="/"
                 className="font-display font-semibold inline-block"
                 style={{
-                  color: "var(--text-on-dark-primary)",
+                  color: "var(--primary)",
                   fontSize: "1.6rem",
                   letterSpacing: "-0.01em",
                   lineHeight: 1.1,
@@ -68,14 +57,14 @@ export default function Footer() {
               </Link>
               <p
                 className="mt-4 font-body text-[15px] leading-relaxed"
-                style={{ color: "var(--text-on-dark-secondary)" }}
+                style={{ color: "var(--text-secondary)" }}
               >
                 {siteConfig.tagline}
               </p>
               <p
                 className="mt-4 font-mono uppercase tracking-wider"
                 style={{
-                  color: "var(--text-on-dark-muted)",
+                  color: "var(--text-muted)",
                   fontSize: "0.72rem",
                   letterSpacing: "0.12em",
                 }}
@@ -89,7 +78,7 @@ export default function Footer() {
               <h4
                 className="font-mono uppercase mb-4"
                 style={{
-                  color: "var(--text-on-dark-muted)",
+                  color: "var(--text-muted)",
                   fontSize: "0.72rem",
                   letterSpacing: "0.14em",
                 }}
@@ -102,7 +91,7 @@ export default function Footer() {
                     <Link
                       href={item.href}
                       className="footer-link font-body text-[15px]"
-                      style={{ color: "var(--text-on-dark-secondary)" }}
+                      style={{ color: "var(--text-primary)" }}
                     >
                       {item.label}
                     </Link>
@@ -116,7 +105,7 @@ export default function Footer() {
               <h4
                 className="font-mono uppercase mb-4"
                 style={{
-                  color: "var(--text-on-dark-muted)",
+                  color: "var(--text-muted)",
                   fontSize: "0.72rem",
                   letterSpacing: "0.14em",
                 }}
@@ -129,7 +118,7 @@ export default function Footer() {
                     <Link
                       href={`/neighborhoods/${slugifyTown(town)}`}
                       className="footer-link font-body text-[15px]"
-                      style={{ color: "var(--text-on-dark-secondary)" }}
+                      style={{ color: "var(--text-primary)" }}
                     >
                       {town}, {siteConfig.location.state}
                     </Link>
@@ -143,7 +132,7 @@ export default function Footer() {
               <h4
                 className="font-mono uppercase mb-4"
                 style={{
-                  color: "var(--text-on-dark-muted)",
+                  color: "var(--text-muted)",
                   fontSize: "0.72rem",
                   letterSpacing: "0.14em",
                 }}
@@ -156,7 +145,7 @@ export default function Footer() {
                     <a
                       href={`tel:${siteConfig.contact.phone.replace(/[^0-9+]/g, "")}`}
                       className="footer-link"
-                      style={{ color: "var(--text-on-dark-secondary)" }}
+                      style={{ color: "var(--text-primary)" }}
                     >
                       {siteConfig.contact.phone}
                     </a>
@@ -167,7 +156,7 @@ export default function Footer() {
                     <a
                       href={`mailto:${siteConfig.contact.email}`}
                       className="footer-link"
-                      style={{ color: "var(--text-on-dark-secondary)" }}
+                      style={{ color: "var(--text-primary)" }}
                     >
                       {siteConfig.contact.email}
                     </a>
@@ -175,7 +164,7 @@ export default function Footer() {
                 )}
                 <li
                   style={{
-                    color: "var(--text-on-dark-secondary)",
+                    color: "var(--text-secondary)",
                     lineHeight: 1.55,
                   }}
                 >
@@ -194,9 +183,9 @@ export default function Footer() {
                       aria-label={s.label}
                       className="inline-flex items-center justify-center w-10 h-10 rounded-full transition-colors duration-200"
                       style={{
-                        background: "var(--card-on-dark-bg)",
-                        border: "1px solid var(--card-on-dark-border)",
-                        color: "var(--text-on-dark-primary)",
+                        background: "rgba(47,74,58,0.04)",
+                        border: "1px solid rgba(47,74,58,0.12)",
+                        color: "var(--primary)",
                       }}
                     >
                       {s.platform === "facebook" ? <FacebookIcon /> : null}
@@ -206,42 +195,50 @@ export default function Footer() {
               )}
             </div>
           </div>
+        </div>
+      </div>
 
-          {/* Bottom strip */}
-          <div
-            className="mt-14 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"
-            style={{
-              borderTop: "1px solid var(--card-on-dark-border)",
-            }}
+      {/* Hairline iron-oxide divider between bands */}
+      <div
+        aria-hidden="true"
+        style={{ height: 1, background: "rgba(181,83,44,0.22)" }}
+      />
+
+      {/* Legal imprint band — forest-green stock, cream text */}
+      <div
+        style={{
+          background: "var(--primary)",
+          color: "var(--text-on-dark-muted)",
+        }}
+      >
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <p
+            className="font-body text-sm"
+            style={{ color: "var(--text-on-dark-muted)" }}
           >
-            <p
-              className="font-body text-sm"
-              style={{ color: "var(--text-on-dark-muted)" }}
-            >
-              {"\u00A9"} {year} {siteConfig.businessName}. Licensed in{" "}
-              {siteConfig.location.state}.
-            </p>
-            <ul className="flex items-center gap-5 font-body text-sm">
-              <li>
-                <Link
-                  href="/privacy"
-                  className="footer-link"
-                  style={{ color: "var(--text-on-dark-muted)" }}
-                >
-                  Privacy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/terms"
-                  className="footer-link"
-                  style={{ color: "var(--text-on-dark-muted)" }}
-                >
-                  Terms
-                </Link>
-              </li>
-            </ul>
-          </div>
+            {"©"} {year} {siteConfig.businessName}. Licensed in{" "}
+            {siteConfig.location.state}.
+          </p>
+          <ul className="flex items-center gap-5 font-body text-sm">
+            <li>
+              <Link
+                href="/privacy"
+                className="footer-link"
+                style={{ color: "var(--text-on-dark-muted)" }}
+              >
+                Privacy
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/terms"
+                className="footer-link"
+                style={{ color: "var(--text-on-dark-muted)" }}
+              >
+                Terms
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
 

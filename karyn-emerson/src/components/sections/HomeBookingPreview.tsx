@@ -1,16 +1,21 @@
 "use client";
 
 // =============================================================================
-// HomeBookingPreview — Section 9 (DARK forest-green, FINAL conversion)
+// HomeBookingPreview — Section 9 (PHOTOGRAPH-BACKED, FINAL conversion)
 // Per CLAUDE.md Section Content Deduplication Rule: this is THE only final CTA
 // at the bottom of the homepage — no separate "Ready to X?" block after.
+// Per CLAUDE.md Section Alternation Rule: photograph close bookends the
+// video-hero open (Footer below is forest-green; avoiding the flat green-on-
+// green wall by letting this section carry editorial autumn imagery).
 // 2-col: left text + 3-bullet list, right panel is a focused CTA card routing
 // visitors to /booking (not an inline calendar — the dedicated /booking page
 // owns the booking flow).
 // =============================================================================
 
+import Image from "next/image";
 import Link from "next/link";
 import { FadeUp } from "@/components/animations/FadeUp";
+import { FallingLeaves } from "@/components/sections/motion/FallingLeaves";
 
 const TALKING_POINTS = [
   {
@@ -35,23 +40,36 @@ export function HomeBookingPreview() {
     <section
       id="booking"
       aria-labelledby="booking-heading"
-      className="relative py-16 md:py-24"
+      className="relative overflow-hidden py-20 md:py-28 min-h-[clamp(540px,55vw,720px)]"
       style={{
-        background: "var(--primary)",
         color: "var(--text-on-dark-primary)",
       }}
     >
-      {/* Radial overlay — never flat dark */}
+      {/* Layer 0 — full-bleed editorial photograph (Ken Burns via .hero-photo) */}
+      <div aria-hidden="true" className="hero-photo absolute inset-0 z-0">
+        <Image
+          src="/images/about/about-landscape-1.jpg"
+          alt="Southern NH autumn landscape at golden hour"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
+
+      {/* Layer 1 — dark gradient overlay for text legibility on the left 65% */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage:
-            "radial-gradient(ellipse at 50% 0%, rgba(181,83,44,0.12), transparent 70%)",
-        }}
+        className="absolute inset-0 z-[1]"
+        style={{ background: "var(--gradient-hero-overlay)" }}
       />
 
-      <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
+      {/* Layer 2 — ambient falling leaves (autumn, low density) */}
+      <div aria-hidden="true" className="absolute inset-0 z-[2]">
+        <FallingLeaves density="low" tone="autumn" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
         <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
           {/* LEFT — copy + talking points */}
           <FadeUp>
@@ -108,7 +126,7 @@ export function HomeBookingPreview() {
           {/* RIGHT — focused CTA card routing to /booking */}
           <FadeUp delay={0.12}>
             <div
-              className="relative flex flex-col gap-6 overflow-hidden rounded-2xl border p-8 shadow-[0_24px_56px_-24px_rgba(0,0,0,0.45)] md:p-10"
+              className="shimmer-border relative flex flex-col gap-6 overflow-hidden rounded-2xl border p-8 shadow-[0_24px_56px_-24px_rgba(0,0,0,0.45)] md:p-10"
               style={{
                 background: "var(--bg-base)",
                 borderColor: "var(--card-on-dark-border)",
