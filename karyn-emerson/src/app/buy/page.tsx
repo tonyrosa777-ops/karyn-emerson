@@ -318,17 +318,17 @@ export default function BuyPage() {
                   color: "var(--primary)",
                 }}
               >
-                Book a Free Consultation
+                Book a Buyer Consultation
               </Link>
               <Link
-                href="/listings"
+                href="/quiz"
                 className="inline-flex items-center justify-center rounded-full border-2 px-8 py-3.5 font-body text-sm font-semibold uppercase tracking-wide transition"
                 style={{
                   borderColor: "var(--bg-base)",
                   color: "var(--bg-base)",
                 }}
               >
-                What Is Moving Now
+                Tell Me What You&rsquo;re Looking For
               </Link>
             </div>
           </FadeUp>
