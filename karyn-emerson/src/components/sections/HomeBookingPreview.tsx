@@ -4,10 +4,12 @@
 // HomeBookingPreview — Section 9 (DARK forest-green, FINAL conversion)
 // Per CLAUDE.md Section Content Deduplication Rule: this is THE only final CTA
 // at the bottom of the homepage — no separate "Ready to X?" block after.
-// 2-col: left text + 3-bullet list, right panel embeds <BookingCalendar />.
+// 2-col: left text + 3-bullet list, right panel is a focused CTA card routing
+// visitors to /booking (not an inline calendar — the dedicated /booking page
+// owns the booking flow).
 // =============================================================================
 
-import { BookingCalendar } from "@/components/booking/BookingCalendar";
+import Link from "next/link";
 import { FadeUp } from "@/components/animations/FadeUp";
 
 const TALKING_POINTS = [
@@ -73,10 +75,9 @@ export function HomeBookingPreview() {
               className="mt-5 font-body text-lg leading-relaxed"
               style={{ color: "var(--text-on-dark-secondary)" }}
             >
-              Pick a 15-minute slot on the calendar, tell me a little about your situation, and
-              we will talk. No form maze, no deferred callback, no &ldquo;we will be in touch
-              within 24 hours.&rdquo; A real time on a real calendar, with a real person on the
-              other end.
+              Fifteen minutes on your schedule, about your situation. No form maze, no deferred
+              callback, no &ldquo;we will be in touch within 24 hours.&rdquo; A real time on a
+              real calendar, with a real person on the other end.
             </p>
 
             <ul className="mt-8 space-y-5">
@@ -104,16 +105,93 @@ export function HomeBookingPreview() {
             </ul>
           </FadeUp>
 
-          {/* RIGHT — inline BookingCalendar */}
+          {/* RIGHT — focused CTA card routing to /booking */}
           <FadeUp delay={0.12}>
             <div
-              className="rounded-lg border p-4 md:p-6"
+              className="relative flex flex-col gap-6 overflow-hidden rounded-2xl border p-8 shadow-[0_24px_56px_-24px_rgba(0,0,0,0.45)] md:p-10"
               style={{
                 background: "var(--bg-base)",
                 borderColor: "var(--card-on-dark-border)",
               }}
             >
-              <BookingCalendar />
+              {/* Subtle warm radial to match the section's iron-oxide glow */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  background:
+                    "radial-gradient(ellipse at 50% 0%, rgba(181,83,44,0.08), transparent 70%)",
+                }}
+              />
+
+              <div
+                aria-hidden="true"
+                className="relative flex h-14 w-14 items-center justify-center rounded-full text-2xl"
+                style={{
+                  background: "rgba(47,74,58,0.08)",
+                  color: "var(--primary)",
+                }}
+              >
+                🗓️
+              </div>
+
+              <div className="relative">
+                <p
+                  className="font-mono text-[11px] uppercase"
+                  style={{
+                    color: "var(--accent)",
+                    letterSpacing: "0.22em",
+                  }}
+                >
+                  One minute to book
+                </p>
+                <h3
+                  className="mt-3 font-display text-h3 font-semibold"
+                  style={{ color: "var(--text-primary)" }}
+                >
+                  Pick your time on the next page.
+                </h3>
+                <p
+                  className="mt-4 font-body text-base leading-relaxed"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  Free 15-minute call, on your schedule. Zero pressure, no obligation. You pick
+                  the slot, I send a confirmation with my direct number.
+                </p>
+              </div>
+
+              <div className="relative mt-2 flex flex-col gap-3">
+                <Link
+                  href="/booking"
+                  className="group inline-flex items-center justify-center rounded-full px-8 py-4 font-body text-sm font-semibold uppercase tracking-[0.04em] transition hover:-translate-y-[2px] hover:brightness-110"
+                  style={{
+                    background: "var(--primary)",
+                    color: "var(--bg-base)",
+                    boxShadow: "0 14px 40px -12px rgba(47,74,58,0.45)",
+                  }}
+                >
+                  Book a free consultation
+                  <span
+                    aria-hidden="true"
+                    className="ml-2 inline-block transition-transform group-hover:translate-x-1"
+                  >
+                    →
+                  </span>
+                </Link>
+                <Link
+                  href="/quiz"
+                  className="group inline-flex items-center justify-center rounded-full font-mono text-[12px] uppercase tracking-[0.14em] transition hover:opacity-70"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  Not ready? Take the quiz first
+                  <span
+                    aria-hidden="true"
+                    className="ml-2 inline-block transition-transform group-hover:translate-x-1"
+                  >
+                    →
+                  </span>
+                </Link>
+              </div>
             </div>
           </FadeUp>
         </div>
