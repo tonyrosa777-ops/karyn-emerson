@@ -73,6 +73,7 @@
 
 html {
   scroll-padding-top: 96px;
+  overflow-x: clip; /* prevents off-screen SlideIn transforms and sub-pixel grid overflow from triggering horizontal scroll */
 }
 @media (min-width: 640px) {
   html { scroll-padding-top: 112px; }

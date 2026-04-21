@@ -46,7 +46,7 @@ export function Hero() {
 
   return (
     <section
-      className="relative isolate flex min-h-[85vh] items-center overflow-hidden lg:min-h-screen"
+      className="relative isolate flex min-h-[85vh] flex-col overflow-hidden lg:min-h-screen"
       aria-label="Welcome"
     >
       {/* Layer 1 — Visual background. Video for motion-OK users, static poster for reduced-motion. */}
@@ -91,13 +91,15 @@ export function Hero() {
         }}
       />
 
-      {/* Layer 3 — Content column. Vertically centered, left-aligned, ~600px wide. */}
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col px-6 py-24 lg:h-screen lg:justify-center lg:px-8 lg:py-0">
-        <div className="max-w-[600px] lg:w-[58%]">
+      {/* Layer 3 — Content column. Pure flex column: centered content block + pinned bottom strip. */}
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col px-6 pb-8 pt-16 lg:px-8 lg:pb-10 lg:pt-10">
+        {/* Centered content block — flex-1 fills available height, items-center vertically centers */}
+        <div className="flex flex-1 items-center">
+          <div className="max-w-[600px] lg:w-[58%]">
           {/* Eyebrow */}
           <motion.p
             {...mp({ y: 20 }, 0.2, 0.6)}
-            className="font-mono text-[11px] uppercase tracking-[0.28em] text-white/85"
+            className="font-mono text-[10px] uppercase tracking-[0.16em] text-white/85 sm:text-[11px] sm:tracking-[0.22em] md:tracking-[0.28em]"
             style={{ textShadow: "0 1px 10px rgba(0,0,0,0.45)" }}
           >
             {siteConfig.hero.eyebrow}
@@ -163,21 +165,22 @@ export function Hero() {
           >
             {siteConfig.hero.ctaMicro}
           </motion.p>
+          </div>
         </div>
 
-        {/* Bottom strip — compliance + trust row. Pinned to hero bottom on desktop. */}
+        {/* Bottom strip — compliance + trust row. Natural flex flow, pinned to hero bottom. */}
         <motion.div
           {...mp({ y: 10 }, 0.85, 0.6)}
-          className="mt-16 flex w-full flex-col gap-2 lg:absolute lg:inset-x-0 lg:bottom-6 lg:mt-0 lg:flex-row lg:items-end lg:justify-between lg:px-8"
+          className="mt-8 flex w-full flex-col gap-2 sm:flex-row sm:items-end sm:justify-between lg:mt-0"
         >
           <p
-            className="font-body text-[12px] text-white/70"
+            className="font-body text-[12px] text-white/75"
             style={{ textShadow: "0 1px 6px rgba(0,0,0,0.5)" }}
           >
             {siteConfig.hero.complianceShort}
           </p>
           <p
-            className="font-body text-[14px] text-white/85"
+            className="font-body text-[13px] text-white/85 sm:text-[14px]"
             style={{ textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}
           >
             {siteConfig.hero.trustMicro}
