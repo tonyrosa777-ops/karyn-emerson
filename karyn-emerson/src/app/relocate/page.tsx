@@ -844,6 +844,14 @@ export default function RelocatePage() {
         style={{ background: "var(--primary)" }}
       >
         <AuroraGradient tone="sage" intensity="subtle" />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 0%, rgba(181,83,44,0.10), transparent 70%)",
+          }}
+        />
         <div className="relative z-10 mx-auto w-full max-w-3xl px-6 py-20 text-center md:py-24 lg:px-8">
           <FadeUp>
             <p className="font-mono text-xs uppercase tracking-[0.22em] text-[var(--text-on-dark-muted)]">
