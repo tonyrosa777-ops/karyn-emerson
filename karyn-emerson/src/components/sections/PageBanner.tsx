@@ -14,6 +14,7 @@ import {
 import { AuroraGradient } from "@/components/sections/motion/AuroraGradient";
 import { CrossDissolve } from "@/components/sections/motion/CrossDissolve";
 import { FallingLeaves } from "@/components/sections/motion/FallingLeaves";
+import { RisingEmbers } from "@/components/sections/motion/RisingEmbers";
 import { LetterMaskReveal } from "@/components/sections/motion/LetterMaskReveal";
 import { InkBloom } from "@/components/sections/motion/InkBloom";
 
@@ -52,7 +53,7 @@ export interface PageBannerProps {
   titleMotion?: H1Motion;
   titleAccentWord?: string;
   subhead?: ReactNode;
-  ambient?: "leaves" | "none";
+  ambient?: "leaves" | "embers" | "none";
   auroraTone?: "warm" | "editorial" | "sage";
   height?: BannerHeight;
   parallax?: boolean;
@@ -508,10 +509,15 @@ export const PageBanner = ({
         />
       )}
 
-      {/* Layer 2: ambient (optional FallingLeaves). */}
+      {/* Layer 2: ambient (optional FallingLeaves or RisingEmbers). */}
       {ambient === "leaves" && (
         <div aria-hidden="true" className="absolute inset-0 z-[2]">
           <FallingLeaves density="low" tone="autumn" />
+        </div>
+      )}
+      {ambient === "embers" && (
+        <div aria-hidden="true" className="absolute inset-0 z-[2]">
+          <RisingEmbers density="low" />
         </div>
       )}
 
