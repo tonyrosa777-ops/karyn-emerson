@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/data/site";
 import { FadeUp } from "@/components/animations/FadeUp";
-import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
-import { RisingEmbers } from "@/components/sections/motion/RisingEmbers";
+import { PageBanner } from "@/components/sections/PageBanner";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
   absoluteUrl,
@@ -69,39 +68,32 @@ export default function ServicesIndexPage() {
   return (
     <>
       <JsonLd data={[breadcrumb, itemList]} />
-      {/* SECTION 1 — HERO HEADER (LIGHT, shimmer + ambient particles) */}
-      <section
-        className="relative overflow-hidden"
-        style={{ background: "var(--bg-base)" }}
-      >
-        <div className="absolute inset-0 z-0">
-          <AmbientParticles density="low" />
-        </div>
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1]">
-          <RisingEmbers density="low" />
-        </div>
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20 pt-20 md:pb-28 md:pt-28 lg:px-8">
-          <FadeUp>
-            <p className="font-mono text-xs uppercase tracking-[0.22em] text-[var(--accent)]">
-              SERVICES · SOUTHERN NEW HAMPSHIRE
-            </p>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <h1 className="hero-shimmer font-display text-display mt-5 font-semibold">
-              How I work with you.
-            </h1>
-          </FadeUp>
-          <FadeUp delay={0.2}>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--text-secondary)]">
-              Three services, one person, zero handoff. Whether you are
-              downsizing after thirty years on the same street, buying your
-              first house in NH, or packing the truck up from Methuen, the
-              conversation starts the same way. On your timing, with the real
-              numbers, and with no pressure.
-            </p>
-          </FadeUp>
-        </div>
-      </section>
+
+      {/* SECTION 1 — HERO HEADER (MOSAIC-3 BANNER, letter-mask H1, embers ambient) */}
+      <PageBanner
+        mode="mosaic3"
+        images={[
+          {
+            src: "/images/about/about-landscape-1.jpg",
+            alt: "Southern NH autumn landscape with maple foliage",
+          },
+          {
+            src: "/images/about/about-clapboard-detail.jpg",
+            alt: "New England clapboard detail in autumn light",
+          },
+          {
+            src: "/images/about/about-stone-wall.jpg",
+            alt: "Dry-stone wall at the edge of a Southern NH field",
+          },
+        ]}
+        eyebrow="SERVICES · SOUTHERN NEW HAMPSHIRE"
+        title={<>How I work with you.</>}
+        titleMotion="letter-mask"
+        subhead="Three services, one person, zero handoff. Whether you are downsizing after thirty years on the same street, buying your first house in NH, or packing the truck up from Methuen, the conversation starts the same way. On your timing, with the real numbers, and with no pressure."
+        ambient="embers"
+        height="md"
+        parallax
+      />
 
       {/* SECTION 2 — SERVICE CARDS (DARK, forest green) */}
       <section

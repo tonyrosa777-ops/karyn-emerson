@@ -12,7 +12,6 @@
 // =============================================================================
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -22,7 +21,6 @@ import {
   type QuizType,
 } from "@/data/quiz";
 import { BookingCalendar } from "@/components/booking/BookingCalendar";
-import { InkBloom } from "@/components/sections/motion/InkBloom";
 import { FallingLeaves } from "@/components/sections/motion/FallingLeaves";
 import { AuroraGradient } from "@/components/sections/motion/AuroraGradient";
 
@@ -137,67 +135,25 @@ export default function QuizClient() {
               transition={{ duration: 0.5, ease }}
               className="flex flex-1 flex-col justify-center"
             >
-              {/* Photo ambient band — compact banner with falling leaves */}
-              <div
-                className="relative mb-12 overflow-hidden rounded-lg"
-                style={{ height: "clamp(200px, 26vw, 280px)" }}
+              {/* Intro eyebrow + kicker — banner H1 lives above in page.tsx */}
+              <p
+                className="font-mono text-xs uppercase tracking-[0.22em]"
+                style={{ color: "var(--accent)" }}
               >
-                <Image
-                  src="/images/about/about-stone-wall.jpg"
-                  alt="Dry stone wall in Southern NH"
-                  fill
-                  priority
-                  sizes="100vw"
-                  className="object-cover"
-                />
-                <div
-                  aria-hidden
-                  className="absolute inset-0"
-                  style={{ background: "var(--gradient-hero-overlay)" }}
-                />
-                <div aria-hidden className="absolute inset-0">
-                  <FallingLeaves density="low" tone="autumn" />
-                </div>
-                <div className="relative z-10 flex h-full items-end px-6 pb-8">
-                  <p
-                    className="font-mono text-xs uppercase tracking-[0.22em]"
-                    style={{ color: "var(--accent)" }}
-                  >
-                    Find your fit
-                  </p>
-                </div>
-              </div>
-
-              {/* H1 with oversized editorial "6" numeral backdrop */}
-              <div className="relative">
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute -top-8 right-0 select-none font-display font-semibold"
-                  style={{
-                    fontSize: "clamp(6rem, 14vw, 12rem)",
-                    color: "var(--accent)",
-                    opacity: 0.12,
-                    lineHeight: 1,
-                  }}
-                >
-                  6
-                </span>
-                <InkBloom
-                  as="h1"
-                  className="relative font-display text-display font-semibold"
-                  accentWord="yours"
-                >
-                  {`Which Southern NH move is yours?`}
-                </InkBloom>
-              </div>
-
+                Before you start
+              </p>
+              <h2
+                className="mt-4 font-display text-h2 font-semibold"
+                style={{ color: "var(--text-primary)" }}
+              >
+                Six quick questions. One honest answer.
+              </h2>
               <p
                 className="mt-6 max-w-xl text-lg leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
-                Six quick questions. Honest answers. You will get a result that
-                maps to your actual situation, and a real next step for what to
-                do about it.
+                You will get a result that maps to your actual situation, and a
+                real next step for what to do about it.
               </p>
 
               <ul className="mt-8 space-y-3">

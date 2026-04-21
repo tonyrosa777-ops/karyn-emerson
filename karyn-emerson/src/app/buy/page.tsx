@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/data/site";
 import { FadeUp } from "@/components/animations/FadeUp";
-import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
-import { FallingLeaves } from "@/components/sections/motion/FallingLeaves";
+import { PageBanner } from "@/components/sections/PageBanner";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbSchema, realEstateAgentSchema } from "@/lib/schema";
 
@@ -136,37 +135,31 @@ export default function BuyPage() {
     <>
       <JsonLd data={[breadcrumb, schema]} />
 
-      {/* SECTION 1 — HERO (LIGHT, shimmer H1) */}
-      <section
-        className="relative overflow-hidden"
-        style={{ background: "var(--bg-base)" }}
-      >
-        <div className="absolute inset-0 z-0">
-          <AmbientParticles density="low" />
-        </div>
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1]">
-          <FallingLeaves density="low" tone="autumn" />
-        </div>
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20 pt-20 md:pb-28 md:pt-28 lg:px-8">
-          <FadeUp>
-            <p className="font-mono text-xs uppercase tracking-[0.22em] text-[var(--accent)]">
-              BUYER REPRESENTATION · SOUTHERN NH
-            </p>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <h1 className="hero-shimmer font-display text-display mt-5 font-semibold">
-              What buying in Southern NH actually looks like.
-            </h1>
-          </FadeUp>
-          <FadeUp delay={0.2}>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--text-secondary)]">
-              The P&amp;S, the inspection, the well test, the septic, the
-              appraisal, the closing. In plain English, in the order they
-              happen, so you are not Googling acronyms at midnight.
-            </p>
-          </FadeUp>
-        </div>
-      </section>
+      {/* SECTION 1 — HERO (MOSAIC-3 BANNER, letter-mask H1, leaves ambient) */}
+      <PageBanner
+        mode="mosaic3"
+        images={[
+          {
+            src: "/images/neighborhoods/salem-hero.jpg",
+            alt: "Salem, NH neighborhood street in autumn",
+          },
+          {
+            src: "/images/about/about-clapboard-detail.jpg",
+            alt: "New England clapboard colonial detail",
+          },
+          {
+            src: "/images/neighborhoods/windham-hero.jpg",
+            alt: "Residential Southern NH street in Windham",
+          },
+        ]}
+        eyebrow="FOR BUYERS · SOUTHERN NH"
+        title={<>What buying in Southern NH actually looks like.</>}
+        titleMotion="letter-mask"
+        subhead="The P&S, the inspection, the well test, the septic, the appraisal, the closing. In plain English, in the order they happen, so you are not Googling acronyms at midnight."
+        ambient="leaves"
+        height="md"
+        parallax
+      />
 
       {/* SECTION 2 — WHAT BUYING LOOKS LIKE (DARK, forest green) */}
       <section
