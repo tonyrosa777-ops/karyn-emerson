@@ -92,7 +92,8 @@ body {
 }
 
 /* Paper-grain texture over the cream background — editorial depth without
-   competing with photography. ~4% opacity, tileable 160x160 SVG noise. */
+   competing with photography. ~4% opacity, tileable 160x160 SVG noise.
+   Opacity subtly pulses 0.04 → 0.06 over 12s so the paper "breathes." */
 body::before {
   content: "";
   position: fixed;
@@ -103,6 +104,11 @@ body::before {
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10  0 0 0 0 0.12  0 0 0 0 0.11  0 0 0 1 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
   background-size: 160px 160px;
+  animation: paper-pulse 12s ease-in-out infinite;
+}
+@keyframes paper-pulse {
+  0%, 100% { opacity: 0.04; }
+  50%      { opacity: 0.06; }
 }
 
 .font-display { font-family: var(--font-cormorant), Georgia, "Times New Roman", serif; }
@@ -124,15 +130,80 @@ body::before {
   font-style: italic;
 }
 
-/* Legacy compatibility — interior pages that still apply .hero-shimmer
-   resolve to a solid forest-green serif H1 (no animation, no gradient). */
-.hero-shimmer,
+/* Iron-oxide gradient sweep on H1s — the editorial shimmer.
+   Forest-green base with an iron-oxide sweep passing through every 4.5s.
+   Reference technique: tonyrosa777-ops/Leslie-Ledbetter globals.css.
+   Tuned for Karyn's "Quiet" brand axis (design-system.md §8): slower than
+   Leslie's 3s cycle; iron-oxide stop is a narrow slice (38% → 62% of the
+   gradient) so the heading reads forest-green most of the time, with a
+   single slow sweep passing through. */
+.hero-shimmer {
+  background: linear-gradient(
+    100deg,
+    var(--primary) 0%,
+    var(--primary) 38%,
+    var(--accent) 50%,
+    var(--primary) 62%,
+    var(--primary) 100%
+  );
+  background-size: 220% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: hero-shimmer-sweep 4.5s ease-in-out infinite;
+}
+@keyframes hero-shimmer-sweep {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+/* Sage variant — cream sweep over forest green for dark-section H1s. */
 .hero-shimmer-sage {
-  color: var(--primary);
-  font-style: normal;
-  -webkit-text-fill-color: var(--primary);
-  background: none;
-  animation: none;
+  background: linear-gradient(
+    100deg,
+    var(--text-on-dark-primary) 0%,
+    var(--text-on-dark-primary) 38%,
+    var(--accent) 50%,
+    var(--text-on-dark-primary) 62%,
+    var(--text-on-dark-primary) 100%
+  );
+  background-size: 220% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: hero-shimmer-sweep 4.5s ease-in-out infinite;
+}
+
+/* Shimmer border — conic-gradient rotates around a card's border.
+   Use on focus/emphasis cards (homepage final-CTA card, /pricing Pro tier,
+   /neighborhoods Salem card, /quiz recommended-program card). */
+.shimmer-border {
+  position: relative;
+}
+.shimmer-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    rgba(181, 83, 44, 0) 0%,
+    rgba(181, 83, 44, 0.65) 40%,
+    rgba(181, 83, 44, 0) 60%,
+    rgba(181, 83, 44, 0) 100%
+  );
+  -webkit-mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: shimmer-border-rotate 8s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+@keyframes shimmer-border-rotate {
+  to { transform: rotate(1turn); }
 }
 
 /* Hero CTA size variant — pills sized to match display typography.
