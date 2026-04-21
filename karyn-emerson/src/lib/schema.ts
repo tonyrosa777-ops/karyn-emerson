@@ -296,7 +296,7 @@ export function realEstateListingSchema({
     "@context": "https://schema.org",
     "@type": "RealEstateListing",
     name: listing.address,
-    url: slug ? absoluteUrl(`/neighborhoods/${slug}`) : absoluteUrl("/listings"),
+    url: slug ? absoluteUrl(`/neighborhoods/${slug}`) : absoluteUrl("/neighborhoods"),
     address: {
       "@type": "PostalAddress",
       streetAddress: listing.address,
