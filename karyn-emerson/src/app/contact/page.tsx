@@ -93,7 +93,6 @@ export default function ContactPage() {
         subhead="A quick call usually saves thirty emails. Pick the channel that works, and I will meet you there."
         height="sm"
         parallax
-        textSide="left"
       />
 
       {/* SECTION 2 — SPLIT-SCREEN FORM (aurora backdrop, glass-morphism card) */}

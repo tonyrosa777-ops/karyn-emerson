@@ -278,10 +278,15 @@ const ctaVariantStyle = (variant: "primary" | "secondary"): CSSProperties =>
 interface CtaRowProps {
   ctas: BannerCta[];
   reduceMotion: boolean;
+  textSide?: "left" | "center";
 }
 
-const CtaRow = ({ ctas, reduceMotion }: CtaRowProps) => (
-  <div className="mt-8 flex flex-wrap gap-3">
+const CtaRow = ({ ctas, reduceMotion, textSide = "left" }: CtaRowProps) => (
+  <div
+    className={`mt-8 flex flex-wrap gap-3 ${
+      textSide === "center" ? "justify-center" : ""
+    }`}
+  >
     {ctas.map((cta, i) => {
       const content = (
         <Link
@@ -411,7 +416,7 @@ export const PageBanner = ({
   parallax = true,
   ctas,
   className,
-  textSide = "left",
+  textSide = "center",
 }: PageBannerProps) => {
   const reduceMotion = useReducedMotion() ?? false;
   const sectionRef = useRef<HTMLElement>(null);
@@ -491,6 +496,18 @@ export const PageBanner = ({
         />
       )}
 
+      {/* Layer 1b: local text-backing for center mode — tighter dark band behind the text column. */}
+      {mode !== "aurora" && textSide === "center" && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-[1]"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 55% at 50% 50%, rgba(18,24,20,0.55) 0%, transparent 70%)",
+          }}
+        />
+      )}
+
       {/* Layer 2: ambient (optional FallingLeaves). */}
       {ambient === "leaves" && (
         <div aria-hidden="true" className="absolute inset-0 z-[2]">
@@ -499,7 +516,13 @@ export const PageBanner = ({
       )}
 
       {/* Layer 10: text column. */}
-      <div className="relative z-10 mx-auto flex h-full max-w-6xl items-end px-6 pb-12 md:items-end md:pb-16 lg:px-8">
+      <div
+        className={`relative z-10 mx-auto flex h-full max-w-6xl px-6 lg:px-8 ${
+          textSide === "center"
+            ? "items-center pb-0 md:pb-0"
+            : "items-end pb-12 md:pb-16"
+        }`}
+      >
         <div className={textColumnAlign}>
           {eyebrow && (
             <p
@@ -525,7 +548,7 @@ export const PageBanner = ({
             </p>
           )}
           {ctas && ctas.length > 0 && (
-            <CtaRow ctas={ctas} reduceMotion={reduceMotion} />
+            <CtaRow ctas={ctas} reduceMotion={reduceMotion} textSide={textSide} />
           )}
         </div>
       </div>

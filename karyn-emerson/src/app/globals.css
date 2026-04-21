@@ -38,21 +38,22 @@
   --space-2xl: 3rem;
   --space-3xl: 4rem;
 
-  /* Hero image overlay — gradient for text legibility over photography.
-     Darker on the left where the H1 sits; fades to near-transparent on the right. */
-  --gradient-hero-overlay: linear-gradient(
-    100deg,
-    rgba(18, 24, 20, 0.78) 0%,
-    rgba(18, 24, 20, 0.58) 35%,
-    rgba(18, 24, 20, 0.28) 68%,
-    rgba(18, 24, 20, 0.08) 100%
+  /* Hero image overlay — radial scrim centered on the text column.
+     Darker than the previous left-to-right linear so centered headings
+     sit on a legible background regardless of image content. */
+  --gradient-hero-overlay: radial-gradient(
+    ellipse 70% 65% at 50% 55%,
+    rgba(18, 24, 20, 0.88) 0%,
+    rgba(18, 24, 20, 0.70) 45%,
+    rgba(18, 24, 20, 0.35) 80%,
+    rgba(18, 24, 20, 0.18) 100%
   );
-  /* Mobile: image is wider than text, so darken the bottom half uniformly. */
-  --gradient-hero-overlay-mobile: linear-gradient(
-    180deg,
-    rgba(18, 24, 20, 0.20) 0%,
-    rgba(18, 24, 20, 0.55) 55%,
-    rgba(18, 24, 20, 0.82) 100%
+  /* Mobile: radial centered too; deeper base so busy photos can't swallow text. */
+  --gradient-hero-overlay-mobile: radial-gradient(
+    ellipse 100% 55% at 50% 55%,
+    rgba(18, 24, 20, 0.90) 0%,
+    rgba(18, 24, 20, 0.75) 50%,
+    rgba(18, 24, 20, 0.55) 100%
   );
 }
 

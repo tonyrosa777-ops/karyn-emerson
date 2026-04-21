@@ -206,7 +206,6 @@ export default async function BlogIndexPage({ searchParams }: PageProps) {
         subhead="Nine honest articles on Southern NH real estate. MA-to-NH relocation math, NH property tax by town, post-August-2024 commission rules, neighborhood deep dives, and a straight answer on Opendoor's $45,000 equity gap."
         height="md"
         parallax
-        textSide="left"
       />
 
       {/* Featured article hero — magazine spread (only on default listing, page 1) */}

@@ -165,7 +165,6 @@ export default function ListingsPage() {
         subhead="Not a scraped MLS portal. A curated shortlist of Southern NH homes chosen for buyers Karyn is already working with, plus a few open-door showings each month."
         height="md"
         parallax
-        textSide="left"
       />
 
       {/* SECTION 2 — HOW IT WORKS (DARK, forest green) */}

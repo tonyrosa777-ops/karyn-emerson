@@ -146,7 +146,6 @@ export default function BookingPage() {
         ambient="leaves"
         height="md"
         parallax
-        textSide="left"
       />
 
       {/* ── Intro: split-screen editorial ──────────────────── */}

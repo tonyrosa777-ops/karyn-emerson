@@ -311,7 +311,6 @@ export default function NeighborhoodsIndexPage() {
         subhead="Seven towns, each with its own character, mill rate, and price band. Plus sub-neighborhood deep-dives for the places buyers compare most often."
         height="lg"
         parallax
-        textSide="left"
       />
 
       {/* Section 2 — Magazine-spread town grid (LIGHT, cream base) */}

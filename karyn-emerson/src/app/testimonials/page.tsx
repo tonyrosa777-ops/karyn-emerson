@@ -197,7 +197,6 @@ export default async function TestimonialsPage({ searchParams }: PageProps) {
         subhead="Thirty-six real calls, thirty-six stories. Every one paged nine at a time so nothing gets lost in a wall of quotes."
         height="md"
         parallax
-        textSide="left"
       />
 
       {/* SECTION 2 — FEATURED PULL-QUOTE: massive editorial spread */}

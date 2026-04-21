@@ -124,7 +124,6 @@ export default function AboutPage() {
         subhead="A lifelong Southern NH agent at a genuine boutique brokerage. Place first, not face first. Honest numbers, on your timing."
         height="md"
         parallax
-        textSide="left"
       />
 
       {/* SECTION 2 — STORY (DARK, forest green) — editorial timeline */}
