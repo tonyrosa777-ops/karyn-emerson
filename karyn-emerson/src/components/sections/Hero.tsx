@@ -73,21 +73,22 @@ export function Hero() {
         </video>
       )}
 
-      {/* Layer 2 — Gradient overlay for legibility. Stronger on the left/text side. */}
+      {/* Layer 2 — Desktop left-column scrim. Darker, tighter fade, still leaves the right 30% of the lake visible. */}
       <div
         aria-hidden="true"
         className="absolute inset-0 -z-[5] hidden lg:block"
         style={{
           background:
-            "linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0.05) 80%, rgba(0,0,0,0) 100%)",
+            "linear-gradient(to right, rgba(12,16,14,0.90) 0%, rgba(12,16,14,0.72) 35%, rgba(12,16,14,0.30) 65%, rgba(12,16,14,0) 90%)",
         }}
       />
+      {/* Layer 2 — Mobile: significantly deeper full-frame scrim so every H1 + subhead + CTA frame is legible. */}
       <div
         aria-hidden="true"
         className="absolute inset-0 -z-[5] lg:hidden"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.65) 55%, rgba(0,0,0,0.80) 100%)",
+            "linear-gradient(to bottom, rgba(12,16,14,0.70) 0%, rgba(12,16,14,0.80) 50%, rgba(12,16,14,0.90) 100%)",
         }}
       />
 
@@ -95,7 +96,16 @@ export function Hero() {
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col px-6 pb-8 pt-16 lg:px-8 lg:pb-10 lg:pt-10">
         {/* Centered content block — flex-1 fills available height, items-center vertically centers */}
         <div className="flex flex-1 items-center">
-          <div className="max-w-[600px] lg:w-[58%]">
+          <div className="relative max-w-[600px] lg:w-[58%]">
+          {/* Local radial text-backing — darker pocket behind the text stack. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -inset-x-6 -inset-y-8 -z-[1]"
+            style={{
+              background:
+                "radial-gradient(ellipse 90% 70% at 20% 50%, rgba(12,16,14,0.55) 0%, rgba(12,16,14,0.30) 55%, transparent 85%)",
+            }}
+          />
           {/* Eyebrow */}
           <motion.p
             {...mp({ y: 20 }, 0.2, 0.6)}
