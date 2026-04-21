@@ -24,9 +24,11 @@ export interface CTAPair {
 
 export interface HeroCopy extends CTAPair {
   eyebrow: string;
-  tagline: string;        // H1 — wears .hero-shimmer
-  subheadline: string;    // emotional hook copy below H1
-  trustMicro: string;     // star rating / years / transaction count one-liner
+  tagline: string;           // H1 — brand identity statement
+  subheadline: string;       // emotional hook copy below H1
+  trustMicro: string;        // star rating / years / transaction count one-liner
+  ctaMicro: string;          // one-liner under the CTA button pair (quiz nudge)
+  complianceShort: string;   // NH-required brokerage disclosure (REALTOR® + brokerage)
   ctaPrimaryHref: string;
   ctaSecondaryHref: string;
 }
@@ -119,15 +121,17 @@ export const siteConfig: SiteConfig = {
   ],
 
   hero: {
-    eyebrow: "SOUTHERN NEW HAMPSHIRE",
-    tagline: "The neighborhood, and the person who knows every street.",
+    eyebrow: "SALEM · WINDHAM · DERRY · LONDONDERRY",
+    tagline: "Southern New Hampshire, from someone who actually lives here.",
     subheadline:
-      "If you have lived on your cul-de-sac for thirty years, or you are moving up I-93 from Methuen next spring, you already know why the street matters as much as the house. Let's have a real conversation about your timing, on a call with zero pressure.",
-    ctaPrimary: "Book a Free Consultation",
-    ctaSecondary: "Take the Quiz",
+      "I'm Karyn Emerson — a Salem-based agent with Jill & Co. I don't list every property on Zillow and hope you pick me. We talk, I learn what you actually need, then I find the homes worth your time.",
+    ctaPrimary: "Book a free consultation",
+    ctaSecondary: "Take the quiz",
     ctaPrimaryHref: "/booking",
     ctaSecondaryHref: "/quiz",
-    trustMicro: "5.0 on Zillow · Lifelong Southern NH · Jill & Co. Realty Group, Salem", // [DEMO COPY — pending client review]
+    trustMicro: "⭐ 5.0 on Zillow · Best year yet in 2025 · Lifelong NH resident",
+    ctaMicro: "The quiz is the first step to discovering your dream home.",
+    complianceShort: "Karyn Emerson, REALTOR® · Jill & Co. Realty Group",
   },
 
   painPoints: [

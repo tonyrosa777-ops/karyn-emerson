@@ -312,106 +312,77 @@ Vercel deploy will fail if the committer email does not match the GitHub account
 This has caused blocked deploys on two prior builds (Errors #13, #23).
 
 ## Hero Architecture Rule
-Every hero section ships with exactly 3 layers. No exceptions. No photos. No static backgrounds.
+Every hero section ships with three layers: (1) a creative visual background, (2) a gradient
+overlay for text legibility, and (3) a Framer Motion staggered text layer. The visual background
+may be any ONE of three approved directions:
 
-**There is NO photo in the hero. Ever.** The client photo / brand image belongs in the About section,
-not the hero. A photo placeholder in the hero is a build failure — flag it and replace it with the
-3-layer animation stack before the phase is marked complete.
+**Direction A — Cinematic video background.**
+A short (10–20s) looping mp4, muted, autoplay, faststart-encoded, 720p, H.264 CRF 28–30,
+compressed to under 3 MB. Required attributes on the `<video>` element:
+`autoPlay muted loop playsInline preload="metadata"` — all four non-negotiable for cross-browser
+autoplay. Must include a `poster` attribute pointing to an extracted still frame (eliminates
+the black flash before load). Video is decorative — `aria-hidden="true"`. `<source type="video/mp4">`
+structured so a future WebM fallback can be prepended. Under `prefers-reduced-motion: reduce`,
+swap the `<video>` for a static `<img>` rendering of the poster frame.
 
-**Layer 1 — Canvas Particle System (HeroParticles.tsx)**
-Choose particle type from the animation-specialist Selection Matrix based on brand axes.
-Renders behind all content (z-0). Always present.
+**Direction B — Full-bleed editorial photograph.**
+One high-quality photograph rendered via `<Image priority fill sizes="100vw" className="object-cover" />`,
+quality ≥ 85. Ken Burns slow-scale animation optional, prefers-reduced-motion safe. No portrait
+of the client in the hero — the client photo belongs in the About section. Editorial scenes
+(landscape, architecture, atmospheric detail) only.
 
-**Layer 2 — [BrandName]Canvas.tsx (Brand Canvas — brand-specific)**
-A canvas-based animation that visually represents this specific business. NOT an SVG. NOT a generic
-shape. A custom `<canvas>` component named after the brand (e.g. `HealthShieldCanvas.tsx`,
-`ForgeCanvas.tsx`). Lives in the right panel of the two-column hero split.
+**Direction C — 3-layer animated canvas stack.**
+The original Optimus pattern: HeroParticles.tsx (particle system, z-0) + [BrandName]Canvas.tsx
+(brand-specific canvas animation in the right panel of a two-column split, z-0) + Framer Motion
+stagger text (z-10). Reference 5-phase lifecycle (STREAM → RISE → COOL → ARC → IDLE) and
+selection process (10-concept brainstorm → critic agent scoring → single-winner build) are
+preserved in the canvas reference implementations:
+- tonyrosa777-ops/Sylvia-Rich-Hungary-Consul-NE (gold dust, coat of arms)
+- tonyrosa777-ops/where-2-junk (debris particles)
+- tonyrosa777-ops/Placed-Right-Fence (forge ember extrusion)
 
-**Default approach: creative niche-specific canvas particle animation.**
-The brand canvas should be a genuinely eye-catching, luxurious custom JavaScript canvas animation
-that is conceptually tied to the client's niche. Think deeply about what visual metaphor fits
-this business before writing a single line of code.
+Canvas container: `position: relative`, height `clamp(340px, 50vw, 540px)`. Canvas fills via
+`position: absolute; inset: 0`. Always cast: `canvas.getContext("2d") as CanvasRenderingContext2D` —
+TypeScript strict mode will fail on nullable contexts inside nested draw functions.
 
-**Selection process (non-negotiable — prevents iteration waste):**
-1. Read design-system.md Section 8 (Brand Personality Axes) + the business type
-2. Brainstorm 10 genuinely creative canvas animation concepts. Each must be:
-   - Visually distinct from the others
-   - Conceptually tied to this specific business niche (not generic particles)
-   - Achievable in a single `<canvas>` component with requestAnimationFrame
-   - Eye-catching and luxurious — this is the first thing the client sees
-3. Spawn a harsh critic agent to evaluate all 10 concepts. The critic scores each on:
-   - Niche relevance (does it scream "this business"?)
-   - Visual impact (will it impress in the first 2 seconds?)
-   - Technical feasibility (can it be built without 5 iterations?)
-   - Uniqueness (has this been done on a prior Optimus build?)
-   The critic selects the single best concept with written rationale.
-4. Build ONLY the winning concept. No pivots mid-implementation.
+**Choosing a direction.** Video wins when the brand benefits from motion-backed storytelling
+(real estate, hospitality, travel, food, lifestyle). Photograph wins when the brand has a strong
+single editorial image that carries meaning in one frame (trades, local services, artisans).
+Canvas wins when the brand is conceptual or abstract and a custom animation expresses identity
+better than any real-world footage (tech, finance, health, legal). Pick one; do not stack.
 
-Reference implementations (read these for structure, not to copy):
-- tonyrosa777-ops/Sylvia-Rich-Hungary-Consul-NE — gold dust particles, coat of arms
-- tonyrosa777-ops/where-2-junk — junk/debris particle system
-- tonyrosa777-ops/Placed-Right-Fence — forge ember extrusion
+### Shared structural requirements (all three directions)
 
-**Fallback: logo-based chaos→convergence→explosion.**
-If the creative canvas doesn't land after one honest build attempt, fall back to the proven
-LogoParticles pattern (Pattern #36 from JCM Graphics): particles stream from edges → converge
-into logo shape → explosion reveal → idle breathe. This requires a client logo PNG with
-transparent background. It is the safe option, not the default.
+**Gradient overlay.** Every direction gets a dark gradient over the visual layer so text
+remains legible. The gradient's darkest stop sits on the side where the text lives (usually left
+on desktop, full-width bottom on mobile). Overlay must never be so heavy that the visual layer
+is lost — the hero's visual storytelling is what separates it from a plain banner.
 
-Every brand canvas follows the same 5-phase lifecycle:
-1. **STREAM** — N particles spawn at canvas edges and flow along quadratic bezier curves toward a
-   center target. Each frame: `t += speed`. When all particles reach `t >= 0.94` → fire phase 2.
-2. **RISE** — Particles cleared. Brand shape extrudes using `springOut(t)`:
-   `1 - 2^(-9t) * cos(t * 10π * 0.68)` — gives physical spring overshoot. Duration: ~500ms.
-3. **COOL** — Shape color animates through heat palette: white-hot → brand accent → brand primary.
-   `heatRGB(t)` interpolates between stops. The shape literally "becomes" the brand as it cools.
-4. **ARC** — Secondary element draws progressively (rail across fence pickets, arc around shield).
-   Drawn via `ctx.arc(x, y, r, start, end * progress)`.
-5. **IDLE** — `breathe = sin(elapsed * 0.00088)`. Oscillates coolingT + arc alpha — ambient pulse.
+**H1 = siteConfig.tagline always.** The tagline IS the H1. Emotional hook copy ("Stop paying
+twice your mortgage") goes in the subheadline below the H1. Never put ad-hook copy in the H1.
+H1 may receive a shimmer class (`.hero-shimmer` amber/gold or `.hero-shimmer-sage` sage/white),
+or a static accent treatment on a slice of the tagline (per-project discretion). The tagline
+rule is absolute; the shimmer treatment is now optional and per-build.
 
-What changes per brand: the shape drawn in RISE (drawPicket, drawCross, drawFlame, etc.),
-the heat palette endpoint (cools to brand primary), and the secondary element in ARC.
-The 5-phase sequence and springOut function are identical on every build.
+**Framer Motion stagger text.** H1 first, subheadline at ~0.15–0.4s delay, CTAs at ~0.3–0.6s
+delay. Trust row and micro-copy fade in last (~0.7–0.8s). Ease `[0.22, 1, 0.36, 1] as const`.
+Under `prefers-reduced-motion: reduce`, all motion is removed (no opacity fades, no y-offsets) —
+content appears instantly. Use `useReducedMotion` from framer-motion.
 
-Canvas container: `position: relative`, explicit height `clamp(340px, 50vw, 540px)`.
-Canvas fills container with `position: absolute; inset: 0`.
-Always cast: `canvas.getContext("2d") as CanvasRenderingContext2D` — never leave nullable,
-nested draw functions will fail TypeScript strict mode.
+**Hero text must always be readable.** If the background is dark, text is light; if light, dark.
+No exceptions. A visual check — "can you read every word without highlighting?" — is mandatory
+before phase sign-off.
 
-**Layer 3 — Framer Motion Stagger Text**
-H1 first, subheadline at 0.15s delay, CTAs at 0.3s delay.
-Renders above canvas (z-10). Always present.
-
-**H1 = siteConfig.tagline always.** The tagline IS the H1 — it gets the shimmer class because
-it is the brand identity statement. Emotional hook copy ("Stop paying twice your mortgage") goes
-in the subheadline below the H1. Never put ad-hook copy in the H1.
-Two shimmer classes — pick based on dominant brand token:
-- `.hero-shimmer` — amber/gold sweep (for brands with gold/warm primary)
-- `.hero-shimmer-sage` — sage/white sweep (for brands with cool/green/neutral primary)
-
-**Tagline shimmer is mandatory.** The H1 (siteConfig.tagline) ALWAYS receives a shimmer class.
-"Where healthcare finally makes sense." is the H1 with shimmer. Verify it renders in the browser
-before phase sign-off. Wrong: any copy other than the brand tagline in the H1.
-
-**Hero text must always be readable.** Hero headings and body copy always use `color: var(--text-primary)`
-(which is #f5f5f5 on dark builds). If the background is dark and the text is dark, this is a build
-failure. Do a visual check: can you read every word without highlighting? If not, fix the color token.
-
-**Primary CTA is always booking.** The hero's primary button drives directly to the booking
-calendar — "Book Your Free Estimate," "Schedule Service," "Book Now," etc. It is NEVER
-"Call Now" — the phone number CTA belongs in the navigation bar, not the hero. It is never
+**Primary CTA is always booking.** "Book a Free Consultation," "Schedule Service," etc. It is
+NEVER "Call Now" — the phone number CTA belongs in the navigation bar, not the hero. It is never
 "Learn More" or "See Our Work." The primary CTA's job is to get the visitor onto the calendar.
 
-**Second CTA is always the quiz.** The hero's secondary button always links to `/quiz` with label
-from `hero.ctaSecondary`. It is never a webinar, info session, events page, or external link.
-The secondary CTA slot belongs to the quiz on every build, without exception.
+**Second CTA is always the quiz.** Links to `/quiz` with label from `hero.ctaSecondary`. Never
+a webinar, info session, events page, or external link.
 
 **Both CTAs funnel to booking.** The primary CTA goes directly to the calendar. The quiz CTA
 qualifies the lead first, then surfaces the calendar on the result screen. Two paths, same
 destination. This is the entire conversion architecture of the homepage hero.
-
-This 3-layer stack is non-negotiable. The animation-specialist agent selects the specific
-variants for layers 1 and 2. The text stagger is the same on every build.
 
 ## Always-Built Features Rule
 Every project ships with ALL of the following, no exceptions, no client-by-client decisions:
