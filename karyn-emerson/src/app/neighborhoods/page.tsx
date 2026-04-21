@@ -162,7 +162,7 @@ function TownSpreadCard({
     <Link
       href={`/neighborhoods/${n.slug}`}
       className={`group relative flex flex-col overflow-hidden rounded-lg ${colSpan} ${
-        isFirst ? "shimmer-border" : ""
+        isFirst ? "emphasis-card" : ""
       }`}
       style={{
         background: "var(--bg-elevated)",

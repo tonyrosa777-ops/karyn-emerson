@@ -76,7 +76,7 @@ export default function PricingPage() {
               <div
                 key={tier.id}
                 className={`relative flex h-full flex-col rounded-2xl p-8 md:p-10 ${
-                  tier.popular ? "shimmer-border" : ""
+                  tier.popular ? "emphasis-card" : ""
                 }`}
                 style={{
                   background: tier.popular ? "var(--bg-card)" : "transparent",
@@ -89,8 +89,7 @@ export default function PricingPage() {
                   transform: tier.popular ? "scale(1.02)" : "none",
                 }}
               >
-                {/* Inner content wrapper — keeps text/CTA above the rotating
-                    shimmer-border conic pseudo-element (z-index:1). */}
+                {/* Inner content wrapper */}
                 <div className="relative z-[2] flex h-full flex-col">
                   {tier.popular && (
                     <p

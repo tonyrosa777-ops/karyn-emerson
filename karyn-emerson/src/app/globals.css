@@ -176,34 +176,11 @@ body::before {
   animation: hero-shimmer-sweep 4.5s ease-in-out infinite;
 }
 
-/* Shimmer border — conic-gradient rotates around a card's border.
-   Use on focus/emphasis cards (homepage final-CTA card, /pricing Pro tier,
-   /neighborhoods Salem card, /quiz recommended-program card). */
-.shimmer-border {
-  position: relative;
-}
-.shimmer-border::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  padding: 1.5px;
-  border-radius: inherit;
-  background: conic-gradient(
-    from 0deg,
-    rgba(181, 83, 44, 0) 0%,
-    rgba(181, 83, 44, 0.65) 40%,
-    rgba(181, 83, 44, 0) 60%,
-    rgba(181, 83, 44, 0) 100%
-  );
-  -webkit-mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  animation: shimmer-border-rotate 8s linear infinite;
-  pointer-events: none;
-  z-index: 1;
-}
-@keyframes shimmer-border-rotate {
-  to { transform: rotate(1turn); }
+/* Static emphasis style for focus cards — replaces the deleted .shimmer-border animation.
+   Used on homepage final-CTA, /pricing Pro tier, /neighborhoods Salem card, /quiz recommended-program card. */
+.emphasis-card {
+  border: 1px solid rgba(181, 83, 44, 0.35);
+  box-shadow: 0 0 0 3px rgba(181, 83, 44, 0.08), 0 20px 40px -20px rgba(18, 24, 20, 0.25);
 }
 
 /* Hero CTA size variant — pills sized to match display typography.

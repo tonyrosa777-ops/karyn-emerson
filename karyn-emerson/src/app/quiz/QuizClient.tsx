@@ -433,7 +433,7 @@ export default function QuizClient() {
 
               {/* Recommended program card */}
               <div
-                className="shimmer-border mt-10 overflow-hidden rounded-2xl p-6 md:p-8"
+                className="emphasis-card mt-10 overflow-hidden rounded-2xl p-6 md:p-8"
                 style={{
                   background: "var(--bg-card)",
                   border: "1.5px solid rgba(47,74,58,0.12)",

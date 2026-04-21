@@ -126,7 +126,7 @@ export function HomeBookingPreview() {
           {/* RIGHT — focused CTA card routing to /booking */}
           <FadeUp delay={0.12}>
             <div
-              className="shimmer-border relative flex flex-col gap-6 overflow-hidden rounded-2xl border p-8 shadow-[0_24px_56px_-24px_rgba(0,0,0,0.45)] md:p-10"
+              className="emphasis-card relative flex flex-col gap-6 overflow-hidden rounded-2xl border p-8 shadow-[0_24px_56px_-24px_rgba(0,0,0,0.45)] md:p-10"
               style={{
                 background: "var(--bg-base)",
                 borderColor: "var(--card-on-dark-border)",
