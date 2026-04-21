@@ -151,13 +151,14 @@ export default function BookingPage() {
         </div>
       </section>
 
-      {/* ── Two-column: why-book + calendar ──────────────── */}
+      {/* ── Intro + full-width calendar ──────────────────── */}
       <section
         className="relative py-20 md:py-24"
         style={{ background: "var(--bg-elevated)" }}
       >
-        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-6 lg:grid-cols-[5fr_6fr] lg:gap-16 lg:px-8">
-          <div className="flex flex-col">
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          {/* Intro block — centered heading, left-aligned body */}
+          <div className="mx-auto max-w-2xl text-center">
             <p
               className="font-mono text-[11px] uppercase tracking-[0.2em]"
               style={{ color: "var(--accent)" }}
@@ -170,19 +171,23 @@ export default function BookingPage() {
             >
               A real call, not a funnel.
             </h2>
-            <div className="mt-6 space-y-5">
-              {WHY_BOOK_COPY.map((p, i) => (
-                <p
-                  key={i}
-                  className="text-base leading-relaxed"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  {p}
-                </p>
-              ))}
-            </div>
           </div>
-          <div>
+          <div className="mx-auto mt-6 max-w-2xl space-y-5 text-left">
+            {WHY_BOOK_COPY.map((p, i) => (
+              <p
+                key={i}
+                className="text-base leading-relaxed"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                {p}
+              </p>
+            ))}
+          </div>
+
+          {/* Full-width calendar — clears the @3xl (768px) container-query
+              breakpoint so the widget renders side-by-side (calendar left,
+              time slots right) instead of stacked. */}
+          <div className="mx-auto mt-14 max-w-5xl md:mt-16">
             <BookingCalendar />
           </div>
         </div>
