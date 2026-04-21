@@ -7,7 +7,7 @@
 // =============================================================================
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/data/site";
 import { useCart } from "@/lib/cart";
 import MobileNav from "./MobileNav";
@@ -15,6 +15,8 @@ import MobileNav from "./MobileNav";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const dropdownRef = useRef<HTMLLIElement | null>(null);
   const { count, openCart } = useCart();
 
   useEffect(() => {
@@ -23,6 +25,24 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Close dropdown on outside click + ESC
+  useEffect(() => {
+    if (!openDropdown) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenDropdown(null);
+    };
+    const onClick = (e: MouseEvent) => {
+      if (!dropdownRef.current) return;
+      if (!dropdownRef.current.contains(e.target as Node)) setOpenDropdown(null);
+    };
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("mousedown", onClick);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("mousedown", onClick);
+    };
+  }, [openDropdown]);
 
   return (
     <>
@@ -58,10 +78,91 @@ export default function Navbar() {
             {siteConfig.nav.map((item) => {
               const isAccent = item.accent === true;
               const isQuiz = item.href === "/quiz";
+              const hasChildren = Array.isArray(item.children) && item.children.length > 0;
+
+              if (hasChildren) {
+                const isOpen = openDropdown === item.label;
+                return (
+                  <li
+                    key={item.label}
+                    ref={isOpen ? dropdownRef : undefined}
+                    className="relative"
+                  >
+                    <button
+                      type="button"
+                      aria-haspopup="menu"
+                      aria-expanded={isOpen}
+                      onClick={() =>
+                        setOpenDropdown(isOpen ? null : item.label)
+                      }
+                      className="nav-link font-body font-medium text-[15px] inline-flex items-center gap-1 transition-colors duration-200"
+                      style={{ color: "var(--text-primary)" }}
+                    >
+                      {item.label}
+                      <span
+                        aria-hidden="true"
+                        className="transition-transform duration-200"
+                        style={{
+                          display: "inline-block",
+                          transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                          fontSize: "0.7rem",
+                          lineHeight: 1,
+                        }}
+                      >
+                        ▾
+                      </span>
+                    </button>
+                    {isOpen && (
+                      <ul
+                        role="menu"
+                        className="absolute right-0 mt-3 min-w-[220px] rounded-lg border py-2 shadow-lg"
+                        style={{
+                          background: "var(--bg-elevated)",
+                          borderColor: "rgba(47,74,58,0.10)",
+                          boxShadow: "0 20px 40px -20px rgba(18,24,20,0.25)",
+                        }}
+                      >
+                        {item.children!.map((child) => {
+                          const childAccent = child.accent === true;
+                          return (
+                            <li key={child.href} role="none">
+                              <Link
+                                role="menuitem"
+                                href={child.href}
+                                onClick={() => setOpenDropdown(null)}
+                                className="block px-4 py-2.5 font-body text-[15px] transition-colors"
+                                style={{
+                                  color: childAccent
+                                    ? "var(--accent)"
+                                    : "var(--text-primary)",
+                                  fontFamily: childAccent
+                                    ? "var(--font-jetbrains), ui-monospace, monospace"
+                                    : undefined,
+                                }}
+                                onMouseEnter={(e) => {
+                                  e.currentTarget.style.background =
+                                    "rgba(181,83,44,0.06)";
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.currentTarget.style.background =
+                                    "transparent";
+                                }}
+                              >
+                                {child.label}
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+                  </li>
+                );
+              }
+
               return (
-                <li key={item.href}>
+                <li key={item.href ?? item.label}>
                   <Link
-                    href={item.href}
+                    href={item.href ?? "#"}
                     className={`nav-link font-body font-medium text-[15px] transition-colors duration-200 ${
                       isQuiz ? "nav-link-quiz" : ""
                     } ${isAccent ? "nav-link-accent" : ""}`}

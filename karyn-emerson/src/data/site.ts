@@ -75,7 +75,12 @@ export interface SiteConfig {
     state: string;
     serviceArea: string[];
   };
-  nav: Array<{ label: string; href: string; accent?: boolean }>;
+  nav: Array<{
+    label: string;
+    href?: string;
+    accent?: boolean;
+    children?: Array<{ label: string; href: string; accent?: boolean }>;
+  }>;
   hero: HeroCopy;
   painPoints: PainPoint[];
   services: Service[];
@@ -111,13 +116,18 @@ export const siteConfig: SiteConfig = {
 
   nav: [
     { label: "About", href: "/about" },
-    { label: "Neighborhoods", href: "/neighborhoods" },
     { label: "Relocate", href: "/relocate" },
     { label: "Blog", href: "/blog" },
     { label: "Shop", href: "/shop" },
-    { label: "Testimonials", href: "/testimonials" },
-    { label: "Take the Quiz", href: "/quiz" },
-    { label: "⬥ Pricing", href: "/pricing", accent: true }, // Optimus sales tool — deleted pre-launch
+    {
+      label: "More",
+      children: [
+        { label: "Neighborhoods", href: "/neighborhoods" },
+        { label: "Testimonials", href: "/testimonials" },
+        { label: "⬥ Pricing", href: "/pricing", accent: true }, // Optimus sales tool — deleted pre-launch
+      ],
+    },
+    { label: "Quiz", href: "/quiz" },
   ],
 
   hero: {

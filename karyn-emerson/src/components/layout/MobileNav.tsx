@@ -115,17 +115,65 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
         </button>
       </div>
 
-      {/* Links — centered, stacked */}
+      {/* Links — centered, stacked. Dropdown parents render as a small-caps label
+          with the children stacked beneath at a slightly smaller type size. */}
       <nav
-        className="flex-1 flex flex-col items-center justify-center gap-5 px-6"
+        className="flex-1 flex flex-col items-center justify-center gap-5 px-6 overflow-y-auto py-6"
         aria-label="Mobile primary"
       >
         {siteConfig.nav.map((item) => {
+          const hasChildren =
+            Array.isArray(item.children) && item.children.length > 0;
+
+          if (hasChildren) {
+            return (
+              <div
+                key={item.label}
+                className="flex flex-col items-center gap-3"
+              >
+                <p
+                  className="font-mono uppercase"
+                  style={{
+                    color: "var(--text-on-dark-muted)",
+                    fontSize: "0.7rem",
+                    letterSpacing: "0.22em",
+                  }}
+                >
+                  {item.label}
+                </p>
+                {item.children!.map((child) => {
+                  const childAccent = child.accent === true;
+                  return (
+                    <Link
+                      key={child.href}
+                      href={child.href}
+                      onClick={handleLinkClick}
+                      className="font-display"
+                      style={{
+                        color: childAccent
+                          ? "var(--accent)"
+                          : "var(--text-on-dark-primary)",
+                        fontWeight: 400,
+                        fontSize: "1.5rem",
+                        lineHeight: 1.2,
+                        fontFamily: childAccent
+                          ? "var(--font-jetbrains), ui-monospace, monospace"
+                          : undefined,
+                      }}
+                    >
+                      {child.label}
+                    </Link>
+                  );
+                })}
+              </div>
+            );
+          }
+
           const isAccent = item.accent === true;
           return (
             <Link
-              key={item.href}
-              href={item.href}
+              key={item.href ?? item.label}
+              href={item.href ?? "#"}
               onClick={handleLinkClick}
               className="font-display"
               style={{

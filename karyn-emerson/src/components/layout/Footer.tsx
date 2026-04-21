@@ -30,8 +30,16 @@ function FacebookIcon() {
 }
 
 export default function Footer() {
-  // Footer nav mirrors site nav minus Pricing (internal Optimus sales tool).
-  const footerNav = siteConfig.nav.filter((item) => !item.accent);
+  // Footer nav flattens the main nav + its dropdown children, then drops
+  // accented entries (internal Optimus Pricing sales tool) and any parent
+  // row that is only a dropdown label with no href of its own.
+  const footerNav = siteConfig.nav.flatMap((item) => {
+    if (Array.isArray(item.children) && item.children.length > 0) {
+      return item.children.filter((child) => !child.accent);
+    }
+    if (!item.href || item.accent) return [];
+    return [{ label: item.label, href: item.href }];
+  });
   const year = new Date().getFullYear();
   const brokerageLine = `${siteConfig.brokerage}, ${siteConfig.location.city} ${siteConfig.location.state}`;
 
