@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import React from "react";
 import {
   blogPosts,
   getPostBySlug,
@@ -13,12 +14,13 @@ import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { FallingLeaves } from "@/components/sections/motion/FallingLeaves";
 import { BookingCalendar } from "@/components/booking/BookingCalendar";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { articleSchema, breadcrumbSchema } from "@/lib/schema";
+import { articleSchema, breadcrumbSchema, faqPageSchema } from "@/lib/schema";
 
 // =============================================================================
 // /blog/[slug] — Blog article page (server component)
 // Per CLAUDE.md Page Animation Rule: ambient effects only + shimmer H1.
-// SEO: Article / BlogPosting schema.org JSON-LD, OG metadata per post.
+// SEO: BlogPosting + BreadcrumbList + FAQPage JSON-LD. Full TL;DR card, H2
+// scroll-anchored sections, H3 subsections, and an inline FAQ list.
 // generateStaticParams feeds every known slug.
 // =============================================================================
 
@@ -55,6 +57,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         },
       ],
       publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt ?? post.publishedAt,
       authors: [post.author],
     },
     twitter: {
@@ -75,6 +78,96 @@ function formatDate(iso: string): string {
   });
 }
 
+// -----------------------------------------------------------------------------
+// renderParaWithLinks — render markdown inline links [label](href) and bold
+// **text** inside a paragraph. Internal links (/-prefixed) → next/link Link.
+// External (http/https) → raw <a target=_blank>. No other markdown parsed.
+// -----------------------------------------------------------------------------
+const LINK_RE = /\[([^\]]+)\]\(([^)]+)\)/g;
+const BOLD_RE = /\*\*([^*]+)\*\*/g;
+
+function renderBold(text: string, keyPrefix: string): React.ReactNode[] {
+  const out: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let m: RegExpExecArray | null;
+  let i = 0;
+  BOLD_RE.lastIndex = 0;
+  while ((m = BOLD_RE.exec(text)) !== null) {
+    if (m.index > lastIndex) {
+      out.push(text.slice(lastIndex, m.index));
+    }
+    out.push(
+      <strong key={`${keyPrefix}-b-${i++}`} style={{ fontWeight: 600 }}>
+        {m[1]}
+      </strong>,
+    );
+    lastIndex = m.index + m[0].length;
+  }
+  if (lastIndex < text.length) {
+    out.push(text.slice(lastIndex));
+  }
+  return out.length > 0 ? out : [text];
+}
+
+function renderParaWithLinks(para: string, keyPrefix = "p"): React.ReactNode {
+  const nodes: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let m: RegExpExecArray | null;
+  let linkCounter = 0;
+  LINK_RE.lastIndex = 0;
+
+  while ((m = LINK_RE.exec(para)) !== null) {
+    if (m.index > lastIndex) {
+      const before = para.slice(lastIndex, m.index);
+      nodes.push(
+        <React.Fragment key={`${keyPrefix}-t-${linkCounter}`}>
+          {renderBold(before, `${keyPrefix}-t-${linkCounter}`)}
+        </React.Fragment>,
+      );
+    }
+    const [, label, href] = m;
+    const isInternal = href.startsWith("/") && !href.startsWith("//");
+    if (isInternal) {
+      nodes.push(
+        <Link
+          key={`${keyPrefix}-l-${linkCounter}`}
+          href={href}
+          className="underline underline-offset-2 decoration-1 hover:opacity-80"
+          style={{ color: "var(--accent)" }}
+        >
+          {label}
+        </Link>,
+      );
+    } else {
+      nodes.push(
+        <a
+          key={`${keyPrefix}-a-${linkCounter}`}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-2 decoration-1 hover:opacity-80"
+          style={{ color: "var(--accent)" }}
+        >
+          {label}
+        </a>,
+      );
+    }
+    lastIndex = m.index + m[0].length;
+    linkCounter++;
+  }
+
+  if (lastIndex < para.length) {
+    const rest = para.slice(lastIndex);
+    nodes.push(
+      <React.Fragment key={`${keyPrefix}-t-tail`}>
+        {renderBold(rest, `${keyPrefix}-t-tail`)}
+      </React.Fragment>,
+    );
+  }
+
+  return nodes.length > 0 ? nodes : renderBold(para, keyPrefix);
+}
+
 export default async function BlogArticlePage({ params }: PageProps) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
@@ -83,6 +176,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
   const related = getRelatedPosts(post.slug, post.category, 3);
 
   const article = articleSchema(post);
+  const faqPage = faqPageSchema(post);
   const breadcrumb = breadcrumbSchema([
     { name: "Home", href: "/" },
     { name: "Blog", href: "/blog" },
@@ -91,7 +185,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
   return (
     <main className="flex flex-1 flex-col">
-      <JsonLd data={[breadcrumb, article]} />
+      <JsonLd data={[breadcrumb, article, faqPage]} />
 
       {/* Article header — ambient only, shimmer H1 */}
       <section
@@ -132,6 +226,37 @@ export default async function BlogArticlePage({ params }: PageProps) {
         </div>
       </section>
 
+      {/* TL;DR card — the short answer above the hero image */}
+      <section
+        className="relative pb-10 md:pb-14"
+        style={{ background: "var(--bg-base)" }}
+      >
+        <div className="mx-auto max-w-3xl px-6 lg:px-8">
+          <FadeUp>
+            <div
+              className="rounded-lg border p-6 md:p-8"
+              style={{
+                background: "rgba(181,83,44,0.04)",
+                borderColor: "rgba(181,83,44,0.25)",
+              }}
+            >
+              <p
+                className="font-mono text-xs uppercase"
+                style={{ color: "var(--accent)", letterSpacing: "0.22em" }}
+              >
+                The short answer
+              </p>
+              <p
+                className="mt-3 font-body text-lg leading-relaxed"
+                style={{ color: "var(--text-primary)" }}
+              >
+                {post.tldr}
+              </p>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
       {/* Hero image */}
       <section className="relative" style={{ background: "var(--bg-base)" }}>
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
@@ -153,7 +278,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Body */}
+      {/* Body — scroll-anchored H2 sections + optional H3 subsections */}
       <section
         className="relative py-16 md:py-24"
         style={{ background: "var(--bg-base)" }}
@@ -161,25 +286,105 @@ export default async function BlogArticlePage({ params }: PageProps) {
         <div className="relative mx-auto max-w-3xl px-6 lg:px-8">
           <FadeUp>
             <div className="prose-article">
-              {post.body.map((para, i) => (
-                <p
+              {post.sections.map((s) => (
+                <section
+                  key={s.id}
+                  id={s.id}
+                  className="mt-12 first:mt-0 scroll-mt-32"
+                >
+                  <h2
+                    className="font-display text-h3 font-semibold"
+                    style={{ color: "var(--text-primary)" }}
+                  >
+                    {s.heading}
+                  </h2>
+                  {s.paras.map((p, i) => (
+                    <p
+                      key={i}
+                      className="mt-5 font-body text-lg leading-relaxed"
+                      style={{ color: "var(--text-primary)" }}
+                    >
+                      {renderParaWithLinks(p, `${s.id}-${i}`)}
+                    </p>
+                  ))}
+                  {s.subsections?.map((sub, idx) => (
+                    <div key={idx} className="mt-8">
+                      <h3
+                        className="font-display text-h4 font-semibold"
+                        style={{ color: "var(--text-primary)" }}
+                      >
+                        {sub.heading}
+                      </h3>
+                      {sub.paras.map((p, i) => (
+                        <p
+                          key={i}
+                          className="mt-4 font-body text-lg leading-relaxed"
+                          style={{ color: "var(--text-primary)" }}
+                        >
+                          {renderParaWithLinks(p, `${s.id}-sub-${idx}-${i}`)}
+                        </p>
+                      ))}
+                    </div>
+                  ))}
+                </section>
+              ))}
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* FAQ — inline dl with <details>/<summary> accordion */}
+      <section
+        className="relative py-16 md:py-20"
+        style={{ background: "var(--bg-elevated)" }}
+        aria-label="Common questions"
+      >
+        <div className="relative mx-auto max-w-3xl px-6 lg:px-8">
+          <FadeUp>
+            <p
+              className="font-mono text-xs uppercase"
+              style={{ color: "var(--accent)", letterSpacing: "0.22em" }}
+            >
+              Common questions
+            </p>
+            <h2
+              className="font-display text-h2 mt-3 font-semibold"
+              style={{ color: "var(--text-primary)" }}
+            >
+              Quick answers
+            </h2>
+            <dl className="mt-10 space-y-4">
+              {post.faqs.map((f, i) => (
+                <details
                   key={i}
-                  className="font-body text-lg leading-relaxed"
+                  className="group rounded-lg border p-5"
                   style={{
-                    color: "var(--text-primary)",
-                    marginTop: i === 0 ? 0 : "1.5rem",
+                    background: "var(--bg-base)",
+                    borderColor: "rgba(47,74,58,0.10)",
                   }}
                 >
-                  {para}
-                </p>
+                  <summary
+                    className="cursor-pointer list-none font-display text-lg font-semibold flex items-start justify-between gap-4"
+                    style={{ color: "var(--text-primary)" }}
+                  >
+                    <span>{f.q}</span>
+                    <span
+                      aria-hidden="true"
+                      className="transition-transform group-open:rotate-45 mt-1"
+                      style={{ color: "var(--accent)" }}
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <dd
+                    className="mt-4 font-body text-base leading-relaxed"
+                    style={{ color: "var(--text-primary)" }}
+                  >
+                    {renderParaWithLinks(f.a, `faq-${i}`)}
+                  </dd>
+                </details>
               ))}
-              <p
-                className="mt-8 font-mono text-xs uppercase"
-                style={{ color: "var(--text-muted)", letterSpacing: "0.14em" }}
-              >
-                [DEMO COPY &middot; Full article pending Stage 1F]
-              </p>
-            </div>
+            </dl>
           </FadeUp>
         </div>
       </section>
