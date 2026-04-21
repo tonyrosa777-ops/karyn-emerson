@@ -16,7 +16,7 @@
 
 import { siteConfig } from "@/data/site";
 import type { BlogPost } from "@/data/blogPosts";
-import type { Neighborhood, NeighborhoodSampleListing } from "@/data/neighborhoods";
+import type { Neighborhood } from "@/data/neighborhoods";
 
 export const SITE_URL: string =
   process.env.NEXT_PUBLIC_SITE_URL ?? `https://${siteConfig.domain}`;
@@ -302,50 +302,6 @@ export function faqSchema(faqs: FaqItem[]) {
         text: f.a,
       },
     })),
-  } as const;
-}
-
-// -----------------------------------------------------------------------------
-// realEstateListingSchema — single sample listing
-// -----------------------------------------------------------------------------
-export interface RealEstateListingInput {
-  listing: NeighborhoodSampleListing;
-  town: string;
-  state: string;
-  slug?: string;
-}
-
-export function realEstateListingSchema({
-  listing,
-  town,
-  state,
-  slug,
-}: RealEstateListingInput) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "RealEstateListing",
-    name: listing.address,
-    url: slug ? absoluteUrl(`/neighborhoods/${slug}`) : absoluteUrl("/neighborhoods"),
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: listing.address,
-      addressLocality: town,
-      addressRegion: state,
-      addressCountry: "US",
-    },
-    numberOfRooms: listing.beds,
-    numberOfBathroomsTotal: listing.baths,
-    floorSize: {
-      "@type": "QuantitativeValue",
-      value: listing.sqft,
-      unitCode: "FTK",
-    },
-    offers: {
-      "@type": "Offer",
-      price: listing.price,
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-    },
   } as const;
 }
 

@@ -9,7 +9,7 @@
 //   1. Hero                    — LIGHT (bg-base)       — orientation / primary CTA
 //   2. The Story               — DARK  (--primary)     — editorial / empathy
 //   3. Highlights grid         — LIGHT (bg-base)       — education / specificity
-//   4. Sample listings         — DARK  (--primary)     — social proof / inventory preview
+//   4. I am the search         — DARK  (--primary)     — positioning / off-market pitch
 //   5. Schools + commute       — LIGHT (bg-elevated)   — education / data
 //   6. Booking CTA             — DARK  (--primary)     — conversion (final CTA)
 //
@@ -257,7 +257,9 @@ export default function NeighborhoodPageClient({ neighborhood: n }: Props) {
       </section>
 
       {/* ==========================================================
-          SECTION 4 — Sample listings (DARK, --primary)
+          SECTION 4 — I am the search (DARK, --primary)
+          Positioning block: agent-as-search. No MLS listings on this site —
+          the pitch is that Karyn knows what is coming up before Zillow does.
           ========================================================== */}
       <section
         className="relative overflow-hidden"
@@ -274,94 +276,101 @@ export default function NeighborhoodPageClient({ neighborhood: n }: Props) {
               "radial-gradient(ellipse at 50% 0%, rgba(246,241,231,0.08), transparent 70%)",
           }}
         />
-        <div className="relative mx-auto max-w-6xl px-6 py-20 sm:py-24">
-          <div className="mb-10 flex items-end justify-between gap-4 flex-wrap">
-            <div>
-              <span
-                className="font-mono text-xs font-medium uppercase tracking-[0.3em]"
-                style={{ color: "rgba(246,241,231,0.75)" }}
-              >
-                Recent homes
-              </span>
-              <h2 className="font-display mt-3 text-[clamp(1.75rem,3.25vw,2.5rem)] font-semibold leading-tight">
-                Recent homes in {n.displayName}.
-              </h2>
-            </div>
+        <div className="relative mx-auto max-w-5xl px-6 py-20 sm:py-24">
+          <div className="text-center">
             <span
-              className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.22em] rounded-full border px-3 py-1"
-              style={{
-                color: "var(--accent)",
-                borderColor: "rgba(181,83,44,0.5)",
-                background: "rgba(181,83,44,0.08)",
-              }}
+              className="font-mono text-xs font-medium uppercase tracking-[0.3em]"
+              style={{ color: "var(--accent)" }}
             >
-              Recently moved · ask me for the live list
+              Off-market
             </span>
+            <h2
+              className="font-display mt-4 text-[clamp(2rem,4vw,3rem)] font-semibold leading-[1.1]"
+            >
+              There is no search widget here.
+              <br />
+              <span style={{ color: "var(--accent)" }}>I am the search.</span>
+            </h2>
+            <p
+              className="mx-auto mt-6 max-w-2xl text-[1.05rem] leading-relaxed"
+              style={{ color: "var(--text-on-dark-secondary)" }}
+            >
+              A lot of {n.displayName}&rsquo;s best homes never hit Zillow.
+              Estate sales, pre-market relists, the neighbor who is finally
+              downsizing and wants one quiet conversation before it goes live.
+              Call me and tell me what you are looking for. I will tell you
+              what is actually moving in {n.displayName} right now.
+            </p>
           </div>
 
-          {n.sampleListings && n.sampleListings.length > 0 ? (
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {n.sampleListings.map((l, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col overflow-hidden rounded-lg border"
-                  style={{
-                    background: "var(--card-on-dark-bg)",
-                    borderColor: "var(--card-on-dark-border)",
-                  }}
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+            {[
+              {
+                kicker: "Know it first",
+                title: "Before it is public",
+                body: "I hear about pre-market homes from other Jill & Co. agents, from neighbors, and from past clients. Text me the zip code and price range.",
+              },
+              {
+                kicker: "Pass on the wrong ones",
+                title: "Skip the dud showings",
+                body: "I will tell you when a listing is not worth the Saturday drive. Septic age, foundation water, flood-zone oddities — I have seen them here for twenty years.",
+              },
+              {
+                kicker: "See the full picture",
+                title: "Comps you cannot search",
+                body: "Closed price is not the whole story. Concessions, contingencies, how many offers it had. I know what the house actually sold for, not just the headline number.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="rounded-2xl border p-6"
+                style={{
+                  background: "rgba(246,241,231,0.05)",
+                  borderColor: "rgba(246,241,231,0.14)",
+                }}
+              >
+                <p
+                  className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.18em]"
+                  style={{ color: "var(--accent)" }}
                 >
-                  <div
-                    className="aspect-[4/3] w-full"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, rgba(246,241,231,0.08) 0%, rgba(181,83,44,0.14) 100%)",
-                    }}
-                    aria-hidden="true"
-                  >
-                    <div className="flex h-full items-center justify-center text-5xl opacity-30">
-                      {n.fallbackEmoji}
-                    </div>
-                  </div>
-                  <div className="flex flex-1 flex-col p-5">
-                    <p className="font-display text-[1.1rem] font-semibold">
-                      {l.address}
-                    </p>
-                    <p
-                      className="font-mono mt-2 text-[0.85rem]"
-                      style={{ color: "var(--text-on-dark-secondary)" }}
-                    >
-                      {l.beds} bd · {l.baths} ba · {l.sqft.toLocaleString()} sqft
-                    </p>
-                    <p
-                      className="font-mono mt-3 text-[1rem] font-semibold"
-                      style={{ color: "var(--accent)" }}
-                    >
-                      {currencyFormatter.format(l.price)}
-                    </p>
-                    <span
-                      className="font-mono mt-3 text-[0.65rem] font-medium uppercase tracking-[0.22em]"
-                      style={{ color: "var(--text-on-dark-muted)" }}
-                    >
-                      Recently in the market {/* [DEMO COPY — representative sample from this area] */}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p style={{ color: "var(--text-on-dark-secondary)" }}>
-              Live inventory is loading. Ask me what is coming up off-market.
-            </p>
-          )}
+                  {item.kicker}
+                </p>
+                <h3 className="font-display mt-2 text-[1.15rem] font-semibold">
+                  {item.title}
+                </h3>
+                <p
+                  className="mt-3 text-[0.95rem] leading-relaxed"
+                  style={{ color: "var(--text-on-dark-secondary)" }}
+                >
+                  {item.body}
+                </p>
+              </div>
+            ))}
+          </div>
 
-          <p
-            className="mt-8 max-w-2xl text-[0.95rem] leading-relaxed"
-            style={{ color: "var(--text-on-dark-secondary)" }}
-          >
-            There is no search widget here because I am the search. Ask me
-            what is coming up off-market. A lot of {n.displayName}&rsquo;s
-            best homes never hit Zillow.
-          </p>
+          <div className="mt-12 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <Link
+              href="/booking#calendar"
+              className="inline-flex items-center justify-center rounded-full px-7 py-3.5 font-mono text-xs font-semibold uppercase tracking-[0.14em] transition hover:-translate-y-[1px]"
+              style={{
+                background: "var(--accent)",
+                color: "var(--bg-base)",
+                boxShadow: "0 14px 36px -14px rgba(181,83,44,0.6)",
+              }}
+            >
+              Ask what is coming up in {n.displayName}
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-full border-[1.5px] px-7 py-3.5 font-mono text-xs font-semibold uppercase tracking-[0.14em] transition"
+              style={{
+                borderColor: "rgba(246,241,231,0.4)",
+                color: "var(--text-on-dark-primary)",
+              }}
+            >
+              Text me directly
+            </Link>
+          </div>
         </div>
       </section>
 

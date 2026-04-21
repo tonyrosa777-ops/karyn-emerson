@@ -16,7 +16,6 @@ import {
   breadcrumbSchema,
   placeSchema,
   realEstateAgentSchema,
-  realEstateListingSchema,
 } from "@/lib/schema";
 
 interface NeighborhoodRouteParams {
@@ -102,17 +101,6 @@ export default async function NeighborhoodDetailPage({
       description: `Karyn Emerson sells homes in ${neighborhood.displayName}, ${neighborhood.state} and across Southern NH. Jill & Co. Realty Group, Salem.`,
     }),
   ];
-
-  for (const listing of neighborhood.sampleListings ?? []) {
-    schemas.push(
-      realEstateListingSchema({
-        listing,
-        town: neighborhood.city,
-        state: neighborhood.state,
-        slug: neighborhood.slug,
-      }),
-    );
-  }
 
   return (
     <>

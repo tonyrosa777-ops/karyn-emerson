@@ -17,14 +17,6 @@
 // client]. Real IDX data and confirmed figures replace these post-launch.
 // =============================================================================
 
-export interface NeighborhoodSampleListing {
-  address: string;
-  beds: number;
-  baths: number;
-  price: number;
-  sqft: number;
-}
-
 export interface NeighborhoodCommute {
   minutes: number;
   via: string;
@@ -46,7 +38,6 @@ export interface Neighborhood {
   schoolDistrict: string;
   commuteToBoston: NeighborhoodCommute;
   highlights: string[];
-  sampleListings?: NeighborhoodSampleListing[];
   heroImage: string;
   fallbackEmoji: string;
 }
@@ -77,11 +68,6 @@ const towns: Neighborhood[] = [
       "🏫 Salem High feeder lines matter on resale — North vs South Salem reads differently to buyers",
       "🚗 Three I-93 exits (1, 2, 3) split the town into three distinct commuter markets",
     ],
-    sampleListings: [
-      { address: "12 Hemlock Drive", beds: 4, baths: 2.5, price: 629000, sqft: 2480 },
-      { address: "88 Policy Street", beds: 3, baths: 2, price: 489000, sqft: 1840 },
-      { address: "4 Tuscan Village Way, Unit 204", beds: 2, baths: 2, price: 575000, sqft: 1520 },
-    ],
     heroImage: "/images/neighborhoods/salem-hero.jpg",
     fallbackEmoji: "🍂",
   },
@@ -106,11 +92,6 @@ const towns: Neighborhood[] = [
       "🌲 Windham Town Forest — 400+ acres of trails, ten minutes from the town center",
       "🏡 Large-lot colonials on Range Road, Roulston Road, and Morrison Road hold their value",
       "🚗 Exit 3 commute is roughly 10 minutes longer than Salem but often worth the school trade",
-    ],
-    sampleListings: [
-      { address: "22 Range Road", beds: 4, baths: 3, price: 849000, sqft: 3120 },
-      { address: "7 Cobbetts Pond Road", beds: 3, baths: 2, price: 695000, sqft: 2200 },
-      { address: "41 Morrison Road", beds: 5, baths: 3.5, price: 925000, sqft: 3680 },
     ],
     heroImage: "/images/neighborhoods/windham-hero.jpg",
     fallbackEmoji: "🌊",
@@ -137,11 +118,6 @@ const towns: Neighborhood[] = [
       "📐 Best price-per-square-foot in the service area outside of Pelham",
       "🚗 Exit 4 commute adds 5 to 10 minutes over Salem but the savings on the house cover it",
     ],
-    sampleListings: [
-      { address: "14 Hampstead Road", beds: 3, baths: 2, price: 429000, sqft: 1780 },
-      { address: "9 Beaver Lake Avenue", beds: 4, baths: 2.5, price: 539000, sqft: 2240 },
-      { address: "31 Fordway Street", beds: 3, baths: 1.5, price: 389000, sqft: 1560 },
-    ],
     heroImage: "/images/neighborhoods/derry-hero.jpg",
     fallbackEmoji: "🏛️",
   },
@@ -166,11 +142,6 @@ const towns: Neighborhood[] = [
       "✈️ 12 minutes to Manchester-Boston Regional Airport — real advantage for frequent flyers",
       "🏫 Londonderry High — strong athletics program, clean academic reputation",
       "🚗 Split commute: Exit 4 for Derry-side, Exit 5 for the orchard-and-airport side",
-    ],
-    sampleListings: [
-      { address: "18 Mammoth Road", beds: 4, baths: 2.5, price: 615000, sqft: 2640 },
-      { address: "3 Orchard View Drive", beds: 3, baths: 2.5, price: 549000, sqft: 2080 },
-      { address: "42 Woodmont Commons Boulevard, Unit 6", beds: 2, baths: 2, price: 485000, sqft: 1440 },
     ],
     heroImage: "/images/neighborhoods/londonderry-hero.jpg",
     fallbackEmoji: "🍎",
@@ -197,11 +168,6 @@ const towns: Neighborhood[] = [
       "📉 Lowest mill rate in the service area — meaningful over a 10-year hold",
       "🚗 Works for commuters to Lowell, Nashua, and into Massachusetts via Route 38",
     ],
-    sampleListings: [
-      { address: "72 Hildreth Road", beds: 4, baths: 3, price: 625000, sqft: 2880 },
-      { address: "15 Gage Hill Road", beds: 3, baths: 2, price: 499000, sqft: 2020 },
-      { address: "28 Bridge Street", beds: 4, baths: 2.5, price: 579000, sqft: 2440 },
-    ],
     heroImage: "/images/neighborhoods/pelham-hero.jpg",
     fallbackEmoji: "🌲",
   },
@@ -227,11 +193,6 @@ const towns: Neighborhood[] = [
       "🤫 Low inventory all year — the right house typically moves in under two weeks",
       "🚗 Short drive to either I-93 or Route 125 toward the Seacoast",
     ],
-    sampleListings: [
-      { address: "6 Country Club Drive", beds: 4, baths: 3, price: 745000, sqft: 3200 },
-      { address: "19 Providence Hill Road", beds: 3, baths: 2.5, price: 589000, sqft: 2160 },
-      { address: "44 Main Street", beds: 3, baths: 2, price: 525000, sqft: 1940 },
-    ],
     heroImage: "/images/neighborhoods/atkinson-hero.jpg",
     fallbackEmoji: "⛳",
   },
@@ -256,11 +217,6 @@ const towns: Neighborhood[] = [
       "🛣️ Route 121A and Route 111 — two-lane roads with real New England feel",
       "🏡 Older capes and contemporaries on large wooded lots — inventory is uneven",
       "🚗 10–12 minutes to I-93 at Exit 3 in Windham",
-    ],
-    sampleListings: [
-      { address: "31 East Road", beds: 3, baths: 2, price: 499000, sqft: 1880 },
-      { address: "8 Sunset Lake Drive", beds: 4, baths: 2.5, price: 649000, sqft: 2420 },
-      { address: "52 Stage Road", beds: 3, baths: 1.5, price: 425000, sqft: 1640 },
     ],
     heroImage: "/images/neighborhoods/hampstead-hero.jpg",
     fallbackEmoji: "🌅",
@@ -294,11 +250,6 @@ const subNeighborhoods: Neighborhood[] = [
       "🔑 HOA handles the exterior — the downsizer's dream maintenance setup",
       "🚗 Two minutes to I-93 Exit 2 — the shortest commute in the service area",
     ],
-    sampleListings: [
-      { address: "4 Tuscan Village Way, Unit 304", beds: 2, baths: 2, price: 599000, sqft: 1580 },
-      { address: "12 Tuscan Village Boulevard, Unit 112", beds: 3, baths: 2.5, price: 689000, sqft: 1920 },
-      { address: "8 Tuscan Village Way, Unit 208", beds: 1, baths: 1, price: 439000, sqft: 980 },
-    ],
     heroImage: "/images/neighborhoods/tuscan-village-hero.jpg",
     fallbackEmoji: "🛍️",
   },
@@ -324,11 +275,6 @@ const subNeighborhoods: Neighborhood[] = [
       "⛵ Private boat associations on both the North Salem and South Salem sides",
       "🏡 Old camps converted to year-round — watch for septic and foundation age",
       "🔇 Off-season the lake is genuinely quiet, even with the park a mile away",
-    ],
-    sampleListings: [
-      { address: "22 North Policy Street", beds: 3, baths: 2, price: 729000, sqft: 1980 },
-      { address: "14 Shore Drive", beds: 4, baths: 2.5, price: 899000, sqft: 2440 },
-      { address: "8 Lakeview Road", beds: 2, baths: 1, price: 519000, sqft: 1280 },
     ],
     heroImage: "/images/neighborhoods/canobie-lake-hero.jpg",
     fallbackEmoji: "🎡",
@@ -356,11 +302,6 @@ const subNeighborhoods: Neighborhood[] = [
       "🏡 Many year-round conversions from original 1930s–1950s camps",
       "🚶 Walkable to Windham town center and the Bass Pro Shops plaza",
     ],
-    sampleListings: [
-      { address: "6 Cobbetts Pond Road", beds: 3, baths: 2, price: 825000, sqft: 2080 },
-      { address: "18 Shore Drive", beds: 4, baths: 3, price: 1195000, sqft: 2880 },
-      { address: "42 Lakeview Avenue", beds: 2, baths: 2, price: 699000, sqft: 1520 },
-    ],
     heroImage: "/images/neighborhoods/cobbetts-pond-hero.jpg",
     fallbackEmoji: "🌊",
   },
@@ -386,11 +327,6 @@ const subNeighborhoods: Neighborhood[] = [
       "🏡 Mix of townhomes, flats, and detached carriage homes",
       "🏫 Londonderry school district — strong and stable",
       "🚗 Direct access to I-93 Exit 4 without going through downtown Derry",
-    ],
-    sampleListings: [
-      { address: "12 Woodmont Commons Boulevard, Unit 12", beds: 2, baths: 2.5, price: 499000, sqft: 1640 },
-      { address: "4 Orchard Street, Unit 4B", beds: 3, baths: 2.5, price: 565000, sqft: 1880 },
-      { address: "20 Commons Drive", beds: 2, baths: 2, price: 445000, sqft: 1420 },
     ],
     heroImage: "/images/neighborhoods/woodmont-commons-hero.jpg",
     fallbackEmoji: "🏗️",
@@ -418,11 +354,6 @@ const subNeighborhoods: Neighborhood[] = [
       "💵 Entry-level pricing for a walkable New England town center",
       "🎓 Feeds Pinkerton Academy like the rest of Derry",
     ],
-    sampleListings: [
-      { address: "18 West Broadway", beds: 2, baths: 1, price: 325000, sqft: 1180 },
-      { address: "44 East Broadway, Unit 3", beds: 2, baths: 1.5, price: 349000, sqft: 1240 },
-      { address: "12 Crystal Avenue", beds: 3, baths: 1.5, price: 415000, sqft: 1560 },
-    ],
     heroImage: "/images/neighborhoods/hood-park-downtown-derry-hero.jpg",
     fallbackEmoji: "🏛️",
   },
@@ -448,11 +379,6 @@ const subNeighborhoods: Neighborhood[] = [
       "🏡 Low turnover — the right house is often sold before the sign goes up",
       "🌳 Tree-lined streets, larger lots than most of Salem",
       "🚗 Still under 10 minutes to I-93 Exit 2",
-    ],
-    sampleListings: [
-      { address: "9 Shadow Lake Road", beds: 3, baths: 2, price: 619000, sqft: 1980 },
-      { address: "14 North Policy Street", beds: 4, baths: 2.5, price: 699000, sqft: 2320 },
-      { address: "22 Lakeshore Drive", beds: 3, baths: 2, price: 559000, sqft: 1760 },
     ],
     heroImage: "/images/neighborhoods/shadow-lake-hero.jpg",
     fallbackEmoji: "🌲",
