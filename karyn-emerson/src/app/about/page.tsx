@@ -137,8 +137,8 @@ export default function AboutPage() {
           <SlideIn direction="left">
             <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg border border-[var(--card-on-dark-border)] bg-[var(--card-on-dark-bg)]">
               <Image
-                src="/images/karyn-portrait.jpg"
-                alt="Editorial portrait of Karyn Emerson outdoors in Southern New Hampshire, warm autumn light, stone wall and maples behind her, looking slightly off-camera"
+                src="/images/about-photo.png"
+                alt="Editorial portrait of Karyn Emerson, lifelong Southern New Hampshire real estate agent"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"

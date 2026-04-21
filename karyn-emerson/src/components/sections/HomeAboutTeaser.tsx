@@ -90,7 +90,7 @@ export function HomeAboutTeaser() {
             </div>
           </FadeUp>
 
-          {/* RIGHT — portrait placeholder (fal.ai fills in Stage 1G) */}
+          {/* RIGHT — editorial portrait of Karyn */}
           <SlideIn direction="right" distance={40}>
             <div
               className="relative aspect-[4/5] w-full overflow-hidden rounded-lg border"
@@ -99,18 +99,14 @@ export function HomeAboutTeaser() {
                 background: "var(--card-on-dark-bg)",
               }}
             >
-              {/* Portrait placeholder — matches /images/neighborhoods SVG pattern.
-                  Image swapped in Stage 1G fal.ai batch. [DEMO COPY — Stage 1G] */}
               <Image
-                src="/images/karyn-portrait.jpg"
+                src="/images/about-photo.png"
                 alt="Karyn Emerson editorial portrait"
                 fill
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="object-cover"
-                // Graceful degradation: if file missing during demo, the alt text shows.
-                unoptimized
               />
-              {/* Soft iron-oxide wash to match editorial mood even before photo lands */}
+              {/* Soft iron-oxide wash to match editorial mood */}
               <div
                 aria-hidden="true"
                 className="absolute inset-0"
