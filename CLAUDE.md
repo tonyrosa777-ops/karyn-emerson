@@ -547,6 +547,13 @@ Decision gate (after scaffold):
 These are built in every Phase 1 agent sweep. They are never optional, never deferred,
 never listed as "if applicable." If a phase sign-off doesn't include all of them: it is not done.
 
+Karyn-specific scaffold (complete, 2026-04-20): src/lib/cart.tsx, src/components/shop/CartDrawer.tsx,
+src/components/shop/ShopContent.tsx, src/lib/printful.ts, src/lib/printful-seeded-products.json
+(16 Southern NH POD items across Apparel / Drinkware / Bags / Home & Stationery),
+src/app/api/printful/{products,variants/[id]}/route.ts, src/app/api/stripe/{checkout,webhook}/route.ts,
+src/app/shop/page.tsx. CartProvider + CartDrawer wired in src/app/layout.tsx; "Shop" nav entry +
+cart button (🛍️ with ember badge) live in src/components/layout/Navbar.tsx and site.ts.
+
 ## Page Animation Rule
 Every page ships with a brand-appropriate animation. The hero has the full 3-layer stack.
 Every other page gets ambient effects only — never the full canvas+SVG assembly.
