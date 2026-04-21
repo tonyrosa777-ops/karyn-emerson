@@ -40,6 +40,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/pricing", priority: 0.3 }, // Optimus internal — deleted pre-launch
     { path: "/contact", priority: 0.6 },
     { path: "/faq", priority: 0.5 },
+    { path: "/privacy", priority: 0.2 },
+    { path: "/terms", priority: 0.2 },
   ];
 
   const coreEntries: MetadataRoute.Sitemap = coreRoutes.map(
