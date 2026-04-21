@@ -143,7 +143,7 @@ export default function BookingPage() {
         title={<>Let&apos;s have a conversation.</>}
         titleMotion="shimmer"
         subhead="Not a pitch, not a pressure sit. Fifteen minutes about your timing, your town, and your actual situation. If you are a year out, we have the conversation a year out."
-        ambient="leaves"
+        ambient="embers"
         height="md"
         parallax
       />

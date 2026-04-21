@@ -63,6 +63,7 @@ export default function PricingPage() {
         subhead="Three fixed tiers, one clear scope each. No retainers, no per-page surprises. The price is the price, and the site ships in a month."
         height="md"
         textSide="center"
+        ambient="leaves"
       />
 
       {/* ── Tier cards — editorial spread ────────────── */}

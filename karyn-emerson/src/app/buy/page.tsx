@@ -4,6 +4,7 @@ import { siteConfig } from "@/data/site";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
+import { FallingLeaves } from "@/components/sections/motion/FallingLeaves";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbSchema, realEstateAgentSchema } from "@/lib/schema";
 
@@ -142,6 +143,9 @@ export default function BuyPage() {
       >
         <div className="absolute inset-0 z-0">
           <AmbientParticles density="low" />
+        </div>
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1]">
+          <FallingLeaves density="low" tone="autumn" />
         </div>
         <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20 pt-20 md:pb-28 md:pt-28 lg:px-8">
           <FadeUp>

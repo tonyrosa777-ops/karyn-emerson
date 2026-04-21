@@ -10,6 +10,7 @@ import {
 import { FadeUp } from "@/components/animations/FadeUp";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
 import { AmbientParticles } from "@/components/sections/AmbientParticles";
+import { FallingLeaves } from "@/components/sections/motion/FallingLeaves";
 import { BookingCalendar } from "@/components/booking/BookingCalendar";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
@@ -100,6 +101,9 @@ export default async function BlogArticlePage({ params }: PageProps) {
       >
         <BreathingOrb />
         <AmbientParticles density="low" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <FallingLeaves density="low" tone="autumn" />
+        </div>
 
         <div className="relative mx-auto max-w-3xl px-6 lg:px-8">
           <FadeUp>

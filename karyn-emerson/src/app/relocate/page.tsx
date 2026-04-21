@@ -224,6 +224,7 @@ export default function RelocatePage() {
         subhead="Tax arbitrage math, DMV checklist, commute by town, and school comparison. The honest version of what relocating actually involves."
         height="md"
         parallax
+        ambient="embers"
       />
 
       {/* SECTION 1.5 — 30-SECOND TL;DR ANSWER (LIGHT) */}

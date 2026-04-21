@@ -120,6 +120,11 @@ export default function QuizClient() {
       {/* Ambient aurora backdrop per Page Animation Rule (/quiz gets ambient only) */}
       <AuroraGradient tone="editorial" intensity="subtle" />
 
+      {/* Body-level ambient leaves over the whole stage (intro + question + results) */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1]">
+        <FallingLeaves density="low" tone="autumn" />
+      </div>
+
       <div className="relative z-10 mx-auto flex min-h-[calc(100vh-96px)] w-full max-w-3xl flex-col px-6 py-16 md:py-24">
         <AnimatePresence mode="wait" initial={false}>
           {/* ── Intro ─────────────────────────────────── */}
