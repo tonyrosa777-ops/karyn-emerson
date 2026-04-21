@@ -114,6 +114,7 @@ export const siteConfig: SiteConfig = {
     { label: "Neighborhoods", href: "/neighborhoods" },
     { label: "Relocate", href: "/relocate" },
     { label: "Blog", href: "/blog" },
+    { label: "Shop", href: "/shop" },
     { label: "Testimonials", href: "/testimonials" },
     { label: "Take the Quiz", href: "/quiz" },
     { label: "⬥ Pricing", href: "/pricing", accent: true }, // Optimus sales tool — deleted pre-launch

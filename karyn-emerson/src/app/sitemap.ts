@@ -31,6 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/relocate", priority: 0.9 },
     { path: "/services", priority: 0.8 },
     { path: "/blog", priority: 0.7 },
+    { path: "/shop", priority: 0.7 },
     { path: "/testimonials", priority: 0.7 },
     { path: "/quiz", priority: 0.8 },
     { path: "/booking", priority: 0.9 },
@@ -44,11 +45,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/terms", priority: 0.2 },
   ];
 
+  const weeklyPaths = new Set(["/blog", "/shop"]);
   const coreEntries: MetadataRoute.Sitemap = coreRoutes.map(
     ({ path, priority }) => ({
       url: `${BASE_URL}${path}`,
       lastModified,
-      changeFrequency: path === "/blog" ? "weekly" : "monthly",
+      changeFrequency: weeklyPaths.has(path) ? "weekly" : "monthly",
       priority,
     })
   );
