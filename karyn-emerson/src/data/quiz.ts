@@ -49,7 +49,8 @@ export interface QuizResult {
 }
 
 // ---------------------------------------------------------------------------
-// Questions (6 — minimum needed to type the 4 archetypes cleanly)
+// Questions (8 — at the ceiling per CLAUDE.md. Extra two sharpen the archetype
+// with a financing cue (Q7) and an emotional anchor cue (Q8).)
 // ---------------------------------------------------------------------------
 
 export const QUIZ_QUESTIONS: QuizQuestion[] = [
@@ -205,6 +206,58 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
       {
         emoji: "💬",
         label: "We love it here. We just need the right next house on the right street.",
+        type: "local-move-up",
+      },
+    ],
+  },
+  {
+    id: 7,
+    question: "How are you paying for the move?",
+    answers: [
+      {
+        emoji: "🏦",
+        label: "Selling this house is the down payment. We want to be close to mortgage-free.",
+        type: "downsizing-linda",
+      },
+      {
+        emoji: "📋",
+        label: "Conventional mortgage, roughly 20% down, already pre-approved in MA.",
+        type: "relocating-buyer",
+      },
+      {
+        emoji: "💼",
+        label: "First mortgage. Still stacking the down payment and getting pre-approved.",
+        type: "first-time-nh-buyer",
+      },
+      {
+        emoji: "🔁",
+        label: "Rolling the equity from our current house straight into the next one.",
+        type: "local-move-up",
+      },
+    ],
+  },
+  {
+    id: 8,
+    question: "What does the next chapter feel like to you?",
+    answers: [
+      {
+        emoji: "🕯️",
+        label: "Lighter. Less to maintain. More time with the people who matter.",
+        type: "downsizing-linda",
+      },
+      {
+        emoji: "🍁",
+        label: "A fresh start on the NH side of the border we have been eyeing for years.",
+        type: "relocating-buyer",
+      },
+      {
+        emoji: "🗝️",
+        label: "Ours. The first place that is actually ours.",
+        type: "first-time-nh-buyer",
+      },
+      {
+        emoji: "🏡",
+        label: "The same life, upgraded. Same town, same people, more room to breathe.",
         type: "local-move-up",
       },
     ],
