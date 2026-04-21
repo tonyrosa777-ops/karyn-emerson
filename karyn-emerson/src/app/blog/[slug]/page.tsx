@@ -432,7 +432,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
             </p>
             <div className="mt-8 flex justify-center">
               <Link
-                href="/booking"
+                href="/booking#calendar"
                 className="inline-flex items-center rounded-full px-8 py-3.5 font-body text-sm font-semibold uppercase transition hover:-translate-y-[1px]"
                 style={{
                   background: "var(--bg-base)",

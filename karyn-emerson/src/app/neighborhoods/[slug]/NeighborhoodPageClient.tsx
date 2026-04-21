@@ -114,7 +114,7 @@ export default function NeighborhoodPageClient({ neighborhood: n }: Props) {
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
-                href="/booking"
+                href="/booking#calendar"
                 className="font-body inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold uppercase tracking-wide text-[var(--bg-base)] shadow-[0_10px_30px_-12px_rgba(47,74,58,0.45)] transition-all hover:-translate-y-px"
                 style={{ background: "var(--primary)" }}
               >
@@ -483,7 +483,7 @@ export default function NeighborhoodPageClient({ neighborhood: n }: Props) {
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Link
-              href="/booking"
+              href="/booking#calendar"
               className="font-body inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold uppercase tracking-wide transition-all hover:-translate-y-px"
               style={{
                 background: "var(--bg-base)",

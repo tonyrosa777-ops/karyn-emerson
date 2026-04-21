@@ -179,7 +179,7 @@ export function HomeBookingPreview() {
 
               <div className="relative mt-2 flex flex-col gap-3">
                 <Link
-                  href="/booking"
+                  href="/booking#calendar"
                   className="group inline-flex items-center justify-center rounded-full px-8 py-4 font-body text-sm font-semibold uppercase tracking-[0.04em] transition hover:-translate-y-[2px] hover:brightness-110"
                   style={{
                     background: "var(--primary)",

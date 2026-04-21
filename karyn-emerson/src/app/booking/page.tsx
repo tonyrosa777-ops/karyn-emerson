@@ -222,8 +222,9 @@ export default function BookingPage() {
             })}
           </div>
 
-          {/* Calendar — aurora behind */}
-          <div className="relative mt-20 md:mt-24">
+          {/* Calendar — aurora behind. id="calendar" so every primary CTA on the
+              site can deep-link here and skip the intro copy at the top. */}
+          <div id="calendar" className="relative mt-20 md:mt-24 scroll-mt-32">
             <AuroraGradient tone="warm" intensity="subtle" />
             <div className="relative mx-auto max-w-5xl">
               <BookingCalendar />

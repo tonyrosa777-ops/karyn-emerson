@@ -137,7 +137,7 @@ export const siteConfig: SiteConfig = {
       "I'm Karyn Emerson — a Salem-based agent with Jill & Co. I don't list every property on Zillow and hope you pick me. We talk, I learn what you actually need, then I find the homes worth your time.",
     ctaPrimary: "Book a free consultation",
     ctaSecondary: "Take the quiz",
-    ctaPrimaryHref: "/booking",
+    ctaPrimaryHref: "/booking#calendar",
     ctaSecondaryHref: "/quiz",
     trustMicro: "⭐ 5.0 on Zillow · Best year yet in 2025 · Lifelong NH resident",
     ctaMicro: "The quiz is the first step to discovering your dream home.",

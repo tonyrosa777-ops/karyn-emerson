@@ -211,7 +211,7 @@ export default function Navbar() {
             </button>
 
             <Link
-              href="/booking"
+              href="/booking#calendar"
               className="hidden lg:inline-flex items-center rounded-full px-6 py-2.5 font-body font-semibold text-sm tracking-wide uppercase transition-all duration-200"
               style={{
                 background: "var(--primary)",

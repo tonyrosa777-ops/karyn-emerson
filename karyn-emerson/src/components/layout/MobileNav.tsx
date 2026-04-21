@@ -197,7 +197,7 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
       {/* Primary CTA pinned near bottom */}
       <div className="px-6 pb-10 pt-4 shrink-0 flex justify-center">
         <Link
-          href="/booking"
+          href="/booking#calendar"
           onClick={handleLinkClick}
           className="inline-flex items-center justify-center rounded-full px-8 py-3.5 font-body font-semibold text-sm uppercase w-full max-w-sm"
           style={{

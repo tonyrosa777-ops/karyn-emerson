@@ -879,7 +879,7 @@ export default function RelocatePage() {
           <FadeUp delay={0.3}>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
-                href="/booking"
+                href="/booking#calendar"
                 className="inline-flex items-center justify-center rounded-full px-8 py-3.5 font-body text-sm font-semibold uppercase tracking-wide transition"
                 style={{
                   background: "var(--bg-base)",

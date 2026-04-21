@@ -233,7 +233,7 @@ export default function FaqPage() {
                 Ask Your Question
               </Link>
               <Link
-                href="/booking"
+                href="/booking#calendar"
                 className="inline-flex items-center justify-center rounded-full border-2 px-8 py-3.5 font-body text-sm font-semibold uppercase tracking-wide transition"
                 style={{
                   borderColor: "var(--bg-base)",
