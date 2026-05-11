@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSyncProductDetail } from "@/lib/printful";
 import seededProducts from "@/lib/printful-seeded-products.json";
+import { SHOP_ENABLED } from "@/lib/featureFlags";
 
 export const dynamic = "force-dynamic";
 
@@ -17,6 +18,8 @@ export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  if (!SHOP_ENABLED) return new NextResponse(null, { status: 404 });
+
   const { id } = await params;
   const syncProductId = Number(id);
 

@@ -3,6 +3,7 @@ import Stripe from "stripe";
 import { Resend } from "resend";
 import { getSyncProductDetail, createOrder } from "@/lib/printful";
 import seededProducts from "@/lib/printful-seeded-products.json";
+import { SHOP_ENABLED } from "@/lib/featureFlags";
 
 export const dynamic = "force-dynamic";
 
@@ -90,6 +91,8 @@ async function resolveSyncVariantId(syncProductId: number): Promise<number | nul
 }
 
 export async function POST(req: NextRequest) {
+  if (!SHOP_ENABLED) return new NextResponse(null, { status: 404 });
+
   const body = await req.text();
   const sig = req.headers.get("stripe-signature");
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;

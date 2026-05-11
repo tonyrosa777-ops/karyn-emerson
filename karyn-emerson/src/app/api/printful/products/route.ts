@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 import { getSyncProducts } from "@/lib/printful";
 import seededProducts from "@/lib/printful-seeded-products.json";
+import { SHOP_ENABLED } from "@/lib/featureFlags";
 
 export async function GET() {
+  if (!SHOP_ENABLED) return new NextResponse(null, { status: 404 });
   try {
     const storeId = seededProducts.storeId as number;
     if (!process.env.PRINTFUL_API_KEY || !storeId) {

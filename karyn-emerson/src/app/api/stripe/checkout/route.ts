@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import { SHOP_ENABLED } from "@/lib/featureFlags";
 
 export const dynamic = "force-dynamic";
 
@@ -13,6 +14,7 @@ export interface CartItemPayload {
 }
 
 export async function POST(req: NextRequest) {
+  if (!SHOP_ENABLED) return new NextResponse(null, { status: 404 });
   try {
     const { items }: { items: CartItemPayload[] } = await req.json();
 
