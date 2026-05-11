@@ -178,7 +178,7 @@ body::before {
 }
 
 /* Static emphasis style for focus cards — replaces the deleted .shimmer-border animation.
-   Used on homepage final-CTA, /pricing Pro tier, /neighborhoods Salem card, /quiz recommended-program card. */
+   Used on homepage final-CTA, /neighborhoods Salem card, /quiz recommended-program card. */
 .emphasis-card {
   border: 1px solid rgba(181, 83, 44, 0.35);
   box-shadow: 0 0 0 3px rgba(181, 83, 44, 0.08), 0 20px 40px -20px rgba(18, 24, 20, 0.25);

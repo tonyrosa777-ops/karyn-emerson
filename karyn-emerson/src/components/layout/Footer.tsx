@@ -30,9 +30,8 @@ function FacebookIcon() {
 }
 
 export default function Footer() {
-  // Footer nav flattens the main nav + its dropdown children, then drops
-  // accented entries (internal Optimus Pricing sales tool) and any parent
-  // row that is only a dropdown label with no href of its own.
+  // Footer nav flattens the main nav + its dropdown children, dropping any
+  // accented entries and parent rows that are dropdown labels with no href.
   const footerNav = siteConfig.nav.flatMap((item) => {
     if (Array.isArray(item.children) && item.children.length > 0) {
       return item.children.filter((child) => !child.accent);
