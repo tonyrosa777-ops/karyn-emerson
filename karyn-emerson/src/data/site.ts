@@ -11,6 +11,8 @@
 // Every testimonial: ZERO em dashes. Commas, periods, ellipses only. CLAUDE.md non-negotiable.
 // =============================================================================
 
+import { SHOP_ENABLED } from "@/lib/featureFlags";
+
 export interface SocialLink {
   platform: string;
   href: string;
@@ -118,7 +120,7 @@ export const siteConfig: SiteConfig = {
     { label: "About", href: "/about" },
     { label: "Relocate", href: "/relocate" },
     { label: "Blog", href: "/blog" },
-    { label: "Shop", href: "/shop" },
+    ...(SHOP_ENABLED ? [{ label: "Shop", href: "/shop" }] : []),
     {
       label: "More",
       children: [

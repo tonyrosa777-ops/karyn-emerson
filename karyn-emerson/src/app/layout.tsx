@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import { CartProvider } from "@/lib/cart";
 import CartDrawer from "@/components/shop/CartDrawer";
 import { BodyFallingLeaves } from "@/components/sections/motion/BodyFallingLeaves";
+import { SHOP_ENABLED } from "@/lib/featureFlags";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -75,13 +76,22 @@ export default function RootLayout({
       className={`${cormorant.variable} ${inter.variable} ${jetbrains.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <CartProvider>
-          <BodyFallingLeaves />
-          <Navbar />
-          <main className="flex-1 pt-[96px]">{children}</main>
-          <Footer />
-          <CartDrawer />
-        </CartProvider>
+        {SHOP_ENABLED ? (
+          <CartProvider>
+            <BodyFallingLeaves />
+            <Navbar />
+            <main className="flex-1 pt-[96px]">{children}</main>
+            <Footer />
+            <CartDrawer />
+          </CartProvider>
+        ) : (
+          <>
+            <BodyFallingLeaves />
+            <Navbar />
+            <main className="flex-1 pt-[96px]">{children}</main>
+            <Footer />
+          </>
+        )}
       </body>
     </html>
   );

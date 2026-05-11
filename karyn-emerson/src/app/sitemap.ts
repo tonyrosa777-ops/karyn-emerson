@@ -9,6 +9,7 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/data/site";
 import { neighborhoods } from "@/data/neighborhoods";
 import { blogPosts } from "@/data/blogPosts";
+import { SHOP_ENABLED } from "@/lib/featureFlags";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://karynemerson.com";
@@ -31,7 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/relocate", priority: 0.9 },
     { path: "/services", priority: 0.8 },
     { path: "/blog", priority: 0.7 },
-    { path: "/shop", priority: 0.7 },
+    ...(SHOP_ENABLED ? [{ path: "/shop", priority: 0.7 }] : []),
     { path: "/testimonials", priority: 0.7 },
     { path: "/quiz", priority: 0.8 },
     { path: "/booking", priority: 0.9 },
@@ -45,7 +46,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/terms", priority: 0.2 },
   ];
 
-  const weeklyPaths = new Set(["/blog", "/shop"]);
+  const weeklyPaths = new Set(
+    SHOP_ENABLED ? ["/blog", "/shop"] : ["/blog"],
+  );
   const coreEntries: MetadataRoute.Sitemap = coreRoutes.map(
     ({ path, priority }) => ({
       url: `${BASE_URL}${path}`,

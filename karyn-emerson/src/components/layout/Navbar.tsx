@@ -9,15 +9,15 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/data/site";
-import { useCart } from "@/lib/cart";
+import { SHOP_ENABLED } from "@/lib/featureFlags";
 import MobileNav from "./MobileNav";
+import NavCartButton from "./NavCartButton";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLLIElement | null>(null);
-  const { count, openCart } = useCart();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -182,33 +182,7 @@ export default function Navbar() {
 
           {/* Right side CTA + cart + hamburger */}
           <div className="flex items-center gap-2 lg:gap-3">
-            {/* Cart button — always visible, shows count badge in ember accent */}
-            <button
-              type="button"
-              aria-label={`Open cart${count > 0 ? `, ${count} item${count !== 1 ? "s" : ""}` : ""}`}
-              onClick={openCart}
-              className="relative inline-flex items-center justify-center w-11 h-11 rounded-full transition-colors"
-              style={{ color: "var(--primary)" }}
-            >
-              <span style={{ fontSize: "1.25rem" }} aria-hidden="true">
-                🛍️
-              </span>
-              {count > 0 && (
-                <span
-                  className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] rounded-full flex items-center justify-center font-mono font-semibold"
-                  style={{
-                    background: "var(--accent)",
-                    color: "var(--bg-base)",
-                    fontSize: "10px",
-                    padding: "0 5px",
-                    lineHeight: 1,
-                    border: "2px solid var(--bg-elevated)",
-                  }}
-                >
-                  {count > 99 ? "99+" : count}
-                </span>
-              )}
-            </button>
+            {SHOP_ENABLED && <NavCartButton />}
 
             <Link
               href="/booking#calendar"

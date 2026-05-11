@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { PageBanner } from "@/components/sections/PageBanner";
 import ShopContent from "@/components/shop/ShopContent";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
+import { SHOP_ENABLED } from "@/lib/featureFlags";
 
 export const metadata: Metadata = {
   title: "Shop | Karyn Emerson Real Estate",
@@ -35,6 +37,8 @@ export const metadata: Metadata = {
 };
 
 export default function ShopPage() {
+  if (!SHOP_ENABLED) notFound();
+
   const breadcrumb = breadcrumbSchema([
     { name: "Home", href: "/" },
     { name: "Shop", href: "/shop" },
