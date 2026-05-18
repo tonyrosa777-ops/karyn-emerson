@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { siteConfig } from "@/data/site";
 import type { Testimonial } from "@/data/site";
 import { PageBanner } from "@/components/sections/PageBanner";
-import { AmbientParticles } from "@/components/sections/AmbientParticles";
+import { SatinAmbient } from "@/components/sections/SatinAmbient";
 import { TestimonialsFilterChips } from "@/components/sections/TestimonialsFilterChips";
 
 export const metadata: Metadata = {
@@ -86,7 +86,7 @@ function MasonryCard({
     <div
       className={`break-inside-avoid mb-6 rounded-lg border ${paddingClass} transition duration-300 hover:-translate-y-0.5 hover:shadow-lg`}
       style={{
-        background: "var(--bg-card)",
+        background: "var(--bg-card-translucent)",
         borderColor: "rgba(47, 74, 58, 0.1)",
       }}
     >
@@ -203,10 +203,11 @@ export default async function TestimonialsPage({ searchParams }: PageProps) {
 
       {/* SECTION 2 — FEATURED PULL-QUOTE: massive editorial spread */}
       <section
-        className="relative py-20 md:py-28"
+        className="relative overflow-hidden py-20 md:py-28"
         style={{ background: "var(--bg-base)" }}
       >
-        <div className="mx-auto max-w-5xl px-6 lg:px-8">
+        <SatinAmbient intensity="default" ribbonAngle="left-lift" />
+        <div className="relative z-10 mx-auto max-w-5xl px-6 lg:px-8">
           <div className="relative">
             {/* Giant open-quote mark in the margin */}
             <span
@@ -247,9 +248,7 @@ export default async function TestimonialsPage({ searchParams }: PageProps) {
         className="relative overflow-hidden py-20 md:py-24"
         style={{ background: "var(--bg-elevated)" }}
       >
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
-          <AmbientParticles density="low" />
-        </div>
+        <SatinAmbient intensity="rich" ribbonAngle="right-lift" />
         <div className="relative z-10 mx-auto w-full max-w-6xl px-6 lg:px-8">
           <div className="text-center">
             <p

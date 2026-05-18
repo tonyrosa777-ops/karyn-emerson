@@ -29,6 +29,12 @@
   --card-on-dark-bg: rgba(246, 241, 231, 0.06);
   --card-on-dark-border: rgba(246, 241, 231, 0.14);
 
+  /* Translucent card surface — for cards sitting over <SatinAmbient />
+     sections. Pure white (#FFFFFF) blocks the satin glow; this softened
+     surface lets the brass-mix gradient bleed through and sells depth.
+     Per Pattern #51 §"Common mistakes" #7. */
+  --bg-card-translucent: rgba(255, 255, 255, 0.62);
+
   /* Spacing Scale */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
@@ -229,5 +235,190 @@ body::before {
   .scroll-hint-line {
     animation: none;
     opacity: 0.5;
+  }
+  /* Satin ambient — animations off, gradient stays at full strength
+     (Pattern #51: prefers-reduced-motion degrades to STATIC, never flat). */
+  .satin-ambient-base,
+  .satin-ribbon-a,
+  .satin-ribbon-b {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* =============================================================================
+   Satin ambient — cream-on-cream brass-mix glow + drifting ribbon streaks.
+   Replaces flat cream sections per Pattern #51 ("never flat solid, ever").
+   Base recipe is Pattern #69 cream-on-cream-ambient-gradient-with-brass-mix
+   (calibrated on Ead Financial 2026-05-08). Ribbon flourishes are a Karyn
+   extension — two elongated brass-mix ellipses drifting on offset cycles
+   to evoke the satin/ribbon material in the brand reference imagery.
+   Pure CSS — no SVG, no images, no JS. GPU-cheap properties only.
+   ============================================================================= */
+
+/* --- Base glow (Pattern #69 exact recipe, intensity = three calibrations) --- */
+.satin-ambient-base {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+  animation: satin-drift 20s ease-in-out infinite;
+}
+.satin-ambient-base.intensity-soft {
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 52%,
+    color-mix(in oklab, var(--accent) 10%, var(--bg-base)) 0%,
+    color-mix(in oklab, var(--accent) 6%, var(--bg-base)) 35%,
+    var(--bg-base) 78%
+  );
+}
+.satin-ambient-base.intensity-default {
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 52%,
+    color-mix(in oklab, var(--accent) 14%, var(--bg-base)) 0%,
+    color-mix(in oklab, var(--accent) 8%, var(--bg-base)) 35%,
+    var(--bg-base) 78%
+  );
+}
+.satin-ambient-base.intensity-rich {
+  background: radial-gradient(
+    ellipse 65% 55% at 50% 50%,
+    color-mix(in oklab, var(--accent) 18%, var(--bg-base)) 0%,
+    color-mix(in oklab, var(--accent) 10%, var(--bg-base)) 35%,
+    var(--bg-base) 78%
+  );
+}
+@keyframes satin-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1);          opacity: 1; }
+  50%      { transform: translate3d(2.5%, -1.5%, 0) scale(1.04); opacity: 0.92; }
+}
+
+/* --- Ribbon flourish A (upper-left lift, 30s cycle) --- */
+.satin-ribbon-a {
+  position: absolute;
+  inset: -10% -10% auto -10%;
+  height: 55%;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transform: rotate(-12deg);
+  background: radial-gradient(
+    ellipse 70% 26% at 30% 50%,
+    color-mix(in oklab, var(--accent) 22%, var(--bg-base)) 0%,
+    color-mix(in oklab, var(--accent) 10%, var(--bg-base)) 40%,
+    transparent 75%
+  );
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+  animation: satin-ribbon-drift-a 30s ease-in-out infinite;
+}
+.satin-ambient[data-ribbon-angle="right-lift"] .satin-ribbon-a {
+  inset: auto -10% -10% -10%;
+  transform: rotate(8deg);
+}
+@keyframes satin-ribbon-drift-a {
+  0%, 100% { transform: rotate(-12deg) translate3d(0, 0, 0);     opacity: 0.45; }
+  50%      { transform: rotate(-10deg) translate3d(3%, 1.5%, 0); opacity: 0.65; }
+}
+
+/* --- Ribbon flourish B (lower-right counter, 34s offset cycle) --- */
+.satin-ribbon-b {
+  position: absolute;
+  inset: auto -12% -12% -12%;
+  height: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transform: rotate(8deg);
+  background: radial-gradient(
+    ellipse 65% 22% at 70% 50%,
+    color-mix(in oklab, var(--accent) 18%, var(--bg-base)) 0%,
+    color-mix(in oklab, var(--accent) 8%, var(--bg-base)) 40%,
+    transparent 75%
+  );
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  animation: satin-ribbon-drift-b 34s ease-in-out infinite;
+  animation-delay: -8s;
+}
+.satin-ambient[data-ribbon-angle="right-lift"] .satin-ribbon-b {
+  inset: -12% -12% auto -12%;
+  transform: rotate(-10deg);
+}
+@keyframes satin-ribbon-drift-b {
+  0%, 100% { transform: rotate(8deg) translate3d(0, 0, 0);     opacity: 0.4; }
+  50%      { transform: rotate(6deg) translate3d(-2.5%, -1%, 0); opacity: 0.6; }
+}
+
+/* --- Static-section variant (text-heavy bodies per Pattern #51).
+       Animations off but gradients stay. --- */
+.satin-ambient[data-static="true"] .satin-ambient-base,
+.satin-ambient[data-static="true"] .satin-ribbon-a,
+.satin-ambient[data-static="true"] .satin-ribbon-b {
+  animation: none !important;
+}
+
+/* --- Navbar satin band — horizontal-strip variant of Pattern #69.
+       The radial ellipse recipe is wrong for a 96px-tall fixed strip; instead
+       use a linear-gradient with brass-mix peak in the center, falling off to
+       cream at the edges. Static (no drift) — navbar competes with scroll and
+       must read as stable. Backdrop-blur keeps content beneath visible. --- */
+.nav-satin {
+  background:
+    linear-gradient(
+      90deg,
+      var(--bg-elevated) 0%,
+      color-mix(in oklab, var(--accent) 6%, var(--bg-elevated)) 30%,
+      color-mix(in oklab, var(--accent) 9%, var(--bg-elevated)) 50%,
+      color-mix(in oklab, var(--accent) 6%, var(--bg-elevated)) 70%,
+      var(--bg-elevated) 100%
+    );
+  position: relative;
+}
+/* Thin top-edge brass shimmer line — reads as a finishing detail, not a band. */
+.nav-satin::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in oklab, var(--accent) 32%, transparent) 30%,
+    color-mix(in oklab, var(--accent) 48%, transparent) 50%,
+    color-mix(in oklab, var(--accent) 32%, transparent) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+  opacity: 0.6;
+}
+/* Diagonal ribbon flourish drifting slowly across the navbar bottom — anchors
+   the navbar visually to the satin sections below. */
+.nav-satin::after {
+  content: "";
+  position: absolute;
+  inset: auto -10% -25% -10%;
+  height: 80%;
+  background: radial-gradient(
+    ellipse 50% 100% at 60% 50%,
+    color-mix(in oklab, var(--accent) 18%, transparent) 0%,
+    color-mix(in oklab, var(--accent) 8%, transparent) 40%,
+    transparent 75%
+  );
+  transform: rotate(-3deg);
+  mix-blend-mode: multiply;
+  opacity: 0.35;
+  pointer-events: none;
+  will-change: transform, opacity;
+  animation: nav-satin-drift 28s ease-in-out infinite;
+}
+@keyframes nav-satin-drift {
+  0%, 100% { transform: rotate(-3deg) translate3d(0, 0, 0);    opacity: 0.3; }
+  50%      { transform: rotate(-2deg) translate3d(2.5%, 0, 0); opacity: 0.45; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-satin::after {
+    animation: none !important;
+    transform: rotate(-3deg) !important;
+    opacity: 0.35 !important;
   }
 }

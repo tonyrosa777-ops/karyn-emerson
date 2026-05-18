@@ -10,6 +10,7 @@
 import { siteConfig } from "@/data/site";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { StaggerContainer } from "@/components/animations/StaggerContainer";
+import { SatinAmbient } from "@/components/sections/SatinAmbient";
 import { motion, type Variants } from "framer-motion";
 
 const item: Variants = {
@@ -22,10 +23,11 @@ export function HomePainPoints() {
     <section
       id="pain-points"
       aria-labelledby="pain-points-heading"
-      className="relative py-16 md:py-24"
+      className="relative overflow-hidden py-16 md:py-24"
       style={{ background: "var(--bg-base)" }}
     >
-      <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
+      <SatinAmbient intensity="default" ribbonAngle="left-lift" />
+      <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
         <FadeUp className="max-w-3xl">
           <p
             className="font-mono text-xs uppercase"

@@ -12,6 +12,7 @@ import { siteConfig } from "@/data/site";
 import type { Testimonial } from "@/data/site";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { StaggerContainer } from "@/components/animations/StaggerContainer";
+import { SatinAmbient } from "@/components/sections/SatinAmbient";
 import { motion, type Variants } from "framer-motion";
 
 const item: Variants = {
@@ -50,10 +51,11 @@ export function HomeTestimonialsPreview() {
     <section
       id="testimonials-preview"
       aria-labelledby="testimonials-preview-heading"
-      className="relative py-16 md:py-24"
+      className="relative overflow-hidden py-16 md:py-24"
       style={{ background: "var(--bg-base)" }}
     >
-      <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
+      <SatinAmbient intensity="default" ribbonAngle="right-lift" />
+      <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
         <FadeUp className="max-w-3xl">
           <p
             className="font-mono text-xs uppercase"
@@ -77,7 +79,7 @@ export function HomeTestimonialsPreview() {
               <figure
                 className="flex h-full flex-col rounded-lg border p-8 md:p-10"
                 style={{
-                  background: "var(--bg-card)",
+                  background: "var(--bg-card-translucent)",
                   borderColor: "rgba(47, 74, 58, 0.1)",
                   boxShadow: "0 2px 8px -4px rgba(26,31,28,0.06)",
                 }}
@@ -130,7 +132,7 @@ export function HomeTestimonialsPreview() {
                 variants={item}
                 className="flex flex-col rounded-lg border p-6 md:p-8"
                 style={{
-                  background: "var(--bg-card)",
+                  background: "var(--bg-card-translucent)",
                   borderColor: "rgba(47, 74, 58, 0.1)",
                   boxShadow: "0 2px 8px -4px rgba(26,31,28,0.06)",
                 }}

@@ -5,6 +5,7 @@ import { blogPosts, BLOG_CATEGORIES } from "@/data/blogPosts";
 import type { BlogCategory, BlogPost } from "@/data/blogPosts";
 import { PageBanner } from "@/components/sections/PageBanner";
 import { AmbientParticles } from "@/components/sections/AmbientParticles";
+import { SatinAmbient } from "@/components/sections/SatinAmbient";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { absoluteUrl, breadcrumbSchema } from "@/lib/schema";
 import { siteConfig } from "@/data/site";
@@ -306,10 +307,11 @@ export default async function BlogIndexPage({ searchParams }: PageProps) {
 
       {/* Article grid */}
       <section
-        className="relative py-16 md:py-20"
+        className="relative overflow-hidden py-16 md:py-20"
         style={{ background: "var(--bg-base)" }}
       >
-        <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
+        <SatinAmbient intensity="default" ribbonAngle="right-lift" />
+        <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
           {gridItems.length === 0 ? (
             <p className="font-body text-base" style={{ color: "var(--text-secondary)" }}>
               No posts in this category yet.

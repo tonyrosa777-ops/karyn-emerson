@@ -47,18 +47,24 @@ export default function Navbar() {
   return (
     <>
       <header
-        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm"
+        className="fixed top-0 left-0 right-0 z-50"
         style={{
           height: "96px",
-          background: "var(--bg-elevated)",
           borderBottom: scrolled
             ? "1px solid rgba(47,74,58,0.08)"
             : "1px solid transparent",
           transition: "border-color 200ms ease",
         }}
       >
+        {/* Satin background — clipped to navbar bounds via overflow-hidden so
+            the diagonal ribbon flourish doesn't bleed into the page below.
+            Sibling-not-ancestor of <nav> so dropdown menus can extend freely. */}
+        <div
+          className="nav-satin absolute inset-0 backdrop-blur-sm overflow-hidden"
+          aria-hidden="true"
+        />
         <nav
-          className="h-full max-w-6xl mx-auto px-6 lg:px-8 flex items-center justify-between"
+          className="relative z-10 h-full max-w-6xl mx-auto px-6 lg:px-8 flex items-center justify-between"
           aria-label="Primary"
         >
           {/* Logo wordmark — flush left */}

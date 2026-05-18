@@ -12,6 +12,7 @@ import { FadeUp } from "@/components/animations/FadeUp";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
 import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { FallingLeaves } from "@/components/sections/motion/FallingLeaves";
+import { SatinAmbient } from "@/components/sections/SatinAmbient";
 import { CalendlyInline } from "@/components/booking/CalendlyInline";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { articleSchema, breadcrumbSchema, faqPageSchema } from "@/lib/schema";
@@ -228,10 +229,11 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
       {/* TL;DR card — the short answer above the hero image */}
       <section
-        className="relative pb-10 md:pb-14"
+        className="relative overflow-hidden pb-10 md:pb-14"
         style={{ background: "var(--bg-base)" }}
       >
-        <div className="mx-auto max-w-3xl px-6 lg:px-8">
+        <SatinAmbient intensity="soft" ribbonAngle="left-lift" static />
+        <div className="relative z-10 mx-auto max-w-3xl px-6 lg:px-8">
           <FadeUp>
             <div
               className="rounded-lg border p-6 md:p-8"
@@ -280,10 +282,11 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
       {/* Body — scroll-anchored H2 sections + optional H3 subsections */}
       <section
-        className="relative py-16 md:py-24"
+        className="relative overflow-hidden py-16 md:py-24"
         style={{ background: "var(--bg-base)" }}
       >
-        <div className="relative mx-auto max-w-3xl px-6 lg:px-8">
+        <SatinAmbient intensity="soft" ribbonAngle="right-lift" static />
+        <div className="relative z-10 mx-auto max-w-3xl px-6 lg:px-8">
           <FadeUp>
             <div className="prose-article">
               {post.sections.map((s) => (
@@ -335,11 +338,12 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
       {/* FAQ — inline dl with <details>/<summary> accordion */}
       <section
-        className="relative py-16 md:py-20"
+        className="relative overflow-hidden py-16 md:py-20"
         style={{ background: "var(--bg-elevated)" }}
         aria-label="Common questions"
       >
-        <div className="relative mx-auto max-w-3xl px-6 lg:px-8">
+        <SatinAmbient intensity="soft" ribbonAngle="left-lift" static />
+        <div className="relative z-10 mx-auto max-w-3xl px-6 lg:px-8">
           <FadeUp>
             <p
               className="font-mono text-xs uppercase"
@@ -453,10 +457,11 @@ export default async function BlogArticlePage({ params }: PageProps) {
       {/* Related posts */}
       {related.length > 0 ? (
         <section
-          className="relative py-16 md:py-20"
+          className="relative overflow-hidden py-16 md:py-20"
           style={{ background: "var(--bg-base)" }}
         >
-          <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
+          <SatinAmbient intensity="default" ribbonAngle="left-lift" />
+          <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
             <FadeUp>
               <p
                 className="font-mono text-xs uppercase"
@@ -525,11 +530,12 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
       {/* Booking calendar at the bottom for direct conversion */}
       <section
-        className="relative py-16 md:py-20"
+        className="relative overflow-hidden py-16 md:py-20"
         style={{ background: "var(--bg-elevated)" }}
         aria-label="Book a conversation"
       >
-        <div className="relative mx-auto max-w-3xl px-6 lg:px-8">
+        <SatinAmbient intensity="default" ribbonAngle="right-lift" />
+        <div className="relative z-10 mx-auto max-w-3xl px-6 lg:px-8">
           <FadeUp>
             <CalendlyInline />
           </FadeUp>
