@@ -7,7 +7,7 @@
 //   pendingAnswer glows selected answer for 400ms, dims others to 30%, advances
 //   Back nav: slices answers array + re-highlights saved answer at that index
 //   direction (1 | -1) drives AnimatePresence x-offset slide transitions
-// Results render QUIZ_RESULTS[resultType] + <BookingCalendar /> inline.
+// Results render QUIZ_RESULTS[resultType] + <CalendlyInline /> inline.
 // Dark-forest themed to sit inside the atmospheric /quiz page shell.
 // NO email gate. NO /api/quiz route. Calendly's booking form collects name/email.
 // =============================================================================
@@ -21,7 +21,7 @@ import {
   scoreQuiz,
   type QuizType,
 } from "@/data/quiz";
-import { BookingCalendar } from "@/components/booking/BookingCalendar";
+import { CalendlyInline } from "@/components/booking/CalendlyInline";
 
 type Phase = "question" | "results";
 
@@ -346,9 +346,9 @@ export default function QuizClient() {
               </div>
             </div>
 
-            {/* Inline booking calendar — the whole point of the quiz.
-                BookingCalendar is styled for light surfaces; wrap it in a
-                cream-tinted card so its own typography stays readable. */}
+            {/* Calendly inline embed — the whole point of the quiz.
+                CalendlyInline is styled for light surfaces; wrap it in a
+                cream-tinted card so the widget chrome stays readable. */}
             <div className="mt-12">
               <div className="mb-5 text-center">
                 <p
@@ -378,7 +378,7 @@ export default function QuizClient() {
                   boxShadow: "0 32px 80px -32px rgba(0,0,0,0.55)",
                 }}
               >
-                <BookingCalendar
+                <CalendlyInline
                   title="Book a time with Karyn"
                   subtitle="Free 15 minute call. Karyn will already know your quiz result before the call starts."
                 />

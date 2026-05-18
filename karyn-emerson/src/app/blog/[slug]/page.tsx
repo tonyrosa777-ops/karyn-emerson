@@ -12,7 +12,7 @@ import { FadeUp } from "@/components/animations/FadeUp";
 import { BreathingOrb } from "@/components/sections/BreathingOrb";
 import { AmbientParticles } from "@/components/sections/AmbientParticles";
 import { FallingLeaves } from "@/components/sections/motion/FallingLeaves";
-import { BookingCalendar } from "@/components/booking/BookingCalendar";
+import { CalendlyInline } from "@/components/booking/CalendlyInline";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { articleSchema, breadcrumbSchema, faqPageSchema } from "@/lib/schema";
 
@@ -531,7 +531,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
       >
         <div className="relative mx-auto max-w-3xl px-6 lg:px-8">
           <FadeUp>
-            <BookingCalendar />
+            <CalendlyInline />
           </FadeUp>
         </div>
       </section>

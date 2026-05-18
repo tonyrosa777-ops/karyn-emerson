@@ -1,15 +1,14 @@
 // =============================================================================
-// /booking — dedicated booking page with inline BookingCalendar
-// Per CLAUDE.md Always-Built Features Rule (Inline Booking Calendar) +
-// Page Animation Rule (/booking gets ambient motion, never flat).
+// /booking — dedicated booking page with Calendly inline embed.
+// Per CLAUDE.md Page Animation Rule (/booking gets ambient motion, never flat).
 // Hero uses cross-dissolve editorial PageBanner + shimmer H1; intro is a
-// split-screen editorial; calendar sits over an AuroraGradient.
+// split-screen editorial; Calendly widget sits over an AuroraGradient.
 // =============================================================================
 
 import type { Metadata } from "next";
 import Image from "next/image";
 import { siteConfig } from "@/data/site";
-import { BookingCalendar } from "@/components/booking/BookingCalendar";
+import { CalendlyInline } from "@/components/booking/CalendlyInline";
 import { PageBanner } from "@/components/sections/PageBanner";
 import { AuroraGradient } from "@/components/sections/motion/AuroraGradient";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -227,7 +226,7 @@ export default function BookingPage() {
           <div id="calendar" className="relative mt-20 md:mt-24 scroll-mt-32">
             <AuroraGradient tone="warm" intensity="subtle" />
             <div className="relative mx-auto max-w-5xl">
-              <BookingCalendar />
+              <CalendlyInline />
             </div>
           </div>
         </div>
