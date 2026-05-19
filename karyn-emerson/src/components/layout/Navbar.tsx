@@ -1,8 +1,15 @@
 "use client";
 
 // =============================================================================
-// Navbar.tsx — fixed-top site navigation (LIGHT theme)
-// Spec: design-system.md §5 (Navigation); CLAUDE.md Always-Built Features Rule
+// Navbar.tsx — fixed-top site navigation.
+// Background: full satin-ambient strip (radial brass-mix bloom + drifting ribbon
+//   + brass shimmer hairlines top/bottom) — matches the page's .satin-ambient
+//   sections so the nav reads as a continuation of the satin surface, not a
+//   flat band. Recipe lives in globals.css .nav-satin.
+// Typography: Cormorant 600 wordmark with a JetBrains Mono editorial eyebrow
+//   line ("REAL ESTATE · SALEM NH") underneath on lg+ widths.
+// Spec: design-system.md §5 (Navigation); CLAUDE.md Always-Built Features Rule;
+//   plan radiant-watching-otter.md (satin-ambient navbar, post-rev1 direction)
 // Copy: all strings from siteConfig in /data/site.ts — zero hardcoded text.
 // =============================================================================
 
@@ -50,33 +57,51 @@ export default function Navbar() {
         className="fixed top-0 left-0 right-0 z-50"
         style={{
           height: "96px",
-          borderBottom: scrolled
-            ? "1px solid rgba(47,74,58,0.08)"
-            : "1px solid transparent",
-          transition: "border-color 200ms ease",
+          boxShadow: scrolled
+            ? "0 14px 36px -28px rgba(47,74,58,0.35)"
+            : "0 8px 24px -22px rgba(47,74,58,0.18)",
+          transition: "box-shadow 240ms ease",
         }}
       >
-        {/* Satin background — clipped to navbar bounds via overflow-hidden so
-            the diagonal ribbon flourish doesn't bleed into the page below.
+        {/* Satin band — clipped to navbar bounds via overflow-hidden so the
+            drifting ribbon flourish doesn't bleed into the page below.
             Sibling-not-ancestor of <nav> so dropdown menus can extend freely. */}
         <div
-          className="nav-satin absolute inset-0 backdrop-blur-sm overflow-hidden"
+          className="nav-satin absolute inset-0 backdrop-blur-sm"
           aria-hidden="true"
-        />
+        >
+          {/* Bottom-edge brass shimmer hairline — mirrors the top via ::before. */}
+          <span className="nav-satin-base-bottom" aria-hidden="true" />
+        </div>
         <nav
           className="relative z-10 h-full max-w-6xl mx-auto px-6 lg:px-8 flex items-center justify-between"
           aria-label="Primary"
         >
-          {/* Logo wordmark — flush left */}
+          {/* Logo wordmark — flush left. Cormorant 600 + JetBrains Mono eyebrow. */}
           <Link
             href="/"
-            className="font-display font-semibold tracking-tight leading-none"
+            className="font-display font-semibold tracking-tight leading-none flex flex-col"
             style={{
               color: "var(--primary)",
-              fontSize: "clamp(1.35rem, 2.2vw, 1.65rem)",
+              fontSize: "clamp(1.5rem, 2.5vw, 1.85rem)",
             }}
           >
-            {siteConfig.businessName.replace(" Real Estate", "")}
+            <span>{siteConfig.businessName.replace(" Real Estate", "")}</span>
+            <span
+              className="hidden lg:inline-block"
+              style={{
+                fontFamily: "var(--font-jetbrains), ui-monospace, monospace",
+                fontSize: "9px",
+                fontWeight: 500,
+                letterSpacing: "0.22em",
+                textTransform: "uppercase",
+                marginTop: "5px",
+                opacity: 0.75,
+                color: "var(--accent)",
+              }}
+            >
+              Real Estate · Salem NH
+            </span>
           </Link>
 
           {/* Desktop nav */}
@@ -197,17 +222,19 @@ export default function Navbar() {
                 background: "var(--primary)",
                 color: "var(--bg-base)",
                 letterSpacing: "0.04em",
+                boxShadow: "0 8px 22px -14px rgba(47,74,58,0.55)",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = "var(--accent)";
                 e.currentTarget.style.transform = "translateY(-1px)";
                 e.currentTarget.style.boxShadow =
-                  "0 10px 30px -10px rgba(47,74,58,0.4)";
+                  "0 12px 32px -10px rgba(181,83,44,0.55)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = "var(--primary)";
                 e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "none";
+                e.currentTarget.style.boxShadow =
+                  "0 8px 22px -14px rgba(47,74,58,0.55)";
               }}
             >
               Book a consultation
@@ -241,7 +268,7 @@ export default function Navbar() {
           </div>
         </nav>
 
-        {/* Hover underline styling — scoped */}
+        {/* Hover underline — center-out reveal in iron-oxide. Scoped to header. */}
         <style>{`
           .nav-link {
             position: relative;
@@ -256,8 +283,8 @@ export default function Navbar() {
             height: 1.5px;
             background: var(--accent);
             transform: scaleX(0);
-            transform-origin: left center;
-            transition: transform 200ms ease;
+            transform-origin: center;
+            transition: transform 220ms ease;
           }
           .nav-link:hover::after,
           .nav-link:focus-visible::after {

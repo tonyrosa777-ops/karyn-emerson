@@ -357,24 +357,42 @@ body::before {
   animation: none !important;
 }
 
-/* --- Navbar satin band — horizontal-strip variant of Pattern #69.
-       The radial ellipse recipe is wrong for a 96px-tall fixed strip; instead
-       use a linear-gradient with brass-mix peak in the center, falling off to
-       cream at the edges. Static (no drift) — navbar competes with scroll and
-       must read as stable. Backdrop-blur keeps content beneath visible. --- */
+/* --- Navbar satin band — full satin-ambient treatment scaled to a 96px strip.
+       Same family as .satin-ambient-base + .satin-ribbon-a/b used on page
+       sections (Pattern #69), so the navbar reads as a continuation of the
+       satin surface rather than a flat band. Three stacked layers:
+
+         Layer 1  .nav-satin           — wide brass-mix radial bloom centered
+                                          in the strip, fading to cream at the
+                                          horizontal edges.
+         Layer 2  .nav-satin::before   — top-edge brass shimmer hairline
+                                          (finishing detail, anchored to top).
+         Layer 3  .nav-satin::after    — drifting brass ribbon flourish behind
+                                          the wordmark (mix-blend multiply).
+
+       prefers-reduced-motion freezes the ribbon drift but keeps the gradients
+       (same contract as the page satin sections). --- */
 .nav-satin {
-  background:
-    linear-gradient(
-      90deg,
-      var(--bg-elevated) 0%,
-      color-mix(in oklab, var(--accent) 6%, var(--bg-elevated)) 30%,
-      color-mix(in oklab, var(--accent) 9%, var(--bg-elevated)) 50%,
-      color-mix(in oklab, var(--accent) 6%, var(--bg-elevated)) 70%,
-      var(--bg-elevated) 100%
-    );
   position: relative;
+  overflow: hidden;
+  background:
+    /* Layer 1a — secondary radial pool on the right (mirrors satin-ribbon-b) */
+    radial-gradient(
+      ellipse 38% 240% at 78% 50%,
+      color-mix(in oklab, var(--accent) 14%, var(--bg-elevated)) 0%,
+      color-mix(in oklab, var(--accent) 6%, var(--bg-elevated)) 45%,
+      transparent 80%
+    ),
+    /* Layer 1b — primary brass-mix bloom centered on the strip */
+    radial-gradient(
+      ellipse 55% 360% at 32% 50%,
+      color-mix(in oklab, var(--accent) 22%, var(--bg-elevated)) 0%,
+      color-mix(in oklab, var(--accent) 12%, var(--bg-elevated)) 38%,
+      color-mix(in oklab, var(--accent) 4%, var(--bg-elevated)) 70%,
+      var(--bg-elevated) 95%
+    );
 }
-/* Thin top-edge brass shimmer line — reads as a finishing detail, not a band. */
+/* Top-edge brass shimmer hairline — finishing detail, anchored to top. */
 .nav-satin::before {
   content: "";
   position: absolute;
@@ -383,42 +401,63 @@ body::before {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    color-mix(in oklab, var(--accent) 32%, transparent) 30%,
-    color-mix(in oklab, var(--accent) 48%, transparent) 50%,
-    color-mix(in oklab, var(--accent) 32%, transparent) 70%,
+    color-mix(in oklab, var(--accent) 36%, transparent) 28%,
+    color-mix(in oklab, var(--accent) 56%, transparent) 50%,
+    color-mix(in oklab, var(--accent) 36%, transparent) 72%,
     transparent 100%
   );
   pointer-events: none;
-  opacity: 0.6;
+  opacity: 0.7;
+  z-index: 2;
 }
-/* Diagonal ribbon flourish drifting slowly across the navbar bottom — anchors
-   the navbar visually to the satin sections below. */
+/* Drifting brass ribbon flourish — same recipe as .satin-ribbon-a/b but
+   compressed to fit a 96px strip and tilted -4deg so the brass streak reads
+   like fabric, not a banner. mix-blend multiply gives the warm lit-from-within
+   glow that matches the page satin sections. */
 .nav-satin::after {
   content: "";
   position: absolute;
-  inset: auto -10% -25% -10%;
-  height: 80%;
+  inset: -40% -10% -40% -10%;
   background: radial-gradient(
-    ellipse 50% 100% at 60% 50%,
-    color-mix(in oklab, var(--accent) 18%, transparent) 0%,
-    color-mix(in oklab, var(--accent) 8%, transparent) 40%,
-    transparent 75%
+    ellipse 32% 80% at 40% 50%,
+    color-mix(in oklab, var(--accent) 32%, transparent) 0%,
+    color-mix(in oklab, var(--accent) 16%, transparent) 38%,
+    color-mix(in oklab, var(--accent) 6%, transparent) 65%,
+    transparent 82%
   );
-  transform: rotate(-3deg);
+  transform: rotate(-4deg);
   mix-blend-mode: multiply;
-  opacity: 0.35;
+  opacity: 0.55;
   pointer-events: none;
   will-change: transform, opacity;
-  animation: nav-satin-drift 28s ease-in-out infinite;
+  animation: nav-satin-drift 30s ease-in-out infinite;
 }
 @keyframes nav-satin-drift {
-  0%, 100% { transform: rotate(-3deg) translate3d(0, 0, 0);    opacity: 0.3; }
-  50%      { transform: rotate(-2deg) translate3d(2.5%, 0, 0); opacity: 0.45; }
+  0%, 100% { transform: rotate(-4deg) translate3d(0, 0, 0);     opacity: 0.45; }
+  50%      { transform: rotate(-2deg) translate3d(4%, -1%, 0);  opacity: 0.65; }
+}
+/* Bottom-edge brass shimmer hairline — mirrors the top, gives the strip a
+   finished, framed quality at the divider line between nav and content. */
+.nav-satin-base-bottom {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in oklab, var(--accent) 22%, transparent) 30%,
+    color-mix(in oklab, var(--accent) 36%, transparent) 50%,
+    color-mix(in oklab, var(--accent) 22%, transparent) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+  opacity: 0.55;
+  z-index: 2;
 }
 @media (prefers-reduced-motion: reduce) {
   .nav-satin::after {
     animation: none !important;
-    transform: rotate(-3deg) !important;
-    opacity: 0.35 !important;
+    transform: rotate(-4deg) !important;
+    opacity: 0.55 !important;
   }
 }
