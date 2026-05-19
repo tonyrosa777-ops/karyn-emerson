@@ -373,7 +373,11 @@ body::before {
        prefers-reduced-motion freezes the ribbon drift but keeps the gradients
        (same contract as the page satin sections). --- */
 .nav-satin {
-  position: relative;
+  /* position + inset come from Tailwind utilities on the JSX (.absolute .inset-0)
+     — do NOT declare position here or it overrides the utility and the div
+     collapses to 0 × 0 (root cause of the "navbar background disappears on
+     scroll past hero" bug, 2026-05-18). overflow:hidden stays so the ::after
+     ribbon flourish is clipped to the strip. */
   overflow: hidden;
   background:
     /* Layer 1a — secondary radial pool on the right (mirrors satin-ribbon-b) */
